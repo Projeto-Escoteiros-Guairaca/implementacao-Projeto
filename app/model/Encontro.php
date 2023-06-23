@@ -61,6 +61,14 @@ class Encontro{
         return $this->data;
     }
 
+    public function getDataFormated()
+    {
+        if($this->data)
+            return date_format(date_create($this->data),"d/m/Y");
+        
+        return "";
+    }
+
     /**
      * Set the value of data
      *

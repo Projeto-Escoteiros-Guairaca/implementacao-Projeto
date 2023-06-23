@@ -29,7 +29,7 @@
                     <tbody>
                         <?php foreach($dados["lista"] as $enc): ?>
                             <tr>
-                                <td><?php echo $enc->getData(); ?></td>
+                                <td><?php echo $enc->getDataFormated(); ?></td>
                                 <td><?= $enc->getDescricao(); ?></td>
                                 <td><?= $enc->getId_alcateia(); ?></td>
 

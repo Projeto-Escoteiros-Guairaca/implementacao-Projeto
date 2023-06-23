@@ -43,7 +43,7 @@ class UsuarioController extends Controller {
             $dados["papeis"] = UsuarioPapel::getAllAsArray();
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;        
-            $this->loadView("usuario/profile.php", $dados, "", "", true);
+            $this->loadView("usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
         } else {
             $this->list("Usuário não encontrado.");
         }
