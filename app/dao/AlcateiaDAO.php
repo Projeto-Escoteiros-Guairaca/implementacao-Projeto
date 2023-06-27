@@ -2,6 +2,9 @@
     
 require_once(__DIR__ . "/../connection/Connection.php");
 require_once(__DIR__ . "/../model/Alcateia.php");
+require_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/Contato.php");
+
 
 class AlcateiaDao{
 
@@ -16,6 +19,68 @@ class AlcateiaDao{
         
         return $this->mapAlcateia($result);
     }
+
+
+
+    public function findUsuariosByIdAlcateia(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_usuarios u" .
+               " WHERE u.id_alcateia = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $usuarios = $this->mapUsuarios($result);
+               
+        foreach($usuarios as $us):  
+            $contato = $this->findContatosByIdUsuarios($us->getIdContato());
+            $us->setContatoEmail($contato->getEmail());
+            $us->setContatoCelular($contato->getCelular());
+
+        endforeach;
+
+            
+        return $usuarios;
+    }
+    public function mapUsuarios($result) {
+        $usuarios = array();
+        foreach ($result as $reg) {
+            $usuario = new Usuario();
+            $usuario->setId($reg['id_usuario']);
+            $usuario->setNome($reg['nome']);
+            $usuario->setIdContato($reg['id_contato']);
+
+            array_push($usuarios, $usuario);
+        }
+
+        return $usuarios;
+    } 
+    public function findContatosByIdUsuarios(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_contatos c" .
+               " WHERE c.id_contato = ?"; 
+            
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $alcateias = $this->mapContatos($result);
+        
+        return $alcateias;
+    }
+    public function mapContatos($result) {
+        foreach ($result as $reg) {
+            $contato = new Contato();
+            $contato->setId_contato($reg['id_contato']);
+            $contato->setEmail($reg['email']);
+            $contato->setCelular($reg['celular']);
+        }
+        
+        return $contato;
+    }
+    
 
     public function findById(int $id){
         $conn = Connection::getConn();

@@ -4,7 +4,7 @@
 
 require_once(__DIR__ . "/enum/UsuarioPapel.php");
 
-class Usuario {
+class Usuario implements JsonSerializable {
 
     private $id;
     private $endereco;
@@ -21,7 +21,20 @@ class Usuario {
     private $idEndereco;
     private $idContato;
     private $idAlcateia;
+    private $contatoEmail;
+    private $contatoCelular;
 
+    public function jsonSerialize() {
+        return
+        [
+            'nome' => $this->nome,
+            'email' =>$this->contatoEmail,
+            'celular' => $this->contatoCelular
+            
+
+        ];
+    }
+    
     /**
      * Get the value of id
      */ 
@@ -255,6 +268,46 @@ class Usuario {
     public function setIdAlcateia($idAlcateia)
     {
         $this->idAlcateia = $idAlcateia;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of contatoCelular
+     */ 
+    public function getContatoCelular()
+    {
+        return $this->contatoCelular;
+    }
+
+    /**
+     * Set the value of contatoCelular
+     *
+     * @return  self
+     */ 
+    public function setContatoCelular($contatoCelular)
+    {
+        $this->contatoCelular = $contatoCelular;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of contatoEmail
+     */ 
+    public function getContatoEmail()
+    {
+        return $this->contatoEmail;
+    }
+
+    /**
+     * Set the value of contatoEmail
+     *
+     * @return  self
+     */ 
+    public function setContatoEmail($contatoEmail)
+    {
+        $this->contatoEmail = $contatoEmail;
 
         return $this;
     }

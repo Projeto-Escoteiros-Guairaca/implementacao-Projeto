@@ -18,6 +18,23 @@ class AlcateiaController extends Controller{
         $this->handleAction();
     }
 
+    public function listUsuarios() {
+        $usuarios = $this->findUsuarioByIdAlcateia(); 
+        echo json_encode($usuarios); 
+        return;
+    }
+    protected function findUsuarioByIdAlcateia(){
+        $id = 0;
+        if(isset($_GET['idAlcateia']))
+            $id = $_GET['idAlcateia'];
+
+        $dados["id_alcateia"] = $id;
+
+        $usuario = $this->alcateiaDao->findUsuariosByIdAlcateia($id);
+        return $usuario;
+    }
+
+    
     public function list(string $msgErro = "", string $msgSucesso = ""){
         $alcateias = $this->alcateiaDao->list();
         $dados["lista"] = $alcateias;
@@ -38,11 +55,11 @@ class AlcateiaController extends Controller{
             $dados["alcateia"] = $alcateia;        
             $this->loadView("alcateia/formAlcateia.php", $dados, "", "", true);
         } else {
-            $this->list("Usuário não encontrado.");
+            $this->list("Alcateia não encontrada.");
         }
 
     }
-    
+
     protected function findAlcateiaById(){
         $id = 0;
         if(isset($_GET['id']))
@@ -50,8 +67,8 @@ class AlcateiaController extends Controller{
 
         $dados["id_alcateia"] = $id;
 
-        $usuario = $this->alcateiaDao->findById($id);
-        return $usuario;
+        $alcateia = $this->alcateiaDao->findById($id);
+        return $alcateia;
     }
 
     public function save(){

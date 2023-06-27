@@ -21,22 +21,25 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Alterar</th>
-                            <th>Excluir</th>
+                            <th>Listar usuários</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($dados["lista"] as $alc): ?>
-                            <tr>
-                                <td><?php echo $alc->getId_alcateia(); ?></td>
+                    <table id="tabAlcateias <?php echo $alc->getId_alcateia(); ?>" class="table table-striped table-bordered">
+                            <tr >
+                                <td class="alcateiasIds" id="<?php echo $alc->getId_alcateia(); ?>"><?php echo $alc->getId_alcateia(); ?></td>
                                 <td><?= $alc->getNome(); ?></td>
-                                <td><a class="btn btn-primary" 
+                                <td><a class="btn btn-warning" 
                                     href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
                                     Alterar</a> 
                                 </td>
-                                <td><a class="btn btn-danger" onclick="return confirm('Deseja excluir a alcateia?')" href="<?= BASEURL ?>/controller/AlcateiaController.php?action=delete&id=<?= $alc->getId_alcateia() ?>">
-                                    Excluir</a> 
+                                <td>        <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, 'listUsuarios')"> 
+                                   Listar usuarios </button>
                                 </td>
                             </tr>
+                            </table>
+
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -44,6 +47,7 @@
         </div>
 </div>
 
+<script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
 <?php
     require_once(__DIR__ . "/../include/footer.php");
 ?>

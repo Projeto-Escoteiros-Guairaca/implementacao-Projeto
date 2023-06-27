@@ -1,13 +1,11 @@
 <?php
 
-class Contato{
+class Contato {
 
     private $id_contato;
     private $telefone;
     private $celular;
     private $email;
-
-    
 
     /**
      * Get the value of telefone

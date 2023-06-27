@@ -74,7 +74,7 @@ INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais
 /*Inserts contatos*/
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('11111111', '11111111111', 'emailAdmin@gmail.com');
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('22222222', '22222222222', 'emailRoot@gmail.com');
-INSERT INTO tb_contatos (telefone, celular, email) VALUES ('22222222', '22222222222', 'emailRoot@gmail.com');
+INSERT INTO tb_contatos (telefone, celular, email) VALUES ('33333333', '33333333333', 'Markinhos@gmail.com');
 
 /*Inserts usuarios*/
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES (1, 1, 1, 'Sr. Administrador', '11122233344', 'admin', 'admin', 'ADMINISTRADOR', 'ATIVO');
