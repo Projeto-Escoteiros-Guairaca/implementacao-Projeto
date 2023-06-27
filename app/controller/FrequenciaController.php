@@ -42,7 +42,7 @@ class FrequenciaController extends Controller {
     }
 
     public function list(string $msgErro = "", string $msgSucesso = "") {
-       
+        $encontro = $this->findEncontroByIdEncontro();
         $frequencias = $this->findFrequenciasByIdEncontro();
         $usuarios = $this->findUsuariosById();
         $i = 0;
@@ -51,6 +51,7 @@ class FrequenciaController extends Controller {
             $i++;
         }
         $dados["lista"] = $frequencias;
+        $dados["encontro"] = $encontro;
 
 
         $this->loadView("frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, false);
@@ -68,6 +69,13 @@ class FrequenciaController extends Controller {
         $id = 0;
         $id = $_GET['idEncontro'];
         $frequencias = $this->frequenciaDao->findFrequenciaByIdEncontro($id);
+        return $frequencias;
+    }
+
+    public function findEncontroByIdEncontro(){
+        $id = 0;
+        $id = $_GET['idEncontro'];
+        $frequencias = $this->frequenciaDao->findEncontroByIdEncontro($id);
         return $frequencias;
     }
 

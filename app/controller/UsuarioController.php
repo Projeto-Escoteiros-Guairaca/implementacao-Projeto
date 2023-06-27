@@ -205,23 +205,9 @@ class UsuarioController extends Controller {
         $this->loadView("usuario/form.php", $dados, $msgsErro, "", "", true);
     }
 
-    protected function delete(){
+    protected function changeAlcateia(){
         $usuario = $this->findUsuarioById();
-        //$endereco = $this->findEnderecoById();
-        //$contato = $this->findContatoById();
-        if($usuario){
-            $this->usuarioDao->deleteById($usuario->getId());
-            
-            if($usuario->getIdEndereco())
-                $this->enderecoDao->deleteById($usuario->getIdEndereco());
-            
-            if($usuario->getIdContato())
-                $this->contatoDao->deleteById($usuario->getIdContato());
-
-            $this->list("","Usuário excluído com sucesso.");
-        } else {
-            $this->list("Usuário não encontrado.");
-        }
+        
     }
     protected function updateToInativo(){
         $usuario = $this->findUsuarioById();

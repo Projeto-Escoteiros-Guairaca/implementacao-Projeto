@@ -141,6 +141,7 @@ class UsuarioDAO {
             //Seta os campos provisórios
             $usuario->setIdEndereco($reg['id_endereco']);
             $usuario->setIdContato($reg['id_contato']);
+            $usuario->setIdAlcateia($reg['id_alcateia']);
 
             array_push($usuarios, $usuario);
         }

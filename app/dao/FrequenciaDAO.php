@@ -3,6 +3,7 @@
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Frequencia.php");
 include_once(__DIR__ . "/../model/Usuario.php");
+include_once(__DIR__ . "/../model/Encontro.php");
 
 
 class FrequenciaDAO {
@@ -56,7 +57,27 @@ class FrequenciaDAO {
        return $this->mapFrequencia($result);
     }
     
-    
+    public function findEncontroByIdEncontro(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_encontros f" .
+               " WHERE f.id_encontro = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        
+       return $this->mapEncontro($result);
+    }
+    private function mapEncontro($result){
+        $encontros = array();
+        foreach ($result as $reg) {
+            $encontro = new Encontro();
+            $encontro->setData($reg['data']);
+            array_push($encontros, $encontro);
+        }
+        return $encontros;
+    }
+
     private function mapFrequencia($result){
         $frequencias = array();
         foreach ($result as $reg) {

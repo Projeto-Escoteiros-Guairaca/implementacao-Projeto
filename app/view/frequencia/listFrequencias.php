@@ -14,6 +14,14 @@
 
     <div class="row" style="margin-top: 10px;">
             <div class="col-12">
+            <div class="col-12">
+            <h2>     <?php    
+            foreach($dados["encontro"] as $enc):
+            ?> 
+            <?php echo"encontro do dia " . $enc->getDataFormated(); ?>
+            <?php endforeach;?>
+            </h2>
+            </div>
                 <table id="tabfrequencias" class="table table-striped table-bordered">
                     <thead>
                         <tr>

@@ -6,6 +6,8 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 require_once(__DIR__ . "/../../controller/AcessoController.php");
 require_once(__DIR__ . "/../../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 
 $nome = $_SESSION[SESSAO_USUARIO_NOME];
 ?>
@@ -33,7 +35,7 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                             <th>Papeis</th>
                             <th>Status</th>
                             <th>Alterar</th>
-                            <th>Excluir</th>
+                            <th>Mudar Alcateia</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,8 +67,13 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                                     href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
                                     Alterar</a> 
                                 </td>
-                                <td><a class="btn btn-danger" onclick="return confirm('Deseja excluir o usuário?')" href="<?= BASEURL ?>/controller/UsuarioController.php?action=delete&id=<?= $usu->getId() ?>">
-                                    Excluir</a> 
+                                <td>   
+                                    <?php
+                                    $alcDao = new AlcateiaDAO();
+                                    $alcateias = $alcDao->list();
+
+                                SelectAlcateia::desenhaSelect($alcateias, "alcateias", "alcateia".$usu->getIdAlcateia(), $usu->getIdAlcateia());
+                                    ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
