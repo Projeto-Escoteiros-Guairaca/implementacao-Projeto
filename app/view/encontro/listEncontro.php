@@ -20,7 +20,7 @@
                         <tr>
                             <th>Data</th>
                             <th>Descrição</th>
-                            <th>Id da alcateia</th>
+                            <th>Alcateia</th>
                             <th>Alterar</th>
                             <th>Lista de usuários</th>
                             <th>Excluir</th>
@@ -31,7 +31,7 @@
                             <tr>
                                 <td><?php echo $enc->getDataFormated(); ?></td>
                                 <td><?= $enc->getDescricao(); ?></td>
-                                <td><?= $enc->getId_alcateia(); ?></td>
+                                <td><?= $enc->getAlcateia()->getNome(); ?></td>
 
                                 <td><a class="btn btn-primary" 
                                     href="<?= BASEURL ?>/controller/EncontroController.php?action=edit&id=<?= $enc->getId_encontro() ?>">

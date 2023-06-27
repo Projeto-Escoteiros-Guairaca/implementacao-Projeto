@@ -9,7 +9,7 @@ class Encontro{
 
     //campos provisórios
     private $id_alcateia;
-
+    private $alcateiaNome;
     
 
 
@@ -117,6 +117,26 @@ class Encontro{
     public function setId_alcateia($id_alcateia)
     {
         $this->id_alcateia = $id_alcateia;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of alcateiaNome
+     */ 
+    public function getAlcateiaNome()
+    {
+        return $this->alcateiaNome;
+    }
+
+    /**
+     * Set the value of alcateiaNome
+     *
+     * @return  self
+     */ 
+    public function setAlcateiaNome($alcateiaNome)
+    {
+        $this->alcateiaNome = $alcateiaNome;
 
         return $this;
     }

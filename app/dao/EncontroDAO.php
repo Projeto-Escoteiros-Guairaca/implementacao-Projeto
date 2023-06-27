@@ -13,9 +13,41 @@ class EncontroDao {
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
+
+        $encontros = $this->mapEncontro($result);
+
+        foreach($encontros as $enc):
+            $alcateia = new Alcateia();
+            $alcateia = $this->listAlcateias($enc->getId_alcateia());
+            $enc->setAlcateia($alcateia[0]);
+        endforeach;
         
-        return $this->mapEncontro($result);
+        return $encontros;
     }
+    public function listAlcateias(int $id){
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_alcateias a".
+                " WHERE a.id_alcateia = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        
+        return $this->mapAlcateia($result);
+    }
+    public function mapAlcateia($result){
+        $alcateias = array();
+        foreach ($result as $reg) {
+            $alcateia = new Alcateia();
+            $alcateia->setId_alcateia($reg['id_alcateia']);
+            $alcateia->setNome($reg['nome']);
+            array_push($alcateias, $alcateia);
+        }
+
+        return $alcateias;
+    }
+
 
     public function findById(int $id){
         $conn = Connection::getConn();

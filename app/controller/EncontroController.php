@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/EncontroDAO.php");
+require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../model/Encontro.php");
 require_once(__DIR__ . "/../model/Alcateia.php");
 require_once(__DIR__ . "/../service/EncontroService.php");
@@ -21,6 +22,7 @@ class EncontroController extends Controller {
 
     public function list(string $msgErro = "", string $msgSucesso = ""){
         $encontros = $this->encontroDao->list();
+
         $dados["lista"] = $encontros;
         $this->loadView("encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, true);
     }
