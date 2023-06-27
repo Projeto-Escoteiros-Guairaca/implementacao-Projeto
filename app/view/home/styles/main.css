@@ -8,12 +8,32 @@ body{
 #cabecalho{
     /*background-image: url(../images/fundo_plantas.png);*/
     background-size: 600px;
-    height:15vh;
-    background-color: #603000  ;
+    background-color: rgb(13, 136, 9);
+    height: 55px;
    
 }
-#p_titulo{ 
-    color: rgb(255, 255, 255); /*text-shadow: rgb(0,0,0)  0.2em 0.2em 0.2em;*/
+#cont_titulo{
+    margin-left: 85vh;
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    height: 45px;
+}
+
+#palavra_1{
+
+    color: rgb(13, 136, 9);
+    text-shadow: 1px 1px white, -1px -2px #444;
+
+}
+#palavra_2{
+
+    margin-top: -18px;
+    margin-left: 60px;
+    color: goldenrod;
+    text-shadow: 1px 1px white, -1px -2px #444;
+    
+
 }
 
 .menu_oculto{
@@ -51,8 +71,10 @@ body{
 }
 
 #principal{
-    color: rgb(255, 255, 255); text-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    color: rgb(255, 255, 255); text-shadow: black  0.1em 0.1em 0.2em;
     padding: 16px;
+    margin-left: 15px;
+    margin-top: -15px;
     transition: margin-left 0.5px;
 }
 
@@ -113,9 +135,9 @@ img{
 .nomeUsu{
     font-size: 20px;
     position: absolute;
-    color: rgb(255, 255, 255); 
-    top: 5vh;
-    right: 5vw;
+    color: rgb(242, 242, 97); 
+    margin-top: -45px;
+    right: 16px;
 }
 
 .nomeUsu a{
@@ -155,4 +177,38 @@ img{
     height: 20%;
     font-size: 15px;
     justify-content: center;
+
 }
+
+
+
+
+
+.form-group{
+    
+    background-color: blue;
+    width: 530px;
+    margin-left: 55px;
+    border-radius: 20px;
+}
+
+
+
+
+.d_form{
+
+    height: 350px;
+    width: 640px;
+    margin-left: 30vh;
+    margin-top: 52px;
+    align-items: center center;
+    background-color:rgb(13, 136, 9) ;
+    border-radius: 15px;
+    border: solid 1px black;
+}
+
+.estilo_dados_form{
+    
+    border-radius: 10px;
+    
+    ;}

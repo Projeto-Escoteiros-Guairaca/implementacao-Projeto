@@ -54,12 +54,6 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                 <script type="text/javascript" src="../view/home/scripts/scripts.js"></script>
         </div>
 
-            <div class ="col-6" id = "bloco_titulo">
-                <img src="../view/home/images/madeira_titulo.png">
-                <p id="p_titulo">Escoteiros Guairacá </p>
-            </div>
-            <div class ="col-3 "></div>
-
     </div>
     <div class="nomeUsu">
     <?php
@@ -72,4 +66,10 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
         }
     ?>
 </div>
+    
+<div class="container-fluid col-2" id = "cont_titulo">
+            <div class="col-6" id="palavra_1">Escoteiros</div>
+            <div class="col-9" id="palavra_2">Guairacá</div>
+        </div>
+
 
