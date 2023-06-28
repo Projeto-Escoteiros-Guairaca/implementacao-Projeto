@@ -1,6 +1,7 @@
 body{
 
     overflow-x: hidden;
+    
 
 }
 
@@ -8,7 +9,7 @@ body{
 #cabecalho{
     /*background-image: url(../images/fundo_plantas.png);*/
     background-size: 600px;
-    background-color: rgb(13, 136, 9);
+    background-color: rgb(16, 159, 11);
     height: 55px;
    
 }
@@ -22,7 +23,7 @@ body{
 
 #palavra_1{
 
-    color: rgb(13, 136, 9);
+    color: rgb(16, 159, 11);
     text-shadow: 1px 1px white, -1px -2px #444;
 
 }
@@ -161,35 +162,14 @@ img{
 }
 
 
-.linha_nome{
-   height: 20%;
-   font-size: 15px;
-   justify-content: center;
-   
-}
-
-.linha_foto{
-    height: 50%;
-    justify-content: center;
-}
-
-.linha_num{
-    height: 20%;
-    font-size: 15px;
-    justify-content: center;
-
-}
-
-
-
 
 
 .form-group{
     
-    background-color: blue;
+    background-color: black;
     width: 530px;
-    margin-left: 55px;
     border-radius: 20px;
+    text-align: center;
 }
 
 
@@ -202,13 +182,68 @@ img{
     margin-left: 30vh;
     margin-top: 52px;
     align-items: center center;
-    background-color:rgb(13, 136, 9) ;
+    background-color:rgb(16, 159, 11) ;
     border-radius: 15px;
     border: solid 1px black;
+    text-align: center;
+    padding: 30px;
 }
 
 .estilo_dados_form{
     
     border-radius: 10px;
     
+    
     ;}
+
+    #frmLogin{
+
+       margin-left: 3.4vh;
+       color: aliceblue;
+
+
+    }
+
+    #btn_logar{
+
+        
+
+    }
+
+      
+      .btn {
+        width: 180px;
+        height: 60px;
+        cursor: pointer;
+        background: transparent;
+        border: 1px solid #91C9FF;
+        outline: none;
+        transition: 1s ease-in-out;
+      }
+      
+      svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        fill: none;
+        stroke: #fff;
+        stroke-dasharray: 150 480;
+        stroke-dashoffset: 150;
+        transition: 1s ease-in-out;
+      }
+      
+      #btn_logar:hover {
+        transition: 1s ease-in-out;
+        background: #4F95DA;
+      }
+      
+      #btn_logar:hover svg {
+        stroke-dashoffset: -480;
+      }
+      
+      #btn_logar span {
+        color: white;
+        font-size: 18px;
+        font-weight: 100;
+      }
+    #btn_voltar{}

@@ -28,9 +28,12 @@ require_once(__DIR__ . "/../include/menu.php");
                             maxlength="15" placeholder="Informe a senha"
                             value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />        
                     </div>
-
-                    <button type="submit" class="btn btn-success">Logar</button>
-                    <a class="btn btn-primary" href='<?= HOME_PAGE ?>'>Voltar</a>
+                    <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+                    <button type="submit" class="btn btn-success" id= "btn_logar"><span>Logar</span></button>
+                    <a class="btn btn-primary" id= "btn_voltarr"href='<?= HOME_PAGE ?>'>Voltar</a>
                 </form>
             </div>
         </div>
