@@ -43,7 +43,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                     ?>
                 
                     <a href = "#"> Sobre</a>
-                    <a href = "#" input="checkbox" id="">Modo Escuro</a>
+                    <a id="modo-escuro">Modo Escuro</a>
                 </aside>
 
                 <section id="principal">

@@ -1,10 +1,7 @@
 body{
-
     overflow-x: hidden;
-    
-
+    transition: background-color 0.3s ease;
 }
-
 
 #cabecalho{
     /*background-image: url(../images/fundo_plantas.png);*/
@@ -22,19 +19,14 @@ body{
 }
 
 #palavra_1{
-
     color: rgb(16, 159, 11);
     text-shadow: 1px 1px white, -1px -2px #444;
-
 }
 #palavra_2{
-
     margin-top: -18px;
     margin-left: 60px;
     color: goldenrod;
     text-shadow: 1px 1px white, -1px -2px #444;
-    
-
 }
 
 .menu_oculto{
@@ -51,7 +43,8 @@ body{
 }
 
 .menu_oculto a{
-    color: rgb(255, 255, 255); text-shadow: goldenrod  0.1em 0.1em 0.2em;
+    color: rgb(255, 255, 255); 
+    text-shadow: goldenrod  0.1em 0.1em 0.2em;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -59,7 +52,9 @@ body{
     transition: 0.3s;
 }
 
-.menu_oculto a:hover{color: goldenrod;}
+.menu_oculto a:hover{
+    color: goldenrod;
+}
 
 .btn_fechar{
     right: 25px;
@@ -67,12 +62,12 @@ body{
     padding: 16px;
     top: 0;
     margin-left: 50px;
-    font-size: 25px;
-    
+    font-size: 25px; 
 }
 
 #principal{
-    color: rgb(255, 255, 255); text-shadow: black  0.1em 0.1em 0.2em;
+    color: rgb(255, 255, 255); 
+    text-shadow: black  0.1em 0.1em 0.2em;
     padding: 16px;
     margin-left: 15px;
     margin-top: -15px;
@@ -83,9 +78,12 @@ body{
 @media screen and(max-height: 450px){
     .menu_oculto{padding-top: 15px;}
     .menu_oculto a{font-size: 18;}
-    }
+}
 
-.botoes_menu{color: rgb(255, 255, 255); text-shadow: black  0.1em 0.1em 0.2em;}
+.botoes_menu{
+    color: rgb(255, 255, 255); 
+    text-shadow: black  0.1em 0.1em 0.2em;
+}
 
 #bloco_titulo{
     text-align: center;
@@ -93,14 +91,15 @@ body{
     background: no-repeat center ;
     height: 20vh;
 }
+
 #bloco_titulo img{
     height: 100%;
     object-fit: fill;
     position: relative;
     top: 0;
 }
-img{
 
+img{
     margin-top: -50px;
     height: 230px;
     width: 430px;
@@ -145,6 +144,7 @@ img{
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
+
 .text{
     position: absolute;
     height: 50%;
@@ -161,22 +161,14 @@ img{
     text-shadow:rgba(0, 0, 0, 0.15) 0.2rem, 0.2rem, 0.2rem;
 }
 
-
-
-
 .form-group{
-    
     background-color: black;
     width: 530px;
     border-radius: 20px;
     text-align: center;
 }
 
-
-
-
 .d_form{
-
     height: 350px;
     width: 640px;
     margin-left: 30vh;
@@ -190,60 +182,62 @@ img{
 }
 
 .estilo_dados_form{
-    
     border-radius: 10px;
-    
-    
-    ;}
+}
 
-    #frmLogin{
+#frmLogin{
+    margin-left: 3.4vh;
+    color: aliceblue;
+}
 
-       margin-left: 3.4vh;
-       color: aliceblue;
+.btn {
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #91C9FF;
+    outline: none;
+    transition: 1s ease-in-out;
+}
 
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: 1s ease-in-out;
+}
 
-    }
+#btn_logar:hover {
+    transition: 1s ease-in-out;
+    background: #4F95DA;
+}
 
-    #btn_logar{
+#btn_logar:hover svg {
+    stroke-dashoffset: -480;
+}
 
-        
+#btn_logar span {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+}
 
-    }
+.modo-escuro{
+    background-color: #333;
+    color: #fff;
+}
 
-      
-      .btn {
-        width: 180px;
-        height: 60px;
-        cursor: pointer;
-        background: transparent;
-        border: 1px solid #91C9FF;
-        outline: none;
-        transition: 1s ease-in-out;
-      }
-      
-      svg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        fill: none;
-        stroke: #fff;
-        stroke-dasharray: 150 480;
-        stroke-dashoffset: 150;
-        transition: 1s ease-in-out;
-      }
-      
-      #btn_logar:hover {
-        transition: 1s ease-in-out;
-        background: #4F95DA;
-      }
-      
-      #btn_logar:hover svg {
-        stroke-dashoffset: -480;
-      }
-      
-      #btn_logar span {
-        color: white;
-        font-size: 18px;
-        font-weight: 100;
-      }
-    #btn_voltar{}
+.modo-escuro #cabecalho{
+    background-color: #333;
+    color: #fff;
+    border: 2px solid rgb(16, 159, 11);;
+}
+
+.modo-escuro #principal{
+    color: #fff;
+}
+
