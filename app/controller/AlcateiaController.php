@@ -37,6 +37,16 @@ class AlcateiaController extends Controller{
     
     public function list(string $msgErro = "", string $msgSucesso = ""){
         $alcateias = $this->alcateiaDao->list();
+        $sendAlcateias = false;
+     
+        if(isset($_GET['sendAlcateias'])) {
+    $sendAlcateias = $_GET['sendAlcateias'];
+        } 
+        if($sendAlcateias == 'true') {
+        echo json_encode($alcateias);
+        return;
+        }
+
         $dados["lista"] = $alcateias;
         $this->loadView("alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);
     }

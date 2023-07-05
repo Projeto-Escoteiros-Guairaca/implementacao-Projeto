@@ -43,7 +43,6 @@ function usuarios(id, action) {
                     button.className="usuariosdatabela"+id;
                 }
             AlcateiasAlreadyUsed.push(id);
-            console.log(AlcateiasAlreadyUsed);
         };
     }
 

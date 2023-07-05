@@ -11,6 +11,8 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 
 $nome = $_SESSION[SESSAO_USUARIO_NOME];
 ?>
+    <link rel="stylesheet" href="<?= BASEURL ?>/view/usuario/list.css" />
+
     <h3 class='text-center'>Usuários</h3>
 
     <div class='container'>
@@ -24,7 +26,7 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
             </div>
         </div>
 
-        <div class="row" style="margin-top: 10px;">
+        <div id="pinto" class="row" style="margin-top: 10px;">
             <div class="col-12">
                 <table id="tabUsuarios" class="table table-striped table-bordered">
                     <thead>
@@ -68,12 +70,19 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                                     Alterar</a> 
                                 </td>
                                 <td>   
-                                    <?php
-                                    $alcDao = new AlcateiaDAO();
-                                    $alcateias = $alcDao->list();
-
-                                SelectAlcateia::desenhaSelect($alcateias, "alcateias", "alcateia".$usu->getIdAlcateia(), $usu->getIdAlcateia());
-                                    ?>
+                                    <button class="<?php if($usu->getAlcateia()) {
+                                            echo "btn btn-secondary";
+                                        }else {
+                                            echo "btn btn-warning";
+                                        }?>"
+                                         id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
+                                         , 'list', <?= $usu->getId();?>);"> 
+                                        <?php if($usu->getAlcateia()) {
+                                            echo $usu->getAlcateia()->getNome();
+                                        }else {
+                                            echo "sem alcateia";
+                                        }?>
+                                    </button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -82,7 +91,7 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
             </div>
         </div>
     </div>
-
+    <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 
 <?php  
 require_once(__DIR__ . "/../include/footer.php");

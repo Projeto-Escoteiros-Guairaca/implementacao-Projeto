@@ -4,6 +4,8 @@
 
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Usuario.php");
+include_once(__DIR__ . "/../model/Alcateia.php");
+
 
 class UsuarioDAO {
 
@@ -12,13 +14,22 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_usuarios u ORDER BY u.nome";
-        $stm = $conn->prepare($sql);    
+        $stm = $conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
-        
         return $this->mapUsuarios($result);
+       
     }
 
+    public function changeAlcateia($id, $idAlcateia) {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE tb_usuarios SET id_alcateia = :idalcateia WHERE id_usuario = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $id);
+        $stm->bindValue("idalcateia", $idAlcateia);
+        $stm->execute();
+    }
     //Método para buscar um usuário por seu ID
     public function findById(int $id) {
         $conn = Connection::getConn();
@@ -145,8 +156,19 @@ class UsuarioDAO {
 
             array_push($usuarios, $usuario);
         }
-
         return $usuarios;
+    }
+
+    public function mapAlcateia($result){
+        $alcateias = array();
+        foreach ($result as $reg) {
+            $alcateia = new Alcateia();
+            $alcateia->setId_alcateia($reg['id_alcateia']);
+            $alcateia->setNome($reg['nome']);
+            array_push($alcateias, $alcateia);
+        }
+
+        return $alcateias;
     }
 
 }

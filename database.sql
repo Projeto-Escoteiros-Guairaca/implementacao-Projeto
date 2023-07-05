@@ -19,7 +19,8 @@ CREATE TABLE tb_contatos (
 CREATE TABLE tb_alcateias (
   id_alcateia int AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id_alcateia)
+  PRIMARY KEY (id_alcateia),
+  primo int
 );
 
 CREATE TABLE tb_usuarios ( 

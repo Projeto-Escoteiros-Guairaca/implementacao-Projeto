@@ -4,7 +4,11 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/EnderecoDAO.php");
 require_once(__DIR__ . "/../dao/ContatoDAO.php");
+
+require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../service/UsuarioService.php");
+
+require_once(__DIR__ . "/../model/Alcateia.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/Endereco.php");
 require_once(__DIR__ . "/../model/Contato.php");
@@ -12,12 +16,14 @@ require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
 class UsuarioController extends Controller {
 
+    private AlcateiaDAO $alcateiaDao;
     private UsuarioDAO $usuarioDao;
     private EnderecoDAO $enderecoDao;
     private ContatoDAO $contatoDao;
     private UsuarioService $usuarioService;
 
     public function __construct() {
+        $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
         $this->contatoDao = new ContatoDAO();
@@ -53,9 +59,19 @@ class UsuarioController extends Controller {
     /* Método para chamar a view com a listagem dos Usuarios */
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         $usuarios = $this->usuarioDao->list();
-        //print_r($usuarios);
-        $dados["lista"] = $usuarios;
+        $alcateias = $this->alcateiaDao->list();
+        $i = 0;
+        foreach($usuarios as $usu) {
+            if($usu->getIdAlcateia()) {
+                foreach($alcateias as $alc) {
+                    if($usu->getIdAlcateia() == $alc->getId_alcateia()) {
+                        $usu->setAlcateia($alc);
+                    }
 
+                }
+            }
+        }
+        $dados["lista"] = $usuarios;
         $this->loadView("usuario/list.php", $dados,$msgErro, $msgSucesso, true);
     }
 
@@ -206,7 +222,12 @@ class UsuarioController extends Controller {
     }
 
     protected function changeAlcateia(){
-        $usuario = $this->findUsuarioById();
+        $id = $_GET["id"];
+        $idAlcateia = $_GET["idAlcateia"];
+        $this->usuarioDao->changeAlcateia($id, $idAlcateia);
+        $alcateia = $this->alcateiaDao->findById($idAlcateia);
+        echo json_encode($alcateia[0]);
+        return;
         
     }
     protected function updateToInativo(){
@@ -237,9 +258,8 @@ class UsuarioController extends Controller {
         $usuario = $this->usuarioDao->findById($id);
         return $usuario;
     }
-
+   
    
 }
-
 #Criar objeto da classe
 $usuCont = new UsuarioController();

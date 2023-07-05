@@ -121,6 +121,8 @@ class FrequenciaDAO {
         $stm = $conn->prepare($sql);
         $stm->bindValue("id", $_GET['id']);
         $stm->execute();
+
+        
 }
     public function updateToTrue(){
         $conn = Connection::getConn();

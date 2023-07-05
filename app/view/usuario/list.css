@@ -1,0 +1,26 @@
+body {
+    position: relative;
+}
+
+.modal-background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #414141;
+    opacity: 0.5;
+    z-index: 10;
+    filter: blur(4px);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.modal {
+    width: 450px;
+    height: 350px;
+    position: absolute;
+    left: 35vw;
+    top: 25vh;
+    background-color: #FFF;
+    display: block;
+    z-index: 11;
+}

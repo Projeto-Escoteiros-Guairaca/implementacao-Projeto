@@ -1,5 +1,129 @@
-function changeAlcateia() {
-    alert();
+//!TAMBÍEN FALTA HACER LA ÚLTIMA FUNCIÓN QUE BUSQUE EL USUÁRIO RECIBIDO POR ID Y LO MODIFIQUE CON EL VALOR DEL RADIO
+
+let AlcateiasAlreadyUsed = [];
+let idAlcateiaUsuario = 0;
+let ID = 0;
+const body = document.body;
+
+function findTheAlcateias(id = 0, action, idUsu) {
+    idAlcateiaUsuario = id;
+    ID = idUsu;
+    if(AlcateiasAlreadyUsed.length == 0) {   
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateias=true", true);  
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var retorno = xhttp.responseText;
+                var AlcateiasArray = JSON.parse(retorno);
+                AlcateiasAlreadyUsed = AlcateiasArray;
+                createModal(AlcateiasArray);
+            }
+        }
+        xhttp.send();
+    }
+    else {
+        createModal(AlcateiasAlreadyUsed);
+    }
 }
 
-//href="<?= BASEURL ?>/controller/UsuarioController.php?action=changeAlcateia&id=<?= $usu->getId() ?>
+function createModal(Alcateias) {
+    id = idAlcateiaUsuario;
+
+    const modalBackground = document.createElement("div");
+    modalBackground.className = "modal-background";
+    modalBackground.id = "modalBackground";
+    
+    const modal = document.createElement("div");
+    modal.className = "modal";
+    modal.name = "modal";
+    modal.setAttribute("id", id +"modal");
+
+    body.appendChild(modalBackground);
+    body.appendChild(modal);
+
+    const form = document.createElement("form");
+    const h2 = document.createElement("h2");
+    h2.innerHTML = "Escolha a nova alcateia";
+    form.appendChild(h2);
+        
+    i = 0;
+    Alcateias.forEach(element => {
+        const br = document.createElement("br");
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.className = "alcateias";
+        radio.name = "alcateias";
+
+        const{ id_alcateia } = Alcateias[i];
+        const{ nome } = Alcateias[i];
+
+        radio.setAttribute("id", nome);
+        radio.setAttribute("value",id_alcateia); 
+
+        if(radio.value == idAlcateiaUsuario) {
+            radio.checked = true;
+        }
+        const label = document.createElement("label");
+        label.setAttribute("for", nome);
+        label.innerHTML = nome;
+        
+        form.appendChild(br);
+        form.appendChild(radio);      
+        form.appendChild(label);
+
+        i++;
+});
+    const br2 = document.createElement("br");
+    const submitData = document.createElement("button");
+    submitData.setAttribute("onclick", "sendAlcateiaChange()");
+    submitData.innerHTML = "Mudar alcateia";
+    submitData.className = "btn btn-primary";
+    form.appendChild(br2);
+    form.appendChild(submitData);
+    modal.appendChild(form);
+
+    modalBackground.addEventListener("click", () => {
+        body.removeChild(modalBackground);
+        body.removeChild(modal);
+
+    });
+}
+
+function sendAlcateiaChange() {
+    event.preventDefault();
+    action = "changeAlcateia";
+    idAlcateiaUsuario = id;    
+    var checked = document.querySelector('[name="alcateias"]:checked');
+    var alcateiaId = checked.value;
+    var alcateiaName = checked.id;
+    console.log(alcateiaName);
+    if(alcateiaId == idAlcateiaUsuario) {
+        alert("Esse lobinho já está nessa alcateia!");
+        return;
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + ID + "&idAlcateia=" + alcateiaId, true);
+    
+    
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+           
+
+            modalBackground = document.getElementById('modalBackground');
+            modal = document.getElementById(idAlcateiaUsuario +"modal");
+            body.removeChild(modalBackground);
+            body.removeChild(modal);
+
+            var changeAlcateiaName = document.getElementById(ID);
+            changeAlcateiaName.innerHTML = alcateiaName;
+            changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+ID+");");
+            changeAlcateiaName.className = "btn btn-secondary";
+
+
+
+        }
+    };
+    
+    xhttp.send();
+}

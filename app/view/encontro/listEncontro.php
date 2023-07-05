@@ -8,7 +8,13 @@
         <div class="col-3">
             <a class="btn btn-success" href="<?= BASEURL ?>/controller/EncontroController.php?action=create">Inserir</a>
         </div>
-        <div class="col-9">
+        <div class="col-3">
+            <select class="btn btn-info" value="Filtar">
+            <option> Data</option>
+            <option> Alcateia</option>
+            </select>
+        </div>
+        <div class="col-6">
             <?php require_once(__DIR__ . "/../include/msg.php"); ?>
         </div>
     </div>

@@ -1,9 +1,17 @@
 <?php
 
-class Alcateia{
+class Alcateia implements JsonSerializable {
 
     private $id_alcateia;
     private $nome;
+
+    public function jsonSerialize() {
+        return
+        [
+            'id_alcateia' => $this->id_alcateia,
+            'nome' => $this->nome
+        ];
+    }
 
     /**
      * Get the value of id_alcateia
