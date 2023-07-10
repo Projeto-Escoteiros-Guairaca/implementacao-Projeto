@@ -21,6 +21,9 @@ $acessoCont = new AcessoController();
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 
 ?>
+
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/menu.css" />
+
 <div class= "row " id = "cabecalho">
         <div class ="col-3 ">
         
@@ -43,15 +46,13 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                     ?>
                 
                     <a href = "#"> Sobre</a>
-                    <a id="modo-escuro">Modo Escuro</a>
+                    <button type="button" id="dark-mode" class="btn btn-outline-light">Modo escuro</button>
                 </aside>
 
                 <section id="principal">
                     <span style="font-size:30px;cursor:pointer " onclick = "abrir_nav()">&#9776;</span>
                     <p></p>
                 </section>
-
-                <script type="text/javascript" src="../view/home/scripts/scripts.js"></script>
         </div>
 
     </div>
