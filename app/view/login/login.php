@@ -6,6 +6,8 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
 
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/login.css" />
+
 <div class="container">
     <div class="row " style="margin-top: 20px;">
         <div class="col-6 personalizacao_form">

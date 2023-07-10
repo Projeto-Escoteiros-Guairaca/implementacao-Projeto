@@ -1,0 +1,64 @@
+.form-group{
+    background-color: black;
+    width: 530px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.d_form{
+    height: 350px;
+    width: 640px;
+    margin-left: 30vh;
+    margin-top: 52px;
+    align-items: center center;
+    background-color:rgb(16, 159, 11) ;
+    border-radius: 15px;
+    border: solid 1px black;
+    text-align: center;
+    padding: 30px;
+}
+
+.estilo_dados_form{
+    border-radius: 10px;
+}
+
+#frmLogin{
+    margin-left: 3.4vh;
+    color: aliceblue;
+}
+
+.btn {
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #91C9FF;
+    outline: none;
+    transition: 1s ease-in-out;
+}
+
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: 1s ease-in-out;
+}
+
+#btn_logar:hover {
+    transition: 1s ease-in-out;
+    background: #4F95DA;
+}
+
+#btn_logar:hover svg {
+    stroke-dashoffset: -480;
+}
+
+#btn_logar span {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+}

@@ -17,6 +17,9 @@ if (isset($_SESSION[SESSAO_USUARIO_NOME]))
 
 ?>
 <?php require_once(__DIR__ . "/../include/menu.php"); ?>
+
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
+
 <div class="container p-2 cx_meio">
     <div class="row apresentacao">
         <div class="col-6 text">
