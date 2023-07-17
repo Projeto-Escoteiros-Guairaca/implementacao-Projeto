@@ -113,9 +113,9 @@ function sendAlcateiaChange() {
             body.removeChild(modalBackground);
             body.removeChild(modal);
 
-            var changeAlcateiaName = document.getElementById(ID);
+            var changeAlcateiaName = document.getElementById(UsuarioId);
             changeAlcateiaName.innerHTML = alcateiaName;
-            changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+ID+");");
+            changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+UsuarioId+");");
             changeAlcateiaName.className = "btn btn-secondary";
 
 
