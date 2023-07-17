@@ -116,7 +116,7 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "DELETE FROM tb_usuarios WHERE id_usuario = :id";
-        
+         
         $stm = $conn->prepare($sql);
         $stm->bindValue("id", $id);
         $stm->execute();

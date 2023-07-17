@@ -1,13 +1,11 @@
-//!TAMBÍEN FALTA HACER LA ÚLTIMA FUNCIÓN QUE BUSQUE EL USUÁRIO RECIBIDO POR ID Y LO MODIFIQUE CON EL VALOR DEL RADIO
-
 let AlcateiasAlreadyUsed = [];
 let idAlcateiaUsuario = 0;
-let ID = 0;
+let UsuarioId= 0;
 const body = document.body;
 
 function findTheAlcateias(id = 0, action, idUsu) {
     idAlcateiaUsuario = id;
-    ID = idUsu;
+    UsuarioId= idUsu;
     if(AlcateiasAlreadyUsed.length == 0) {   
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateias=true", true);  
@@ -103,7 +101,7 @@ function sendAlcateiaChange() {
     }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + ID + "&idAlcateia=" + alcateiaId, true);
+    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId, true);
     
     
     xhttp.onreadystatechange = function() {
@@ -124,6 +122,5 @@ function sendAlcateiaChange() {
 
         }
     };
-    
     xhttp.send();
 }
