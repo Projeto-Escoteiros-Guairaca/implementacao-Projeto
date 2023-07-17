@@ -60,6 +60,47 @@ CREATE TABLE tb_frequencias(
   FOREIGN KEY (id_encontro) REFERENCES tb_encontros (id_encontro)
 
 );
+CREATE TABLE tb_atividades(
+ 
+  id_atividade int auto_increment,
+  nome_atividade VARCHAR(45) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id_atividade)
+
+);
+CREATE TABLE tb_arquivos(
+ 
+  id_arquivo int auto_increment,
+  nome VARCHAR(45) NOT NULL,
+  caminho VARCHAR(400) NOT NULL,
+  PRIMARY KEY (id_arquivo)
+
+);
+CREATE TABLE tb_tarefas(
+  id_tarefa int AUTO_INCREMENT,
+  id_atividade int NOT NULL,
+  id_arquivo int NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_tarefa),
+  FOREIGN KEY (id_atividade) REFERENCES tb_atividades (id_atividade), 
+  FOREIGN KEY (id_arquivo) REFERENCES tb_arquivos (id_arquivo)
+
+);
+CREATE TABLE tb_tarefas_usuarios(
+  id_tarefa_usuario int AUTO_INCREMENT,
+  id_usuario int NOT NULL,
+  id_tarefa int NOT NULL,
+  id_arquivo int NOT NULL,
+  data DATE NOT NULL,
+  descricao TEXT(255),
+  PRIMARY KEY (id_tarefa_usuario),
+  FOREIGN KEY (id_usuario) REFERENCES tb_usuarios (id_usuario), 
+  FOREIGN KEY (id_tarefa) REFERENCES tb_tarefas (id_tarefa),
+  FOREIGN KEY (id_arquivo) REFERENCES tb_arquivos (id_arquivo)
+
+);
+
+
 
 /*Inserts alcateias*/
 INSERT INTO tb_alcateias (nome) VALUES ('Alcateia 1');
