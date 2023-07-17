@@ -1,3 +1,15 @@
+
+.modal-background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #414141;
+    opacity: 0.5;
+    z-index: 10;
+    filter: blur(4px);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 #cabecalho{
     /*background-image: url(../images/fundo_plantas.png);*/
     background-size: 600px;
@@ -31,7 +43,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 11;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;

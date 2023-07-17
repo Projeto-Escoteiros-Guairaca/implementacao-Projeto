@@ -1,10 +1,19 @@
+const modalBackground = document.createElement("div");
+modalBackground.className = "modal-background";
+modalBackground.id = "modalBackground";
 function abrir_nav(){
+   
+    body.appendChild(modalBackground);
 
     document.getElementById("menu_oculto").style.width="250px";
     document.getElementById("principal").style.width="250px";
 
 }
+modalBackground.addEventListener("click", () => {
+  fechar_nav();
+});
 function fechar_nav(){
+  body.removeChild(modalBackground);
 
     document.getElementById("menu_oculto").style.width="0";
     document.getElementById("menu_oculto").style.width="0";
