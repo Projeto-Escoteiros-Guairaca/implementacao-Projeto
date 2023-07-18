@@ -1,3 +1,5 @@
+const body = document.body;
+
 const modalBackground = document.createElement("div");
 modalBackground.className = "modal-background";
 modalBackground.id = "modalBackground";
