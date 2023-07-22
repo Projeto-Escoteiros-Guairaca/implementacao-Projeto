@@ -32,7 +32,7 @@ require_once(__DIR__ . "/../include/menu.php");
                     </div>
                
                     <button type="submit" class="btn btn-success" id= "btn_logar"><span>Logar</span></button>
-                    <button type="submit"class="btn btn-primary" id= "btn_voltar"><a href='<?= HOME_PAGE ?>'><span>Voltar</span></a></button>
+                    <a href='<?= HOME_PAGE ?>' id = "btn_voltar"><button type="submit"class="btn btn-primary" id= "btn_voltar"><span>Voltar</span></button></a>
                 </form>
             </div>
         </div>

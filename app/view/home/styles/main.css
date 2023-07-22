@@ -14,7 +14,7 @@ body{
    
 }
 #cont_titulo{
-    margin-left: 85vh;
+    
     margin-top: 10px;
     font-size: 40px;
     font-weight: bold;
@@ -30,12 +30,18 @@ body{
 #palavra_2{
 
     margin-top: -18px;
-    margin-left: 60px;
+    
     color: goldenrod;
     text-shadow: 1px 1px white, -1px -2px #444;
     
 
 }
+/*responsividade do titulo*/
+@media (min-width:375px){
+
+   
+}
+
 
 .menu_oculto{
     background-color: black;
@@ -93,24 +99,10 @@ body{
     background: no-repeat center ;
     height: 20vh;
 }
-#bloco_titulo img{
-    height: 100%;
-    object-fit: fill;
-    position: relative;
-    top: 0;
-}
-img{
 
-    margin-top: -50px;
-    height: 230px;
-    width: 430px;
-    object-fit: fill;
-    position: relative;
-
-}
 #p_titulo{
     top: 1.5vh;
-    margin-left: 225px;
+    margin-left: 22px;
     font-weight: bold;
     font-size: 25px;
     position: absolute;

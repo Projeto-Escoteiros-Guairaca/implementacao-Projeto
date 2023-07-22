@@ -22,6 +22,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
 
 ?>
 
+
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/menu.css" />
 
 <div class= "row " id = "cabecalho">
@@ -69,8 +70,8 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
 </div>
     
 <div class="container-fluid col-2" id = "cont_titulo">
-            <div class="col-6" id="palavra_1">Escoteiros</div>
-            <div class="col-9" id="palavra_2">Guairacá</div>
+            <div id="palavra_1">Escoteiros</div>
+            <div id="palavra_2">Guairacá</div>
         </div>
 
 

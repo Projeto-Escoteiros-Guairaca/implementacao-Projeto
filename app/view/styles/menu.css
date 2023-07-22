@@ -18,6 +18,7 @@
    
 }
 #cont_titulo{
+    position: absolute;
     margin-left: 85vh;
     margin-top: 10px;
     font-size: 40px;
@@ -26,10 +27,13 @@
 }
 
 #palavra_1{
+    position: relative;
     color: rgb(16, 159, 11);
     text-shadow: 1px 1px white, -1px -2px #444;
+    margin-top: 15px;
 }
 #palavra_2{
+    position: absolute;
     margin-top: -18px;
     margin-left: 60px;
     color: goldenrod;
@@ -124,7 +128,7 @@ img{
 }
 
 .cx_meio{
-    height: 520px;
+    height: 580px;
 }
 .nomeUsu{
     font-size: 20px;
