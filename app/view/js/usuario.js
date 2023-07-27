@@ -1,7 +1,7 @@
 let AlcateiasAlreadyUsed = [];
 let idAlcateiaUsuario = 0;
 let UsuarioId= 0;
-const body = document.body;
+// const body = document.body;
 
 function findTheAlcateias(id = 0, action, idUsu) {
     idAlcateiaUsuario = id;
