@@ -124,6 +124,9 @@
     }
  }
 @media (min-width:375px){
+    body{
+        overflow-x: hidden;
+    }
   
     .d_form{
         margin-top: 120px;

@@ -69,9 +69,9 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
     ?>
 </div>
     
-<div class="container-fluid col-2" id = "cont_titulo">
-            <div id="palavra_1">Escoteiros</div>
-            <div id="palavra_2">Guairacá</div>
-        </div>
+<div class="page-title">
+    <h1 id="palavra_1">Escoteiros</h1>
+    <h1 id="palavra_2">Guairacá</h1>
+</div>
 
 
