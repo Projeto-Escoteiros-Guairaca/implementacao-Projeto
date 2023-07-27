@@ -30,10 +30,25 @@ darkButton.addEventListener('click', () => {
     darkButton.removeAttribute('class');
     darkButton.setAttribute('class', 'btn btn-light');
     darkButton.style.color = 'black';
+    localStorage.setItem('modo-escuro', 'true');
+  }
+  else{
+    darkButton.removeAttribute('class');
+    darkButton.setAttribute('class', 'btn btn-outline-light');
+    darkButton.style.color = 'white';
+    localStorage.setItem('modo-escuro', 'false');
+  }
+});
+function carregar_modo(){
+  if(localStorage.getItem('modo-escuro') == 'true'){
+    body.classList.toggle('modo-escuro');
+    darkButton.removeAttribute('class');
+    darkButton.setAttribute('class', 'btn btn-light');
+    darkButton.style.color = 'black';
   }
   else{
     darkButton.removeAttribute('class');
     darkButton.setAttribute('class', 'btn btn-outline-light');
     darkButton.style.color = 'white';
   }
-});
+}
