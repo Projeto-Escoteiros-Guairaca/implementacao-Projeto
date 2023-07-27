@@ -5,7 +5,6 @@ body{
 
 }
 
-
 #cabecalho{
     /*background-image: url(../images/fundo_plantas.png);*/
     background-size: 600px;
@@ -13,18 +12,22 @@ body{
     height: 55px;
    
 }
+/*Container do titulo*/
 #cont_titulo{
     
     margin-top: 10px;
     font-size: 40px;
     font-weight: bold;
     height: 45px;
+    position: relative;
 }
 
+/*palavra escoteros*/
 #palavra_1{
 
     color: rgb(16, 159, 11);
     text-shadow: 1px 1px white, -1px -2px #444;
+    position: absolute;
 
 }
 #palavra_2{
@@ -33,13 +36,14 @@ body{
     
     color: goldenrod;
     text-shadow: 1px 1px white, -1px -2px #444;
+    position: absolute;
     
 
 }
 /*responsividade do titulo*/
-@media (min-width:375px){
+@media (min-whidth:375px){
 
-   
+
 }
 
 
@@ -156,52 +160,6 @@ body{
 
 
 
-.form-group{
-    
-    background-color: black;
-    width: 530px;
-    border-radius: 20px;
-    text-align: center;
+.col{
+    position: absolute;
 }
-
-
-
-
-.d_form{
-
-    height: 350px;
-    width: 640px;
-    margin-left: 30vh;
-    margin-top: 52px;
-    align-items: center center;
-    background-color:rgb(16, 159, 11) ;
-    border-radius: 15px;
-    border: solid 1px black;
-    text-align: center;
-    padding: 30px;
-}
-
-.estilo_dados_form{
-    
-    border-radius: 10px;
-    
-    
-    ;}
-
-    #frmLogin{
-
-       margin-left: 3.4vh;
-       color: aliceblue;
-
-
-    }
-      
-      .btn {
-        width: 180px;
-        height: 60px;
-        cursor: pointer;
-        background: transparent;
-        border: 1px solid #91C9FF;
-        outline: none;
-        transition: 0.5s ease-in-out;
-      }
