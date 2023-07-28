@@ -11,7 +11,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 
 $nome = $_SESSION[SESSAO_USUARIO_NOME];
 ?>
-    <link rel="stylesheet" href="<?= BASEURL ?>/view/usuario/list.css" />
+    <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
 
     <h3 class='text-center'>Usuários</h3>
 
@@ -31,7 +31,6 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                 <table id="tabUsuarios" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>Login</th>
                             <th>Papeis</th>
@@ -43,7 +42,6 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                     <tbody>
                         <?php foreach($dados["lista"] as $usu): ?>
                             <tr>
-                                <td><?php echo $usu->getId(); ?></td>
                                 <td><?= $usu->getNome(); ?></td>
                                 <td><?= $usu->getLogin(); ?></td>
                                 <td><?= $usu->getPapeisStr(); ?></td>

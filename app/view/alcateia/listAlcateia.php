@@ -18,7 +18,6 @@
                 <table id="tabAlcateias" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>Alterar</th>
                             <th>Listar usuários</th>
@@ -28,7 +27,6 @@
                         <?php foreach($dados["lista"] as $alc): ?>
                     <table id="tabAlcateias <?php echo $alc->getId_alcateia(); ?>" class="table table-striped table-bordered">
                             <tr >
-                                <td class="alcateiasIds" id="<?php echo $alc->getId_alcateia(); ?>"><?php echo $alc->getId_alcateia(); ?></td>
                                 <td><?= $alc->getNome(); ?></td>
                                 <td><a class="btn btn-warning" 
                                     href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
