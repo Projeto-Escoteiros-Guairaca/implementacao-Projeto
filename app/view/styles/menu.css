@@ -107,14 +107,7 @@
     top: 0;
 }
 
-img{
-    margin-top: -50px;
-    height: 230px;
-    width: 430px;
-    object-fit: fill;
-    position: relative;
 
-}
 #p_titulo{
     top: 1.5vh;
     margin-left: 225px;

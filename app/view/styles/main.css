@@ -17,6 +17,35 @@ body{
 .modo-escuro #principal{
     color: #fff;
 }
+.modo-escuro #h4_log{
+    color: rgb(16, 159, 11);
+}
+.modo-escuro .d_form{
+    background-color: transparent;
+    border: 3px solid #39FF14;
+    border-radius: 11px;
+
+}
+.modo-escuro .form-group{
+    background-color: transparent;
+    border: 2px solid #39FF14;
+}
+
+.modo-escuro .estilo_dados_form{
+  
+    border: 2px solid #39FF14;
+    border-radius: 15px;
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color .15s ease-in-out;
+}
+.modo-escuro #txtlogin{
+    background-color: black;
+}
 #dark-mode{
     margin-left: 20px;
     margin-top: 10px;
