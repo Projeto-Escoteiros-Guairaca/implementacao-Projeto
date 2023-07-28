@@ -1,17 +1,17 @@
 body{
     overflow-x: hidden;
-    transition: background-color 0.1s ease;
+    transition: 0.1s ease;
 }
 
 .modo-escuro{
-    background-color: #333;
-    color: #fff;
+    background-color: rgb(24, 24, 24);
+    color: #39FF14;
 }
 
 .modo-escuro #cabecalho{
-    background-color: #333;
+    background-color: rgb(24, 24, 24);
     color: #fff;
-    border: 2px solid rgb(16, 159, 11);;
+    border: 2px solid #39FF14;
 }
 
 .modo-escuro #principal{
@@ -22,9 +22,10 @@ body{
     margin-top: 10px;
     font-size: 12px;
     cursor: pointer;
-    color: #fff;
+    color: #39FF14;
     transition: 0.5s;
     width: 100px;
     height: 40px;
     text-align: center;
 }
+

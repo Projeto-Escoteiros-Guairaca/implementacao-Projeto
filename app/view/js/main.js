@@ -7,8 +7,8 @@ function abrir_nav(){
    
     body.appendChild(menuBackground);
 
-    document.getElementById("menu_oculto").style.width="250px";
-    document.getElementById("principal").style.width="250px";
+    document.getElementById("menu_oculto").style.width="40vw";
+    document.getElementById("principal").style.width="40vw";
 
 }
 menuBackground.addEventListener("click", () => {
