@@ -19,6 +19,11 @@ function usuarios(id, action) {
         if (this.readyState == 4 && this.status == 200) {
             var retorno = xhttp.responseText;
             var usuarioArray = JSON.parse(retorno);
+
+            if(usuarioArray.length == 0) {
+                alert("Não há usuários cadastrados nessa alcateia!");
+                return;
+            }
             
                 tabela = document.getElementById("tabAlcateias " + id);
                 for(var i=0; i<usuarioArray.length; i++) {
