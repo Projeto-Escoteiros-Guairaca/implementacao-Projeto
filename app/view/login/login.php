@@ -7,6 +7,7 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/login.css" />
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/form_login.css" />
 
 <div class="container">
     <div class="row " style="margin-top: 20px;">
