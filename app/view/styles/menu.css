@@ -64,15 +64,11 @@
     padding: 8px 8px 8px 32px;
     font-size: 25px;
     display: block;
-    transform: scale(1.1);
-    transition: all 0.5s;
     color: goldenrod; 
 
 }
 
-.menu_oculto a:hover{
-    color: goldenrod;
-}
+
 
 .btn_fechar{
     right: 25px;
@@ -163,18 +159,7 @@ img{
 
 /* For extremely small screen devices (595px and below) */
 @media only screen and (max-width: 595px) {
-    .menu_oculto {
-        background-color: black;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 11;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-      }
-}
+ 
  
 /* Small screen devices (600px and above) */
 @media only screen and (min-width: 600px) {
