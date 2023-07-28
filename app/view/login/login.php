@@ -32,7 +32,7 @@ require_once(__DIR__ . "/../include/menu.php");
                             value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />        
                     </div>
                
-                    <button type="submit" class="btn btn-success link-as-button_logar" id= "btn_logar"><span>Logar</span></button>
+                    <button type="submit" class="btn btn-success " id= "btn_logar"><span>Logar</span></button>
                     <a href='<?= HOME_PAGE ?>' id = "btn_voltar"><button type="submit"class="btn btn-primary" id= "btn_voltar"><span>Voltar</span></button></a>
                 </form>
             </div>
