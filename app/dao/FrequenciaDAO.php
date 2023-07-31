@@ -34,6 +34,24 @@ class FrequenciaDAO {
         return $this->mapFrequencia($result);
     }
 
+    public function findUsuariosById(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_usuarios e" .
+               " WHERE e.id_usuario = ? ORDER BY e.id_usuario";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+       $usuario = $this->mapUsuarios($result);
+       if(count($usuario) == 1)
+       return $usuario[0];
+   elseif(count($usuario) == 0)
+       return null;
+
+   die("UsuarioDAO.findById()" . 
+       " - Erro: mais de um usuário encontrado.");
+    }
+    
     public function findUsuariosByIdAcateia(int $id){
         $conn = Connection::getConn();
 

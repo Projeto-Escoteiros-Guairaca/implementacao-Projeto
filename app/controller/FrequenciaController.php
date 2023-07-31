@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
@@ -24,9 +26,8 @@ class FrequenciaController extends Controller {
         if($frequenciasTest) {
             $this->list();
         }
-        else{
-
-            $usuarios = $this->findUsuariosById();
+        else {
+            $usuarios = $this->findUsuariosByIdAlcateia();
             $i = 0;
             foreach ($usuarios as $us) {
                 $frequencia = new Frequencia();
@@ -37,17 +38,16 @@ class FrequenciaController extends Controller {
             }
             $this->frequenciaDao->create($frequencias);
             $this->list();
-
         }
     }
 
     public function list(string $msgErro = "", string $msgSucesso = "") {
         $encontro = $this->findEncontroByIdEncontro();
         $frequencias = $this->findFrequenciasByIdEncontro();
-        $usuarios = $this->findUsuariosById();
+        $usuarios = $this->findUsuariosById($frequencias);
         $i = 0;
         foreach ($usuarios as $us) {
-            $frequencias[$i]->setUsuario($usuarios[$i]);
+            $frequencias[$i]->setUsuario($us);
             $i++;
         }
         $dados["lista"] = $frequencias;
@@ -57,11 +57,19 @@ class FrequenciaController extends Controller {
         $this->loadView("frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, false);
     }
 
-    public function findUsuariosById(){
+    public function findUsuariosByIdAlcateia() {
         $id = 0;
         $id = $_GET['idAlcateia'];
 
         $usuarios = $this->frequenciaDao->findUsuariosByIdAcateia($id);
+        return $usuarios;
+    }
+    public function findUsuariosById(Array $frequencias){
+        $usuarios = array();
+        foreach($frequencias as $freq):
+            $usuario = $this->frequenciaDao->findUsuariosById($freq->getId_usuario());
+            array_push($usuarios, $usuario);
+        endforeach;
         return $usuarios;
     }
 
