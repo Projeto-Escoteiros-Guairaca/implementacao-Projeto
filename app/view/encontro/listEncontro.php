@@ -55,6 +55,8 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <a class="btn btn-success" 
+                    href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
             </div>
         </div>
 </div>
