@@ -33,7 +33,10 @@
                 <button type="reset" class="btn btn-danger">Limpar</button>
                 
             </form>
+            <a class="btn btn-secondary" 
+                href="<?= BASEURL ?>/controller/AlcateiaController.php">Voltar</a>
         </div>
+       
 
         <div class="col-9">
             <?php require_once(__DIR__ . "/../include/msg.php"); ?>
