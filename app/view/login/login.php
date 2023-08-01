@@ -7,11 +7,11 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/login.css" />
-<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/form_login.css" />
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/form.css" />
 
 <div class="container">
     <div class="row " style="margin-top: 20px;">
-        <div class="col-6">
+        <div class="col-12">
             <div class=" d_form">
                 
                 <h4 id="h4_log">Informe os dados para logar:</h4>
