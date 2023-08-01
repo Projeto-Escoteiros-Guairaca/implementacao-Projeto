@@ -2,6 +2,10 @@ body{
     overflow-x: hidden;
     transition: 0.1s ease;
 }
+form{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 .modo-escuro{
     background-color: rgb(24, 24, 24);
