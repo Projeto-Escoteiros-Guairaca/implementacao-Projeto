@@ -34,8 +34,7 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                             <th>Nome</th>
                             <th>Login</th>
                             <th>Papeis</th>
-                            <th>Status</th>
-                            <th>Alterar</th>
+                            <th>Status</th>           
                             <th>Mudar Alcateia</th>
                         </tr>
                     </thead>
@@ -63,10 +62,6 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                                     ?>
                                 </td>
 
-                                <td><a class="btn btn-primary" 
-                                    href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
-                                    Alterar</a> 
-                                </td>
                                 <td>   
                                     <button class="<?php if($usu->getAlcateia()) {
                                             echo "btn btn-secondary";
