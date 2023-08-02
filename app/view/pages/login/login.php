@@ -2,8 +2,8 @@
 #Nome do arquivo: login/login.php
 #Objetivo: interface para logar no sistema
 
-require_once(__DIR__ . "/../include/header.php");
-require_once(__DIR__ . "/../include/menu.php");
+require_once(__DIR__ . "/../../include/header.php");
+require_once(__DIR__ . "/../../include/menu.php");
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/login.css" />
@@ -40,11 +40,11 @@ require_once(__DIR__ . "/../include/menu.php");
         </div>
 
         <div class="col-6">
-            <?php include_once(__DIR__ . "/../include/msg.php") ?>
+            <?php include_once(__DIR__ . "/../../include/msg.php") ?>
         </div>
     </div>
 </div>
 
 <?php  
-require_once(__DIR__ . "/../include/footer.php");
+require_once(__DIR__ . "/../../include/footer.php");
 ?>

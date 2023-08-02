@@ -2,9 +2,9 @@
 #Nome do arquivo: home/index.php
 #Objetivo: interface com a página inicial do sistema
 
-require_once(__DIR__ . "/../include/header.php");
-require_once(__DIR__ . "/../../controller/AcessoController.php");
-require_once(__DIR__ . "/../../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../../include/header.php");
+require_once(__DIR__ . "/../../../controller/AcessoController.php");
+require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 
 session_status();
 if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -16,7 +16,7 @@ if (isset($_SESSION[SESSAO_USUARIO_NOME]))
     $nome = $_SESSION[SESSAO_USUARIO_NOME];
 
 ?>
-<?php require_once(__DIR__ . "/../include/menu.php"); ?>
+<?php require_once(__DIR__ . "/../../include/menu.php"); ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
 
@@ -30,5 +30,5 @@ if (isset($_SESSION[SESSAO_USUARIO_NOME]))
 </div>
 
 <?php
-require_once(__DIR__ . "/../include/footer.php");
+require_once(__DIR__ . "/../../include/footer.php");
 ?>

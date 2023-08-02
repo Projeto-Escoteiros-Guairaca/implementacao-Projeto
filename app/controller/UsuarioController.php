@@ -49,7 +49,7 @@ class UsuarioController extends Controller {
             $dados["papeis"] = UsuarioPapel::getAllAsArray();
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;        
-            $this->loadView("usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
+            $this->loadView("pages/usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
         } else {
             $this->list("Usuário não encontrado.");
         }
@@ -72,7 +72,7 @@ class UsuarioController extends Controller {
             }
         }
         $dados["lista"] = $usuarios;
-        $this->loadView("usuario/list.php", $dados,$msgErro, $msgSucesso, true);
+        $this->loadView("pages/usuario/list.php", $dados,$msgErro, $msgSucesso, true);
     }
 
     protected function create() {
@@ -81,7 +81,7 @@ class UsuarioController extends Controller {
         $dados['id_endereco'] = 0;
 
         $dados["papeis"] = UsuarioPapel::getAllAsArray();
-        $this->loadView("usuario/form.php", $dados, "", "", true);
+        $this->loadView("pages/usuario/form.php", $dados, "", "", true);
     }
 
     protected function edit() {
@@ -102,7 +102,7 @@ class UsuarioController extends Controller {
 
             $this->loadView("usuario/form.php", $dados, "", "", true);
         } else {
-            $this->list("Usuário não encontrado.");
+            $this->list("Usuário não enconpages/ado.");
         }
 
     }
@@ -218,7 +218,7 @@ class UsuarioController extends Controller {
         $dados["email"] = $email;
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("usuario/form.php", $dados, $msgsErro, "", "", true);
+        $this->loadView("pages/usuario/form.php", $dados, $msgsErro, "", "", true);
     }
 
     protected function changeAlcateia(){

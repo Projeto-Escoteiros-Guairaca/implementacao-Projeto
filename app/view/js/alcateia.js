@@ -44,8 +44,6 @@ function usuarios(id, action) {
                     email.innerHTML = usuarioArray[i].email;
                     email.className = "usuariosdatabela"+id;
 
-                    button = linha.insertCell().innerHTML = "<button class='btn btn-secondary usuariosdatabela"+id+"'>Alterar sua alcateia</button>";
-                    button.className="usuariosdatabela"+id;
                 }
             AlcateiasAlreadyUsed.push(id);
         };

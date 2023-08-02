@@ -1,6 +1,6 @@
 <?php
-    require_once(__DIR__ . "/../include/header.php");
-    require_once(__DIR__ . "/../include/menu.php");
+    require_once(__DIR__ . "/../../include/header.php");
+    require_once(__DIR__ . "/../../include/menu.php");
 ?>
 
 <div class="container">
@@ -9,7 +9,7 @@
             <a class="btn btn-success" href="<?= BASEURL ?>/controller/AlcateiaController.php?action=create">Inserir</a>
         </div>
         <div class="col-9">
-            <?php require_once(__DIR__ . "/../include/msg.php"); ?>
+            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
     </div>
 
@@ -49,5 +49,5 @@
 
 <script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
 <?php
-    require_once(__DIR__ . "/../include/footer.php");
+    require_once(__DIR__ . "/../../include/footer.php");
 ?>

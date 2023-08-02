@@ -2,11 +2,11 @@
 #Nome do arquivo: usuario/list.php
 #Objetivo: interface para listagem dos usuários do sistema
 
-require_once(__DIR__ . "/../include/header.php");
-require_once(__DIR__ . "/../include/menu.php");
-require_once(__DIR__ . "/../../controller/AcessoController.php");
-require_once(__DIR__ . "/../../model/enum/UsuarioPapel.php");
-require_once(__DIR__ . "/../../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../../include/header.php");
+require_once(__DIR__ . "/../../include/menu.php");
+require_once(__DIR__ . "/../../../controller/AcessoController.php");
+require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 
 $nome = $_SESSION[SESSAO_USUARIO_NOME];
@@ -22,7 +22,7 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
             </div>
 
             <div class="col-9">
-                <?php require_once(__DIR__ . "/../include/msg.php"); ?>
+                <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
             </div>
         </div>
 
@@ -94,5 +94,5 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 
 <?php  
-require_once(__DIR__ . "/../include/footer.php");
+require_once(__DIR__ . "/../../include/footer.php");
 ?>

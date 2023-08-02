@@ -52,9 +52,7 @@ class FrequenciaController extends Controller {
         }
         $dados["lista"] = $frequencias;
         $dados["encontro"] = $encontro;
-
-
-        $this->loadView("frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, false);
+        $this->loadView("pages/frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, false);
     }
 
     public function findUsuariosByIdAlcateia() {

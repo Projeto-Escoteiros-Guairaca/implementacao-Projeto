@@ -2,10 +2,10 @@
 #Nome do arquivo: usuario/list.php
 #Objetivo: interface para listagem dos usuários do sistema
 
-require_once(__DIR__ . "/../include/header.php");
+require_once(__DIR__ . "/../../include/header.php");
 ?>
 
-<?php require_once(__DIR__ . "/../include/menu.php"); ?>
+<?php require_once(__DIR__ . "/../../include/menu.php"); ?>
 
 <h3 class="text-center">
     <?php if($dados['id'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
@@ -200,7 +200,7 @@ require_once(__DIR__ . "/../include/header.php");
         </div>
 
         <div class="col-6">
-            <?php require_once(__DIR__ . "/../include/msg.php"); ?>
+            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
     </div>
 
@@ -213,5 +213,5 @@ require_once(__DIR__ . "/../include/header.php");
 </div>
 
 <?php  
-require_once(__DIR__ . "/../include/footer.php");
+require_once(__DIR__ . "/../../include/footer.php");
 ?>
