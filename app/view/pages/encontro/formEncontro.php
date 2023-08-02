@@ -3,6 +3,14 @@
     require_once(__DIR__ . "/../../include/menu.php");
     require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
     require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
+    if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+        $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
+        $AcessoCont->VerifyAccess($papelUsuario);
+    }
+    else {
+        $AcessoCont->NoLogin();
+        return;
+    }
 ?>
 
 <div class="container">

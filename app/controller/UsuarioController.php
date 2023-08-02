@@ -1,6 +1,7 @@
 <?php
 #Classe controller para Usuário
 require_once(__DIR__ . "/Controller.php");
+
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/EnderecoDAO.php");
 require_once(__DIR__ . "/../dao/ContatoDAO.php");
@@ -58,6 +59,7 @@ class UsuarioController extends Controller {
 
     /* Método para chamar a view com a listagem dos Usuarios */
     protected function list(string $msgErro = "", string $msgSucesso = "") {
+      
         $usuarios = $this->usuarioDao->list();
         $alcateias = $this->alcateiaDao->list();
         $i = 0;

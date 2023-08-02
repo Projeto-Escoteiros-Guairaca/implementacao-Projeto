@@ -11,7 +11,7 @@ if(session_status() !== PHP_SESSION_ACTIVE)
     session_start();
 }
 
-$nome = "(Sessão expirada)";
+$nome = "Login";
 if(isset($_SESSION[SESSAO_USUARIO_NOME]))
     $nome = $_SESSION[SESSAO_USUARIO_NOME];
 
