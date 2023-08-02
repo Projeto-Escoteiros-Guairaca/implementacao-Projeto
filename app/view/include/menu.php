@@ -57,6 +57,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
         </div>
 
     </div>
+
     <div class="nomeUsu">
     <?php
         if (isset($_SESSION[SESSAO_USUARIO_ID])){
@@ -69,9 +70,6 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
     ?>
 </div>
     
-<div class="page-title">
-    <h1 id="palavra_1">Escoteiros</h1>
-    <h1 id="palavra_2">Guairacá</h1>
-</div>
+
 
 
