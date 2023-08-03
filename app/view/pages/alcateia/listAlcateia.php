@@ -1,6 +1,9 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
+    require_once(__DIR__ . "/../../../controller/AcessoController.php");
+
+    $AcessoCont = new AcessoController();
     if(isset($_SESSION[SESSAO_USUARIO_ID])) {
         $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
         $AcessoCont->VerifyAccess($papelUsuario);
@@ -10,6 +13,8 @@
         return;
     }
 ?>
+
+<h3 class='text-center'>Alcateias</h3>
 
 <div class="container">
     <div class="row">

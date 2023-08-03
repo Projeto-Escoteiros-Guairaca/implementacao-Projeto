@@ -29,4 +29,4 @@ class AcessoController extends Controller {
     }
 }
 
-//$AcesCont = new AcessoController();
+$AcessoCont = new AcessoController();
