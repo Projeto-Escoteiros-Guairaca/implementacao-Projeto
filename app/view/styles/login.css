@@ -11,7 +11,9 @@
 }
 
 #h4_log{
+    position: absolute;
     color: rgb(16, 159, 11);
+  
 }
 
 /*Estiliza o label do formulario*/
@@ -27,7 +29,7 @@
     height: 350px;
     width: 640px;
     margin-top: 20vh;
-    align-items: center center;
+    align-items: center;
     border: solid 1px rgb(16, 159, 11);
     border-radius: 15px;
     text-align: center;
@@ -115,35 +117,40 @@
 
 /*Responsividade formulario*/
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 440px) {
     
 
 .d_form{
     height: 60vh;
     width: 50vh;
-    margin-top: -2vh;
+    margin-top: 7vh;
     position: relative;
-    align-items: center;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-   
-   
+}
+#h4_log{
+    position: absolute;
+    margin-top: -45vh;
+
 }
 #frmLogin{
-   position: absolute;
+
+    height: 40vh;
+    margin-top: 0vh;
+    position: absolute;
     margin-left: 0vh;
     color: aliceblue;
-
-
 }
+
 
 .form-group{
     width: 300px;
+    margin-top: 6vh;
 }
 .btn{
-
+    width: 14vh;
+    height: 8vh;
+    margin-top: 3vh;
 }
 #btn_voltar{
  
@@ -151,31 +158,88 @@
 #btn_logar{
    
 }}
-
-   /* For extremely small screen devices (595px and below) */
-@media only screen and (max-width: 595px) {
+@media only screen and (min-width: 440px) {
     
-    .col-12{
+
+    .d_form{
+        height: 60vh;
+        width: 5vh;
+        margin-top: 7vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    #h4_log{
+        position: absolute;
+        margin-top: -45vh;
+    
+    }
+    #frmLogin{
+    
+        height: 40vh;
+        margin-top: 0vh;
+        position: absolute;
+        margin-left: 0vh;
+        color: aliceblue;
+    }
+    
+    
+    .form-group{
+        width: 300px;
+        margin-top: 6vh;
+    }
+    .btn{
+        width: 14vh;
+        height: 8vh;
+        margin-top: 3vh;
+    }
+    #btn_voltar{
+     
+    }
+    #btn_logar{
        
-   
-}
-.d_form{
-
-}
-
-.form-group{
-  
-  
-}
-.btn{
-
-}
-#btn_voltar{
- 
-}
-#btn_logar{
-   
-}
+    }}
+@media only screen and (min-width: 480px) {
+    
+    .d_form{
+        height: 60vh;
+        width: 60vh;
+        margin-top: 7vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    #h4_log{
+        position: absolute;
+        margin-top: -45vh;
+    
+    }
+    #frmLogin{
+    
+        height: 40vh;
+        width: 330px;
+        margin-top: 0vh;
+        position: absolute;
+        margin-left: 0vh;
+        color: aliceblue;
+    }
+    
+    
+    .form-group{
+        width: 330px;
+        margin-top: 6vh;
+    }
+    .btn{
+        width: 14vh;
+        height: 8vh;
+        margin-top: 3vh;
+    }
+    #btn_voltar{
+     
+    }
+    #btn_logar{
+       
+    }
 }
  
 /* Small screen devices (600px and above) */
