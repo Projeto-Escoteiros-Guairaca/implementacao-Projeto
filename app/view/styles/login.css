@@ -28,7 +28,6 @@
 /*Estiliza o fundo do formulario*/
 .d_form{
     
-    margin-top: 7vh;
     align-items: center;
     border: solid 1px rgb(16, 159, 11);
     border-radius: 15px;
@@ -167,16 +166,27 @@
 
 @media only screen and (min-height: 900px) {
 
+    #h4_log{
+        margin-top: -37vh;
+    }
     .d_form{
-        height: 60vh;
+        margin-top: -10vh;
+        height: 50vh;
         width: 50vh;}
-    .form-group{width: 300px;}}
+    .form-group{width: 300px;}
+    .btn {
+        width: 14vh;
+        height: 6vh;}}    
+
 
 @media only screen and (min-height: 1000px) {
 
     .d_form{
-        height: 60vh;
+        height: 43vh;
         width: 50vh;}
-    .form-group{width: 300px;}}    
-
-
+    .form-group{width: 300px;}
+    }
+    #h4_log{ margin-top: -33vh;}
+    #frmLogin{
+        margin-top: 6vh;
+    }
