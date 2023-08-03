@@ -48,12 +48,12 @@ class AlcateiaController extends Controller{
         }
 
         $dados["lista"] = $alcateias;
-        $this->loadView("alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);
+        $this->loadView("pages/alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);
     }
 
     public function create(){
         $dados["id_alcateia"] = 0;
-        $this->loadView("alcateia/formAlcateia.php", $dados,"","", true);
+        $this->loadView("pages/alcateia/formAlcateia.php", $dados,"","", true);
     }
     
     protected function edit() {

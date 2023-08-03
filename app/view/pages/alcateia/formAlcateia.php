@@ -1,7 +1,17 @@
 <?php
-    require_once(__DIR__ . "/../include/header.php");
-    require_once(__DIR__ . "/../include/menu.php");
-    
+    require_once(__DIR__ . "/../../include/header.php");
+    require_once(__DIR__ . "/../../include/menu.php");
+    require_once(__DIR__ . "/../../../controller/AcessoController.php");
+
+    $AcessoCont = new AcessoController();
+    if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+        $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
+        $AcessoCont->VerifyAccess($papelUsuario);
+    }
+    else {
+        $AcessoCont->NoLogin();
+        return;
+    }
 ?>
 
 <div class="container">
@@ -39,7 +49,7 @@
        
 
         <div class="col-9">
-            <?php require_once(__DIR__ . "/../include/msg.php"); ?>
+            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
 
     </div>
@@ -47,5 +57,5 @@
 </div>
 
 <?php
-    require_once(__DIR__ . "/../include/footer.php");
+    require_once(__DIR__ . "/../../include/footer.php");
 ?>

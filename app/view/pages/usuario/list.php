@@ -1,15 +1,20 @@
 <?php
 #Nome do arquivo: usuario/list.php
 #Objetivo: interface para listagem dos usuários do sistema
-
-require_once(__DIR__ . "/../include/header.php");
-require_once(__DIR__ . "/../include/menu.php");
-require_once(__DIR__ . "/../../controller/AcessoController.php");
-require_once(__DIR__ . "/../../model/enum/UsuarioPapel.php");
-require_once(__DIR__ . "/../../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../../include/header.php");
+require_once(__DIR__ . "/../../include/menu.php");
+require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
+if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+    $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
+    $acessoCont->VerifyAccess($papelUsuario);
+}
+else {
+    $acessoCont->NoLogin();
+    return;
+}
 
-$nome = $_SESSION[SESSAO_USUARIO_NOME];
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
 
@@ -22,7 +27,7 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
             </div>
 
             <div class="col-9">
-                <?php require_once(__DIR__ . "/../include/msg.php"); ?>
+                <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
             </div>
         </div>
 
@@ -34,8 +39,7 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                             <th>Nome</th>
                             <th>Login</th>
                             <th>Papeis</th>
-                            <th>Status</th>
-                            <th>Alterar</th>
+                            <th>Status</th>           
                             <th>Mudar Alcateia</th>
                         </tr>
                     </thead>
@@ -63,10 +67,6 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
                                     ?>
                                 </td>
 
-                                <td><a class="btn btn-primary" 
-                                    href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
-                                    Alterar</a> 
-                                </td>
                                 <td>   
                                     <button class="<?php if($usu->getAlcateia()) {
                                             echo "btn btn-secondary";
@@ -94,5 +94,5 @@ $nome = $_SESSION[SESSAO_USUARIO_NOME];
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 
 <?php  
-require_once(__DIR__ . "/../include/footer.php");
+require_once(__DIR__ . "/../../include/footer.php");
 ?>

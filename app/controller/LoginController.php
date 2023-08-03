@@ -18,7 +18,7 @@ class LoginController extends Controller {
     }
 
     protected function login() {
-        $this->loadView("login/login.php", [], "", "", true);
+        $this->loadView("pages/login/login.php", [], "", "", true);
     }
 
     /* Método para logar um usuário a partir dos dados informados no formulário */
@@ -47,14 +47,14 @@ class LoginController extends Controller {
         $dados["login"] = $login;
         $dados["senha"] = $senha;
 
-        $this->loadView("login/login.php", $dados, $msg, "", true);
+        $this->loadView("pages/login/login.php", $dados, $msg, "", true);
     }
 
      /* Método para logar um usuário a partir dos dados informados no formulário */
     protected function logout() {
         $this->removerUsuarioSessao();
 
-        $this->loadView("login/login.php", [], "", "Usuário deslogado com suscesso!", true);
+        $this->loadView("pages/login/login.php", [], "", "Usuário deslogado com suscesso!", true);
     }
 
     private function salvarUsuarioSessao(Usuario $usuario) {

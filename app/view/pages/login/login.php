@@ -2,8 +2,8 @@
 #Nome do arquivo: login/login.php
 #Objetivo: interface para logar no sistema
 
-require_once(__DIR__ . "/../include/header.php");
-require_once(__DIR__ . "/../include/menu.php");
+require_once(__DIR__ . "/../../include/header.php");
+require_once(__DIR__ . "/../../include/menu.php");
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/login.css" />
@@ -32,19 +32,22 @@ require_once(__DIR__ . "/../include/menu.php");
                             maxlength="15" placeholder="Informe a senha"
                             value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />        
                     </div>
-               
-                    <button type="submit" class="btn btn-success " id= "btn_logar"><span>Logar</span></button>
-                    <a href='<?= HOME_PAGE ?>' id = "btn_voltar"><button type="submit"class="btn btn-primary" id= "btn_voltar"><span>Voltar</span></button></a>
+                    <button type="submit" class="btn btn-success " id= "btn_logar">
+                        <span>Logar</span>
+                    </button>
+                    <a class="btn btn-primary" id= "btn_voltar" href="<?= BASEURL ?>/controller/HomeController.php" id = "">
+                        <span>Voltar</span>
+                    </a>
                 </form>
             </div>
         </div>
 
         <div class="col-6">
-            <?php include_once(__DIR__ . "/../include/msg.php") ?>
+            <?php include_once(__DIR__ . "/../../include/msg.php") ?>
         </div>
     </div>
 </div>
 
 <?php  
-require_once(__DIR__ . "/../include/footer.php");
+require_once(__DIR__ . "/../../include/footer.php");
 ?>

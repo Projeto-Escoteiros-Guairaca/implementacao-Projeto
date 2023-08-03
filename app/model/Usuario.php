@@ -30,8 +30,6 @@ class Usuario implements JsonSerializable {
             'nome' => $this->nome,
             'email' =>$this->contatoEmail,
             'celular' => $this->contatoCelular
-            
-
         ];
     }
     

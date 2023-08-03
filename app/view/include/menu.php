@@ -11,7 +11,7 @@ if(session_status() !== PHP_SESSION_ACTIVE)
     session_start();
 }
 
-$nome = "(Sessão expirada)";
+$nome = "Faça Login no menu";
 if(isset($_SESSION[SESSAO_USUARIO_NOME]))
     $nome = $_SESSION[SESSAO_USUARIO_NOME];
 
@@ -31,7 +31,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                 <aside id ="menu_oculto" class ="menu_oculto">
                     <a href = "javascript:void(0)" class = "btn_fechar" onclick ="fechar_nav()">&times;</a>
                     <?php echo"<a href = " .HOME_PAGE. "> Home</a>"; ?>
-                    <?php if($nome === "(Sessão expirada)") { 
+                    <?php if($nome === "Faça Login no menu") { 
                             echo "<a href = " .LOGIN_PAGE."> Login</a>";
                         }
                         else {

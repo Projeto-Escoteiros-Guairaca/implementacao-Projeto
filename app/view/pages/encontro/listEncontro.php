@@ -1,10 +1,24 @@
 <?php
-    require_once(__DIR__ . "/../include/header.php");
-    require_once(__DIR__ . "/../include/menu.php");
+    require_once(__DIR__ . "/../../include/header.php");
+    require_once(__DIR__ . "/../../include/menu.php");
+    require_once(__DIR__ . "/../../../controller/AcessoController.php");
+
+    $AcessoCont = new AcessoController();
+    if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+        $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
+        $AcessoCont->VerifyAccess($papelUsuario);
+    }
+    else {
+        $AcessoCont->NoLogin();
+        return;
+    }
 ?>
+
+<h3 class='text-center'>Encontros</h3>
 
 <div class="container">
     <div class="row">
+
         <div class="col-3">
             <a class="btn btn-success" href="<?= BASEURL ?>/controller/EncontroController.php?action=create">Inserir</a>
         </div>
@@ -15,7 +29,7 @@
             </select>
         </div>
         <div class="col-6">
-            <?php require_once(__DIR__ . "/../include/msg.php"); ?>
+            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
     </div>
 
@@ -62,5 +76,5 @@
 </div>
 
 <?php
-    require_once(__DIR__ . "/../include/footer.php");
+    require_once(__DIR__ . "/../../include/footer.php");
 ?>
