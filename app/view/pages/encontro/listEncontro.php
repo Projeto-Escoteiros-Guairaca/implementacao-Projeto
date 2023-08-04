@@ -1,9 +1,7 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
-    require_once(__DIR__ . "/../../../controller/AcessoController.php");
-
-    $AcessoCont = new AcessoController();
+    
     if(isset($_SESSION[SESSAO_USUARIO_ID])) {
         $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
         $AcessoCont->VerifyAccess($papelUsuario);
@@ -27,6 +25,8 @@
             <option> Data</option>
             <option> Alcateia</option>
             </select>
+
+            <button class="btn btn-primary"><a href="<?= BASEURL ?>/controller/EncontroController.php">Filtrar</a></button>
         </div>
         <div class="col-6">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
