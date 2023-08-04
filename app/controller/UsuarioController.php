@@ -109,7 +109,6 @@ class UsuarioController extends Controller {
 
     }
     
-
     protected function save() {
         
         $dados["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
