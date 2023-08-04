@@ -236,7 +236,6 @@ class UsuarioController extends Controller {
         $idAlcateia = $_GET["idAlcateia"];
         $this->usuarioDao->changeAlcateia($id, $idAlcateia);
         $alcateia = $this->alcateiaDao->findById($idAlcateia);
-        echo json_encode($alcateia[0]);
         return;
         
     }

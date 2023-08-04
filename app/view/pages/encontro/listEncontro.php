@@ -20,11 +20,16 @@
         <div class="col-3">
             <a class="btn btn-success" href="<?= BASEURL ?>/controller/EncontroController.php?action=create">Inserir</a>
         </div>
-        <div class="col-3">
-            <select class="btn btn-info" value="Filtar">
-            <option> Data</option>
-            <option> Alcateia</option>
+        <div class="col-6">
+            <select id="filtro" class="btn btn-info" value="Filtar">
+                <option value=""> </option>
+                <option value="data"> Data</option>
+                <option value="alc"> Alcateia</option>
             </select>
+            <button id="selec" class="btn btn-alert">Selecionar</button>
+
+            <input id="dt1" class="form-control" type="hidden" placeholder="De">
+            <input id="dt2" class="form-control" type="hidden" placeholder="Até"> 
 
             <button class="btn btn-primary"><a href="<?= BASEURL ?>/controller/EncontroController.php">Filtrar</a></button>
         </div>

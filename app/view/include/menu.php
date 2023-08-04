@@ -5,7 +5,7 @@
 require_once(__DIR__ . "/../../controller/AcessoController.php");
 require_once(__DIR__ . "/../../model/enum/UsuarioPapel.php");
 
-session_status();
+
 if(session_status() !== PHP_SESSION_ACTIVE) 
 {
     session_start();

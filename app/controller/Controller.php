@@ -96,6 +96,19 @@ class Controller {
         return false;
     }
 
+    public function VerifyAccess(Array $papelNecessario) {
+        $dados = array();
+        $hasAccess = $this->usuarioPossuiPapel($papelNecessario);
+
+        if($hasAccess) {
+            return true;
+        }
+        else {
+            $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
+            return false;
+        }
+    }
+
     /**
      * Set the value of actionDefault
      *
