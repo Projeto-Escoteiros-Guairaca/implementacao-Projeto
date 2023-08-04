@@ -6,6 +6,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
+
 if(isset($_SESSION[SESSAO_USUARIO_ID])) {
     $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
     $acessoCont->VerifyAccess($papelUsuario);
