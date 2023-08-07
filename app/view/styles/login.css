@@ -110,8 +110,6 @@
     text-align: center;
 }
 
-
-
 #link-a{
     width: 100vh;
     height: 100vh;
@@ -122,7 +120,15 @@
 /*Responsividade formulario*/
 
 /*Responsividade da Largura*/
+
 @media only screen and (max-width: 440px) {
+    
+    .d_form{
+        height: 60vh;
+        width: 40vh;}
+    .form-group{width: 300px;}}
+
+@media only screen and (min-width: 440px) {
     
     .d_form{
         height: 60vh;
@@ -149,44 +155,3 @@
         width: 60vh;}
     .form-group{width: 330px;}}
 
-/*Responsividade da Altura*/
-@media only screen and (max-height: 670px) {
-    
-    .d_form{
-        height: 60vh;
-        width: 50vh;}
-    .form-group{width: 300px;}}
-
-@media only screen and (min-height: 750px) {
-
-    .d_form{
-        height: 60vh;
-        width: 50vh;}
-    .form-group{width: 300px;}}
-
-@media only screen and (min-height: 900px) {
-
-    #h4_log{
-        margin-top: -37vh;
-    }
-    .d_form{
-        margin-top: -10vh;
-        height: 50vh;
-        width: 50vh;}
-    .form-group{width: 300px;}
-    .btn {
-        width: 14vh;
-        height: 6vh;}}    
-
-
-@media only screen and (min-height: 1000px) {
-
-    .d_form{
-        height: 43vh;
-        width: 50vh;}
-    .form-group{width: 300px;}
-    }
-    #h4_log{ margin-top: -33vh;}
-    #frmLogin{
-        margin-top: 6vh;
-    }
