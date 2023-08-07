@@ -24,6 +24,14 @@ class UsuarioController extends Controller {
     private UsuarioService $usuarioService;
 
     public function __construct() {
+        $papelNecessario = array();
+        $papelNecessario[0] = "ADMINISTRADOR";
+        $accessVerified = $this->verifyAccess($papelNecessario);
+        
+        if(! $accessVerified) {
+            die;
+        }
+
         $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
@@ -62,7 +70,7 @@ class UsuarioController extends Controller {
       
         $usuarios = $this->usuarioDao->list();
         $alcateias = $this->alcateiaDao->list();
-        $i = 0;
+
         foreach($usuarios as $usu) {
             if($usu->getIdAlcateia()) {
                 foreach($alcateias as $alc) {
@@ -109,7 +117,6 @@ class UsuarioController extends Controller {
 
     }
     
-
     protected function save() {
         
         $dados["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
@@ -237,7 +244,6 @@ class UsuarioController extends Controller {
         $idAlcateia = $_GET["idAlcateia"];
         $this->usuarioDao->changeAlcateia($id, $idAlcateia);
         $alcateia = $this->alcateiaDao->findById($idAlcateia);
-        echo json_encode($alcateia[0]);
         return;
         
     }

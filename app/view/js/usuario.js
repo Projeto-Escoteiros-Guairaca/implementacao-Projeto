@@ -103,10 +103,8 @@ function sendAlcateiaChange() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId, true);
     
-    
     xhttp.onreadystatechange = function() {
-        if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
-           
+        if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
 
             modalBackground = document.getElementById('modalBackground');
             modal = document.getElementById(idAlcateiaUsuario +"modal");
@@ -117,9 +115,7 @@ function sendAlcateiaChange() {
             changeAlcateiaName.innerHTML = alcateiaName;
             changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+UsuarioId+");");
             changeAlcateiaName.className = "btn btn-secondary";
-
-
-
+            
         }
     };
     xhttp.send();

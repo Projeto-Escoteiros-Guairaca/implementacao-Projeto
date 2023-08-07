@@ -1,9 +1,9 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
-    require_once(__DIR__ . "/../../../controller/AcessoController.php");
-
-    $AcessoCont = new AcessoController();
+    require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
+    require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
+    
     if(isset($_SESSION[SESSAO_USUARIO_ID])) {
         $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
         $AcessoCont->VerifyAccess($papelUsuario);
@@ -14,6 +14,8 @@
     }
 ?>
 
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listEncontro.css" />
+
 <h3 class='text-center'>Encontros</h3>
 
 <div class="container">
@@ -22,11 +24,26 @@
         <div class="col-3">
             <a class="btn btn-success" href="<?= BASEURL ?>/controller/EncontroController.php?action=create">Inserir</a>
         </div>
-        <div class="col-3">
-            <select class="btn btn-info" value="Filtar">
-            <option> Data</option>
-            <option> Alcateia</option>
-            </select>
+        <div class="col-6">
+
+            <form action="<?= BASEURL ?>/controller/EncontroController.php?action=list&filtered=true">
+
+                <input class="filters" class="form-control" type="date" placeholder="De">
+                <input class="filters" class="form-control" type="date" placeholder="Até">
+                <div class="form-group">
+                    <label for="somAlcateia">Alcateia:</label>
+                    <?php
+                        $alcDao = new AlcateiaDAO();
+                        $alcateias = $alcDao->list();
+
+                        SelectAlcateia::desenhaSelect($alcateias, "alcateiaEncontro", "somAlcateia", isset($dados['id_alcateia']) ? $dados['id_alcateia'] : 0);
+                    ?>
+                </div>
+
+                <button class="btn btn-alert" type="submit"> Filtrar </button>
+
+            </form>
+
         </div>
         <div class="col-6">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>

@@ -21,7 +21,19 @@ class EncontroController extends Controller {
     }
 
     public function list(string $msgErro = "", string $msgSucesso = ""){
-        $encontros = $this->encontroDao->list();
+        
+        $encontros = [];
+
+
+        //se existe algum filtro 
+        if(isset($_GET['filtered'])){
+            //$encontros = $this->encontroDao->listFiltered($filters);
+            $encontros = $this->encontroDao->list();
+
+
+        } else {
+            $encontros = $this->encontroDao->list();
+        }
 
         $dados["lista"] = $encontros;
         $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, true);

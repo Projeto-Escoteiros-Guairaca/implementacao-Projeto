@@ -56,3 +56,5 @@ function carregar_modo(){
     darkButton.innerHTML = 'Modo Escuro';
   }
 }
+
+
