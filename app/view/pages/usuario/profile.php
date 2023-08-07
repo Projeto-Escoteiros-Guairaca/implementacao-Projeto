@@ -1,33 +1,10 @@
+
 <?php
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 ?>
-<style>
-#usuario {
-    text-align: center;
-    border: 2px solid black;
-    width: 350px;
-    height: 350px;
-}
-#endereco {
-    text-align: center;
-    border: 2px solid black;
-    width: 510px;
-    height: 510px;
-}
-#contato {
-    text-align: center;
-    border: 2px solid black;
-    width: 250px;
-    height: 250px;
-}
-
-.container{
-    position: relative;
-    
-}
-</style>
 <?php require_once(__DIR__ . "/../../include/menu.php");?>
+<link rel="stylesheet" type="text/css" href="../view/styles/profile.css?v=<?php echo time(); ?>">
 <div class="container">
     <a class="btn btn-primary" href='<?= HOME_PAGE ?>'>Voltar</a>
                 
