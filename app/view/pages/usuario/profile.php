@@ -18,7 +18,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
             <label> Nome: </label>
         </div>      
             <div class = "row">
-                <b> <li><?= $dados['usuario']->getNome(); ?></li> </b>
+                <b><?= $dados['usuario']->getNome(); ?> </b>
             </div>
         <hr>
 
@@ -26,7 +26,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
             <label> Nome do Login: </label>
         </div>
             <div class="row">
-                <b> <li><?= $dados['usuario']->getLogin(); ?></li> </b>
+                <b><?= $dados['usuario']->getLogin(); ?> </b>
             </div>
         <hr>
 
@@ -34,7 +34,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
             <label> Teu papel no sistema: </label>
         </div>
             <div class= "row">
-                <b> <li><?= $dados['usuario']->getPapeisStr(); ?></li> </b>
+                <b><?= $dados['usuario']->getPapeisStr(); ?></b>
             </div>
         <hr>
 
@@ -42,7 +42,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
             <label> Tua senha: </label>
         </div>
             <div class= "row">
-                <b> <li><?= $dados['usuario']->getSenha(); ?></li> </b>
+                <b> <?= $dados['usuario']->getSenha(); ?> </b>
             </div>
     </div>
 
@@ -52,42 +52,42 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
             <label> Teu CEP: </label>
         </div>
             <div class= "row">
-                <b> <li><?= $dados['usuario']->getEndereco()->getCep(); ?></li> </b>
+                <b> <?= $dados['usuario']->getEndereco()->getCep(); ?> </b>
             </div>
     <hr>
         <div class= "row">
             <label> Logradouro: </label>
         </div>
             <div class= "row">
-                <b> <li><?=$dados['usuario']->getEndereco()->getLogradouro(); ?></li> </b>
+                <b> <?=$dados['usuario']->getEndereco()->getLogradouro(); ?> </b>
         </div>
     <hr>
         <div class= "row">
             <label> Teu numero de endereço: </label>
         </div>
             <div class= "row">
-                <b> <li><?= $dados['usuario']->getEndereco()->getNumeroEndereco(); ?></li> </b>
+                <b> <?= $dados['usuario']->getEndereco()->getNumeroEndereco(); ?> </b>
             </div>
     <hr>
         <div class= "row">
             <label> Bairro: </label>
         </div>
             <div class= "row">
-                <b> <li><?= $dados['usuario']->getEndereco()->getBairro(); ?></li> </b>
+                <b> <?= $dados['usuario']->getEndereco()->getBairro(); ?> </b>
             </div>
     <hr>
         <div class= "row">
             <label> cidade:: </label>
         </div>
             <div class= "row">
-                <b> <li><?= $dados['usuario']->getEndereco()->getCidade(); ?></li> </b>
+                <b> <?= $dados['usuario']->getEndereco()->getCidade(); ?> </b>
             </div>
     <hr>
         <div class= "row">
             <label> Pais: </label>
         </div>
             <div class= "row">
-                <b><li><?= $dados['usuario']->getEndereco()->getPais(); ?></li> </b>
+                <b><?= $dados['usuario']->getEndereco()->getPais(); ?> </b>
             </div>
     </div>
 
@@ -95,21 +95,23 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
     <div class= "col-4" id="contato">
         <div class= "row">
             <label> Telefone de casa: </label>
-            <b> <li><?= $dados['usuario']->getContato()->getTelefone(); ?></li> </b>
         </div>
+            <div class = "row">
+                <b> <?= $dados['usuario']->getContato()->getTelefone(); ?> </b>
+            </div>
         <hr>
         <div class= "row">
             <label> Celular: </label>
         </div>
             <div class= "row">
-                <b> <li><?= $dados['usuario']->getContato()->getCelular(); ?></li> </b>
+                <b> <?= $dados['usuario']->getContato()->getCelular(); ?> </b>
             </div>
         <hr>
         <div class= "row">
             <label> Email: </label>
         </div>
             <div class= "row">
-                <b>  <li><?= $dados['usuario']->getContato()->getEmail(); ?></li> </b>
+                <b>  <?= $dados['usuario']->getContato()->getEmail(); ?> </b>
             </div>
     </div>
 </div>
