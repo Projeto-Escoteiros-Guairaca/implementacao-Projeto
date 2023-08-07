@@ -9,24 +9,5 @@ class AcessoController extends Controller {
 
     public function __construct() {    
     }  
-
-    public function VerifyAccess(Array $papelNecessario) {
-        $dados = array();
-        $hasAccess = $this->usuarioPossuiPapel($papelNecessario);
-
-        if($hasAccess) {
-            return true;
-        }
-        else {
-            $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
-        }
-    }
-
-    public function NoLogin() {
-        $dados = array();
-        $this->loadView("pages/Errors/noAccountFound.php", $dados, "", "", true);
-
-    }
 }
-
 $AcessoCont = new AcessoController();
