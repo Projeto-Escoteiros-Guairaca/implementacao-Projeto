@@ -12,8 +12,16 @@ class EncontroController extends Controller {
     private EncontroDAO $encontroDao;
     private EncontroService $encontroService;
 
-    public function __construct()
-    {
+    public function __construct() {
+
+        $papelNecessario = array();
+        $papelNecessario[0] = "ADMINISTRADOR";
+        $accessVerified = $this->verifyAccess($papelNecessario);
+        
+        if(! $accessVerified) {
+            return;
+        }
+
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
         $this->setActionDefault("list", true);

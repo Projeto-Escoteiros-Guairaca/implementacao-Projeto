@@ -59,7 +59,6 @@ class LoginController extends Controller {
 
     private function salvarUsuarioSessao(Usuario $usuario) {
         //Habilitar o recurso de sessão no PHP nesta página
-        session_start();
 
         //Setar usuário na sessão do PHP
         $_SESSION[SESSAO_USUARIO_ID]   = $usuario->getId();
@@ -69,8 +68,6 @@ class LoginController extends Controller {
 
     private function removerUsuarioSessao() {
         //Habilitar o recurso de sessão no PHP nesta página
-        session_start();
-
         //Destroi a sessão 
         session_destroy();
     }

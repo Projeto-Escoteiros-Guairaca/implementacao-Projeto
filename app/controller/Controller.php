@@ -70,9 +70,7 @@ class Controller {
 
     //Método que verifica se o usuário está logado
     protected function usuarioLogado() {
-
-
-        if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
+       if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
             header("location: " . LOGIN_PAGE);
             return false;
         }
@@ -83,42 +81,39 @@ class Controller {
     //Método que verifica se o usuário possui um papel necessário
     public function usuarioPossuiPapel(array $papeisNecessarios) {
 
-        print_r("call method :D");
         //* 0 no account, 1 é papel certo, 2 é papel errado.
-        print_r($_SESSION[SESSAO_USUARIO_ID]);
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
             $papeisUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
             //Percorre os papeis necessários e verifica se existem nos papéis do usuário
             foreach($papeisNecessarios as $papel) {
 
                 if(in_array($papel, $papeisUsuario)) {
-                    print_r("waka waka ehh ehh");
-                    return true;
+                    return 1;
                 }
             }
         }
-        else {
-            print_r("false");
-
-            return false;
+        elseif(! isset($_SESSION[SESSAO_USUARIO_ID])) {
+            return 0;
         }
+        return 2;
+        
     }
 
     public function verifyAccess(Array $papelNecessario) {
         $dados = array();
-
         $hasAccess = $this->usuarioPossuiPapel($papelNecessario);
-        if($hasAccess) {
+        if($hasAccess == 1) {
             return true;
         }
-        else{
+        elseif($hasAccess == 2){
             $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
             return false;
         }
-        // elseif($hasAccess === 0) {
-        //     $this->loadView("pages/Errors/noAccountFound.php", $dados, "", "", true);
-        //     return false;            
-        // }
+        else {
+            $this->loadView("pages/Errors/noAccountFound.php", $dados, "", "", true);
+            return false;            
+        }
+     
     }
 
     /**

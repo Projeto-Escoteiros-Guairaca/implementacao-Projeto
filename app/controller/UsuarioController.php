@@ -24,12 +24,13 @@ class UsuarioController extends Controller {
     private UsuarioService $usuarioService;
 
     public function __construct() {
+        
         $papelNecessario = array();
         $papelNecessario[0] = "ADMINISTRADOR";
         $accessVerified = $this->verifyAccess($papelNecessario);
         
         if(! $accessVerified) {
-            die;
+            return;
         }
 
         $this->alcateiaDao = new AlcateiaDAO();

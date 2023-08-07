@@ -12,6 +12,14 @@ class AlcateiaController extends Controller{
 
     public function __construct(){
 
+        $papelNecessario = array();
+        $papelNecessario[0] = "ADMINISTRADOR";
+        $accessVerified = $this->verifyAccess($papelNecessario);
+        
+        if(! $accessVerified) {
+            return;
+        }
+
         $this->alcateiaDao = new AlcateiaDAO();
         $this->alcateiaService = new AlcateiaService();
         $this->setActionDefault("list", true);
