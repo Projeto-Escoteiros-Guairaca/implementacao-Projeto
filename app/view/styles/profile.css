@@ -1,0 +1,31 @@
+#usuario {
+    text-align: center;
+    width: 60vh;
+    height: 50vh;
+    border: solid 1px rgb(16, 159, 11);
+}
+#endereco {
+    text-align: center;
+    border: 2px solid black;
+    width: 510px;
+    height: 510px;
+}
+#contato {
+    text-align: center;
+    border: 2px solid black;
+    width: 250px;
+    height: 250px;
+}
+
+.container{
+     position: relative;
+     height: fit-content;
+    width: 100vh;
+    height: 60vh;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: transparent;
+}
