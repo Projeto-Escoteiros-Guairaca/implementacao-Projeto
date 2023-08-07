@@ -1,25 +1,28 @@
 #usuario {
+    display: inline-block;
     text-align: center;
-    width: 50vh;
+    width: 100vh;
     height: auto;
     border-radius: 15px;
     border: solid 2px rgb(16, 159, 11);
 }
 #endereco {
-    width: 60vh;
+    display: inline-block;
+    width: 100vh;
     height: auto;
     border-radius: 15px;
     border: solid 2px rgb(16, 159, 11);
 }
 #contato {
-    width: 60vh;
+    display: inline-block;
+    width: 100vh;
     height: auto;
     border-radius: 15px;
     border: solid 2px rgb(16, 159, 11);
 }
 
 .container{
-    position: relative;
+    margin: 0;
     width: 100vh;
     height: 100vh;
     background-color: transparent;
