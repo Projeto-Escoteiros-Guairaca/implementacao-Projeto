@@ -61,16 +61,13 @@ class EncontroController extends Controller {
 
         if(!$idAlcateiaIsEmpty) {
             if($desdeDataIsEmpty or $ateDataIsEmpty) {
-                print_r("aaaaaaaaaaaa");
                 $encontros = $this->encontroDao->filterByAlcateia($dados["id_alcateia"]);
             }
             if(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
-                print_r("bbbbbbbbbbbb");
                 $encontros = $this->encontroDao->filterByBoth( $dados["desde"], $dados["ate"], $dados["id_alcateia"]);
             }
         }
         elseif(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
-            print_r("cccccccccccc");
             $encontros = $this->encontroDao->filterByData( $dados["desde"], $dados["ate"]);
         }
         else{
