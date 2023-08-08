@@ -17,10 +17,16 @@
         </div>
         <div class="col-6">
 
-            <form action="<?= BASEURL ?>/controller/EncontroController.php?action=list&filtered=true">
+            <form method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?filtered=true">
 
-                <input class="filters" class="form-control" type="date" placeholder="De">
-                <input class="filters" class="form-control" type="date" placeholder="Até">
+                <input class="filters" class="form-control" type="date" placeholder="De" name="desde" 
+                value="<?php
+                            echo (isset($dados['desde']) ? $dados['desde'] : "");
+                        ?>">
+                <input class="filters" class="form-control" type="date" placeholder="Até" name="ate"
+                value="<?php
+                            echo (isset($dados['ate']) ? $dados['ate'] :  "");
+                        ?>">
                 <div class="form-group">
                     <label for="somAlcateia">Alcateia:</label>
                     <?php
@@ -32,6 +38,7 @@
                 </div>
 
                 <button class="btn btn-alert" type="submit"> Filtrar </button>
+                <a href="<?= BASEURL ?>/controller/EncontroController.php?action=list" class="btn btn-alert"> Limpar filtro </a>
 
             </form>
 

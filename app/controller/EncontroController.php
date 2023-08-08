@@ -31,22 +31,56 @@ class EncontroController extends Controller {
     public function list(string $msgErro = "", string $msgSucesso = ""){
         
         $encontros = [];
+        $encontros = $this->encontroDao->list();
 
 
         //se existe algum filtro 
         if(isset($_GET['filtered'])){
-            //$encontros = $this->encontroDao->listFiltered($filters);
-            $encontros = $this->encontroDao->list();
+            $dados = $this->filter();
+            $isNotFiltered = $dados['IsActuallyFiltered'];
 
-
+            $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, $isNotFiltered);
+            return;
         } else {
+            $dados["lista"] = $encontros;
+            $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, true);
+    
+        }
+           }
+
+    public function filter() {
+        $encontros = [];
+        $idAlcateiaIsEmpty = empty($_POST['alcateiaEncontro']);
+        $desdeDataIsEmpty = empty($_POST['desde']);
+        $ateDataIsEmpty = empty($_POST['ate']);
+
+        $dados['IsActuallyFiltered'] = false;
+        $dados["desde"] = isset($_POST['desde']) ? $_POST['desde'] : 0;
+        $dados["ate"] = isset($_POST['ate']) ? $_POST['ate'] : 0;
+        $dados["id_alcateia"] = isset($_POST['alcateiaEncontro']) ? $_POST['alcateiaEncontro'] : 0;
+
+        if(!$idAlcateiaIsEmpty) {
+            if($desdeDataIsEmpty or $ateDataIsEmpty) {
+                print_r("aaaaaaaaaaaa");
+                $encontros = $this->encontroDao->filterByAlcateia($dados["id_alcateia"]);
+            }
+            if(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
+                print_r("bbbbbbbbbbbb");
+                $encontros = $this->encontroDao->filterByBoth( $dados["desde"], $dados["ate"], $dados["id_alcateia"]);
+            }
+        }
+        elseif(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
+            print_r("cccccccccccc");
+            $encontros = $this->encontroDao->filterByData( $dados["desde"], $dados["ate"]);
+        }
+        else{
+            $dados['IsActuallyFiltered'] = true;
             $encontros = $this->encontroDao->list();
         }
+        $dados['lista'] = $encontros;
+        return $dados;
 
-        $dados["lista"] = $encontros;
-        $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, true);
     }
-
     public function create(){
         $dados["id_encontro"] = 0;
         $this->loadView("pages/encontro/formEncontro.php", $dados, "", "", true);
