@@ -1,31 +1,29 @@
 #usuario {
+    display: inline-block;
     text-align: center;
-    width: 60vh;
-    height: 50vh;
-    border: solid 1px rgb(16, 159, 11);
+    width: 100vh;
+    height: auto;
+    border-radius: 15px;
+    border: solid 2px rgb(16, 159, 11);
 }
 #endereco {
-    text-align: center;
-    border: 2px solid black;
-    width: 510px;
-    height: 510px;
+    display: inline-block;
+    width: 100vh;
+    height: auto;
+    border-radius: 15px;
+    border: solid 2px rgb(16, 159, 11);
 }
 #contato {
-    text-align: center;
-    border: 2px solid black;
-    width: 250px;
-    height: 250px;
+    display: inline-block;
+    width: 100vh;
+    height: auto;
+    border-radius: 15px;
+    border: solid 2px rgb(16, 159, 11);
 }
 
 .container{
-     position: relative;
-     height: fit-content;
+    margin: 0;
     width: 100vh;
-    height: 60vh;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    height: 100vh;
     background-color: transparent;
 }
