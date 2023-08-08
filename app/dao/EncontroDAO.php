@@ -43,13 +43,13 @@ class EncontroDao {
         
         return $encontros;
     }
-    public function filterByData($desde, $ate) {
+    public function filterByData(string $desde, string $ate) {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        "e.data BETWEEN ? AND ? ORDER BY e.data";
-        $stm = $conn->prepare($sql);    
-        $stm->execute([$desde], [$ate]);
+        " WHERE e.data BETWEEN ? AND ? ORDER BY e.data";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$desde, $ate]);
         $result = $stm->fetchAll();
         $encontros = $this->mapEncontro($result);
 
