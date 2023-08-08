@@ -16,61 +16,67 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         <br>
 
 
-    <div class= "col-4 " id="usuario">
-       
+<div class="container">
+  <div class="row d_dados">
+    <div id="usuario" class="col">
     <h2>Usuario</h2>
 
         Nome:
+        <br>
         <?= $dados['usuario']->getNome(); ?>
-        
-        Nome do Login: </label>
+        <br>
+        Nome do Login:
+        <br>
         <?= $dados['usuario']->getLogin(); ?>
-
+        <br>
         Teu papel no sistema:
+        <br>
         <?= $dados['usuario']->getPapeisStr(); ?>
-
+        <br>
         Tua senha: 
+        <br>
         <?= $dados['usuario']->getSenha(); ?> 
+        <br>
     </div>
 
-    <div class= "col-4 " id="endereco">
+    <div  id="endereco" class="col">
     <h2>Endereco </h2>
     
-        Teu CEP: 
+        Teu CEP: <br>
         <?= $dados['usuario']->getEndereco()->getCep(); ?> 
-        
-        Logradouro: 
-
+        <br>
+        Logradouro: <br>
         <?=$dados['usuario']->getEndereco()->getLogradouro(); ?>
-
-        Teu numero de endereço:
+        <br>
+        Teu numero de endereço:<br>
         <?= $dados['usuario']->getEndereco()->getNumeroEndereco(); ?>
-        
-        Bairro:
+        <br>
+        Bairro:<br>
         <?= $dados['usuario']->getEndereco()->getBairro(); ?>
-        
-        cidade:
+        <br>
+        cidade:<br>
         <?= $dados['usuario']->getEndereco()->getCidade(); ?> 
-    
-         Pais:
+        <br>
+         Pais:<br>
         <?= $dados['usuario']->getEndereco()->getPais(); ?>
-
+        <br>
     </div>
 
     
-    <div class= "col-4" id="contato">
+    <div id="contato" class="col">
     <h2>Contato </h2>
         
-        Telefone de casa: 
+        Telefone de casa: <br>
         <?= $dados['usuario']->getContato()->getTelefone(); ?> 
-        
-        Celular:
+        <br>
+        Celular:<br>
         <?= $dados['usuario']->getContato()->getCelular(); ?>
-         
-        Email: 
+        <br>
+        Email: <br>
         <?= $dados['usuario']->getContato()->getEmail(); ?>
+        <br>
     </div>
-
+  </div>
 </div>
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");
