@@ -1,6 +1,6 @@
 <?php
     
-require_once(__DIR__ . "/../connection/Connection.php");
+require_once(__DIR__ . "/../util/Connection.php");
 require_once(__DIR__ . "/../model/Alcateia.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/Contato.php");

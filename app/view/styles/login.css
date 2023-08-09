@@ -1,7 +1,7 @@
 .col-12{
     position: relative;
     width: 100vh;
-    height: 70vh;
+    height: 60vh;
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -14,53 +14,50 @@
     position: absolute;
     margin-top: -45vh;
     color: rgb(16, 159, 11);
-  
 }
 
 /*Estiliza o label do formulario*/
 .form-group{
-    background-color: rgb(16, 159, 11);
     margin-top: 6vh;
     border-radius: 20px;
-    text-align: center;   
+    text-align: center;
+    background-color: rgb(16, 159, 11);   
 }
 
 /*Estiliza o fundo do formulario*/
 .d_form{
-    
+    position: relative;
+    margin-top: 2.5vh;
     align-items: center;
-    border: solid 1px rgb(16, 159, 11);
     border-radius: 15px;
     text-align: center;
-    position: relative;
     display: flex;
     justify-content: center;
+    border: solid 1px rgb(16, 159, 11);
 }
 
 /*Estiliza o input do formulario*/
 .estilo_dados_form{
-    border-radius: 10px;
-    border: solid 2px rgb(16, 159, 11) ;
-    background-color: rgb(166, 246, 95);
-    display: block;
     width: 100%;
     height: calc(2.25rem + 2px);
+    background-clip: padding-box;
+    display: block;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: rgb(16, 159, 11);
-    background-clip: padding-box;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  
+    color: rgb(16, 159, 11);
+    border: solid 2px rgb(16, 159, 11) ;
+    border-radius: 10px;
+    background-color: rgb(166, 246, 95);
 }
 
 /*Div de fundo do formulario*/
 #frmLogin{
     position: relative;
     height: 40vh;
-    color: aliceblue;
-    align-items: center;
     justify-content: center;
+    color: aliceblue;
 }
 
 .btn {
@@ -68,49 +65,36 @@
     height: 8vh;
     margin-top: 3vh;
     cursor: pointer;
-    background: transparent;
-    border: 1px solid #91C9FF;
     outline: none;
     transition: 1s ease-in-out;
+    background: transparent;
+    border: 1px solid rgb(16, 159, 11);
 }
 
+#btn_logar:hover {transition: 1s ease-in-out;}
 
-#btn_logar:hover {
-    transition: 1s ease-in-out;
-    
-}
-
-#btn_logar:hover svg {
-    stroke-dashoffset: -480;
-}
+#btn_logar:hover svg {stroke-dashoffset: -480;}
 
 #btn_logar span {
-    color: rgb(16, 159, 11);
     font-size: 18px;
     font-weight: 100;
+    color: rgb(16, 159, 11);
 }
-
 
 #btn_voltar:hover {
     transition: 1s ease-in-out;
-    background: #4F95DA;
+    background: rgb(166, 246, 95);
 }
 
-#btn_voltar:hover svg {
-    stroke-dashoffset: -480;
-}
+#btn_voltar:hover svg {stroke-dashoffset: -480;}
 
 #btn_voltar span {
-    color: rgb(16, 159, 11);
     font-size: 18px;
     font-weight: 100;
+    color: rgb(16, 159, 11);
 }
 
-.btn-primary{
-    text-align: center;
-}
-
-
+.btn-primary{text-align: center;}
 
 #link-a{
     width: 100vh;
@@ -122,71 +106,33 @@
 /*Responsividade formulario*/
 
 /*Responsividade da Largura*/
+
 @media only screen and (max-width: 440px) {
-    
     .d_form{
-        height: 60vh;
-        width: 50vh;}
+        width: 45vh;
+        height: 60vh;}
+    .form-group{width: 280px;}}
+
+@media only screen and (min-width: 440px) {
+    .d_form{
+        width: 50vh;
+        height: 60vh;}
     .form-group{width: 300px;}}
 
 @media only screen and (min-width: 440px) {
-
     .d_form{
-        height: 60vh;
-        width: 50vh;}
+        width: 50vh;
+        height: 60vh;}
     .form-group{width: 300px;}}
 
 @media only screen and (min-width: 480px) {
-    
     .d_form{
-        height: 60vh;
-        width: 60vh;}
+        width: 60vh;
+        height: 60vh;}
     .form-group{width: 330px;}}
 
 @media only screen and (min-width: 580px) {
     .d_form{
-        height: 60vh;
-        width: 60vh;}
+        width: 60vh;
+        height: 60vh;}
     .form-group{width: 330px;}}
-
-/*Responsividade da Altura*/
-@media only screen and (max-height: 670px) {
-    
-    .d_form{
-        height: 60vh;
-        width: 50vh;}
-    .form-group{width: 300px;}}
-
-@media only screen and (min-height: 750px) {
-
-    .d_form{
-        height: 60vh;
-        width: 50vh;}
-    .form-group{width: 300px;}}
-
-@media only screen and (min-height: 900px) {
-
-    #h4_log{
-        margin-top: -37vh;
-    }
-    .d_form{
-        margin-top: -10vh;
-        height: 50vh;
-        width: 50vh;}
-    .form-group{width: 300px;}
-    .btn {
-        width: 14vh;
-        height: 6vh;}}    
-
-
-@media only screen and (min-height: 1000px) {
-
-    .d_form{
-        height: 43vh;
-        width: 50vh;}
-    .form-group{width: 300px;}
-    }
-    #h4_log{ margin-top: -33vh;}
-    #frmLogin{
-        margin-top: 6vh;
-    }

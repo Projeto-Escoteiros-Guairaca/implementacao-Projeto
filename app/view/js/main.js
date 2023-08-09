@@ -57,19 +57,4 @@ function carregar_modo(){
   }
 }
 
-document.querySelector('#selec').addEventListener('click', () =>{
-  console.log('oi');
-  filtro = document.querySelector('#filtro');
-  dt1 = document.querySelector('#dt1');
-  dt2 = document.querySelector('#dt2');
-
-  if (filtro.value == 'data'){
-    console.log('oi');
-    datas.removeAttribute('type');
-    datas.setAttribute('type', 'date');
-  }
-  else{
-    console.log('oi');
-  }
-});
 

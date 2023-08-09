@@ -29,6 +29,9 @@ define('SESSAO_USUARIO_ID', "usuarioLogadoId");
 define('SESSAO_USUARIO_NOME', "usuarioLogadoNome");
 define('SESSAO_USUARIO_PAPEIS', "usuarioLogadoPapeis");
 
+//Habilitar o recurso de sessão no PHP nesta página
+session_start();
+
 
 
 

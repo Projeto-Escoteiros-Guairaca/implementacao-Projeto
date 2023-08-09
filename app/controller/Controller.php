@@ -70,10 +70,7 @@ class Controller {
 
     //Método que verifica se o usuário está logado
     protected function usuarioLogado() {
-        //Habilitar o recurso de sessão no PHP nesta página
-        session_start();
-
-        if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
+       if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
             header("location: " . LOGIN_PAGE);
             return false;
         }
@@ -83,30 +80,40 @@ class Controller {
 
     //Método que verifica se o usuário possui um papel necessário
     public function usuarioPossuiPapel(array $papeisNecessarios) {
+
+        //* 0 no account, 1 é papel certo, 2 é papel errado.
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
             $papeisUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
-
             //Percorre os papeis necessários e verifica se existem nos papéis do usuário
             foreach($papeisNecessarios as $papel) {
-                if(in_array($papel, $papeisUsuario))
-                    return true;
+
+                if(in_array($papel, $papeisUsuario)) {
+                    return 1;
+                }
             }
         }
-
-        return false;
+        elseif(! isset($_SESSION[SESSAO_USUARIO_ID])) {
+            return 0;
+        }
+        return 2;
+        
     }
 
-    public function VerifyAccess(Array $papelNecessario) {
+    public function verifyAccess(Array $papelNecessario) {
         $dados = array();
         $hasAccess = $this->usuarioPossuiPapel($papelNecessario);
-
-        if($hasAccess) {
+        if($hasAccess == 1) {
             return true;
         }
-        else {
+        elseif($hasAccess == 2){
             $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
             return false;
         }
+        else {
+            $this->loadView("pages/Errors/noAccountFound.php", $dados, "", "", true);
+            return false;            
+        }
+     
     }
 
     /**
@@ -115,10 +122,10 @@ class Controller {
      * @return  self
      */ 
     public function setActionDefault($actionDefault, $fazer) {
-    if($fazer == true)    
-    {
-    $this->actionDefault = $actionDefault; 
-    }
+        if($fazer == true)    
+        {  
+            $this->actionDefault = $actionDefault; 
+        }
 
         return $this;
     }

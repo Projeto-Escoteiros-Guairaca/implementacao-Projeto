@@ -24,6 +24,15 @@ class UsuarioController extends Controller {
     private UsuarioService $usuarioService;
 
     public function __construct() {
+        
+        $papelNecessario = array();
+        $papelNecessario[0] = "ADMINISTRADOR";
+        $accessVerified = $this->verifyAccess($papelNecessario);
+        
+        if(! $accessVerified) {
+            return;
+        }
+
         $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
@@ -62,7 +71,7 @@ class UsuarioController extends Controller {
       
         $usuarios = $this->usuarioDao->list();
         $alcateias = $this->alcateiaDao->list();
-        $i = 0;
+
         foreach($usuarios as $usu) {
             if($usu->getIdAlcateia()) {
                 foreach($alcateias as $alc) {

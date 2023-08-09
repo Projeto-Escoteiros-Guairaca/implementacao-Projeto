@@ -1,6 +1,6 @@
 <?php 
 
-include_once(__DIR__ . "/../connection/Connection.php");
+include_once(__DIR__ . "/../util/Connection.php");
 include_once(__DIR__ . "/../model/Encontro.php");
 
 
@@ -24,6 +24,62 @@ class EncontroDao {
         
         return $encontros;
     }
+
+    public function filterByAlcateia(int $idAlcateia) {
+  $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_encontros e" . 
+        " WHERE e.id_alcateia = ? ORDER BY e.data";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$idAlcateia]);
+        $result = $stm->fetchAll();
+        $encontros = $this->mapEncontro($result);
+
+        foreach($encontros as $enc):
+            $alcateia = new Alcateia();
+            $alcateia = $this->listAlcateias($enc->getId_alcateia());
+            $enc->setAlcateia($alcateia[0]);
+        endforeach;
+        
+        return $encontros;
+    }
+    public function filterByData(string $desde, string $ate) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_encontros e" . 
+        " WHERE e.data BETWEEN ? AND ? ORDER BY e.data";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$desde, $ate]);
+        $result = $stm->fetchAll();
+        $encontros = $this->mapEncontro($result);
+
+        foreach($encontros as $enc):
+            $alcateia = new Alcateia();
+            $alcateia = $this->listAlcateias($enc->getId_alcateia());
+            $enc->setAlcateia($alcateia[0]);
+        endforeach;
+        
+        return $encontros;
+    }
+    public function filterByBoth(string $desde, string $ate, int $idAlcateia) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_encontros e" . 
+        " WHERE e.id_alcateia = ? AND e.data BETWEEN ? AND ? ORDER BY e.data";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$idAlcateia, $desde, $ate]);
+        $result = $stm->fetchAll();
+        $encontros = $this->mapEncontro($result);
+
+        foreach($encontros as $enc):
+            $alcateia = new Alcateia();
+            $alcateia = $this->listAlcateias($enc->getId_alcateia());
+            $enc->setAlcateia($alcateia[0]);
+        endforeach;
+        
+        return $encontros;
+    }
+
     public function listAlcateias(int $id){
 
         $conn = Connection::getConn();

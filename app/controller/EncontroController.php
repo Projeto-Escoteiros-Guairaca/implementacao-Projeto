@@ -12,8 +12,16 @@ class EncontroController extends Controller {
     private EncontroDAO $encontroDao;
     private EncontroService $encontroService;
 
-    public function __construct()
-    {
+    public function __construct() {
+
+        $papelNecessario = array();
+        $papelNecessario[0] = "ADMINISTRADOR";
+        $accessVerified = $this->verifyAccess($papelNecessario);
+        
+        if(! $accessVerified) {
+            return;
+        }
+
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
         $this->setActionDefault("list", true);
@@ -21,12 +29,55 @@ class EncontroController extends Controller {
     }
 
     public function list(string $msgErro = "", string $msgSucesso = ""){
+        
+        $encontros = [];
         $encontros = $this->encontroDao->list();
 
-        $dados["lista"] = $encontros;
-        $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, true);
-    }
 
+        //se existe algum filtro 
+        if(isset($_GET['filtered'])){
+            $dados = $this->filter();
+            $isNotFiltered = $dados['IsActuallyFiltered'];
+
+            $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, $isNotFiltered);
+            return;
+        } else {
+            $dados["lista"] = $encontros;
+            $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, true);
+    
+        }
+           }
+
+    public function filter() {
+        $encontros = [];
+        $idAlcateiaIsEmpty = empty($_POST['alcateiaEncontro']);
+        $desdeDataIsEmpty = empty($_POST['desde']);
+        $ateDataIsEmpty = empty($_POST['ate']);
+
+        $dados['IsActuallyFiltered'] = false;
+        $dados["desde"] = isset($_POST['desde']) ? $_POST['desde'] : 0;
+        $dados["ate"] = isset($_POST['ate']) ? $_POST['ate'] : 0;
+        $dados["id_alcateia"] = isset($_POST['alcateiaEncontro']) ? $_POST['alcateiaEncontro'] : 0;
+
+        if(!$idAlcateiaIsEmpty) {
+            if($desdeDataIsEmpty or $ateDataIsEmpty) {
+                $encontros = $this->encontroDao->filterByAlcateia($dados["id_alcateia"]);
+            }
+            if(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
+                $encontros = $this->encontroDao->filterByBoth( $dados["desde"], $dados["ate"], $dados["id_alcateia"]);
+            }
+        }
+        elseif(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
+            $encontros = $this->encontroDao->filterByData( $dados["desde"], $dados["ate"]);
+        }
+        else{
+            $dados['IsActuallyFiltered'] = true;
+            $encontros = $this->encontroDao->list();
+        }
+        $dados['lista'] = $encontros;
+        return $dados;
+
+    }
     public function create(){
         $dados["id_encontro"] = 0;
         $this->loadView("pages/encontro/formEncontro.php", $dados, "", "", true);

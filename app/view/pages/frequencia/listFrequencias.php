@@ -2,16 +2,7 @@
 
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
-    
-    $acessoCont = new AcessoController();
-if(isset($_SESSION[SESSAO_USUARIO_ID])) {
-    $papelUsuario = $_SESSION[SESSAO_USUARIO_PAPEIS];
-    $acessoCont->VerifyAccess($papelUsuario);
-}
-else {
-    $acessoCont->NoLogin();
-    return;
-}
+
 ?>
 
 <div class="container">

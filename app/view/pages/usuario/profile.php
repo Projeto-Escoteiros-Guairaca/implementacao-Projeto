@@ -1,113 +1,82 @@
+
 <?php
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 ?>
-<style>
-#usuario {
-    text-align: center;
-    border: 2px solid black;
-    width: 350px;
-    height: 350px;
-}
-#endereco {
-    text-align: center;
-    border: 2px solid black;
-    width: 510px;
-    height: 510px;
-}
-#contato {
-    text-align: center;
-    border: 2px solid black;
-    width: 250px;
-    height: 250px;
-}
-
-.container{
-    position: relative;
-    
-}
-</style>
 <?php require_once(__DIR__ . "/../../include/menu.php");?>
-<div class="container">
+<link rel="stylesheet" type="text/css" href="../view/styles/profile.css?v=<?php echo time(); ?>">
+
+<div class="d_total">
     <a class="btn btn-primary" href='<?= HOME_PAGE ?>'>Voltar</a>
                 
-    <h1> Datos do Usuário </h1>
+    <h1> Dados do Usuário </h1>
     <button> <a href="<?= BASEURL ?>
         /controller/UsuarioController.php?action=edit&id=<?=$dados['usuario']->getId()?>">
         Quer alterar teus Dados? </a>  </button>
         <br>
-    <div id="usuario">
-        <div>
-            <label> Nome: </label>
-        <b> <li><?= $dados['usuario']->getNome(); ?></li> </b>
-        </div>
-        <hr>
-        <div>
-            <label> Nome do Login: </label>
-            <b> <li><?= $dados['usuario']->getLogin(); ?></li> </b>
-        </div>
-        <hr>
-        <div>
-            <label> Teu papel no sistema: </label>
-            <b> <li><?= $dados['usuario']->getPapeisStr(); ?></li> </b>
-        </div>
-        <hr>
-        <div>
-            <label> Tua senha: </label>
-            <b> <li><?= $dados['usuario']->getSenha(); ?></li> </b>
-        </div>
+
+
+<div class="container">
+  <div class="row d_dados">
+    <div id="usuario" class="col">
+    <h2>Usuario</h2>
+
+        Nome:
+        <br>
+        <?= $dados['usuario']->getNome(); ?>
+        <br>
+        Nome do Login:
+        <br>
+        <?= $dados['usuario']->getLogin(); ?>
+        <br>
+        Teu papel no sistema:
+        <br>
+        <?= $dados['usuario']->getPapeisStr(); ?>
+        <br>
+        Tua senha: 
+        <br>
+        <?= $dados['usuario']->getSenha(); ?> 
+        <br>
     </div>
 
+    <div  id="endereco" class="col">
     <h2>Endereco </h2>
-    <div id="endereco">
-        <div>
-            <label> Teu CEP: </label>
-            <b> <li><?= $dados['usuario']->getEndereco()->getCep(); ?></li> </b>
-        </div>
-    <hr>
-        <div>
-            <label> Logradouro: </label>
-        <b> <li><?=$dados['usuario']->getEndereco()->getLogradouro(); ?></li> </b>
-        </div>
-    <hr>
-        <div>
-            <label> Teu numero de endereço: </label>
-            <b> <li><?= $dados['usuario']->getEndereco()->getNumeroEndereco(); ?></li> </b>
-        </div>
-    <hr>
-        <div>
-            <label> Bairro: </label>
-            <b> <li><?= $dados['usuario']->getEndereco()->getBairro(); ?></li> </b>
-        </div>
-    <hr>
-        <div>
-            <label> cidade:: </label>
-            <b> <li><?= $dados['usuario']->getEndereco()->getCidade(); ?></li> </b>
-        </div>
-    <hr>
-        <div>
-            <label> Pais: </label>
-            <b><li><?= $dados['usuario']->getEndereco()->getPais(); ?></li> </b>
-        </div>
+    
+        Teu CEP: <br>
+        <?= $dados['usuario']->getEndereco()->getCep(); ?> 
+        <br>
+        Logradouro: <br>
+        <?=$dados['usuario']->getEndereco()->getLogradouro(); ?>
+        <br>
+        Teu numero de endereço:<br>
+        <?= $dados['usuario']->getEndereco()->getNumeroEndereco(); ?>
+        <br>
+        Bairro:<br>
+        <?= $dados['usuario']->getEndereco()->getBairro(); ?>
+        <br>
+        cidade:<br>
+        <?= $dados['usuario']->getEndereco()->getCidade(); ?> 
+        <br>
+         Pais:<br>
+        <?= $dados['usuario']->getEndereco()->getPais(); ?>
+        <br>
     </div>
 
+    
+    <div id="contato" class="col">
     <h2>Contato </h2>
-    <div id="contato">
-        <div>
-            <label> Telefone de casa: </label>
-            <b> <li><?= $dados['usuario']->getContato()->getTelefone(); ?></li> </b>
-        </div>
-        <hr>
-        <div>
-            <label> Celular: </label>
-            <b> <li><?= $dados['usuario']->getContato()->getCelular(); ?></li> </b>
-        </div>
-        <hr>
-        <div>
-            <label> Email: </label>
-        <b>  <li><?= $dados['usuario']->getContato()->getEmail(); ?></li> </b>
-        </div>
+        
+        Telefone de casa: <br>
+        <?= $dados['usuario']->getContato()->getTelefone(); ?> 
+        <br>
+        Celular:<br>
+        <?= $dados['usuario']->getContato()->getCelular(); ?>
+        <br>
+        Email: <br>
+        <?= $dados['usuario']->getContato()->getEmail(); ?>
+        <br>
     </div>
+  </div>
 </div>
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");

@@ -14,6 +14,15 @@ class FrequenciaController extends Controller {
     private $frequenciaDao;
 
     public function __construct() {
+
+        $papelNecessario = array();
+        $papelNecessario[0] = "ADMINISTRADOR";
+        $accessVerified = $this->verifyAccess($papelNecessario);
+        
+        if(! $accessVerified) {
+            return;
+        }
+
         $this->frequenciaDao = new FrequenciaDAO();
 
         $this->setActionDefault("createFrequencias", false);    
