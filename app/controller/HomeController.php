@@ -12,6 +12,10 @@ class HomeController extends Controller {
     }
 
     protected function home() {
+        if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+            $this->loadView("pages/home/initialPage.php", [], "", "", true);            
+            return;
+        }
         $this->loadView("pages/home/index.php", [], "", "", true);
     }
 }

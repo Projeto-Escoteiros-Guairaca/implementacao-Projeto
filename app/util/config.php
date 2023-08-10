@@ -18,6 +18,10 @@ define('APP_NAME', 'Template do Projeto Integrador');
 //Página inicial do sistema
 define('HOME_PAGE', BASEURL . '/controller/HomeController.php?action=home');
 
+//Página de registração
+define('REGISTER_PAGE', BASEURL . '/controller/UsuarioController.php?action=create');
+
+
 //Página de logout do sistema
 define('LOGIN_PAGE', BASEURL . '/controller/LoginController.php?action=login');
 

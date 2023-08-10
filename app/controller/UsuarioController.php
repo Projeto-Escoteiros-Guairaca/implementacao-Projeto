@@ -25,14 +25,24 @@ class UsuarioController extends Controller {
 
     public function __construct() {
         
-        $papelNecessario = array();
-        $papelNecessario[0] = "ADMINISTRADOR";
-        $accessVerified = $this->verifyAccess($papelNecessario);
-        
-        if(! $accessVerified) {
-            return;
-        }
-
+            $isRegistering = false;
+            $papelNecessario = array();
+            $accessVerified = true;
+           
+            
+            if(isset($_GET['action'])) {
+                if($_GET['action'] == "create" or $_GET['action'] == "save") {
+                    $isRegistering = true;
+                }
+            }
+            else {
+                $papelNecessario[0] = "ADMINISTRADOR";
+                $accessVerified = $this->verifyAccess($papelNecessario);
+            }
+            if(! $accessVerified and $isRegistering == false) {
+                return;
+            }
+       
         $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
@@ -123,12 +133,11 @@ class UsuarioController extends Controller {
         $dados["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
         $dados["id_contato"] = isset($_POST['id_contato']) ? $_POST['id_contato'] : 0;
         $dados["id"] = isset($_POST['id']) ? $_POST['id'] : 0;
-        $confSenha = isset($_POST['conf_senha']) ? trim($_POST['conf_senha']) : NULL;
+        $confSenha = isset($_POST['conf_senha']) ? trim($_POST['conf_senha']) : "";
         
         $endereco = $this->saveEndereco();
         $contato = $this->saveContato();
         $usuario = $this->saveUsuario($endereco, $contato);
-
         //Validar os dados
         $errorUsuario = $this->usuarioService->validarUsuario($usuario, $confSenha);
         $errorContato = $this->usuarioService->validarContato($contato);
@@ -152,8 +161,7 @@ class UsuarioController extends Controller {
                     $this->usuarioService->updateCont($contato);
                 }
                 // - Enviar mensagem de sucesso
-                $msg = "Usuário salvo com sucesso.";
-                $this->list("", $msg);
+                $this->LoadController('Login', '?action=login', true);
                 exit;
             } catch (PDOException $e) {
                 $erros = ["[Erro ao salvar o usuário na base de dados.]"];
@@ -188,11 +196,11 @@ class UsuarioController extends Controller {
     protected function saveEndereco() {
           // Captura dados endereço
           $cep = isset($_POST['cep']) ? trim($_POST['cep']) : NULL;
-          $logradouro = isset($_POST['logradouro']) ? trim($_POST['logradouro']) : NULL;
-          $numero = isset($_POST['numeroEndereco']) ? trim($_POST['numeroEndereco']) : NULL;
-          $bairro = isset($_POST['bairro']) ? trim($_POST['bairro']) : NULL;
-          $cidade = isset($_POST['cidade']) ? trim($_POST['cidade']) : NULL;
-          $pais = isset($_POST['pais']) ? trim($_POST['pais']) : NULL;
+          $logradouro = isset($_POST['logradouro']) ? trim($_POST['logradouro']) : "";
+          $numero = isset($_POST['numeroEndereco']) ? trim($_POST['numeroEndereco']) : "";
+          $bairro = isset($_POST['bairro']) ? trim($_POST['bairro']) : "";
+          $cidade = isset($_POST['cidade']) ? trim($_POST['cidade']) : "";
+          $pais = isset($_POST['pais']) ? trim($_POST['pais']) : "";
           // Cria objeto endereço
           $endereco = new Endereco();
           $endereco->setCep($cep);
@@ -205,9 +213,9 @@ class UsuarioController extends Controller {
     }
     protected function saveContato() {
          // Captura dados contato
-         $telefone = isset($_POST['telefone']) ? trim($_POST['telefone']) : NULL;
-         $celular = isset($_POST['celular']) ? trim($_POST['celular']) : NULL;
-         $email = isset($_POST['email']) ? trim($_POST['email']) : NULL; 
+         $telefone = isset($_POST['telefone']) ? trim($_POST['telefone']) : "";
+         $celular = isset($_POST['celular']) ? trim($_POST['celular']) : "";
+         $email = isset($_POST['email']) ? trim($_POST['email']) : ""; 
          // Cria objeto contato
          $contato = new Contato();
          $contato->setTelefone($telefone);
@@ -219,10 +227,10 @@ class UsuarioController extends Controller {
          //Captura os dados do usuário
          $id_endereco["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
          $id_contato["id_contato"] = isset($_POST['id_contato']) ? $_POST['id_contato'] : 0;
-         $nome = isset($_POST['nome']) ? trim($_POST['nome']) : NULL;
-         $cpf = isset($_POST['cpf']) ? trim($_POST['cpf']) : NULL;
-         $login = isset($_POST['login']) ? trim($_POST['login']) : NULL;
-         $senha = isset($_POST['senha']) ? trim($_POST['senha']) : NULL;
+         $nome = isset($_POST['nome']) ? trim($_POST['nome']) : "";
+         $cpf = isset($_POST['cpf']) ? trim($_POST['cpf']) : "";
+         $login = isset($_POST['login']) ? trim($_POST['login']) : "";
+         $senha = isset($_POST['senha']) ? trim($_POST['senha']) : "";
          //Captura os papeis do usuário
          $papeis = array();
          foreach(UsuarioPapel::getAllAsArray() as $papel) {

@@ -33,6 +33,8 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                     <?php echo"<a href = " .HOME_PAGE. "> Home</a>"; ?>
                     <?php if($nome === "Faça Login no menu") { 
                             echo "<a href = " .LOGIN_PAGE."> Login</a>";
+                            echo "<a href = " .REGISTER_PAGE."> Registre-se</a>";
+
                         }
                         else {
                             echo "<a href = " .LOGOUT_PAGE."> Sair</a>";
