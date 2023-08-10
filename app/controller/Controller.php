@@ -47,7 +47,7 @@ class Controller {
         //exit;
 
         $caminho = __DIR__ . "/../view/" . $path;
-        //echo $caminho;
+       // echo $caminho;
         if(file_exists($caminho)) {
             require $caminho;
 
@@ -61,7 +61,12 @@ class Controller {
             echo "Caminho: " . $caminho;
         }
     }
+    
+    protected function loadController(string $controllerToBeCalled, string $URL = "", bool $fazer) {
+        $caminho = $controllerToBeCalled . "Controller.php" . $URL;
+        header("Location: $caminho");
 
+    }
     //Método executado para ação inexistente
     private function noAction() {
         echo "Ação não encontrada no controller.<br>";
