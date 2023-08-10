@@ -14,29 +14,29 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         /controller/UsuarioController.php?action=edit&id=<?=$dados['usuario']->getId()?>">
         Quer alterar teus Dados? </a>  </button>
         <br>
-  <div class="row justify-contenf-center">
-    <div id="usuario" class="col">
+  <div class="row justify-content-center">
+    <div id="usuario" class="col-3 m-4">
     <h2>Usuario</h2>
 
         Nome:
         <br>
-        <?= $dados['usuario']->getNome(); ?>
+        <p class ="p_dados"> <?= $dados['usuario']->getNome(); ?> <p>
         <br>
         Nome do Login:
         <br>
-        <?= $dados['usuario']->getLogin(); ?>
+        <p class ="p_dados"> <?= $dados['usuario']->getLogin(); ?> <p>
         <br>
         Teu papel no sistema:
         <br>
-        <?= $dados['usuario']->getPapeisStr(); ?>
+        <p class ="p_dados"> <?= $dados['usuario']->getPapeisStr(); ?><p>
         <br>
         Tua senha: 
         <br>
-        <?= $dados['usuario']->getSenha(); ?> 
+        <p class ="p_dados"> <?= $dados['usuario']->getSenha(); ?> <p>
         <br>
     </div>
 
-    <div  id="endereco" class="col">
+    <div  id="endereco" class="col-3 m-4">
     <h2>Endereco </h2>
     
         Teu CEP: <br>
@@ -59,7 +59,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         <br>
     </div>
     
-    <div id="contato" class="col">
+    <div id="contato" class="col-3 m-4">
     <h2>Contato </h2>
         
         Telefone de casa: <br>
