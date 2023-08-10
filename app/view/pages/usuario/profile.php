@@ -14,10 +14,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         /controller/UsuarioController.php?action=edit&id=<?=$dados['usuario']->getId()?>">
         Quer alterar teus Dados? </a>  </button>
         <br>
-
-
-<div class="container">
-  <div class="row d_dados">
+  <div class="row justify-contenf-center">
     <div id="usuario" class="col">
     <h2>Usuario</h2>
 
@@ -61,7 +58,6 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         <?= $dados['usuario']->getEndereco()->getPais(); ?>
         <br>
     </div>
-
     
     <div id="contato" class="col">
     <h2>Contato </h2>
@@ -76,8 +72,9 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         <?= $dados['usuario']->getContato()->getEmail(); ?>
         <br>
     </div>
-  </div>
+  </div> 
 </div>
+
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");
 ?>
