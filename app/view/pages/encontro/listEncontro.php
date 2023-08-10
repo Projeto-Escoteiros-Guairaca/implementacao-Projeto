@@ -62,26 +62,36 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php if (count($dados["lista"]) == 0) : ?>
+                        <tr>
+                            <td colspan="6">Nenhum encontro encontrado, tente novamente.</td>
+                        </tr>
+                    <?php else: ?>
                         <?php foreach($dados["lista"] as $enc): ?>
                             <tr>
                                 <td><?php echo $enc->getDataFormated(); ?></td>
                                 <td><?= $enc->getDescricao(); ?></td>
                                 <td><?= $enc->getAlcateia()->getNome(); ?></td>
-
-                                <td><a class="btn btn-primary" 
-                                    href="<?= BASEURL ?>/controller/EncontroController.php?action=edit&id=<?= $enc->getId_encontro() ?>">
-                                    Alterar</a> 
+                                <td>
+                                    <a class="btn btn-primary" 
+                                        href="<?= BASEURL ?>/controller/EncontroController.php?action=edit&id=<?= $enc->getId_encontro() ?>">
+                                        Alterar</a> 
                                 </td>
-                                 <td><a class="btn btn-secondary" 
-                                    href="<?= BASEURL ?>/controller/FrequenciaController.php?action=createFrequencias&idEncontro=<?= 
-                                                        $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">
-                                    Usuários</a> 
+                                <td>
+                                    <a class="btn btn-secondary" 
+                                        href="<?= BASEURL ?>/controller/FrequenciaController.php?action=createFrequencias&idEncontro=<?= 
+                                            $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">
+                                        Usuários</a> 
                                 </td>
-                                <td><a class="btn btn-danger" onclick="return confirm('Deseja excluir ?')" href="<?= BASEURL ?>/controller/encontroController.php?action=delete&id=<?= $enc->getId_encontro() ?>">
-                                    Excluir</a> 
+                                <td>
+                                    <a class="btn btn-danger" onclick="return confirm('Deseja excluir ?')" 
+                                        href="<?= BASEURL ?>/controller/encontroController.php?action=delete&id=<?= $enc->getId_encontro() ?>">
+                                        Excluir</a> 
                                 </td>
                             </tr>
                         <?php endforeach; ?>
+                    <?php endif; ?>
+
                     </tbody>
                 </table>
                 <a class="btn btn-success" 

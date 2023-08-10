@@ -32,25 +32,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($dados["lista"] as $freq): ?>
+                        <?php if (count($dados["lista"]) == 0) : ?>
                             <tr>
-                                <td><?php echo $freq->getUsuario()->getNome(); ?></td>
-                                <td>
-                                    <?php 
-                                    if ($freq->getFrequencia() == 1) {
-                                        echo "<a class='btn btn-outline-success' href='". BASEURL .
-                                         "/controller/FrequenciaController.php?action=updateToFalse&id=". $freq->getId_frequencia() .
-                                         "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>C</a>";
-                                    } else {
-                                        echo "<a class='btn btn-outline-danger' href='". BASEURL .
-                                         "/controller/FrequenciaController.php?action=updateToTrue&id=". $freq->getId_frequencia() .
-                                         "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>F</a>";
-                                    }
-                                    ?>
-                                </td>
-                                </td>
+                                <td colspan="6">Nenhum usuário encontrado para registro, tente novamente.</td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php foreach($dados["lista"] as $freq): ?>
+                                <tr>
+                                    <td><?php echo $freq->getUsuario()->getNome(); ?></td>
+                                    <td>
+                                        <?php 
+                                        if ($freq->getFrequencia() == 1) {
+                                            echo "<a class='btn btn-outline-success' href='". BASEURL .
+                                            "/controller/FrequenciaController.php?action=updateToFalse&id=". $freq->getId_frequencia() .
+                                            "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>C</a>";
+                                        } else {
+                                            echo "<a class='btn btn-outline-danger' href='". BASEURL .
+                                            "/controller/FrequenciaController.php?action=updateToTrue&id=". $freq->getId_frequencia() .
+                                            "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>F</a>";
+                                        }
+                                        ?>
+                                    </td>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
                 <a class="btn btn-success" href="<?= BASEURL ?>/controller/EncontroController.php?action=list">Voltar</a>
