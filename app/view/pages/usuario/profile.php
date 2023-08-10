@@ -5,7 +5,8 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 ?>
 <?php require_once(__DIR__ . "/../../include/menu.php");?>
 <link rel="stylesheet" type="text/css" href="../view/styles/profile.css?v=<?php echo time(); ?>">
-<div class="container col-12">
+
+<div class="d_total">
     <a class="btn btn-primary" href='<?= HOME_PAGE ?>'>Voltar</a>
                 
     <h1> Dados do Usuário </h1>
@@ -13,108 +14,67 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         /controller/UsuarioController.php?action=edit&id=<?=$dados['usuario']->getId()?>">
         Quer alterar teus Dados? </a>  </button>
         <br>
-    <div class= "col-4 " id="usuario">
-        <div class= "row">
-            <label> Nome: </label>
-        </div>      
-            <div class = "row">
-                <b><?= $dados['usuario']->getNome(); ?> </b>
-            </div>
-        <hr>
+  <div class="row justify-contenf-center">
+    <div id="usuario" class="col">
+    <h2>Usuario</h2>
 
-        <div class= "row">
-            <label> Nome do Login: </label>
-        </div>
-            <div class="row">
-                <b><?= $dados['usuario']->getLogin(); ?> </b>
-            </div>
-        <hr>
-
-        <div class= "row">
-            <label> Teu papel no sistema: </label>
-        </div>
-            <div class= "row">
-                <b><?= $dados['usuario']->getPapeisStr(); ?></b>
-            </div>
-        <hr>
-
-        <div class= "row">
-            <label> Tua senha: </label>
-        </div>
-            <div class= "row">
-                <b> <?= $dados['usuario']->getSenha(); ?> </b>
-            </div>
+        Nome:
+        <br>
+        <?= $dados['usuario']->getNome(); ?>
+        <br>
+        Nome do Login:
+        <br>
+        <?= $dados['usuario']->getLogin(); ?>
+        <br>
+        Teu papel no sistema:
+        <br>
+        <?= $dados['usuario']->getPapeisStr(); ?>
+        <br>
+        Tua senha: 
+        <br>
+        <?= $dados['usuario']->getSenha(); ?> 
+        <br>
     </div>
 
+    <div  id="endereco" class="col">
     <h2>Endereco </h2>
-    <div class= "col-4" id="endereco">
-        <div class= "row">
-            <label> Teu CEP: </label>
-        </div>
-            <div class= "row">
-                <b> <?= $dados['usuario']->getEndereco()->getCep(); ?> </b>
-            </div>
-    <hr>
-        <div class= "row">
-            <label> Logradouro: </label>
-        </div>
-            <div class= "row">
-                <b> <?=$dados['usuario']->getEndereco()->getLogradouro(); ?> </b>
-        </div>
-    <hr>
-        <div class= "row">
-            <label> Teu numero de endereço: </label>
-        </div>
-            <div class= "row">
-                <b> <?= $dados['usuario']->getEndereco()->getNumeroEndereco(); ?> </b>
-            </div>
-    <hr>
-        <div class= "row">
-            <label> Bairro: </label>
-        </div>
-            <div class= "row">
-                <b> <?= $dados['usuario']->getEndereco()->getBairro(); ?> </b>
-            </div>
-    <hr>
-        <div class= "row">
-            <label> cidade:: </label>
-        </div>
-            <div class= "row">
-                <b> <?= $dados['usuario']->getEndereco()->getCidade(); ?> </b>
-            </div>
-    <hr>
-        <div class= "row">
-            <label> Pais: </label>
-        </div>
-            <div class= "row">
-                <b><?= $dados['usuario']->getEndereco()->getPais(); ?> </b>
-            </div>
+    
+        Teu CEP: <br>
+        <?= $dados['usuario']->getEndereco()->getCep(); ?> 
+        <br>
+        Logradouro: <br>
+        <?=$dados['usuario']->getEndereco()->getLogradouro(); ?>
+        <br>
+        Teu numero de endereço:<br>
+        <?= $dados['usuario']->getEndereco()->getNumeroEndereco(); ?>
+        <br>
+        Bairro:<br>
+        <?= $dados['usuario']->getEndereco()->getBairro(); ?>
+        <br>
+        cidade:<br>
+        <?= $dados['usuario']->getEndereco()->getCidade(); ?> 
+        <br>
+         Pais:<br>
+        <?= $dados['usuario']->getEndereco()->getPais(); ?>
+        <br>
     </div>
-
+    
+    <div id="contato" class="col">
     <h2>Contato </h2>
-    <div class= "col-4" id="contato">
-        <div class= "row">
-            <label> Telefone de casa: </label>
-        </div>
-            <div class = "row">
-                <b> <?= $dados['usuario']->getContato()->getTelefone(); ?> </b>
-            </div>
-        <hr>
-        <div class= "row">
-            <label> Celular: </label>
-        </div>
-            <div class= "row">
-                <b> <?= $dados['usuario']->getContato()->getCelular(); ?> </b>
-            </div>
-        <hr>
-        <div class= "row">
-            <label> Email: </label>
-        </div>
-            <div class= "row">
-                <b>  <?= $dados['usuario']->getContato()->getEmail(); ?> </b>
-            </div>
+        
+        Telefone de casa: <br>
+        <?= $dados['usuario']->getContato()->getTelefone(); ?> 
+        <br>
+        Celular:<br>
+        <?= $dados['usuario']->getContato()->getCelular(); ?>
+        <br>
+        Email: <br>
+        <?= $dados['usuario']->getContato()->getEmail(); ?>
+        <br>
     </div>
+  </div> 
 </div>
+
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");
 ?>
