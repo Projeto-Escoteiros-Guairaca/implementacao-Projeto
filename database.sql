@@ -32,7 +32,7 @@ CREATE TABLE tb_usuarios (
   cpf char(11) NOT NULL,
   login varchar(15) NOT NULL,
   senha varchar(15) NOT NULL,
-  papeis varchar(255),
+  papeis varchar(255) DEFAULT 'USUARIO',
   status_usuario varchar(70) NOT NULL DEFAULT 'ATIVO',
   PRIMARY KEY (id_usuario),
   FOREIGN KEY (id_endereco) REFERENCES tb_enderecos (id_endereco),

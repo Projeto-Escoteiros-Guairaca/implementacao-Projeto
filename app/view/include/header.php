@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="../view/styles/main.css?v=<?php echo time(); ?>">
-    <link rel="shortcut icon" href="..\view\home\images\escoteira_favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="..\view\pages\home\images\escoteira_favicon.ico" type="image/x-icon">
     <title><?php echo APP_NAME; ?></title>
 
     <!-- Bootstrap CSS -->
