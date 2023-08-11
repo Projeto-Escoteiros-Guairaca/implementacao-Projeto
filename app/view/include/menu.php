@@ -20,7 +20,6 @@ if(isset($_SESSION[SESSAO_USUARIO_NOME]))
 $acessoCont = new AcessoController();
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 
-var_dump($isAdministrador);
 ?>
 
 
