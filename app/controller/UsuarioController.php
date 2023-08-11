@@ -36,7 +36,7 @@ class UsuarioController extends Controller {
                 }
             }
             else {
-                $papelNecessario[0] = "ADMINISTRADOR";
+                $papelNecessario[0] = [UsuarioPapel::ADMINISTRADOR];
                 $accessVerified = $this->verifyAccess($papelNecessario);
             }
             if(! $accessVerified and $isRegistering == false) {

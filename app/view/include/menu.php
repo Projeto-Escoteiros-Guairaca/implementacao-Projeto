@@ -20,6 +20,7 @@ if(isset($_SESSION[SESSAO_USUARIO_NOME]))
 $acessoCont = new AcessoController();
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 
+var_dump($isAdministrador);
 ?>
 
 
@@ -40,7 +41,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                             echo "<a href = " .LOGOUT_PAGE."> Sair</a>";
                         }
                     ?>
-                    <?php if($isAdministrador) { 
+                    <?php if($isAdministrador == 1) { 
                             echo "<a href = " .BASEURL. "/controller/UsuarioController.php?action=list> Cadastro</a>";
                             echo "<a href = " .BASEURL. "/controller/AlcateiaController.php?action=list> Alcateias</a>";
                             echo "<a href = " .BASEURL. "/controller/EncontroController.php?action=list> Encontros</a>";

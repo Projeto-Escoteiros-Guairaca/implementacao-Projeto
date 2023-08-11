@@ -58,7 +58,6 @@
                             <th>Alcateia</th>
                             <th>Alterar</th>
                             <th>Lista de usuários</th>
-                            <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,11 +81,6 @@
                                         href="<?= BASEURL ?>/controller/FrequenciaController.php?action=createFrequencias&idEncontro=<?= 
                                             $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">
                                         Usuários</a> 
-                                </td>
-                                <td>
-                                    <a class="btn btn-danger" onclick="return confirm('Deseja excluir ?')" 
-                                        href="<?= BASEURL ?>/controller/encontroController.php?action=delete&id=<?= $enc->getId_encontro() ?>">
-                                        Excluir</a> 
                                 </td>
                             </tr>
                         <?php endforeach; ?>
