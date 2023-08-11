@@ -19,14 +19,20 @@ error_reporting(E_ALL);
 }
 
 USAR ISSO NO TOPO DA PÁGINA PARA MOSTRAR ERROS
-Filtro de encontros:
+Implementar depois 
 
-- Alcateias: coloca o nome da alcateia e busca somente os encontros com a alcateia definida
+<!-- <div class="form-group">
+    <label>Papéis do usuário:</label>
+    <?php// foreach($dados["papeis"] as $papel):?>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="<?=// $papel?>" id="<?= //'ckc' . $papel?>"
+                <?php
+                    // if(isset($dados['usuario']) && in_array($papel, $dados['usuario']->getPapeisAsArray()))
+                    //     echo "checked";
+                ?>
+            />
+            <label for="<?= //'ckc' . $papel?>" id="<?= //'ckc' . $papel?>" class="form-check-label"><?=// $papel?></label>
+        </div>
+        <?php //endforeach; ?>
 
-- Data: teremos dois valores, que definirão um periodo especifico. Tentaremos usar os valores que vem do input, mas se necessario, precisaremos formatar a data 
-para o estilo norte americano, e depois de volta ao brasileiro mundial normal de toda a vida na hora de listar;
-
-- input hidden que mantem os parametros da busca,  :D
-
-input text name="filtro1"  value="$dados['filtro1']" 
-input text name="filtro2"  value="$dados['filtro2']" 
+</div> -->

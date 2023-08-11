@@ -71,7 +71,7 @@ class AlcateiaController extends Controller{
 
             $dados["id_alcateia"] = $alcateia->getId_alcateia();
             $dados["alcateia"] = $alcateia;        
-            $this->loadView("alcateia/formAlcateia.php", $dados, "", "", true);
+            $this->loadView("pages/alcateia/formAlcateia.php", $dados, "", "", true);
         } else {
             $this->list("Alcateia não encontrada.");
         }
@@ -125,7 +125,7 @@ class AlcateiaController extends Controller{
         $dados["nomeAlcateia"] = $nomeAlcateia;
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("alcateia/formAlcateia.php", $dados, $msgsErro, "", true);
+        $this->loadView("pages/alcateia/formAlcateia.php", $dados, $msgsErro, "", true);
  
     }
     
