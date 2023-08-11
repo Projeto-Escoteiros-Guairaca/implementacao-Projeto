@@ -27,7 +27,7 @@
 /*Estiliza o fundo do formulario*/
 .d_form{
     position: relative;
-    margin-top: 2.5vh;
+    margin-top: 8vh;
     align-items: center;
     border-radius: 15px;
     text-align: center;
@@ -119,12 +119,6 @@
         height: 60vh;}
     .form-group{width: 300px;}}
 
-@media only screen and (min-width: 440px) {
-    .d_form{
-        width: 50vh;
-        height: 60vh;}
-    .form-group{width: 300px;}}
-
 @media only screen and (min-width: 480px) {
     .d_form{
         width: 60vh;
@@ -135,4 +129,7 @@
     .d_form{
         width: 60vh;
         height: 60vh;}
-    .form-group{width: 330px;}}
+    .form-group{width: 330px;}
+    .col-12{
+        align-items: center;
+    }}

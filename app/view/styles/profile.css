@@ -45,4 +45,16 @@ h1{
     color: rgb(16, 159, 11);
 }
 
-#btn
+#btn_voltar_profile{
+    position: absolute;
+    margin-left: 42vh;
+    margin-top: 8vh;
+}
+
+#btn_altercao{
+    background-color: rgb(16, 159, 11);
+    
+}
+#btn_voltar_profile{
+    background-color: rgb(16, 159, 11);
+}
