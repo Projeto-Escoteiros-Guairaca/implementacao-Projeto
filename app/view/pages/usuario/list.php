@@ -36,46 +36,51 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($dados["lista"] as $usu): ?>
+                        <?php if (count($dados["lista"]) == 0) : ?>
                             <tr>
-                                <td><?= $usu->getNome(); ?></td>
-                                <td><?= $usu->getLogin(); ?></td>
-                                <td><?= $usu->getPapeisStr(); ?></td>
-                                <td>
-                                    <?php if($usu->getStatus() == 'ATIVO'): ?>
-                                        
-                                    <?php else: ?>
-
-                                    <?php endif; ?>
-
-
-
-                                    <?php
-                                    if ($usu->getStatus() == 'ATIVO') {
-                                        echo "<a class='btn btn-outline-success' onclick=\"return confirm('Deseja alterar o status do usuário para INATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToInativo&id=". $usu->getId() ."'>ATIVO</a>";
-                                    } else {
-                                        echo "<a class='btn btn-outline-danger' onclick=\"return confirm('Deseja alterar o status do usuário para ATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToAtivo&id=". $usu->getId() ."'>INATIVO</a>";
-                                    }
-                                    ?>
-                                </td>
-
-                                <td>   
-                                    <button class="<?php if($usu->getAlcateia()) {
-                                            echo "btn btn-secondary";
-                                        }else {
-                                            echo "btn btn-warning";
-                                        }?>"
-                                         id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
-                                         , 'list', <?= $usu->getId();?>);"> 
-                                        <?php if($usu->getAlcateia()) {
-                                            echo $usu->getAlcateia()->getNome();
-                                        }else {
-                                            echo "sem alcateia";
-                                        }?>
-                                    </button>
-                                </td>
+                                <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php foreach($dados["lista"] as $usu): ?>
+                                <tr>
+                                    <td><?= $usu->getNome(); ?></td>
+                                    <td><?= $usu->getLogin(); ?></td>
+                                    <td><?= $usu->getPapeisStr(); ?></td>
+                                    <td>
+                                        <?php if($usu->getStatus() == 'ATIVO'): ?>
+                                            
+                                        <?php else: ?>
+
+                                        <?php endif; ?>
+
+
+                                        <?php
+                                        if ($usu->getStatus() == 'ATIVO') {
+                                            echo "<a class='btn btn-outline-success' onclick=\"return confirm('Deseja alterar o status do usuário para INATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToInativo&id=". $usu->getId() ."'>ATIVO</a>";
+                                        } else {
+                                            echo "<a class='btn btn-outline-danger' onclick=\"return confirm('Deseja alterar o status do usuário para ATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToAtivo&id=". $usu->getId() ."'>INATIVO</a>";
+                                        }
+                                        ?>
+                                    </td>
+
+                                    <td>   
+                                        <button class="<?php if($usu->getAlcateia()) {
+                                                echo "btn btn-secondary";
+                                            }else {
+                                                echo "btn btn-warning";
+                                            }?>"
+                                            id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
+                                            , 'list', <?= $usu->getId();?>);"> 
+                                            <?php if($usu->getAlcateia()) {
+                                                echo $usu->getAlcateia()->getNome();
+                                            }else {
+                                                echo "sem alcateia";
+                                            }?>
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
                 <a class="btn btn-success" 

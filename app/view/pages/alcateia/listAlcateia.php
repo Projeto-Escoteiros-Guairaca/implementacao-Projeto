@@ -26,21 +26,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($dados["lista"] as $alc): ?>
-                    <table id="tabAlcateias <?php echo $alc->getId_alcateia(); ?>" class="table table-striped table-bordered">
-                            <tr >
-                                <td><?= $alc->getNome(); ?></td>
-                                <td><a class="btn btn-warning" 
-                                    href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
-                                    Alterar</a> 
-                                </td>
-                                <td>        <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, 'listUsuarios')"> 
-                                   Listar usuarios </button>
-                                </td>
+                        <?php if (count($dados["lista"]) == 0) : ?>
+                            <tr>
+                                <td colspan="6">Nenhum alcateia encontrada, tente novamente.</td>
                             </tr>
-                            </table>
-
-                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php foreach($dados["lista"] as $alc): ?>
+                                <table id="tabAlcateias <?php echo $alc->getId_alcateia(); ?>" class="table table-striped table-bordered">
+                                    <tr >
+                                        <td><?= $alc->getNome(); ?></td>
+                                        <td><a class="btn btn-warning" 
+                                            href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
+                                            Alterar</a> 
+                                        </td>
+                                        <td>        <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, 'listUsuarios')"> 
+                                        Listar usuarios </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
                 <a class="btn btn-success" 
