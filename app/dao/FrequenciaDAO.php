@@ -22,6 +22,7 @@ class FrequenciaDAO {
         $stm->execute();
         }
     }
+    
     public function list(){
 
         $conn = Connection::getConn();
@@ -32,35 +33,6 @@ class FrequenciaDAO {
         $result = $stm->fetchAll();
         
         return $this->mapFrequencia($result);
-    }
-
-    public function findUsuariosById(int $id){
-        $conn = Connection::getConn();
-
-        $sql = "SELECT * FROM tb_usuarios e" .
-               " WHERE e.id_usuario = ? ORDER BY e.id_usuario";
-        $stm = $conn->prepare($sql);    
-        $stm->execute([$id]);
-        $result = $stm->fetchAll();
-       $usuario = $this->mapUsuarios($result);
-       if(count($usuario) == 1)
-       return $usuario[0];
-   elseif(count($usuario) == 0)
-       return null;
-
-   die("UsuarioDAO.findById()" . 
-       " - Erro: mais de um usuário encontrado.");
-    }
-    
-    public function findUsuariosByIdAcateia(int $id){
-        $conn = Connection::getConn();
-
-        $sql = "SELECT * FROM tb_usuarios e" .
-               " WHERE e.id_alcateia = ? ORDER BY e.id_usuario";
-        $stm = $conn->prepare($sql);    
-        $stm->execute([$id]);
-        $result = $stm->fetchAll();
-       return $this->mapUsuarios($result);
     }
 
     public function findFrequenciaByIdEncontro(int $id){
@@ -74,28 +46,6 @@ class FrequenciaDAO {
         
        return $this->mapFrequencia($result);
     }
-    
-    public function findEncontroByIdEncontro(int $id){
-        $conn = Connection::getConn();
-
-        $sql = "SELECT * FROM tb_encontros f" .
-               " WHERE f.id_encontro = ?";
-        $stm = $conn->prepare($sql);    
-        $stm->execute([$id]);
-        $result = $stm->fetchAll();
-        
-       return $this->mapEncontro($result);
-    }
-    private function mapEncontro($result){
-        $encontros = array();
-        foreach ($result as $reg) {
-            $encontro = new Encontro();
-            $encontro->setData($reg['data']);
-            array_push($encontros, $encontro);
-        }
-        return $encontros;
-    }
-
     private function mapFrequencia($result){
         $frequencias = array();
         foreach ($result as $reg) {
@@ -110,29 +60,6 @@ class FrequenciaDAO {
         }
         return $frequencias;
     }
-   private function mapUsuarios($result) {
-    $usuarios = array();
-    foreach ($result as $reg) {
-        $usuario = new Usuario();
-        $usuario->setId($reg['id_usuario']);
-        $usuario->setNome($reg['nome']);
-        $usuario->setCpf($reg['cpf']);
-        $usuario->setLogin($reg['login']);
-        $usuario->setSenha($reg['senha']);
-        $usuario->setPapeis($reg['papeis']);
-        $usuario->setStatus($reg['status_usuario']);
-
-        //Seta os campos provisórios
-        $usuario->setIdEndereco($reg['id_endereco']);
-        $usuario->setIdContato($reg['id_contato']);
-        $usuario->setIdAlcateia($reg['id_alcateia']);
-
-
-        array_push($usuarios, $usuario);
-    }
-        return $usuarios;
-
-   }
    public function updateToFalse(){
         $conn = Connection::getConn();
         $sql = "UPDATE tb_frequencias SET frequencia = 0 WHERE id_frequencia = :id";

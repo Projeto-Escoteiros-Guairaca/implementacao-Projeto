@@ -1,17 +1,18 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
-require_once(__DIR__ . "/../model/Frequencia.php");
+require_once(__DIR__ . "/../dao/EncontroDAO.php");
+require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 
+require_once(__DIR__ . "/../model/Frequencia.php");
 
 
 class FrequenciaController extends Controller {
 
     private $frequenciaDao;
+    private $usuarioDao;
+    private $encontroDao;
 
     public function __construct() {
 
@@ -24,6 +25,8 @@ class FrequenciaController extends Controller {
         }
 
         $this->frequenciaDao = new FrequenciaDAO();
+        $this->usuarioDao = new UsuarioDAO();
+        $this->encontroDao = new EncontroDAO();
 
         $this->setActionDefault("createFrequencias", false);    
         $this->handleAction();
@@ -68,13 +71,13 @@ class FrequenciaController extends Controller {
         $id = 0;
         $id = $_GET['idAlcateia'];
 
-        $usuarios = $this->frequenciaDao->findUsuariosByIdAcateia($id);
+        $usuarios = $this->usuarioDao->findUsuariosByIdAcateia($id);
         return $usuarios;
     }
     public function findUsuariosById(Array $frequencias){
         $usuarios = array();
         foreach($frequencias as $freq):
-            $usuario = $this->frequenciaDao->findUsuariosById($freq->getId_usuario());
+            $usuario = $this->usuarioDao->findUsuariosById($freq->getId_usuario());
             array_push($usuarios, $usuario);
         endforeach;
         return $usuarios;
@@ -90,7 +93,7 @@ class FrequenciaController extends Controller {
     public function findEncontroByIdEncontro(){
         $id = 0;
         $id = $_GET['idEncontro'];
-        $frequencias = $this->frequenciaDao->findEncontroByIdEncontro($id);
+        $frequencias = $this->encontroDao->findById($id);
         return $frequencias;
     }
 
