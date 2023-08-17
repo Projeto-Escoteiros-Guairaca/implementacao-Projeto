@@ -1,3 +1,7 @@
+:root {
+    --cor-dark-mod: #293556; /* Substitua pelo código de cor que desejar */
+  }
+
 .col-12{
     position: relative;
     width: 100vh;
@@ -13,7 +17,7 @@
 #h4_log{
     position: absolute;
     margin-top: -45vh;
-    color: rgb(16, 159, 11);
+    color: var(--cor-dark-mod);
 }
 
 /*Estiliza o label do formulario*/
@@ -21,19 +25,19 @@
     margin-top: 6vh;
     border-radius: 20px;
     text-align: center;
-    background-color: rgb(16, 159, 11);   
+    background-color: var(-cor-dark-mod);   
 }
 
 /*Estiliza o fundo do formulario*/
 .d_form{
     position: relative;
-    margin-top: 2.5vh;
+    margin-top: 8vh;
     align-items: center;
     border-radius: 15px;
     text-align: center;
     display: flex;
     justify-content: center;
-    border: solid 1px rgb(16, 159, 11);
+    border: solid 1px var(--cor_dark_mod);
 }
 
 /*Estiliza o input do formulario*/
@@ -46,10 +50,10 @@
     font-size: 1rem;
     line-height: 1.5;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    color: rgb(16, 159, 11);
-    border: solid 2px rgb(16, 159, 11) ;
+    color: var(--cor_dark_mod);
+    border: solid 2px var(--cor_dark_mod) ;
     border-radius: 10px;
-    background-color: rgb(166, 246, 95);
+    background-color: var(--cor_dark_mod);
 }
 
 /*Div de fundo do formulario*/
@@ -68,7 +72,7 @@
     outline: none;
     transition: 1s ease-in-out;
     background: transparent;
-    border: 1px solid rgb(16, 159, 11);
+    border: 1px solid var(--cor_dark_mod);
 }
 
 #btn_logar:hover {transition: 1s ease-in-out;}
@@ -78,12 +82,12 @@
 #btn_logar span {
     font-size: 18px;
     font-weight: 100;
-    color: rgb(16, 159, 11);
+    color: var(--cor_dark_mod);
 }
 
 #btn_voltar:hover {
     transition: 1s ease-in-out;
-    background: rgb(166, 246, 95);
+    background: var(--cor_dark_mod);
 }
 
 #btn_voltar:hover svg {stroke-dashoffset: -480;}
@@ -91,7 +95,7 @@
 #btn_voltar span {
     font-size: 18px;
     font-weight: 100;
-    color: rgb(16, 159, 11);
+    color: var(--cor_dark_mod);
 }
 
 .btn-primary{text-align: center;}
@@ -119,12 +123,6 @@
         height: 60vh;}
     .form-group{width: 300px;}}
 
-@media only screen and (min-width: 440px) {
-    .d_form{
-        width: 50vh;
-        height: 60vh;}
-    .form-group{width: 300px;}}
-
 @media only screen and (min-width: 480px) {
     .d_form{
         width: 60vh;
@@ -135,4 +133,7 @@
     .d_form{
         width: 60vh;
         height: 60vh;}
-    .form-group{width: 330px;}}
+    .form-group{width: 330px;}
+    .col-12{
+        align-items: center;
+    }}

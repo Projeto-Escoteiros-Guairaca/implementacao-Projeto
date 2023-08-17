@@ -1,3 +1,7 @@
+:root {
+    --cor-dark-mod: #293556; /* Substitua pelo código de cor que desejar */
+  }
+
 body{
     overflow-x: hidden;
 }
@@ -8,35 +12,35 @@ form{
 
 .modo-escuro{
     background-color: rgb(24, 24, 24);
-    color: #39FF14;
+    color: var(--cor-dark-mod);
 }
 
 .modo-escuro #cabecalho{
     background-color: rgb(24, 24, 24);
     color: #fff;
-    border: 2px solid #39FF14;
+    border: 2px solid var(--cor-dark-mod);
 }
 
 .modo-escuro #principal{
-    color: #fff;
+    color: #293556;
 }
 .modo-escuro #h4_log{
-    color: rgb(16, 159, 11);
+    color: #3e60c1;
 }
 .modo-escuro .d_form{
     background-color: transparent;
-    border: 3px solid #39FF14;
+    border: 3px solid var(--cor-dark-mod);
     border-radius: 11px;
 
 }
 .modo-escuro .form-group{
     background-color: transparent;
-    border: 2px solid #39FF14;
+    border: 2px solid #293556;
 }
 
 .modo-escuro .estilo_dados_form{
   
-    border: 2px solid #39FF14;
+    border: 2px solid #3e60c1;
     border-radius: 15px;
     display: block;
     width: 100%;
@@ -54,7 +58,7 @@ form{
     margin-top: 10px;
     font-size: 12px;
     cursor: pointer;
-    color: #39FF14;
+    color: var(--cor-dark-mod);
     transition: 0.5s;
     width: 100px;
     height: 40px;

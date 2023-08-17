@@ -120,3 +120,4 @@ function sendAlcateiaChange() {
     };
     xhttp.send();
 }
+

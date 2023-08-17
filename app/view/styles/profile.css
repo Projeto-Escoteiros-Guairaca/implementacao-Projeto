@@ -16,10 +16,16 @@ h1{
     border-radius: 15px;
     border: solid 2px rgb(16, 159, 11);
 }
+#apresentacoes{
+    height: 70vh;
+}
+.b_apresentacoes{
+    width: 60vh;
+}
 #endereco {
     text-align: center;
     width: 30vh;
-    height: auto;
+    height: 80vh;
     border-radius: 15px;
     border: solid 2px rgb(16, 159, 11);
 }
@@ -45,4 +51,16 @@ h1{
     color: rgb(16, 159, 11);
 }
 
-#btn
+#btn_voltar_profile{
+    position: absolute;
+    margin-left: 42vh;
+    margin-top: 8vh;
+}
+
+#btn_altercao{
+    background-color: rgb(16, 159, 11);
+    
+}
+#btn_voltar_profile{
+    background-color: rgb(16, 159, 11);
+}
