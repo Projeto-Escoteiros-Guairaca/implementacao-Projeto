@@ -57,7 +57,7 @@
                             <th>Descrição</th>
                             <th>Alcateia</th>
                             <th>Alterar</th>
-                            <th>Lista de usuários</th>
+                            <th>Frequência</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,7 +80,7 @@
                                     <a class="btn btn-secondary" 
                                         href="<?= BASEURL ?>/controller/FrequenciaController.php?action=createFrequencias&idEncontro=<?= 
                                             $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">
-                                        Usuários</a> 
+                                        Registrar Frequência</a> 
                                 </td>
                             </tr>
                         <?php endforeach; ?>

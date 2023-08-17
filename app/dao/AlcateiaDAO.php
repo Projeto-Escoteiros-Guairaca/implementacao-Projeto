@@ -50,6 +50,7 @@ class AlcateiaDao{
             $usuario->setId($reg['id_usuario']);
             $usuario->setNome($reg['nome']);
             $usuario->setIdContato($reg['id_contato']);
+            $usuario->setPapeis($reg['papeis']);
 
             array_push($usuarios, $usuario);
         }

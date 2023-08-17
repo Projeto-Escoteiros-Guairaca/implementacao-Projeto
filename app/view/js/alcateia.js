@@ -34,6 +34,8 @@ function usuarios(id, action) {
                     linha.className = "usuariosdatabela"+id;
                     nome = linha.insertCell();
                     nome.innerHTML = usuarioArray[i].nome;
+                    nome.innerHTML += "/";
+                    nome.innerHTML += usuarioArray[i].papel;
                     nome.className = "usuariosdatabela"+id;
 
                     celular = linha.insertCell();

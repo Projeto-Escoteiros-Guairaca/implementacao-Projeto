@@ -29,6 +29,7 @@ class Usuario implements JsonSerializable {
         return
         [
             'nome' => $this->nome,
+            'papel' => $this->papeis,
             'email' =>$this->contatoEmail,
             'celular' => $this->contatoCelular
         ];
