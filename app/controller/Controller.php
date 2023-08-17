@@ -40,7 +40,7 @@ class Controller {
 
     }
 
-    protected function loadView(string $path, array $dados, string $msgErro = "", string $msgSucesso = "", bool $fazer) {
+    protected function loadView(string $path, array $dados, string $msgErro = "", string $msgSucesso = "", bool $fazer = true) {
         
         //Verificar os dados que estão sendo recebidos na função
         //print_r($dados);
@@ -62,7 +62,7 @@ class Controller {
         }
     }
     
-    protected function loadController(string $controllerToBeCalled, string $URL = "", bool $fazer) {
+    protected function loadController(string $controllerToBeCalled, string $URL = "") {
         $caminho = $controllerToBeCalled . "Controller.php" . $URL;
         header("Location: $caminho");
 

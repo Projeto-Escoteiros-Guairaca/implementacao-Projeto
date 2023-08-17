@@ -36,7 +36,7 @@ class UsuarioController extends Controller {
                 }
             }
             else {
-                $papelNecessario[0] = [UsuarioPapel::ADMINISTRADOR];
+                $papelNecessario[0] = "ADMINISTRADOR";
                 $accessVerified = $this->verifyAccess($papelNecessario);
             }
             if(! $accessVerified and $isRegistering == false) {
@@ -232,11 +232,7 @@ class UsuarioController extends Controller {
          $login = isset($_POST['login']) ? trim($_POST['login']) : "";
          $senha = isset($_POST['senha']) ? trim($_POST['senha']) : "";
          //Captura os papeis do usuário
-         $papeis = array();
-         foreach(UsuarioPapel::getAllAsArray() as $papel) {
-             if(isset($_POST[$papel]))
-                 array_push($papeis, $papel);
-         } 
+        
           //Cria objeto Usuario
           $usuario = new Usuario();
           $usuario->setNome($nome);
@@ -245,7 +241,6 @@ class UsuarioController extends Controller {
           $usuario->setCpf($cpf);
           $usuario->setLogin($login);
           $usuario->setSenha($senha);
-          $usuario->setPapeisAsArray($papeis);
     return $usuario;
     }
     protected function changeAlcateia(){

@@ -54,9 +54,6 @@ class UsuarioService {
         if(! $usuario->getCpf())
             array_push($errorUsuario, "O campo [CPF] é obrigatório.");
 
-        if(! $usuario->getPapeis())
-            array_push($errorUsuario, "Selecione pelo menos um papel no campo [Papéis do Usuário].");
-
         //Validar se a senha é igual a contra senha
         if($usuario->getSenha() != $confSenha)
             array_push($errorUsuario, "O campo [Senha] e [Confirmação da senha] devem ser iguais.");

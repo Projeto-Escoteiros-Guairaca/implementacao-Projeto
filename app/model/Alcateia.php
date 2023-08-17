@@ -5,6 +5,8 @@ class Alcateia implements JsonSerializable {
     private $id_alcateia;
     private $nome;
 
+    
+    #[\ReturnTypeWillChange]
     public function jsonSerialize() {
         return
         [

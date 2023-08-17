@@ -24,6 +24,7 @@ class Usuario implements JsonSerializable {
     private $contatoEmail;
     private $contatoCelular;
 
+    #[\ReturnTypeWillChange]
     public function jsonSerialize() {
         return
         [

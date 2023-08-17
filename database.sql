@@ -19,8 +19,7 @@ CREATE TABLE tb_contatos (
 CREATE TABLE tb_alcateias (
   id_alcateia int AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id_alcateia),
-  primo int
+  PRIMARY KEY (id_alcateia)
 );
 
 CREATE TABLE tb_usuarios ( 
@@ -32,7 +31,7 @@ CREATE TABLE tb_usuarios (
   cpf char(11) NOT NULL,
   login varchar(15) NOT NULL,
   senha varchar(15) NOT NULL,
-  papeis varchar(255) DEFAULT 'USUARIO',
+  papeis varchar(255) NOT NULL DEFAULT 'USUARIO',
   status_usuario varchar(70) NOT NULL DEFAULT 'ATIVO',
   PRIMARY KEY (id_usuario),
   FOREIGN KEY (id_endereco) REFERENCES tb_enderecos (id_endereco),
