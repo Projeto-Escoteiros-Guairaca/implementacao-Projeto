@@ -4,11 +4,15 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../model/Alcateia.php");
 require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../service/AlcateiaService.php");
+require_once(__DIR__ . "/../dao/UsuarioDAO.php");
+
     
 class AlcateiaController extends Controller{
 
+    private UsuarioDAO $usuarioDao;
     private AlcateiaDAO $alcateiaDao;
     private AlcateiaService $alcateiaService;
+
 
     public function __construct(){
 
@@ -19,7 +23,7 @@ class AlcateiaController extends Controller{
         if(! $accessVerified) {
             return;
         }
-
+        $this->usuarioDao = new UsuarioDAO();
         $this->alcateiaDao = new AlcateiaDAO();
         $this->alcateiaService = new AlcateiaService();
         $this->setActionDefault("list", true);
@@ -28,7 +32,7 @@ class AlcateiaController extends Controller{
 
     public function listUsuarios() {
         $usuarios = $this->findUsuarioByIdAlcateia(); 
-        echo json_encode($usuarios); 
+        echo json_encode($usuarios);
         return;
     }
     protected function findUsuarioByIdAlcateia(){
@@ -38,7 +42,7 @@ class AlcateiaController extends Controller{
 
         $dados["id_alcateia"] = $id;
 
-        $usuario = $this->alcateiaDao->findUsuariosByIdAlcateia($id);
+        $usuario = $this->usuarioDao->findUsuariosByIdAlcateia($id);
         return $usuario;
     }
 

@@ -20,6 +20,24 @@ class UsuarioDAO {
         return $this->mapUsuarios($result);
        
     }
+    
+    public function findUsuariosById(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_usuarios e" .
+               " WHERE e.id_usuario = ? ORDER BY e.id_usuario";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+       $usuario = $this->mapUsuarios($result);
+       if(count($usuario) == 1)
+       return $usuario[0];
+   elseif(count($usuario) == 0)
+       return null;
+
+   die("UsuarioDAO.findById()" . 
+       " - Erro: mais de um usuário encontrado.");
+    }
 
     public function changeAlcateia($id, $idAlcateia) {
         $conn = Connection::getConn();
@@ -87,11 +105,20 @@ class UsuarioDAO {
         $stm->bindValue("cpf", $usuario->getCpf());
         $stm->bindValue("login", $usuario->getLogin());
         $stm->bindValue("senha", $usuario->getSenha());
-        //print_r($usuario);
         $stm->execute();
 
     }
 
+    public function findUsuariosByIdAcateia(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_usuarios e" .
+               " WHERE e.id_alcateia = ? ORDER BY e.id_usuario";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+       return $this->mapUsuarios($result);
+    }
     //Método para atualizar um Usuario
     public function update(Usuario $usuario) {
         $conn = Connection::getConn();
@@ -135,6 +162,54 @@ class UsuarioDAO {
         $stm->execute();
     }
 
+    public function findUsuariosByIdAlcateia(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_usuarios u" .
+               " WHERE u.id_alcateia = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $usuarios = $this->mapUsuarios($result);
+               
+        foreach($usuarios as $us):  
+            $contato = $this->findContatosByIdUsuarios($us->getIdContato());
+            $us->setContatoEmail($contato->getEmail());
+            $us->setContatoCelular($contato->getCelular());
+
+        endforeach;
+
+            
+        return $usuarios;
+    }
+
+    public function findContatosByIdUsuarios(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_contatos c" .
+               " WHERE c.id_contato = ?"; 
+            
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $alcateias = $this->mapContatos($result);
+        
+        return $alcateias;
+    }
+     
+    public function mapContatos($result) {
+        foreach ($result as $reg) {
+            $contato = new Contato();
+            $contato->setId_contato($reg['id_contato']);
+            $contato->setEmail($reg['email']);
+            $contato->setCelular($reg['celular']);
+        }
+        
+        return $contato;
+    }
+
     //Método para converter um registro da base de dados em um objeto Usuario
     private function mapUsuarios($result) {
         $usuarios = array();
@@ -156,18 +231,6 @@ class UsuarioDAO {
             array_push($usuarios, $usuario);
         }
         return $usuarios;
-    }
-
-    public function mapAlcateia($result){
-        $alcateias = array();
-        foreach ($result as $reg) {
-            $alcateia = new Alcateia();
-            $alcateia->setId_alcateia($reg['id_alcateia']);
-            $alcateia->setNome($reg['nome']);
-            array_push($alcateias, $alcateia);
-        }
-
-        return $alcateias;
     }
 
 }
