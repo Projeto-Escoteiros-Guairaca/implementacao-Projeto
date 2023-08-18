@@ -101,8 +101,8 @@ CREATE TABLE tb_tarefas_usuarios(
 
 );
 
-ALTER TABLE tb_alcateias FOREIGN KEY (id_usuario_chefe) REFERENCES tb_usuarios (id_usuario);
-ALTER TABLE tb_alcateias FOREIGN KEY (id_usuario_primo) REFERENCES tb_usuarios (id_usuario);
+ALTER TABLE tb_alcateias ADD CONSTRAINT fk_alcateias_chefe FOREIGN KEY (id_usuario_chefe) REFERENCES tb_usuarios (id_usuario);
+ALTER Table tb_alcateias ADD CONSTRAINT fk_alcateias_primo FOREIGN KEY (id_usuario_primo) REFERENCES tb_usuarios (id_usuario);
 
 
 /*Inserts alcateias*/
