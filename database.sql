@@ -105,10 +105,7 @@ ALTER TABLE tb_alcateias ADD CONSTRAINT fk_alcateias_chefe FOREIGN KEY (id_usuar
 ALTER Table tb_alcateias ADD CONSTRAINT fk_alcateias_primo FOREIGN KEY (id_usuario_primo) REFERENCES tb_usuarios (id_usuario);
 
 
-/*Inserts alcateias*/
-INSERT INTO tb_alcateias (nome) VALUES ('Alcateia 1');
-INSERT INTO tb_alcateias (nome) VALUES ('Alcateia 2');
-INSERT INTO tb_alcateias (nome) VALUES ('Alcateia 3');
+
 
 /*Inserts enderecos*/
 INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais) VALUES ('00000000', 'Rua 1', 1, 'Bairro 1', 'Cidade 1', 'Pais 1');
@@ -122,10 +119,21 @@ INSERT INTO tb_contatos (telefone, celular, email) VALUES ('22222222', '22222222
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('33333333', '33333333333', 'Markinhos@gmail.com');
 
 /*Inserts usuarios*/
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES (1, 1, 1, 'Sr. Administrador', '11122233344', 'admin', 'admin', 'ADMINISTRADOR', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES (2, 2, 1, 'Sr. Root', '44433322211', 'root', 'root', 'USUARIO', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES (3, 3, 2, 'Marco',    '69669669669', 'marco', 'marco', 'ADMINISTRADOR', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES
+                        (1, 1, 1, 'Sr. Administrador', '11122233344', 'admin', 'admin', 'ADMINISTRADOR', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+                        (2, 2, 1, 'Sr. Root', '44433322211', 'root', 'root', 'USUARIO', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+                        (3, 3, 2, 'Marco', '69669669669', 'marco', 'marco', 'ADMINISTRADOR', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+                        (3, 3, 2, 'chefe', '50947509203', 'chefe', 'chefe', 'CHEFE', 'ATIVO');
 
+
+
+/*Inserts alcateias*/
+INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 1', '4');
+INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 2', '4');
+INSERT INTO tb_alcateias (nome,id_usuario_chefe) VALUES ('Alcateia 3', '4');
 
 /*Inserts encontros*/
 INSERT INTO tb_encontros (id_alcateia, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
