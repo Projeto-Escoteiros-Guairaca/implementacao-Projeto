@@ -18,6 +18,8 @@ CREATE TABLE tb_contatos (
 );
 CREATE TABLE tb_alcateias (
   id_alcateia int AUTO_INCREMENT,
+  id_usuario_chefe int,
+  id_usuario_primo int,
   nome VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_alcateia)
 );
@@ -99,6 +101,8 @@ CREATE TABLE tb_tarefas_usuarios(
 
 );
 
+ALTER TABLE tb_alcateias FOREIGN KEY (id_usuario_chefe) REFERENCES tb_usuarios (id_usuario);
+ALTER TABLE tb_alcateias FOREIGN KEY (id_usuario_primo) REFERENCES tb_usuarios (id_usuario);
 
 
 /*Inserts alcateias*/
