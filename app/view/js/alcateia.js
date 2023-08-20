@@ -1,11 +1,11 @@
 
-var idFull; //guarda o id encontrado como variavel global para ser utilizada em outras funções
-var AlcateiasAlreadyUsed = []; // array usada para guardar as alcateias já abertas.
+var idSelectedAlcateia;
+var AlcateiasAlreadyUsed = []; 
 
-function usuarios(id, action) {
-    idFull = id;
-
-    //* if e else definem se deve ser fechado ou aberto a lista de usuários
+function usuarios(id, BASEURL) {
+    console.log(BASEURL);
+    idSelectedAlcateia = id;
+    action = "findChefeAndPrimo";
     if(AlcateiasAlreadyUsed.includes(id) == true) {
         eliminate();
     }
@@ -19,34 +19,49 @@ function usuarios(id, action) {
         if (this.readyState == 4 && this.status == 200) {
             var retorno = xhttp.responseText;
             var usuarioArray = JSON.parse(retorno);
-
-            if(usuarioArray.length == 0) {
-                alert("Não há usuários cadastrados nessa alcateia!");
-                return;
-            }
-            
+            var primoExists = "Sem primo";
                 tabela = document.getElementById("tabAlcateias " + id);
-                for(var i=0; i<usuarioArray.length; i++) {
-                    //* Cria as linhas da tabela para cada elemento do array, adiciona uma classe generica com o ID da alcateia específica
-                    //* assim, podemos encontrar os usuarios exatos para eliminar as linhas depois.
-        
-                    var linha = tabela.insertRow();
-                    linha.className = "usuariosdatabela"+id;
-                    nome = linha.insertCell();
-                    nome.innerHTML = usuarioArray[i].nome;
-                    nome.innerHTML += "/";
-                    nome.innerHTML += usuarioArray[i].papel;
-                    nome.className = "usuariosdatabela"+id;
 
-                    celular = linha.insertCell();
-                    celular.innerHTML = usuarioArray[i].celular;
-                    celular.className = "usuariosdatabela"+id;
-
-                    email = linha.insertCell();
-                    email.innerHTML = usuarioArray[i].email;
-                    email.className = "usuariosdatabela"+id;
-
+                if(usuarioArray.length > 1) {
+                    primoExists = usuarioArray[1]["nome"];
                 }
+                
+
+
+                    var linha = tabela.insertRow();
+                    linha.className = "infoDaTabela"+id;
+                    papelChefe = linha.insertCell();
+                    papelChefe.innerHTML += "<b> Chefe: </b>";
+                    papelChefe.className = "infoDaTabela"+id;
+
+                    papelPrimo = linha.insertCell();
+                    papelPrimo.innerHTML = "<b> Primo: </b>";
+                    papelPrimo.className = "infoDaTabela"+id;
+
+                    usuario = linha.insertCell();
+                    usuario.innerHTML = "<b> Usuarios: </b>";
+                    usuario.className = "infoDaTabela"+id;
+
+                    
+                    var linha = tabela.insertRow();
+                    linha.className = "infoDaTabela"+id;
+                    nomeChefe = linha.insertCell();
+                    nomeChefe.innerHTML += usuarioArray[0]["nome"];
+                    nomeChefe.className = "infoDaTabela"+id;
+
+                    nomePrimo = linha.insertCell();
+                    nomePrimo.innerHTML = primoExists;
+                    nomePrimo.className = "infoDaTabela"+id;
+                    
+                    
+                    a = document.createElement("a");
+                    a.className = "btn btn-success";
+                    a.innerHTML = "lista de usuários";
+                    a.href= BASEURL+"/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia="+idSelectedAlcateia;
+
+                    listaUsuarios = linha.insertCell();
+                    listaUsuarios.className = "infoDaTabela"+id;
+                    listaUsuarios.appendChild(a);
             AlcateiasAlreadyUsed.push(id);
         };
     }
@@ -56,8 +71,8 @@ function usuarios(id, action) {
 }
 
 function eliminate() {
-    removeElementsByClass("usuariosdatabela"+idFull);
-    index = AlcateiasAlreadyUsed.indexOf(idFull);
+    removeElementsByClass("infoDaTabela"+idSelectedAlcateia);
+    index = AlcateiasAlreadyUsed.indexOf(idSelectedAlcateia);
     AlcateiasAlreadyUsed.splice(index, 1);
 }
 
@@ -67,3 +82,4 @@ function removeElementsByClass(className){
         elements[0].parentNode.removeChild(elements[0]);
     }
 }
+

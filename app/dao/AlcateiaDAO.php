@@ -46,9 +46,12 @@ class AlcateiaDao{
             $alcateia = new Alcateia();
             $alcateia->setId_alcateia($reg['id_alcateia']);
             $alcateia->setNome($reg['nome']);
-            array_push($alcateias, $alcateia);
-        }
+            $alcateia->setIdChefe($reg['id_usuario_chefe']);
+            $alcateia->setIdPrimo($reg['id_usuario_primo']);
 
+            array_push($alcateias, $alcateia);
+
+        }
         return $alcateias;
     }
 

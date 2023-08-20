@@ -1,6 +1,7 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
+
 ?>
 
 <h3 class='text-center'>Alcateias</h3>
@@ -39,8 +40,8 @@
                                             href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
                                             Alterar</a> 
                                         </td>
-                                        <td>        <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, 'listUsuarios')"> 
-                                        Listar usuarios </button>
+                                        <td>        <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, '<?php echo BASEURL ?>')">
+                                        Mostrar Dados da Alcateia: </button>
                                         </td>
                                     </tr>
                                 </table>

@@ -29,20 +29,23 @@ class UsuarioController extends Controller {
             $papelNecessario = array();
             $accessVerified = true;
            
-            
             if(isset($_GET['action'])) {
                 if($_GET['action'] == "create" or $_GET['action'] == "save") {
                     $isRegistering = true;
+                }
+                else {
+                    $papelNecessario[0] = "ADMINISTRADOR";
+                    $accessVerified = $this->verifyAccess($papelNecessario);
                 }
             }
             else {
                 $papelNecessario[0] = "ADMINISTRADOR";
                 $accessVerified = $this->verifyAccess($papelNecessario);
             }
+           
             if(! $accessVerified and $isRegistering == false) {
                 return;
             }
-       
         $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
@@ -94,6 +97,26 @@ class UsuarioController extends Controller {
         }
         $dados["lista"] = $usuarios;
         $this->loadView("pages/usuario/list.php", $dados,$msgErro, $msgSucesso, true);
+    }
+
+    public function listUsuariosByAlcateia(string $msgErro = "", string $msgSucesso = "") {
+        $usuarios = $this->findUsuarioByIdAlcateia();
+        $dados["lista"] = $usuarios['usuarios'];
+        $dados["alcateia"] = $usuarios['nome_alcateia'];
+
+        $this->loadView("pages/usuario/listUsuariosByAlcateia.php", $dados,$msgErro, $msgSucesso, false);
+    }
+    protected function findUsuarioByIdAlcateia(){
+        $id = 0;
+        if(isset($_GET['idAlcateia']))
+            $id = $_GET['idAlcateia'];
+
+        $alcateia = $this->alcateiaDao->findById($id); 
+        $usuario = $this->usuarioDao->findUsuariosByIdAlcateia($id);
+        
+        $dados['nome_alcateia'] = $alcateia;
+        $dados['usuarios'] = $usuario;
+        return $dados;
     }
 
     protected function create() {

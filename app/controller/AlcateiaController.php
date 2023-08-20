@@ -30,22 +30,19 @@ class AlcateiaController extends Controller{
         $this->handleAction();
     }
 
-    public function listUsuarios() {
-        $usuarios = $this->findUsuarioByIdAlcateia(); 
-        echo json_encode($usuarios);
-        return;
+    public function findChefeAndPrimo() {
+        $chefeAndPrimo = [];
+        $alcateia = $this->alcateiaDao->findById($_GET['idAlcateia']);
+        $chefe = $this->usuarioDao->findById($alcateia->getIdChefe());   
+        array_push($chefeAndPrimo, $chefe);
+
+        if($alcateia->getIdPrimo() > 0) {
+            $primo = $this->usuarioDao->findById($alcateia->getIdPrimo());
+            array_push($chefeAndPrimo, $primo);
+        }
+        echo json_encode($chefeAndPrimo);
+        die;
     }
-    protected function findUsuarioByIdAlcateia(){
-        $id = 0;
-        if(isset($_GET['idAlcateia']))
-            $id = $_GET['idAlcateia'];
-
-        $dados["id_alcateia"] = $id;
-
-        $usuario = $this->usuarioDao->findUsuariosByIdAlcateia($id);
-        return $usuario;
-    }
-
     
     public function list(string $msgErro = "", string $msgSucesso = ""){
         $alcateias = $this->alcateiaDao->list();
