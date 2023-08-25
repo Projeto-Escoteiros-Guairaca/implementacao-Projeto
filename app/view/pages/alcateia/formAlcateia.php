@@ -38,19 +38,21 @@
                         $usuDao = new UsuarioDAO();
                         $usuarios = $usuDao->findByPapel("CHEFE");
                         SelectUsuChefe::desenhaSelect($usuarios, "chefeAlcateia", "somUsuChef", isset($dados['id_usuario']) ? $dados['id_usuario'] : 0);
-                
-                    if(isset($dados["id_alcateia"])){
-
-                    echo "</div>";
-                        echo "<div class='form-group col-6'>";
-                            echo "<label for='somUsuPrimo'>Chefe:</label>";
-                                $alcCont = new AlcateiaController();
-                                $primos = $alcCont->findPrimo("primo", "id");
-                                SelectUsuChefe::desenhaSelect($primos, "primoAlcateia", "somUsuPrimo", isset($dados['id_usuario']) ? $dados['id_usuario'] : 0);
-                    }
-                ?>
+                    ?>
 
                 </div>
+                <?php
+                    if($dados["id_alcateia"] > 0):
+                
+                        echo "<div class='form-group col-6'>";
+                            echo "<label for='somUsuPrimo'>Chefe:</label>";
+
+                                    // $primos = $usuDao->findPrimo("primo", "id");
+                                SelectUsuChefe::desenhaSelect($primos, "primoAlcateia", "somUsuPrimo", isset($dados['id_usuario']) ? $dados['id_usuario'] : 0);
+
+                        echo "</div>";
+                    endif;
+                ?>
                 
                 <input type="hidden" id="hddId" name="id_alcateia" value="<?= $dados['id_alcateia']; ?>" />
                 
