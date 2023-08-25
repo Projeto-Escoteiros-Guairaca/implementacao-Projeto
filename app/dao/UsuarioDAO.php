@@ -233,4 +233,14 @@ class UsuarioDAO {
         return $usuarios;
     }
 
+    public function findByPapel($papel){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_usuarios u WHERE u.papeis = ? ORDER BY u.nome";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$papel]);
+        $result = $stm->fetchAll();
+        return $this->mapUsuarios($result);
+    }
+
 }

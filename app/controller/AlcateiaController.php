@@ -44,6 +44,7 @@ class AlcateiaController extends Controller{
         die;
     }
     
+    
     public function list(string $msgErro = "", string $msgSucesso = ""){
         $alcateias = $this->alcateiaDao->list();
         $sendAlcateias = false;
