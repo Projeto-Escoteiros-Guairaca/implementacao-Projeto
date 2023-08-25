@@ -37,7 +37,7 @@
                     <?php
                         $usuDao = new UsuarioDAO();
                         $usuarios = $usuDao->findByPapel("CHEFE");
-                        SelectUsuChefe::desenhaSelect($usuarios, "chefeAlcateia", "somUsuChef", isset($dados['id_usuario']) ? $dados['id_usuario'] : 0);
+                        SelectUsuChefe::desenhaSelect($usuarios, "chefeAlcateia", "somUsuChef", isset($dados['alcateia']) ? $dados['alcateia']->getIdChefe() : 0);
                     ?>
 
                 </div>
@@ -45,10 +45,10 @@
                     if($dados["id_alcateia"] > 0):
                 
                         echo "<div class='form-group col-6'>";
-                            echo "<label for='somUsuPrimo'>Chefe:</label>";
+                            echo "<label for='somUsuPrimo'>Primo:</label>";
 
-                                    // $primos = $usuDao->findPrimo("primo", "id");
-                                SelectUsuChefe::desenhaSelect($primos, "primoAlcateia", "somUsuPrimo", isset($dados['id_usuario']) ? $dados['id_usuario'] : 0);
+                                $primos = $usuDao->findPrimo($dados['id_alcateia']);
+                                SelectUsuChefe::desenhaSelect($primos, "primoAlcateia", "somUsuPrimo", isset($dados['alcateia']) ? $dados['alcateia']->getIdPrimo() : 0);
 
                         echo "</div>";
                     endif;

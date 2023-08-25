@@ -183,6 +183,27 @@ class UsuarioDAO {
             
         return $usuarios;
     }
+    public function findPrimo(int $id){
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_usuarios u" .
+               " WHERE u.id_alcateia = ? and u.papeis = 'USUARIO' ";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $usuarios = $this->mapUsuarios($result);
+               
+        foreach($usuarios as $us):  
+            $contato = $this->findContatosByIdUsuarios($us->getIdContato());
+            $us->setContatoEmail($contato->getEmail());
+            $us->setContatoCelular($contato->getCelular());
+
+        endforeach;
+
+            
+        return $usuarios;
+    }
 
     public function findContatosByIdUsuarios(int $id){
         $conn = Connection::getConn();
