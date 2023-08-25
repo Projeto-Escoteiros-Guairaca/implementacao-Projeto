@@ -190,8 +190,12 @@ require_once(__DIR__ . "/../../include/header.php");
 
     <div class="row" style="margin-top: 30px;">
         <div class="col-12">
-        <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/UsuarioController.php?action=list">Voltar</a>
+        <?php
+        if($dados['id'] > 0)
+            echo "<a href='". BASEURL ."/controller/UsuarioController.php?action=profile&id=". $_SESSION[SESSAO_USUARIO_ID] ."'>Voltar</a>";
+        else
+            echo "<a href='". BASEURL ."/controller/HomeController.php'>Voltar</a>";
+        ?>
         </div>
     </div>
 </div>
