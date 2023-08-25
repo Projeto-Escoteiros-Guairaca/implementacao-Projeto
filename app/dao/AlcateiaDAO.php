@@ -58,23 +58,27 @@ class AlcateiaDao{
     public function insert(Alcateia $alcateia){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_alcateias (nome)" .
-               " VALUES (:nome)";
+        $sql = "INSERT INTO tb_alcateias (nome, id_chefe, id_primo)" .
+               " VALUES (:nome, :id_chefe, :id_primo)" ;
         
         $stm = $conn->prepare($sql);
         $stm->bindValue(':nome', $alcateia->getNome());
+        $stm->bindValue(':id_chefe', $alcateia->getIdChefe());
+        $stm->bindValue(':id_primo', $alcateia->getIdPrimo());
         $stm->execute();
     }
 
     public function update(Alcateia $alcateia) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_alcateias SET nome = :nome" . 
+        $sql = "UPDATE tb_alcateias SET nome = :nome, id_chefe = :id_chefe, id_primo = :id_primo" . 
                " WHERE id_alcateia = :id";
            
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome", $alcateia->getNome());
         $stm->bindValue("id", $alcateia->getId_alcateia());
+        $stm->bindValue(':id_chefe', $alcateia->getIdChefe());
+        $stm->bindValue(':id_primo', $alcateia->getIdPrimo());
         $stm->execute();
     }
     

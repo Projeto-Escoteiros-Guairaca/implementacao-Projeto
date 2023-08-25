@@ -49,11 +49,11 @@ class AlcateiaController extends Controller{
         $sendAlcateias = false;
      
         if(isset($_GET['sendAlcateias'])) {
-    $sendAlcateias = $_GET['sendAlcateias'];
+            $sendAlcateias = $_GET['sendAlcateias'];
         } 
         if($sendAlcateias == 'true') {
-        echo json_encode($alcateias);
-        return;
+            echo json_encode($alcateias);
+            return;
         }
 
         $dados["lista"] = $alcateias;
@@ -94,8 +94,13 @@ class AlcateiaController extends Controller{
         
         $dados["id_alcateia"] = isset($_POST['id_alcateia']) ? $_POST['id_alcateia'] : 0;
         $nomeAlcateia = isset($_POST['nomeAlcateia']) ? trim($_POST['nomeAlcateia']) : NULL;
+        $chefeAlcateia = isset($_POST['chefeAlcateia']) ? trim($_POST['chefeAlcateia']) : NULL;
+        $primoAlcateia = isset($_POST['primoAlcateia']) ? trim($_POST['primoAlcateia']) : NULL;
+
         $alcateia = new Alcateia();
         $alcateia->setNome($nomeAlcateia);
+        $alcateia->setIdChefe($chefeAlcateia);
+        $alcateia->setIdPrimo($primoAlcateia);
 
         $erros = $this->alcateiaService->validarDados($alcateia);
 
@@ -124,6 +129,8 @@ class AlcateiaController extends Controller{
         }
        
         $dados["nomeAlcateia"] = $nomeAlcateia;
+        $dados["primoAlcateia"] = $primoAlcateia;
+        $dados["chefeAlcateia"] = $chefeAlcateia;
 
         $msgsErro = implode("<br>", $erros);
         $this->loadView("pages/alcateia/formAlcateia.php", $dados, $msgsErro, "", true);

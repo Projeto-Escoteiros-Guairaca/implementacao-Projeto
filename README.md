@@ -36,3 +36,6 @@ Implementar depois
         <?php //endforeach; ?>
 
 </div> -->
+
+
+pagina inicial do lobinho e do chefe; iniciar a atividade

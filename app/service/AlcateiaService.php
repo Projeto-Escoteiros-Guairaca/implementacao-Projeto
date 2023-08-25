@@ -9,7 +9,9 @@ class AlcateiaService {
 
         if(! $alcateia->getNome())
             array_push($erros, "O campo [Nome] é obrigatório.");
-
+        if(! $alcateia->getIdChefe())
+            array_push($erros, "O campo [Chefe] é obrigatório.");
+            
         return $erros;
     }
     public function insert(Alcateia $alcateia){
