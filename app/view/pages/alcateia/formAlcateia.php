@@ -1,7 +1,12 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
+    require_once(__DIR__ . "/../../../dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../../model/Usuario.php");
+    require_once(__DIR__ . "/../usuario/selectUsuChefe.php");
+    require_once(__DIR__ . "/../usuario/selectUsuPrimo.php");
     require_once(__DIR__ . "/../../../controller/AcessoController.php");
+    require_once(__DIR__ . "/../../../controller/AlcateiaController.php");
 ?>
 
 <div class="container">
@@ -26,6 +31,28 @@
                             echo (isset($dados['alcateia']) ? $dados['alcateia']->getNome(): "");
                         ?>" />
                 </div>
+                <div class="form-group col-6">
+                    <label for="somUsuChef">Chefe:</label>
+                    
+                    <?php
+                        $usuDao = new UsuarioDAO();
+                        $usuarios = $usuDao->findByPapel("CHEFE");
+                        SelectUsuChefe::desenhaSelect($usuarios, "chefeAlcateia", "somUsuChef", isset($dados['id_usuario']) ? $dados['id_usuario'] : 0);
+                    ?>
+
+                </div>
+                <?php
+                    if($dados["id_alcateia"] > 0):
+                
+                        echo "<div class='form-group col-6'>";
+                            echo "<label for='somUsuPrimo'>Chefe:</label>";
+
+                                    // $primos = $usuDao->findPrimo("primo", "id");
+                                SelectUsuChefe::desenhaSelect($primos, "primoAlcateia", "somUsuPrimo", isset($dados['id_usuario']) ? $dados['id_usuario'] : 0);
+
+                        echo "</div>";
+                    endif;
+                ?>
                 
                 <input type="hidden" id="hddId" name="id_alcateia" value="<?= $dados['id_alcateia']; ?>" />
                 

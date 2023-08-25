@@ -3,7 +3,6 @@ var idSelectedAlcateia;
 var AlcateiasAlreadyUsed = []; 
 
 function usuarios(id, BASEURL) {
-    console.log(BASEURL);
     idSelectedAlcateia = id;
     action = "findChefeAndPrimo";
     if(AlcateiasAlreadyUsed.includes(id) == true) {
