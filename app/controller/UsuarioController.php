@@ -144,7 +144,7 @@ class UsuarioController extends Controller {
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;        
 
-            $this->loadView("usuario/form.php", $dados, "", "", true);
+            $this->loadView("pages/usuario/form.php", $dados, "", "", true);
         } else {
             $this->list("Usuário não enconpages/ado.");
         }
@@ -184,7 +184,13 @@ class UsuarioController extends Controller {
                     $this->usuarioService->updateCont($contato);
                 }
                 // - Enviar mensagem de sucesso
-                $this->LoadController('Login', '?action=login', true);
+                if($dados["id"] > 0) {
+                    $_GET['id'] = $dados["id"];
+                    $this->profile();
+                }
+                else {
+                    $this->LoadController('Login', '?action=login', true);
+                }
                 exit;
             } catch (PDOException $e) {
                 $erros = ["[Erro ao salvar o usuário na base de dados.]"];
