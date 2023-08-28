@@ -19,6 +19,7 @@ if(isset($_SESSION[SESSAO_USUARIO_NOME]))
 //Variável para validar o acesso
 $acessoCont = new AcessoController();
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
+$isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
 
 ?>
 
@@ -40,11 +41,15 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                             echo "<a href = " .LOGOUT_PAGE."> Sair</a>";
                         }
                     ?>
-                    <?php if($isAdministrador == 1) { 
+                    <?php if($isAdministrador == 1) {
                             echo "<a href = " .BASEURL. "/controller/UsuarioController.php?action=list> Cadastro</a>";
                             echo "<a href = " .BASEURL. "/controller/AlcateiaController.php?action=list> Alcateias</a>";
                             echo "<a href = " .BASEURL. "/controller/EncontroController.php?action=list> Encontros</a>";
+                            echo "<a href = " .BASEURL. "/controller/AtividadeController.php?action=list> Atividades</a>";
+                        }
 
+                        if($isLobinho == 1) {
+                            echo "<a href = " .BASEURL. "/controller/AtividadeController.php?action=list> Minhas Tarefas</a>";
                         }
                     ?>
                 

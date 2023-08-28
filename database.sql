@@ -33,7 +33,7 @@ CREATE TABLE tb_usuarios (
   cpf char(11) NOT NULL,
   login varchar(15) NOT NULL,
   senha varchar(15) NOT NULL,
-  papeis varchar(255) NOT NULL DEFAULT 'USUARIO',
+  papeis varchar(255) NOT NULL DEFAULT 'LOBINHO',
   status_usuario varchar(70) NOT NULL DEFAULT 'ATIVO',
   PRIMARY KEY (id_usuario),
   FOREIGN KEY (id_endereco) REFERENCES tb_enderecos (id_endereco),
@@ -122,7 +122,7 @@ INSERT INTO tb_contatos (telefone, celular, email) VALUES ('33333333', '33333333
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES
                         (1, 1, 1, 'Sr. Administrador', '11122233344', 'admin', 'admin', 'ADMINISTRADOR', 'ATIVO');
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
-                        (2, 2, 1, 'Sr. Root', '44433322211', 'root', 'root', 'USUARIO', 'ATIVO');
+                        (2, 2, 1, 'Sr. Root', '44433322211', 'root', 'root', 'LOBINHO', 'ATIVO');
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (3, 3, 2, 'Marco', '69669669669', 'marco', 'marco', 'ADMINISTRADOR', 'ATIVO');
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
