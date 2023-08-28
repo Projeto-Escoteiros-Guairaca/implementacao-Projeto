@@ -48,7 +48,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                         }
                     ?>
                 
-                    <a class="link-as-button" href = "#"> Sobre</a>
+                    <a class="link-as-button" href = "<?= BASEURL ?>/controller/SobreController.php?action=sobre"> Sobre</a>
                     <button type="button" id="dark-mode" class="btn btn-outline-light">Modo escuro</button>
                 </aside>
 
