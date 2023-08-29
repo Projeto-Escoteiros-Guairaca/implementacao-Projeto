@@ -7,17 +7,42 @@ require_once(__DIR__ . "/../model/Atividade.php");
 
 class AtividadeController extends Controller {
     
+    private AtividadeDAO $atividadeDao;
+
     function __construct() {
+        $administradorChefeActions = ["list", "create", "edit", "delete"];
+        $lobinhoActions = ["list"];
         $papelNecessario = array();
-        $papelNecessario[0] = "ADMINISTRADOR";
-        $accessVerified = $this->verifyAccess($papelNecessario);
-        
+
+        if(isset($_GET['action'])) {
+            if(in_array($_GET['action'], $administradorChefeActions)) {
+                $papelNecessario[] = "ADMINISTRADOR";
+            }
+            if(in_array($_GET['action'], $lobinhoActions)) {
+                $papelNecessario[] = "LOBINHO";
+            }
+        }
+        else {
+            $papelNecessario[] = "ADMINISTRADOR";
+            $papelNecessario[] = "LOBINHO";
+       }
+
+        $accessVerified = $this->verifyAccess($papelNecessario);        
         if(! $accessVerified) {
             return;
         }
+        
+        $this->atividadeDao = new AtividadeDAO();
 
         $this->setActionDefault("list", true);
         $this->handleAction();
+    }
+
+    public function list(string $msgErro = "", string $msgSucesso = ""){
+        $atividades = $this->atividadeDao->list();
+    
+        $dados["lista"] = $atividades;
+        $this->loadView("pages/atividade/listAllAtividades.php", $dados, $msgErro, $msgSucesso, true);
     }
 }
 

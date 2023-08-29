@@ -21,7 +21,21 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 
         <div id="pinto" class="row" style="margin-top: 10px;">
             <div class="col-12">
-               bruh 
+            <?php foreach($dados["lista"] as $ativ):?>
+               <!-- COMIENZO CARD -->
+        
+            <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<?= BASEURL?>/view/img/ifpr_foz.jpg" alt="INSERE IMAGEM AQUI LOL">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $ativ->getNomeAtividade();?></h5>
+    <hr>
+    <p class="card-text">
+    <?php echo $ativ->getDescricao();?></p>
+    <a href="#" class="btn btn-primary">Mostrar Tarefas</a>
+  </div>
+</div>
+                <?php endforeach;?>
+<!-- FIN CARD -->
                 <a class="btn btn-success" 
                 href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
             </div>

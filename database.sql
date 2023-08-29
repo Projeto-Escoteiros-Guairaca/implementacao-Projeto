@@ -105,6 +105,8 @@ ALTER TABLE tb_alcateias ADD CONSTRAINT fk_alcateias_chefe FOREIGN KEY (id_usuar
 ALTER Table tb_alcateias ADD CONSTRAINT fk_alcateias_primo FOREIGN KEY (id_usuario_primo) REFERENCES tb_usuarios (id_usuario);
 
 
+/*Inserts atividades*/
+INSERT INTO tb_atividades (nome_atividade, descricao) VALUES ('Caçador', 'Caçar, obviamente');
 
 
 /*Inserts enderecos*/
