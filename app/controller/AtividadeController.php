@@ -44,6 +44,11 @@ class AtividadeController extends Controller {
         $dados["lista"] = $atividades;
         $this->loadView("pages/atividade/listAllAtividades.php", $dados, $msgErro, $msgSucesso, true);
     }
+    
+    public function create(){
+        $dados["id_atividade"] = 0;
+        $this->loadView("pages/alcateia/formAtividade.php", $dados,"","", true);
+    }
 }
 
 $ativCont = new AtividadeController();
