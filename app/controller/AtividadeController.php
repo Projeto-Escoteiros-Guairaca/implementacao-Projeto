@@ -56,7 +56,8 @@ class AtividadeController extends Controller {
     protected function save() {
 
         $imagem = $_FILES['imagem'];
-        $dados["id"] = isset($_POST['id']) ? $_POST['id'] : 0;
+        
+        $dados["id_atividade"] = isset($_POST['id_atividade']) ? $_POST['id_atividade'] : 0;
         $nomeAtividade = isset($_POST['nomeAtividade']) ? trim($_POST['nomeAtividade']) : "";
         $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : "";
         
@@ -69,19 +70,34 @@ class AtividadeController extends Controller {
         $atividade = new Atividade();
         $atividade->setNomeAtividade($nomeAtividade);
         $atividade->setDescricao($descricao);
-        $atividade->setImagem($caminho_imagem);
+
+        if($dados['id_atividade'] == 0) {
+            $atividade->setImagem($caminho_imagem);
+        }
+        elseif($imagem['name'] != '') {
+            $atividade->setImagem($caminho_imagem);
+        }
+        else {
+        print_r("fuck");
+            $atividade->setImagem($_POST['imagem_atividade']);
+        }
         //Validar os dados
         $erros = $this->atividadeService->validarDados($atividade);
+        
+        if($dados['id_atividade'] > 0 && $imagem['name'] != '') {
+            $this->atividadeDao->deleteImage($dados['id_atividade']);
+        }
+
 
         if(empty($erros)) {
             //Persiste o objeto
             try {
-                if($dados["id"] == 0){ //Inserindo
+                if($dados["id_atividade"] == 0){ //Inserindo
                     
                     $this->atividadeService->insert($atividade);
                 }
                 else {//Alterando
-                    $atividade->setIdAtividade($dados["idAtividade"]);
+                    $atividade->setIdAtividade($dados["id_atividade"]);
                     $this->atividadeService->update($atividade);
                 }
                 // - Enviar mensagem de sucesso
@@ -102,7 +118,42 @@ class AtividadeController extends Controller {
         $dados["descricao"] = $atividade->getDescricao();
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("pages/usuario/form.php", $dados, $msgsErro, "", "", true);
+        $this->loadView("pages/atividade/formAtividade.php", $dados, $msgsErro, "", "", true);
+    }
+
+    protected function edit() {
+        $atividade = $this->findAtividadeById();
+
+        if($atividade){
+
+            $dados["id_atividade"] = $atividade->getIdAtividade();
+            $dados["atividade"] = $atividade;        
+            $this->loadView("pages/atividade/formAtividade.php", $dados, "", "", true);
+        } else {
+            $this->list("Atividade não encontrada.");
+        }
+    }
+
+    protected function findAtividadeById(){
+        $id = 0;
+        if(isset($_GET['id']))
+            $id = $_GET['id'];
+
+        $dados["id_atividade"] = $id;
+
+        $atividade = $this->atividadeDao->findById($id);
+        return $atividade;
+    }
+
+    protected function delete(){
+        $atividade = $this->findAtividadeById();
+             if($atividade){
+            $this->atividadeDao->deleteById($atividade->getIdAtividade());
+            
+            $this->list("","Atividade excluída com sucesso.");
+        } else {
+            $this->list("Atividade não encontrada.");
+        }
     }
 }
 

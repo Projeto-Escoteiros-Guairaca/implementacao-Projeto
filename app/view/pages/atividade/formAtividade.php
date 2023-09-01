@@ -28,18 +28,16 @@
                     <input class="form-control" type="text" id="txtNomeAtividade" name="nomeAtividade" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php
-                            echo (isset($dados['atividade']) ? $dados['']->getNomeAtividade() : "");
+                            echo (isset($dados['atividade']) ? $dados['atividade']->getNomeAtividade() : "");
                         ?>" />
                 </div>
                 <div class="form-group col-6">
                     <label for="descricaoAtividade">Descrição</label>
-                    <textarea class="form-control" id="descricaoAtividade" name="descricao" rows="3">
-                        <?php
-                            echo (isset($dados['atividade']) ? $dados['atividade']->getDescricao(): "");
-                        ?>
-                    </textarea>
+                    <textarea class="form-control" id="descricaoAtividade" name="descricao" rows="3"><?php echo (isset($dados['atividade']) ? $dados['atividade']->getDescricao(): "");?></textarea>
                 </div>
-                <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
+                <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
+                <input type="hidden" id="hddId" name="imagem_atividade" value="<?=isset($dados['atividade']) ? $dados['atividade']->getImagem() : "" ?>" />
+
 <br>
                 <input type="hidden" id="hddId" name="id_atividade" value="<?= $dados['id_atividade']; ?>" />
                 
