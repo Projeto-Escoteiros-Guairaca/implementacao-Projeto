@@ -66,6 +66,7 @@ CREATE TABLE tb_atividades(
   id_atividade int auto_increment,
   nome_atividade VARCHAR(45) NOT NULL,
   descricao VARCHAR(255) NOT NULL,
+  imagem_atividade VARCHAR(400),
   PRIMARY KEY (id_atividade)
 
 );
