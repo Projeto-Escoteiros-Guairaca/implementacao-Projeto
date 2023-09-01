@@ -31,6 +31,14 @@
                             echo (isset($dados['atividade']) ? $dados['']->getNomeAtividade() : "");
                         ?>" />
                 </div>
+                <div class="form-group col-6">
+                    <label for="descricaoAtividade">Descrição</label>
+                    <textarea class="form-control" id="descricaoAtividade" name="descricaoAtividade" rows="3">
+                        <?php
+                            echo (isset($dados['atividade']) ? $dados['atividade']->getDescricao(): "");
+                        ?>
+                    </textarea>
+                </div>
                 
                 <input type="hidden" id="hddId" name="id_atividade" value="<?= $dados['id_atividade']; ?>" />
                 
