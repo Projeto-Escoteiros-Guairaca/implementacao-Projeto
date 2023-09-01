@@ -71,13 +71,12 @@ class AtividadeDAO {
     public function update(Atividade $atividade) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_atividades SET nome = :nome, cpf = :cpf, login = :login," . 
-               " senha = :senha, papeis = :papeis" .   
+        $sql = "UPDATE tb_atividades SET nome_atividade = :nome_atividade, descricao = :descricao" .
                " WHERE id_atividade = :id";
         
         $stm = $conn->prepare($sql);
-        $stm->bindValue("nome", $atividade->getNomeAtividade());
-        $stm->bindValue("cpf", $atividade->getDescricao());
+        $stm->bindValue("nome_atividade", $atividade->getNomeAtividade());
+        $stm->bindValue("descricao", $atividade->getDescricao());
         $stm->execute();
     }
 
