@@ -66,11 +66,11 @@ CREATE TABLE tb_atividades(
   id_atividade int auto_increment,
   nome_atividade VARCHAR(45) NOT NULL,
   descricao VARCHAR(255) NOT NULL,
+  imagem_atividade VARCHAR(400),
   PRIMARY KEY (id_atividade)
 
 );
 CREATE TABLE tb_arquivos(
- 
   id_arquivo int auto_increment,
   nome VARCHAR(45) NOT NULL,
   caminho VARCHAR(400) NOT NULL,
@@ -80,11 +80,10 @@ CREATE TABLE tb_arquivos(
 CREATE TABLE tb_tarefas(
   id_tarefa int AUTO_INCREMENT,
   id_atividade int NOT NULL,
-  id_arquivo int NOT NULL,
   nome VARCHAR(45) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
   PRIMARY KEY (id_tarefa),
-  FOREIGN KEY (id_atividade) REFERENCES tb_atividades (id_atividade), 
-  FOREIGN KEY (id_arquivo) REFERENCES tb_arquivos (id_arquivo)
+  FOREIGN KEY (id_atividade) REFERENCES tb_atividades (id_atividade)
 
 );
 CREATE TABLE tb_tarefas_usuarios(
@@ -107,6 +106,12 @@ ALTER Table tb_alcateias ADD CONSTRAINT fk_alcateias_primo FOREIGN KEY (id_usuar
 
 /*Inserts atividades*/
 INSERT INTO tb_atividades (nome_atividade, descricao) VALUES ('Caçador', 'Caçar, obviamente');
+
+/*Inserts arquivos*/
+INSERT INTO tb_arquivos (nome, caminho) VALUES ('Video', 'https://pin.it/2aYGxms');
+
+/*Inserts de tarefas*/
+INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Fogueira', 'Faça uma fogueira sem usar qualquer tipo de acendedor artificial');
 
 
 /*Inserts enderecos*/

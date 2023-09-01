@@ -36,7 +36,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                     <hr>
                     <p class="card-text">
                     <?php echo $ativ->getDescricao();?></p>
-                    <a href="#" class="btn btn-primary">Mostrar Tarefas</a>
+                    <a href="<?= BASEURL?>/controller/TarefaController.php?action=list&id='<?php echo $ativ->getIdAtividade()?>'" class="btn btn-primary">Mostrar Tarefas</a>
                 </div>
                 </div>
                 <?php endforeach;?>
