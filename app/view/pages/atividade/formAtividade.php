@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-6">
-            <form id="formatividade" method="POST" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save">
+            <form id="formatividade" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save">
                 
                 <h2 class="text-center">
                     <?php if(isset($dados["id_atividade"])): ?>
@@ -33,13 +33,14 @@
                 </div>
                 <div class="form-group col-6">
                     <label for="descricaoAtividade">Descrição</label>
-                    <textarea class="form-control" id="descricaoAtividade" name="descricaoAtividade" rows="3">
+                    <textarea class="form-control" id="descricaoAtividade" name="descricao" rows="3">
                         <?php
                             echo (isset($dados['atividade']) ? $dados['atividade']->getDescricao(): "");
                         ?>
                     </textarea>
                 </div>
-                
+                <input type="file" id="img" required name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
+<br>
                 <input type="hidden" id="hddId" name="id_atividade" value="<?= $dados['id_atividade']; ?>" />
                 
                 <button type="submit" class="btn btn-success">Gravar</button>
