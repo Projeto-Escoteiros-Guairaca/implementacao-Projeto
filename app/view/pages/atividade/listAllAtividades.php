@@ -30,13 +30,16 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
             <?php foreach($dados["lista"] as $ativ):?>
         
                 <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="<?= BASEURL?>/view/pages/home/images/semimagem.jpg" alt="INSERE IMAGEM AQUI LOL">
+                <img class="card-img-top" src="<?= BASEURL?><?php echo $ativ->getImagem();?>" alt="INSERE IMAGEM AQUI LOL">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $ativ->getNomeAtividade();?></h5>
                     <hr>
                     <p class="card-text">
                     <?php echo $ativ->getDescricao();?></p>
-                    <a href="<?= BASEURL?>/controller/TarefaController.php?action=list&id='<?php echo $ativ->getIdAtividade()?>'" class="btn btn-primary">Mostrar Tarefas</a>
+                    <a href="<?= BASEURL?>/controller/TarefaController.php?action=list&id='<?php echo $ativ->getIdAtividade()?>'" 
+                    class="btn btn-primary">Mostrar Tarefas</a>
+                    <a href="<?= BASEURL?>/controller/AlcateiaController.php?action=update&id='<?php echo $ativ->getIdAtividade()?>'" 
+                    class="btn btn-primary">alterar</a>
                 </div>
                 </div>
                 <?php endforeach;?>
