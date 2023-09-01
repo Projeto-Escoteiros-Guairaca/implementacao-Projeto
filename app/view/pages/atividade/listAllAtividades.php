@@ -10,7 +10,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
 
-    <h3 class='text-center'>Usuários</h3>
+    <h3 class='text-center'>Atividades</h3>
 
     <div class='container'>
         <div class="row">
