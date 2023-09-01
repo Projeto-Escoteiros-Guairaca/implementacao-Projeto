@@ -14,6 +14,9 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 
     <div class='container'>
         <div class="row">
+            <div class="col-3">
+                <a class="btn btn-success" href="<?= BASEURL ?>/controller/AtividadeController.php?action=create">Inserir</a>
+            </div>
             <div class="col-9">
                 <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
             </div>
@@ -27,7 +30,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
             <?php foreach($dados["lista"] as $ativ):?>
         
                 <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="<?= BASEURL?>/view/img/ifpr_foz.jpg" alt="INSERE IMAGEM AQUI LOL">
+                <img class="card-img-top" src="<?= BASEURL?>/view/pages/home/images/semimagem.jpg" alt="INSERE IMAGEM AQUI LOL">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $ativ->getNomeAtividade();?></h5>
                     <hr>
@@ -39,7 +42,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                 <?php endforeach;?>
 <!-- FIN CARD -->
 
-                <a class="btn btn-success" 
+                <a class="btn btn-success my-2" 
                 href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
             </div>
         </div>
