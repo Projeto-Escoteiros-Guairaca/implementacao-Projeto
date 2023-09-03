@@ -28,7 +28,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                            <!-- COMIENZO CARD -->
 
             <?php foreach($dados["lista"] as $ativ):?>
-        
+                <a class="btn btn-danger" href="<?= BASEURL?>/controller/AtividadeController.php?action=delete&id=<?php echo $ativ->getIdAtividade()?>"> deletar </a>
                 <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="<?= BASEURL?><?php echo $ativ->getImagem();?>" alt="INSERE IMAGEM AQUI LOL">
                 <div class="card-body">
@@ -36,9 +36,9 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                     <hr>
                     <p class="card-text">
                     <?php echo $ativ->getDescricao();?></p>
-                    <a href="<?= BASEURL?>/controller/TarefaController.php?action=list&id='<?php echo $ativ->getIdAtividade()?>'" 
+                    <a href="<?= BASEURL?>/controller/TarefaController.php?action=list&id=<?php echo $ativ->getIdAtividade()?>" 
                     class="btn btn-primary">Mostrar Tarefas</a>
-                    <a href="<?= BASEURL?>/controller/AlcateiaController.php?action=update&id='<?php echo $ativ->getIdAtividade()?>'" 
+                    <a href="<?= BASEURL?>/controller/AtividadeController.php?action=edit&id=<?php echo $ativ->getIdAtividade()?>" 
                     class="btn btn-primary">alterar</a>
                 </div>
                 </div>
@@ -48,7 +48,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                 <a class="btn btn-success my-2" 
                 href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
             </div>
-        </div>
+        </div"
     </div>
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 

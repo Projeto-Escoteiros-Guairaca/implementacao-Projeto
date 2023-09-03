@@ -97,4 +97,14 @@ class AtividadeDAO {
         $stm->execute();
     }
 
+    public function deleteImage($id) {
+        
+        $atividade = $this->findById($id);
+        
+        $img_del = $atividade->getImagem();
+        if (file_exists($img_del)) {
+            unlink($img_del);
+        }
+    }
+
 }
