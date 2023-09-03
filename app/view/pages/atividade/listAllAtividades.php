@@ -32,7 +32,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                             <hr>
                             <p class="card-text">
                             <?php echo $ativ->getDescricao();?></p>
-                            <a href="<?= BASEURL?>/controller/TarefaController.php?action=list&id=<?php echo $ativ->getIdAtividade()?>" 
+                            <a href="<?= BASEURL?>/controller/TarefaController.php?action=listByIdAtiv&id=<?php echo $ativ->getIdAtividade()?>" 
                             class="btn btn-primary">Mostrar Tarefas</a>
                             <a href="<?= BASEURL?>/controller/AtividadeController.php?action=edit&id=<?php echo $ativ->getIdAtividade()?>" 
                             class="btn btn-primary my-2">alterar</a>
