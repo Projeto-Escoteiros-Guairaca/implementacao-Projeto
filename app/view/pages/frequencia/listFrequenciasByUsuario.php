@@ -2,7 +2,7 @@
 
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
-
+    $i = 0;
 ?>
 
 <div class="container">
@@ -17,13 +17,13 @@
             <div class="col-12">
             <div class="col-12">
             <h2>
-            <?php echo"encontro do dia " . $dados['encontro']->getDataFormated(); ?>
+                <?php echo $dados["usuario"]->getNome();?>
             </h2>
             </div>
                 <table id="tabfrequencias" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Usuario</th>
+                            <th>Encontro</th>
                             <th>frequencia</th>
                         
                         </tr>
@@ -36,27 +36,26 @@
                         <?php else: ?>
                             <?php foreach($dados["lista"] as $freq): ?>
                                 <tr>
-                                    <td><?php echo $freq->getUsuario()->getNome(); ?></td>
+                                    <td><?php echo $dados['encontros'][$i]->getDataFormated(); ?>
+                                </td>
                                     <td>
-                                        <?php 
-                                        if ($freq->getFrequencia() == 1) {
-                                            echo "<a class='btn btn-outline-success' href='". BASEURL .
-                                            "/controller/FrequenciaController.php?action=updateToFalse&id=". $freq->getId_frequencia() .
-                                            "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>C</a>";
-                                        } else {
-                                            echo "<a class='btn btn-outline-danger' href='". BASEURL .
-                                            "/controller/FrequenciaController.php?action=updateToTrue&id=". $freq->getId_frequencia() .
-                                            "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>F</a>";
+                                        <?php if($freq->getFrequencia() == 1) {
+                                            echo "<h5> Presente </h5>";
+                                        }
+                                        else {
+                                            echo "<h5> Faltou </h5";
                                         }
                                         ?>
                                     </td>
-                                    </td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php 
+                            $i++;
+                        endforeach; 
+                        ?>
                         <?php endif; ?>
                     </tbody>
                 </table>
-                <a class="btn btn-success" href="<?= BASEURL ?>/controller/EncontroController.php?action=list">Voltar</a>
+                <a class="btn btn-success" href="<?= BASEURL ?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$dados['usuario']->getIdAlcateia(); ?>">Voltar</a>
             </div>
         </div>
 </div>

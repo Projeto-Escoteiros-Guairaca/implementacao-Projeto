@@ -35,6 +35,20 @@ class FrequenciaDAO {
         return $this->mapFrequencia($result);
     }
 
+    public function listFrequenciasByIdUsuario($id) {
+        
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_frequencias e WHERE e.id_usuario = ? ORDER BY e.id_encontro DESC";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        
+        return $this->mapFrequencia($result);
+        
+    }
+   
+
     public function findFrequenciaByIdEncontro(int $id){
         $conn = Connection::getConn();
 

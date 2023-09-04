@@ -104,6 +104,25 @@ class EncontroDao {
         return $alcateias;
     }
 
+    public function getEncontroByFrequencia($id) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_encontros e" .
+               " WHERE e.id_encontro = ? ORDER BY e.id_encontro DESC ";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        
+        $encontros = $this->mapEncontro($result);
+
+        if(count($encontros) == 1)
+            return $encontros[0];
+        elseif(count($encontros) == 0)
+            return null;
+
+        die("encontroDAO.findById()" . 
+            " - Erro: mais de uma encontro encontrado.");
+    }
 
     public function findById(int $id){
         $conn = Connection::getConn();

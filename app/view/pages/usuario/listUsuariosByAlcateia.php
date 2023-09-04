@@ -42,20 +42,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                                     <td><?= $usu->getLogin(); ?></td>
                                     <td><?= $usu->getPapeisStr(); ?></td>
                                     <td>
-                                        <?php if($usu->getStatus() == 'ATIVO'): ?>
-                                            
-                                        <?php else: ?>
-
-                                        <?php endif; ?>
-
-
-                                        <?php
-                                        if ($usu->getStatus() == 'ATIVO') {
-                                            echo "<a class='btn btn-outline-success' onclick=\"return confirm('Deseja alterar o status do usuário para INATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToInativo&id=". $usu->getId() ."'>ATIVO</a>";
-                                        } else {
-                                            echo "<a class='btn btn-outline-danger' onclick=\"return confirm('Deseja alterar o status do usuário para ATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToAtivo&id=". $usu->getId() ."'>INATIVO</a>";
-                                        }
-                                        ?>
+                                        <a class="btn btn-success" href="<?= BASEURL ?>/controller/FrequenciaController.php?action=listByUsuario&id=<?= $usu->getId(); ?>"> Mostrar frequencias </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

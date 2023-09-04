@@ -62,9 +62,30 @@ class FrequenciaController extends Controller {
             $frequencias[$i]->setUsuario($us);
             $i++;
         }
+
         $dados["lista"] = $frequencias;
         $dados["encontro"] = $encontro;
         $this->loadView("pages/frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, false);
+    }
+    
+    public function listByUsuario(string $msgErro = "", string $msgSucesso = "") {
+        
+        $encontros = array();
+        $frequenciasOfUsuarios = $this->frequenciaDao->listFrequenciasByIdUsuario($_GET['id']);
+        $usuario = $this->usuarioDao->findById($_GET['id']);
+
+        foreach($frequenciasOfUsuarios as $freq):
+            $encontro = $this->encontroDao->getEncontroByFrequencia($freq->getId_encontro());
+                if(! in_array($encontro, $encontros)) {
+                array_push($encontros, $encontro);
+            }
+        endforeach;
+
+        $dados["usuario"] = $usuario;
+        $dados["lista"] = $frequenciasOfUsuarios;
+        $dados["encontros"] = $encontros;
+        $this->loadView("pages/frequencia/listFrequenciasByUsuario.php", $dados,$msgErro, $msgSucesso, false);
+
     }
 
     public function findUsuariosByIdAlcateia() {
