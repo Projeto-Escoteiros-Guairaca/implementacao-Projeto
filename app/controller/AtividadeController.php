@@ -78,7 +78,6 @@ class AtividadeController extends Controller {
             $atividade->setImagem($caminho_imagem);
         }
         else {
-        print_r("fuck");
             $atividade->setImagem($_POST['imagem_atividade']);
         }
         //Validar os dados
