@@ -8,7 +8,7 @@ require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
 
 ?>
-    <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
+    <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
 
     <h3 class='text-center'>Atividades</h3>
 
@@ -22,33 +22,29 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
             </div>
         </div>
 
-        <div id="pinto" class="row" style="margin-top: 10px;">
+        <div class="row">
             <div class="col-12">
-
-                           <!-- COMIENZO CARD -->
-
-            <?php foreach($dados["lista"] as $ativ):?>
-                <a class="btn btn-danger" href="<?= BASEURL?>/controller/AtividadeController.php?action=delete&id=<?php echo $ativ->getIdAtividade()?>"> deletar </a>
-                <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="<?= BASEURL?><?php echo $ativ->getImagem();?>" alt="INSERE IMAGEM AQUI LOL">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $ativ->getNomeAtividade();?></h5>
-                    <hr>
-                    <p class="card-text">
-                    <?php echo $ativ->getDescricao();?></p>
-                    <a href="<?= BASEURL?>/controller/TarefaController.php?action=list&id=<?php echo $ativ->getIdAtividade()?>" 
-                    class="btn btn-primary">Mostrar Tarefas</a>
-                    <a href="<?= BASEURL?>/controller/AtividadeController.php?action=edit&id=<?php echo $ativ->getIdAtividade()?>" 
-                    class="btn btn-primary">alterar</a>
-                </div>
-                </div>
+                <?php foreach($dados["lista"] as $ativ):?>
+                    <div class="card my-2 mx-2" style="width: 18rem;">
+                        <img style="height: 225px;" class="card-img-top" src="<?= BASEURL?><?php echo $ativ->getImagem();?>" alt="INSERE IMAGEM AQUI LOL">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $ativ->getNomeAtividade();?></h5>
+                            <hr>
+                            <p class="card-text">
+                            <?php echo $ativ->getDescricao();?></p>
+                            <a href="<?= BASEURL?>/controller/TarefaController.php?action=listByIdAtiv&id=<?php echo $ativ->getIdAtividade()?>" 
+                            class="btn btn-primary">Mostrar Tarefas</a>
+                            <a href="<?= BASEURL?>/controller/AtividadeController.php?action=edit&id=<?php echo $ativ->getIdAtividade()?>" 
+                            class="btn btn-primary my-2">alterar</a>
+                            <a class="btn btn-danger" href="<?= BASEURL?>/controller/AtividadeController.php?action=delete&id=<?php echo $ativ->getIdAtividade()?>"
+                            > deletar </a>
+                        </div>
+                    </div>
                 <?php endforeach;?>
-<!-- FIN CARD -->
-
-                <a class="btn btn-success my-2" 
-                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
             </div>
-        </div"
+        </div>
+        <a class="btn btn-success my-2" 
+                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
     </div>
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 

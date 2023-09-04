@@ -5,7 +5,10 @@ require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../../../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
+require_once(__DIR__ . "/selectPapeis.php");
+require_once(__DIR__ . "/../../../model/Usuario.php");
 
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
@@ -41,7 +44,17 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                                 <tr>
                                     <td><?= $usu->getNome(); ?></td>
                                     <td><?= $usu->getLogin(); ?></td>
-                                    <td><?= $usu->getPapeisStr(); ?></td>
+                                    <td>
+                                        <?php
+                                            $usuario = new Usuario();
+                                            $papeis = new UsuarioPapel();
+                                            $arrayPapeis = $papeis->getAllAsArray();
+                                            $usuario->setPapeisAsArray($arrayPapeis);
+                                        
+                                            SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papelUsuario");
+
+                                        ?>
+                                    </td>
                                     <td>
                                         <?php if($usu->getStatus() == 'ATIVO'): ?>
                                             
