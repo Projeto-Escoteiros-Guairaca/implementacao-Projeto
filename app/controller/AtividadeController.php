@@ -53,40 +53,13 @@ class AtividadeController extends Controller {
         $this->loadView("pages/atividade/formAtividade.php", $dados,"","", true);
     }
 
+
     protected function save() {
 
-        $imagem = $_FILES['imagem'];
-        
         $dados["id_atividade"] = isset($_POST['id_atividade']) ? $_POST['id_atividade'] : 0;
-        $nomeAtividade = isset($_POST['nomeAtividade']) ? trim($_POST['nomeAtividade']) : "";
-        $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : "";
-        
-        $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
-        $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
-        $caminho_imagem = "../view/img/imgAtividades/" . $nome_imagem;
-        move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
-
-
-        $atividade = new Atividade();
-        $atividade->setNomeAtividade($nomeAtividade);
-        $atividade->setDescricao($descricao);
-
-        if($dados['id_atividade'] == 0) {
-            $atividade->setImagem($caminho_imagem);
-        }
-        elseif($imagem['name'] != '') {
-            $atividade->setImagem($caminho_imagem);
-        }
-        else {
-        print_r("fuck");
-            $atividade->setImagem($_POST['imagem_atividade']);
-        }
+        $atividade = $this->saveAtividade($dados["id_atividade"]);
         //Validar os dados
         $erros = $this->atividadeService->validarDados($atividade);
-        
-        if($dados['id_atividade'] > 0 && $imagem['name'] != '') {
-            $this->atividadeDao->deleteImage($dados['id_atividade']);
-        }
 
 
         if(empty($erros)) {
@@ -120,6 +93,40 @@ class AtividadeController extends Controller {
         $msgsErro = implode("<br>", $erros);
         $this->loadView("pages/atividade/formAtividade.php", $dados, $msgsErro, "", "", true);
     }
+    protected function saveAtividade(int $id) {
+
+        $imagem = $_FILES['imagem'];
+        $nomeAtividade = isset($_POST['nomeAtividade']) ? trim($_POST['nomeAtividade']) : "";
+        $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : "";
+
+        $atividade = new Atividade();
+        $atividade->setNomeAtividade($nomeAtividade);
+        $atividade->setDescricao($descricao);
+
+        $caminho_imagem = $this->saveImage($imagem);
+       
+        if($id == 0) {
+            $atividade->setImagem($caminho_imagem);
+        }
+        elseif($imagem['name'] != '') {
+            $atividade->setImagem($caminho_imagem);
+        }
+        else {
+            $atividade->setImagem($_POST['imagem_atividade']);
+        }
+
+        return $atividade;
+    }
+    protected function saveImage(Array $imagem) {
+        
+        
+        $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+        $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+        $caminho_imagem = "../view/img/imgAtividades/" . $nome_imagem;
+        move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
+        return $caminho_imagem;
+    }
 
     protected function edit() {
         $atividade = $this->findAtividadeById();
@@ -147,8 +154,10 @@ class AtividadeController extends Controller {
 
     protected function delete(){
         $atividade = $this->findAtividadeById();
+
              if($atividade){
             $this->atividadeDao->deleteById($atividade->getIdAtividade());
+            $this->atividadeDao->deleteImage($id = 0, $atividade);
             
             $this->list("","Atividade excluída com sucesso.");
         } else {
