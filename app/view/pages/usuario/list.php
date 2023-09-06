@@ -23,7 +23,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
         </div>
         <div>
             <label> Buscar usuário</label>
-            <input type="text" name="buscar" id="buscar" oninput="bruh('<?php echo BASEURL ?>')">
+            <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?php echo BASEURL ?>')">
         </div>
         <div id="bruh" class="row" style="margin-top: 10px;">
             <div class="col-12">

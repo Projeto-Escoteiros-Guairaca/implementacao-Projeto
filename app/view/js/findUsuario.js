@@ -1,5 +1,5 @@
 
-function bruh(BASEURL) {
+function findUsuario(BASEURL) {
 
     buscar = document.getElementById("buscar");
     input = buscar.value;
