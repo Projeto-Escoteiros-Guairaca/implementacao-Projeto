@@ -272,6 +272,26 @@ class UsuarioController extends Controller {
           $usuario->setSenha($senha);
     return $usuario;
     }
+    
+    protected function findIt() {
+        $arrayUsuarios = $this->usuarioDao->findItByName($_GET["word"]);
+        $alcateias = $this->alcateiaDao->list();
+
+        foreach($arrayUsuarios as $usu) {
+            if($usu->getIdAlcateia()) {
+                foreach($alcateias as $alc) {
+                    if($usu->getIdAlcateia() == $alc->getId_alcateia()) {
+                        $usu->setAlcateia($alc);
+                    }
+
+                }
+            }
+        }
+        echo json_encode($arrayUsuarios);
+
+        return;
+    }
+
     protected function changeAlcateia(){
         $id = $_GET["id"];
         $idAlcateia = $_GET["idAlcateia"];

@@ -263,5 +263,14 @@ class UsuarioDAO {
         $result = $stm->fetchAll();
         return $this->mapUsuarios($result);
     }
+    
+    public function findItByName(string $word) {
+        $conn = Connection::getConn();
 
+        $sql = "SELECT * FROM `tb_usuarios` u WHERE u.nome LIKE '%".$word."%' ";
+        $stm = $conn->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $this->mapUsuarios($result);
+    }
 }

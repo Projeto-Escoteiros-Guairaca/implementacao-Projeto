@@ -21,8 +21,11 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
                 <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
             </div>
         </div>
-
-        <div id="pinto" class="row" style="margin-top: 10px;">
+        <div>
+            <label> Buscar usuário</label>
+            <input type="text" name="buscar" id="buscar" oninput="bruh('<?php echo BASEURL ?>')">
+        </div>
+        <div id="bruh" class="row" style="margin-top: 10px;">
             <div class="col-12">
                 <table id="tabUsuarios" class="table table-striped table-bordered">
                     <thead>
@@ -34,17 +37,17 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
                             <th>Mudar Alcateia</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="usuarioTable">
                         <?php if (count($dados["lista"]) == 0) : ?>
                             <tr>
                                 <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
                             </tr>
                         <?php else: ?>
                             <?php foreach($dados["lista"] as $usu): ?>
-                                <tr>
-                                    <td><?= $usu->getNome(); ?></td>
-                                    <td><?= $usu->getLogin(); ?></td>
-                                    <td>
+                                <tr class="usuarioLinha" >
+                                    <td class="usuarioColumn"><?= $usu->getNome(); ?></td>
+                                    <td class="usuarioColumn"><?= $usu->getLogin(); ?></td>
+                                    <td class="usuarioColumn">
                                         <?php
                                             $usuario = new Usuario();
                                             $papeis = new UsuarioPapel();
@@ -55,7 +58,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
 
                                         ?>
                                     </td>
-                                    <td>
+                                    <td class="usuarioColumn">
                                         <?php if($usu->getStatus() == 'ATIVO'): ?>
                                             
                                         <?php else: ?>
@@ -72,7 +75,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
                                         ?>
                                     </td>
 
-                                    <td>   
+                                    <td class="usuarioColumn">   
                                         <button class="<?php if($usu->getAlcateia()) {
                                                 echo "btn btn-secondary";
                                             }else {
@@ -98,6 +101,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
         </div>
     </div>
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
+    <script src="<?= BASEURL ?>/view/js/findUsuario.js"> </script> 
 
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");
