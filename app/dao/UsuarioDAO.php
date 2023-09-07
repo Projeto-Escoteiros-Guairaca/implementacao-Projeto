@@ -32,11 +32,11 @@ class UsuarioDAO {
        $usuario = $this->mapUsuarios($result);
        if(count($usuario) == 1)
        return $usuario[0];
-   elseif(count($usuario) == 0)
+        elseif(count($usuario) == 0)
        return null;
 
-   die("UsuarioDAO.findById()" . 
-       " - Erro: mais de um usuário encontrado.");
+        die("UsuarioDAO.findById()" . 
+            " - Erro: mais de um usuário encontrado.");
     }
 
     public function changeAlcateia($id, $idAlcateia) {
@@ -159,6 +159,15 @@ class UsuarioDAO {
         $sql = "UPDATE tb_usuarios SET status_usuario = 'ATIVO' WHERE id_usuario = :id";
         $stm = $conn->prepare($sql);
         $stm->bindValue("id", $_GET['id']);
+        $stm->execute();
+    }
+
+    public function changePapel($id, $papelUsu){
+        $conn = Connection::getConn();
+        $sql = "UPDATE tb_usuarios SET papeis = :papelUsu WHERE id_usuario = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("papelUsu", $papelUsu);
+        $stm->bindValue("id", $id);
         $stm->execute();
     }
 

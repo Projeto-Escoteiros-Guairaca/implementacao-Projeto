@@ -4,8 +4,9 @@ class SelectPapeis{
 
     public static function desenhaSelect($usuarioSelected, $papeis, $name) {
 
-        echo "<form action='". BASEURL ."/controller/UsuarioController.php?action=changePapel' method = 'POST'>";
-            echo "<select style='max-width:150px;' class='form-control' name='". $name ."' >";
+        echo "<form action='". BASEURL ."/controller/UsuarioController.php?action=changePapel&id=".
+            $usuarioSelected->getId()."' method = 'POST'>";
+            echo "<select style='max-width:150px;' class='form-control selecPapel' name='". $name ."' >";
 
             foreach($papeis as $papel):
 
@@ -19,6 +20,7 @@ class SelectPapeis{
             endforeach;
 
             echo "</select>";
+            echo "<button type='submit' class='btn btn-primary btnPapel'>Alterar</button>";
         echo "</form>";
     }
 

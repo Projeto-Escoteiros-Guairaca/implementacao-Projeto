@@ -54,8 +54,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
                                             $arrayPapeis = $papeis->getAllAsArray();
                                             $usuario->setPapeisAsArray($arrayPapeis);
                                         
-                                            SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papelUsuario");
-
+                                            SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papel_usuario");
                                         ?>
                                     </td>
                                     <td class="usuarioColumn">
