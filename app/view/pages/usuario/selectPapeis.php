@@ -20,7 +20,7 @@ class SelectPapeis{
             endforeach;
 
             echo "</select>";
-            echo "<button type='submit' class='btn btn-primary btnPapel'>Alterar</button>";
+            echo "<button type='submit' onclick=\"return confirm('Deseja alterar o papel do usuário?')\" class='btn btn-primary btnPapel'>Alterar</button>";
         echo "</form>";
     }
 
