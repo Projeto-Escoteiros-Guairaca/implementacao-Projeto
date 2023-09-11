@@ -26,3 +26,11 @@ body {
     display: block;
     z-index: 11;
 }
+
+.formPapel{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

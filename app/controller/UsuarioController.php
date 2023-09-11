@@ -330,6 +330,18 @@ class UsuarioController extends Controller {
         $usuario = $this->usuarioDao->findById($id);
         return $usuario;
     }
+
+    protected function changePapel(){
+        $papelUsu = isset($_POST['papel_usuario']) ? trim($_POST['papel_usuario']) : "";
+        
+        $usuario = $this->findUsuarioById();
+        if($usuario){
+            $this->usuarioDao->changePapel($usuario->getId(), $papelUsu);
+            $this->list(""," Papel do Usuário alterado com sucesso.");
+        } else {
+            $this->list("Usuário não encontrado.");
+        }
+    }
    
    
 }
