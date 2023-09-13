@@ -5,6 +5,10 @@ class Tarefa {
     private $atividade;
     private $nomeTarefa;
     private $descricaoTarefa;
+
+    //campos provisórios
+
+    private $id_atividade;
     
 
     /**
@@ -83,6 +87,26 @@ class Tarefa {
     public function setDescricaoTarefa($descricaoTarefa)
     {
         $this->descricaoTarefa = $descricaoTarefa;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_atividade
+     */ 
+    public function getId_atividade()
+    {
+        return $this->id_atividade;
+    }
+
+    /**
+     * Set the value of id_atividade
+     *
+     * @return  self
+     */ 
+    public function setId_atividade($id_atividade)
+    {
+        $this->id_atividade = $id_atividade;
 
         return $this;
     }

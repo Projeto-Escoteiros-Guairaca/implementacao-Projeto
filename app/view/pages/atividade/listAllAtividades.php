@@ -36,6 +36,8 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                             class="btn btn-primary">Mostrar Tarefas</a>
                             <a href="<?= BASEURL?>/controller/AtividadeController.php?action=edit&id=<?php echo $ativ->getIdAtividade()?>" 
                             class="btn btn-primary my-2">alterar</a>
+                            <a href="<?= BASEURL?>/controller/TarefaController.php?action=createTarefaAtiv&id=<?php echo $ativ->getIdAtividade()?>" 
+                            class="btn btn-success my-2">Criar Tarefas</a>
                             <a class="btn btn-danger" href="<?= BASEURL?>/controller/AtividadeController.php?action=delete&id=<?php echo $ativ->getIdAtividade()?>"
                             > deletar </a>
                         </div>

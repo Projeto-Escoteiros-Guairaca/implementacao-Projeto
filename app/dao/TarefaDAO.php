@@ -1,6 +1,8 @@
 <?php
 
 include_once(__DIR__ . "/../util/Connection.php");
+include_once(__DIR__ . "/../model/Tarefa.php");
+include_once(__DIR__ . "/../model/Atividade.php");
 
 class TarefaDAO {
 
@@ -23,6 +25,7 @@ class TarefaDAO {
             $tarefa->setIdtarefa($reg['id_tarefa']);
             $tarefa->setNometarefa($reg['nome']);
             $tarefa->setDescricaoTarefa($reg['descricao']);
+            $tarefa->setId_atividade($reg['id_atividade']);
 
             array_push($tarefas, $tarefa);
 
@@ -40,6 +43,24 @@ class TarefaDAO {
         $result = $stm->fetchAll();
 
         return $this->mapTarefas($result);
+    }
+
+    public function insert($tarefa){
+
+        $conn = Connection::getConn();
+
+        $sql = "INSERT INTO tb_tarefa (id_atividade, nome, descricao) 
+                    VALUES (:id_atividade, :nome, :descricao)";
+
+        $stm = $conn->prepare($sql);
+        $stm->bindValue(":id_atividade", $tarefa->getAtividade()->getIdAtividade());
+        $stm->bindValue(":nome", $tarefa->getNomeTarefa());
+        $stm->bindValue(":descricao", $tarefa->getDescricaoTarefa());
+        $stm->execute();
+
+    }
+    public function update($tarefa){
+
     }
 
 }

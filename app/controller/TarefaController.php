@@ -12,7 +12,7 @@ class TarefaController extends Controller {
     private $tarefaService;
     
     function __construct(){
-        $administradorChefeActions = ["list", "listByIdAtiv", "create", "edit", "delete", "save", "update"];
+        $administradorChefeActions = ["list", "listByIdAtiv", "create", "createTarefaAtiv", "edit", "delete", "save", "update"];
         $lobinhoActions = ["list","listByIdAtiv"];
         $papelNecessario = array();
 
@@ -39,6 +39,59 @@ class TarefaController extends Controller {
 
         $this->setActionDefault("list", true);
         $this->handleAction();
+    }
+
+    public function createTarefaAtiv(){
+        $dados["id_atividade"] = $_GET['id'];
+        $this->loadView("pages/tarefa/formTarefa.php", $dados, "", "", true);
+    }
+
+    public function save(){
+
+        $dados["id_tarefa"] = isset($_POST['id_tarefa']) ? $_POST['id_tarefa'] : 0;
+        $nomeTarefa = isset($_POST['nomeTarefa']) ? trim($_POST['nomeTarefa']) : "";
+        $descricaoTarefa = isset($_POST['descricaoTarefa']) ? trim($_POST['descricaoTarefa']) : "";
+        $idAtividade = isset($_POST['id_atividade']) ? trim($_POST['id_atividade']) : "";
+
+        $tarefa = new Tarefa();
+        $tarefa->setNomeTarefa($nomeTarefa);
+        $tarefa->setDescricaoTarefa($descricaoTarefa);
+        $atividade = new Atividade();
+        $atividade->setIdAtividade($idAtividade);
+        $tarefa->setAtividade($atividade);
+
+        $erros = $this->tarefaService->validarDados($tarefa);
+        if(empty($erros)) {
+            //Persiste o objeto
+            try {
+                
+                if($dados["id_tarefa"] == 0){ //Inserindo
+                    $this->tarefaService->insert($tarefa);
+
+                }
+                else {//Alterando
+
+                    $tarefa->setIdTarefa($dados["id_tarefa"]);
+                    $this->tarefaService->update($tarefa);
+                }
+
+                // - Enviar mensagem de sucesso
+                $msg = "tarefa salva com sucesso.";
+                
+                $this->list("", $msg);
+                exit;
+            } catch (PDOException $e) {
+                $erros = ["[Erro ao salvar a encontro na base de dados.]"];
+            }
+        }
+       
+        $dados["nomeTarefa"] = $nomeTarefa;
+        $dados["descricaoTarefa"] = $descricaoTarefa;
+        $dados["id_atividade"] = $idAtividade;
+
+
+        $msgsErro = implode("<br>", $erros);
+        $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgsErro, "", true);
     }
 
     public function list(string $msgErro = "", string $msgSucesso = ""){
