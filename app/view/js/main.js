@@ -3,6 +3,7 @@ const body = document.body;
 const menuBackground = document.createElement("div");
 menuBackground.className = "menu-background";
 menuBackground.id = "menuBackground";
+
 function abrir_nav(){
    
     body.appendChild(menuBackground);
@@ -11,9 +12,11 @@ function abrir_nav(){
     document.getElementById("principal").style.width="40vw";
 
 }
+
 menuBackground.addEventListener("click", () => {
   fechar_nav();
 });
+
 function fechar_nav(){
   body.removeChild(menuBackground);
 
