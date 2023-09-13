@@ -4,11 +4,15 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../service/TarefaService.php");
 require_once(__DIR__ . "/../model/Tarefa.php");
 require_once(__DIR__ . "/../dao/TarefaDAO.php");
+require_once(__DIR__ . "/../model/Atividade.php");
+require_once(__DIR__ . "/../dao/AtividadeDAO.php");
 
 
 class TarefaController extends Controller {
 
     private $tarefaDao;
+    private $atividadeDao;
+
     private $tarefaService;
     
     function __construct(){
@@ -34,11 +38,31 @@ class TarefaController extends Controller {
             return;
         }
         
+        $this->atividadeDao = new AtividadeDAO();
         $this->tarefaDao = new TarefaDAO();
         $this->tarefaService = new TarefaService();
 
         $this->setActionDefault("list", true);
         $this->handleAction();
+    }
+
+    public function list(string $msgErro = "", string $msgSucesso = ""){
+        $atividade = $this->atividadeDao->findById($_SESSION["activeAtividade"]);
+
+        if(isset($_GET["idAtividade"])) {
+            $_SESSION["activeAtividade"] = $_GET["idAtividade"];
+        }
+        
+        if(isset($_SESSION["activeAtividade"])) {
+            $tarefas = $this->tarefaDao->listByIdAtiv($_SESSION["activeAtividade"]);
+        }
+        else {
+            $tarefas = $this->tarefaDao->list();
+        }
+
+        $dados["atividade"] = $atividade;
+        $dados["lista"] = $tarefas;
+        $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgErro, $msgSucesso, true);
     }
 
     public function createTarefaAtiv(){
@@ -67,7 +91,6 @@ class TarefaController extends Controller {
                 
                 if($dados["id_tarefa"] == 0){ //Inserindo
                     $this->tarefaService->insert($tarefa);
-
                 }
                 else {//Alterando
 
@@ -80,33 +103,22 @@ class TarefaController extends Controller {
                 
                 $this->list("", $msg);
                 exit;
-            } catch (PDOException $e) {
+            } 
+            catch (PDOException $e) {
                 $erros = ["[Erro ao salvar a encontro na base de dados.]"];
             }
         }
        
-        $dados["nomeTarefa"] = $nomeTarefa;
+        /*$dados["nomeTarefa"] = $nomeTarefa;
         $dados["descricaoTarefa"] = $descricaoTarefa;
-        $dados["id_atividade"] = $idAtividade;
+        $dados["id_atividade"] = $idAtividade;*/
+
+        $dados["lista"] = $tarefa;
 
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgsErro, "", true);
+        $this->list("", "Tarefa salva com sucesso", true);
     }
-
-    public function list(string $msgErro = "", string $msgSucesso = ""){
-        $tarefas = $this->tarefaDao->list();
-        $dados["lista"] = $tarefas;
-        $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgErro, $msgSucesso, true);
-    }
-
-    public function listByIdAtiv(string $msgErro = "", string $msgSucesso = ""){
-        $id_atividade = $_GET['id'];
-        $tarefasAtiv = $this->tarefaDao->listByIdAtiv($id_atividade);
-        $dados["lista"] = $tarefasAtiv;
-        $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgErro, $msgSucesso, true);
-    }
-
 }
 
 $TarefCont = new TarefaController();

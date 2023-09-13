@@ -45,17 +45,16 @@ class TarefaDAO {
         return $this->mapTarefas($result);
     }
 
-    public function insert($tarefa){
-
+    public function insert(Tarefa $tarefa){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_tarefa (id_atividade, nome, descricao) 
-                    VALUES (:id_atividade, :nome, :descricao)";
-
+        $sql = "INSERT INTO tb_tarefas (id_atividade, nome, descricao)" .
+                    " VALUES (:id_atividade, :nome, :descricao)";
         $stm = $conn->prepare($sql);
-        $stm->bindValue(":id_atividade", $tarefa->getAtividade()->getIdAtividade());
-        $stm->bindValue(":nome", $tarefa->getNomeTarefa());
-        $stm->bindValue(":descricao", $tarefa->getDescricaoTarefa());
+
+        $stm->bindValue("id_atividade", $tarefa->getAtividade()->getIdAtividade());
+        $stm->bindValue("nome", $tarefa->getNomeTarefa());
+        $stm->bindValue("descricao", $tarefa->getDescricaoTarefa());
         $stm->execute();
 
     }

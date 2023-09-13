@@ -4,7 +4,7 @@
 
 ?>
 
-<h3 class='text-center'>Tarefas</h3>
+<h3 class='text-center'>Tarefas da atividade <?= $dados["atividade"]->getNomeAtividade(); ?> </h3>
 
 <div class='container'>
         <div class="row">
