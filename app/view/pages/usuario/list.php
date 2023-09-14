@@ -58,18 +58,11 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
                                         ?>
                                     </td>
                                     <td class="usuarioColumn">
-                                        <?php if($usu->getStatus() == 'ATIVO'): ?>
-                                            
-                                        <?php else: ?>
-
-                                        <?php endif; ?>
-
-
                                         <?php
                                         if ($usu->getStatus() == 'ATIVO') {
-                                            echo "<a class='btn btn-outline-success' onclick=\"return confirm('Deseja alterar o status do usuário para INATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToInativo&id=". $usu->getId() ."'>ATIVO</a>";
+                                            echo "<a id='status' class='btn btn-outline-success' onclick='sendChange(1, ".$usu->getId().");' >ATIVO</a>";
                                         } else {
-                                            echo "<a class='btn btn-outline-danger' onclick=\"return confirm('Deseja alterar o status do usuário para ATIVO?')\" href='". BASEURL ."/controller/UsuarioController.php?action=updateToAtivo&id=". $usu->getId() ."'>INATIVO</a>";
+                                            echo "<a id='status' class='btn btn-outline-danger' onclick='sendChange(0, ".$usu->getId().")'>INATIVO</a>";
                                         }
                                         ?>
                                     </td>

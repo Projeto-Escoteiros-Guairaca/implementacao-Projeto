@@ -305,18 +305,16 @@ class UsuarioController extends Controller {
         $usuario = $this->findUsuarioById();
         if($usuario){
             $this->usuarioDao->updateToInativo($usuario->getId());
-            $this->list("","Usuário inativado com sucesso.");
-        } else {
-            $this->list("Usuário não encontrado.");
+            echo "INATIVO";
+            return;
         }
     }
     protected function updateToAtivo(){
         $usuario = $this->findUsuarioById();
         if($usuario){
             $this->usuarioDao->updateToAtivo($usuario->getId());
-            $this->list("","Usuário ativado com sucesso.");
-        } else {
-            $this->list("Usuário não encontrado.");
+            echo "ATIVO";
+            return;
         }
     }
 
@@ -332,14 +330,13 @@ class UsuarioController extends Controller {
     }
 
     protected function changePapel(){
-        $papelUsu = isset($_POST['papel_usuario']) ? trim($_POST['papel_usuario']) : "";
+        $papelUsu = $_GET['newPapel'];
         
         $usuario = $this->findUsuarioById();
         if($usuario){
             $this->usuarioDao->changePapel($usuario->getId(), $papelUsu);
-            $this->list(""," Papel do Usuário alterado com sucesso.");
-        } else {
-            $this->list("Usuário não encontrado.");
+            echo $papelUsu;
+            return;
         }
     }
    

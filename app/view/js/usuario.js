@@ -121,3 +121,63 @@ function sendAlcateiaChange() {
     xhttp.send();
 }
 
+function sendChange(toChange, idUsu) {
+    var action;
+    var papel = "";
+    var trueOption = false;
+
+    if(toChange == 0) {
+        action = "updateToAtivo";
+    }
+    else if(toChange == 1) {
+        action = "updateToInativo";
+    }
+    else {
+        action = "changePapel";
+        let select = document.getElementById(idUsu);
+        let option = select.getElementsByTagName("option");
+        console.log(option[1].value);
+        for(var i = 0; i < 3; i++) {
+            trueOption = option[i].checked ? option[i].value : null;
+            console.log(trueOption);
+
+            if(trueOption != null) {
+                exit;
+            }
+        }
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "UsuarioController.php?action=" + action  + "&id=" + idUsu + "&newPapel="+papel, true)
+    
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
+            var retorno = xhttp.responseText;
+            if(retorno == "ATIVO" || retorno == "INATIVO"){
+                changeStatus(retorno);
+            }
+
+                changePapel(retorno);
+            }
+    };
+    xhttp.send();
+}
+
+function changeStatus(retorno) {
+    
+    statusButton = document.getElementById("status");
+    statusButton.innerHTML = retorno;
+
+    if(retorno == "ATIVO") {
+        statusButton.className = "btn btn-outline-success";
+        statusButton.setAttribute("onclick", "sendChange(1, "+idUsu+");");
+    }
+    else {
+        statusButton.className = "btn btn-outline-danger";
+        statusButton.setAttribute("onclick", "sendChange(0, "+idUsu+");");
+    }
+}
+
+function changePapel(retorno) {
+    console.log(retorno);
+}

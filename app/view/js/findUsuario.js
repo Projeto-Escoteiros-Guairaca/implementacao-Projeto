@@ -3,10 +3,9 @@ function findUsuario(BASEURL) {
 
     buscar = document.getElementById("buscar");
     input = buscar.value;
-    console.log(input);
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "UsuarioController.php?action=findIt&word=" + input, true);
-  
+
     //* verifica se está preparado ou não. Quando está preparado, recebe o retorno em JSON e o transforma em um array.
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -58,13 +57,17 @@ function createChildren(usuarioArray, BASEURL) {
 
         a = document.createElement("a");
 
-        a.className = "btn btn-outline-success";
         if(element["status"] == "ATIVO") {
-            a.href =BASEURL +"/controller/UsuarioController.php?action=updateToInativo&id="+element["idUsuario"];
+            a.id = "status";
+            a.className = "btn btn-outline-success";
+            a.setAttribute("onclick", "sendChange(1, "+element["idUsuario"]+");");
             a.innerHTML = "ATIVO";
         }
+        
         else if(element["status"] == "INATIVO") {
-            a.href =BASEURL +"/controller/UsuarioController.php?action=updateToAtivo&id="+element["idUsuario"];
+            a.id = "status";
+            a.className = "btn btn-outline-danger";
+            a.setAttribute("onclick", "sendChange(0, "+element["idUsuario"]+");");
             a.innerHTML = "INATIVO";    
         }
         ativo.appendChild(a);
