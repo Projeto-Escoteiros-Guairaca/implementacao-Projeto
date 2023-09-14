@@ -124,7 +124,6 @@ function sendAlcateiaChange() {
 function sendChange(toChange, idUsu) {
     var action;
     var papel = "";
-    var trueOption = false;
 
     if(toChange == 0) {
         action = "updateToAtivo";
@@ -135,35 +134,23 @@ function sendChange(toChange, idUsu) {
     else {
         action = "changePapel";
         let select = document.getElementById(idUsu);
-        let option = select.getElementsByTagName("option");
-        console.log(option[1].value);
-        for(var i = 0; i < 3; i++) {
-            trueOption = option[i].checked ? option[i].value : null;
-            console.log(trueOption);
-
-            if(trueOption != null) {
-                exit;
-            }
-        }
+        papel = select.value;
     }
-
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=" + action  + "&id=" + idUsu + "&newPapel="+papel, true)
+    xhttp.open("GET", "UsuarioController.php?action=" + action  + "&id=" + idUsu + "&newPapel=" + papel, true)
     
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
             var retorno = xhttp.responseText;
             if(retorno == "ATIVO" || retorno == "INATIVO"){
-                changeStatus(retorno);
+                changeStatus(retorno, idUsu);
             }
-
-                changePapel(retorno);
             }
     };
     xhttp.send();
 }
 
-function changeStatus(retorno) {
+function changeStatus(retorno, idUsu) {
     
     statusButton = document.getElementById("status");
     statusButton.innerHTML = retorno;
@@ -178,6 +165,3 @@ function changeStatus(retorno) {
     }
 }
 
-function changePapel(retorno) {
-    console.log(retorno);
-}

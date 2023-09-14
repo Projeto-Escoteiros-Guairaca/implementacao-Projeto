@@ -163,6 +163,7 @@ class UsuarioDAO {
     }
 
     public function changePapel($id, $papelUsu){
+        trim($papelUsu);
         $conn = Connection::getConn();
         $sql = "UPDATE tb_usuarios SET papeis = :papelUsu WHERE id_usuario = :id";
         $stm = $conn->prepare($sql);

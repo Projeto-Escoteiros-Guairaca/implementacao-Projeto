@@ -331,7 +331,7 @@ class UsuarioController extends Controller {
 
     protected function changePapel(){
         $papelUsu = $_GET['newPapel'];
-        
+
         $usuario = $this->findUsuarioById();
         if($usuario){
             $this->usuarioDao->changePapel($usuario->getId(), $papelUsu);

@@ -1,4 +1,4 @@
-
+papelArray = ["LOBINHO", "ADMINISTRADOR", "CHEFE"];
 function findUsuario(BASEURL) {
 
     buscar = document.getElementById("buscar");
@@ -15,7 +15,6 @@ function findUsuario(BASEURL) {
             
             removeChildren({parentId:'usuarioTable',childName:'usuarioLinha'});
             createChildren(usuarioArray, BASEURL);
-            console.log(usuarioArray);
         }
     }
     xhttp.send();
@@ -37,7 +36,6 @@ function createChildren(usuarioArray, BASEURL) {
     tabela = document.getElementById('usuarioTable');
  
     usuarioArray.forEach(element => {
-        console.log(element);
         var linha = tabela.insertRow();
         linha.className = "usuarioLinha";
     
@@ -49,9 +47,21 @@ function createChildren(usuarioArray, BASEURL) {
         login.innerHTML += element["login"];
         login.className = "usuarioLinha";
 
-        papel = linha.insertCell();
-        papel.innerHTML += element["papel"];
-        papel.className = "usuarioLinha";
+        papelLinha = linha.insertCell();
+
+        select = document.createElement("select");
+        select.className = "form-control selecPapel";
+        select.setAttribute("onchange", "sendChange(5, "+element['idUsuario']+")");
+        for(i = 0; i < 3; i++) {
+            option = document.createElement("option");
+            option.value = papelArray[i];
+            option.innerHTML += papelArray[i];
+            if(papelArray[i] == element["papel"]) {
+                option.selected = true;
+            }
+            select.appendChild(option);
+        }
+        papelLinha.appendChild(select);
         
         ativo = linha.insertCell();
 
