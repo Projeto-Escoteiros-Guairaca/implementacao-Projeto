@@ -53,7 +53,7 @@
     color: var(--cor_dark_mod);
     border: solid 2px var(--cor_dark_mod) ;
     border-radius: 10px;
-    background-color: var(--cor_dark_mod);
+    background-color: rgb(112, 238, 123);
 }
 
 /*Div de fundo do formulario*/
@@ -61,17 +61,15 @@
     position: relative;
     height: 40vh;
     justify-content: center;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
 
 .btn {
-    width: 14vh;
-    height: 8vh;
+    
     margin-top: 3vh;
     cursor: pointer;
     outline: none;
     transition: 1s ease-in-out;
-    background: transparent;
     border: 1px solid var(--cor_dark_mod);
 }
 
@@ -86,8 +84,8 @@
 }
 
 #btn_voltar:hover {
-    transition: 1s ease-in-out;
-    background: var(--cor_dark_mod);
+    transition: 0.2s ease-in-out;
+    opacity: 0.8;
 }
 
 #btn_voltar:hover svg {stroke-dashoffset: -480;}
