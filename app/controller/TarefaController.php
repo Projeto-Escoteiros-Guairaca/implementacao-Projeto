@@ -47,12 +47,13 @@ class TarefaController extends Controller {
     }
 
     public function list(string $msgErro = "", string $msgSucesso = ""){
-        $atividade = $this->atividadeDao->findById($_SESSION["activeAtividade"]);
 
         if(isset($_GET["idAtividade"])) {
             $_SESSION["activeAtividade"] = $_GET["idAtividade"];
         }
         
+        $atividade = $this->atividadeDao->findById($_SESSION["activeAtividade"]);
+
         if(isset($_SESSION["activeAtividade"])) {
             $tarefas = $this->tarefaDao->listByIdAtiv($_SESSION["activeAtividade"]);
         }
@@ -66,7 +67,7 @@ class TarefaController extends Controller {
     }
 
     public function createTarefaAtiv(){
-        $dados["id_atividade"] = $_GET['id'];
+        $dados["id_atividade"] = $_GET['idAtividade'];
         $this->loadView("pages/tarefa/formTarefa.php", $dados, "", "", true);
     }
 

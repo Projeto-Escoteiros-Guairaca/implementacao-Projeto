@@ -1,4 +1,9 @@
 .col-12{
     display: flex;
     flex-wrap: wrap;
+}.buttonn {
+    background-color: #649995;
+    width: 40vw;
+    border: 1px solid black;
+    box-shadow: black 0 2px;
 }
