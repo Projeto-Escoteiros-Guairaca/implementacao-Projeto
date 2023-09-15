@@ -4,6 +4,7 @@
 
 body{
     overflow-x: hidden;
+    min-height: 100vh;
 }
 form{
     margin-top: 20px;

@@ -16,28 +16,34 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <?php if (count($dados["lista"]) == 0) : ?>
-                    <tr>
-                        <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
-                    </tr>
-                <?php else: ?>
-                    <?php foreach($dados["lista"] as $taref): ?>
+        <div class="tarefas">
+            <?php if (count($dados["lista"]) == 0) : ?>
+                <tr>
+                    <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
+                </tr>
+            <?php else: ?>
+                <?php foreach($dados["lista"] as $taref): ?>
 
-                        <div class="buttonn"> <button>
-                        <span><?php echo $taref->getNomeTarefa(); ?> </span>
+                <div class="containerTarefa">
+                <a class="leftPart" href="<?= BASEURL ?> /controller/TarefaController.php?action=openTarefa&id=<?=$taref->getIdTarefa(); ?>">
+                    <div>
+                            <?php echo $taref->getNomeTarefa(); ?> 
+                        </div>
+                </a>
+                        <div class="rightPart">
+                            <button class="tarefaCheckada"></button>
+                        </div>
+                </div>
 
-                        <input type="checkbox">
-                        </button></div>
-
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
         </div>
-        <a class="btn btn-success my-2" 
-                href="<?= BASEURL ?>/controller/AtividadeController.php">Voltar</a>
     </div>
+
+    <a class="btn btn-success my-2 btn-return" 
+                href="<?= BASEURL ?>/controller/AtividadeController.php">Voltar</a>
+
+</div>
 
 <script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
 <?php

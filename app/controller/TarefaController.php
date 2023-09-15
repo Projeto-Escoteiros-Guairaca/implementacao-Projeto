@@ -16,8 +16,11 @@ class TarefaController extends Controller {
     private $tarefaService;
     
     function __construct(){
-        $administradorChefeActions = ["list", "listByIdAtiv", "create", "createTarefaAtiv", "edit", "delete", "save", "update"];
-        $lobinhoActions = ["list","listByIdAtiv"];
+        $administradorChefeActions = [
+            "list", "listByIdAtiv", "create", "createTarefaAtiv", 
+        "edit", "delete", "save", "update", "openTarefa"
+        ];
+        $lobinhoActions = ["list","listByIdAtiv", "openTarefa"];
         $papelNecessario = array();
 
         if(isset($_GET['action'])) {
@@ -74,16 +77,7 @@ class TarefaController extends Controller {
     public function save(){
 
         $dados["id_tarefa"] = isset($_POST['id_tarefa']) ? $_POST['id_tarefa'] : 0;
-        $nomeTarefa = isset($_POST['nomeTarefa']) ? trim($_POST['nomeTarefa']) : "";
-        $descricaoTarefa = isset($_POST['descricaoTarefa']) ? trim($_POST['descricaoTarefa']) : "";
-        $idAtividade = isset($_POST['id_atividade']) ? trim($_POST['id_atividade']) : "";
-
-        $tarefa = new Tarefa();
-        $tarefa->setNomeTarefa($nomeTarefa);
-        $tarefa->setDescricaoTarefa($descricaoTarefa);
-        $atividade = new Atividade();
-        $atividade->setIdAtividade($idAtividade);
-        $tarefa->setAtividade($atividade);
+        $tarefa = $this->saveTarefa();
 
         $erros = $this->tarefaService->validarDados($tarefa);
         if(empty($erros)) {
@@ -119,6 +113,36 @@ class TarefaController extends Controller {
 
         $msgsErro = implode("<br>", $erros);
         $this->list("", "Tarefa salva com sucesso", true);
+    }
+
+    public function saveTarefa() {
+        $nomeTarefa = isset($_POST['nomeTarefa']) ? trim($_POST['nomeTarefa']) : "";
+        $descricaoTarefa = isset($_POST['descricaoTarefa']) ? trim($_POST['descricaoTarefa']) : "";
+        $idAtividade = isset($_POST['id_atividade']) ? trim($_POST['id_atividade']) : "";
+
+        $tarefa = new Tarefa();
+        $tarefa->setNomeTarefa($nomeTarefa);
+        $tarefa->setDescricaoTarefa($descricaoTarefa);
+        $atividade = new Atividade();
+        $atividade->setIdAtividade($idAtividade);
+        $tarefa->setAtividade($atividade);
+
+        return $tarefa;
+    }
+
+    public function openTarefa(string $msgErro = "", string $msgSucesso = "") {
+        $tarefa = $this->findById();
+        $dados["tarefa"] = $tarefa;
+        $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, false);
+    }
+
+    protected function findById(){
+        $id = 0;
+        if(isset($_GET['id']))
+            $id = $_GET['id'];
+
+        $tarefa = $this->tarefaDao->findById($id);
+        return $tarefa;
     }
 }
 

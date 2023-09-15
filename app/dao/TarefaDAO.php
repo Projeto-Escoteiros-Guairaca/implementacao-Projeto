@@ -62,4 +62,24 @@ class TarefaDAO {
 
     }
 
+    public function findById(int $id) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_tarefas u" .
+               " WHERE u.id_tarefa = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $atividades = $this->mapTarefas($result);
+
+        if(count($atividades) == 1)
+            return $atividades[0];
+        elseif(count($atividades) == 0)
+            return null;
+
+        die("atividadeDAO.findById()" . 
+            " - Erro: mais de um usuário encontrado.");
+    }
+
 }

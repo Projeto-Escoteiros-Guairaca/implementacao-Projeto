@@ -1,9 +1,54 @@
-.col-12{
+.tarefas{
+    height: fit-content;
     display: flex;
     flex-wrap: wrap;
-}.buttonn {
-    background-color: #649995;
+}.container {
+    width: 50vw;
+    height: 10vh;
+
+    display: flex;
+    justify-content: center;
+}
+.containerTarefa {
+    margin: 20px 0;
+    background-color: #cacaca;
     width: 40vw;
+    height: 40%;
     border: 1px solid black;
     box-shadow: black 0 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.leftPart {
+    width: 50%;
+    text-align: center;
+    color: rgb(18, 107, 0);
+}
+.rightPart {
+    width: 50%;
+   
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    align-items: right;
+}
+
+.tarefaCheckada{
+    width: 20px;
+    height: 20px;
+
+}
+.container-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-return{
+    background-color: lightgreen;
+    justify-content: center;
+}
+
+.btn-return:hover{
+    transform: scale(1.2);
+    justify-content: center;
 }

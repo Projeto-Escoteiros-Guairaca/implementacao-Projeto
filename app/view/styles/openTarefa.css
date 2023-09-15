@@ -1,0 +1,39 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.tarefa {
+    flex-wrap: wrap;
+
+    height: fit-content;
+    width: 60%;
+    border: solid 1px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#tarefa-container {
+width: 60%;
+}
+#descricao {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    border-radius: 5px;
+    background-color: rgb(240, 238, 238);
+    height: fit-content;
+    border-left: solid #000000 1px;
+    box-shadow:  0.4px 0.4px 2px;
+    width: 100%;
+}
+#status {
+    border-radius: 5px;
+    background-color: rgb(240, 238, 238);
+    height: fit-content;
+    border-left: #000000 1px;
+    box-shadow:  0.4px 0.4px 2px;
+    width: 100%;
+}
