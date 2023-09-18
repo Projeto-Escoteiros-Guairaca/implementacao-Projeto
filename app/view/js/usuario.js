@@ -124,7 +124,7 @@ function sendAlcateiaChange() {
 function sendChange(toChange, idUsu) {
     var action;
     var papel = "";
-
+    
     if(toChange == 0) {
         action = "updateToAtivo";
     }
