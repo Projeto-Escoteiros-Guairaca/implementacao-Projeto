@@ -51,7 +51,7 @@ function createChildren(usuarioArray, BASEURL) {
 
         select = document.createElement("select");
         select.className = "form-control selecPapel";
-        select.id = element["idUsuario"];
+        select.id = "papel" + element["idUsuario"];
         select.setAttribute("onchange", "sendChange(5, "+element['idUsuario']+");");
         for(i = 0; i < 3; i++) {
             option = document.createElement("option");

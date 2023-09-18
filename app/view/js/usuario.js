@@ -124,7 +124,7 @@ function sendAlcateiaChange() {
 function sendChange(toChange, idUsu) {
     var action;
     var papel = "";
-    
+
     if(toChange == 0) {
         action = "updateToAtivo";
     }
@@ -133,7 +133,7 @@ function sendChange(toChange, idUsu) {
     }
     else {
         action = "changePapel";
-        let select = document.getElementById(idUsu);
+        let select = document.getElementById("papel"+idUsu);
         papel = select.value;
     }
     var xhttp = new XMLHttpRequest();
