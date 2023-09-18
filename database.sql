@@ -74,6 +74,7 @@ CREATE TABLE tb_arquivos(
   id_arquivo int auto_increment,
   nome VARCHAR(45) NOT NULL,
   caminho VARCHAR(400) NOT NULL,
+  texto VARCHAR(255),
   PRIMARY KEY (id_arquivo)
 
 );
@@ -91,6 +92,7 @@ CREATE TABLE tb_tarefas_usuarios(
   id_usuario int NOT NULL,
   id_tarefa int NOT NULL,
   id_arquivo int NOT NULL,
+  status int NOT NULL DEFAULT 0,
   data DATE NOT NULL,
   descricao TEXT(255),
   PRIMARY KEY (id_tarefa_usuario),
