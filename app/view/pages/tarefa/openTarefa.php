@@ -18,7 +18,13 @@
                 <hr>
                 <h3>Status</h3>
                 <div id="status">
-                <?php echo $dados["tarefa"]->getDescricaoTarefa();?>
+                    <h5>Data de entrega máximo: </h5> 
+                    <?php echo "data e entrega vai aqui";?>
+                    <hr>
+                    <h5>Estado da entrega: </h5> 
+                    <?php echo "Estado da entrega vai aqui";?>
+                    <hr>
+                
                 </div>
             </div>
         </div>
