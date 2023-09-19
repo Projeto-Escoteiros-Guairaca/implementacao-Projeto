@@ -4,7 +4,7 @@ class SelectPapeis{
 
     public static function desenhaSelect($usuarioSelected, $papeis, $name) {
         $papelEmNumero = 5;
-            echo "<select id='".$usuarioSelected->getId()."' style='max-width:150px;' onChange='sendChange(".$papelEmNumero.", ".
+            echo "<select id='papel".$usuarioSelected->getId()."' style='max-width:150px;' onChange='sendChange(".$papelEmNumero.", ".
             $usuarioSelected->getId().");' class='form-control selecPapel' name='". $name ."' >";
 
             foreach($papeis as $papel):

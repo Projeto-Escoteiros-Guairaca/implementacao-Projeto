@@ -133,7 +133,7 @@ function sendChange(toChange, idUsu) {
     }
     else {
         action = "changePapel";
-        let select = document.getElementById(idUsu);
+        let select = document.getElementById("papel"+idUsu);
         papel = select.value;
     }
     var xhttp = new XMLHttpRequest();
