@@ -20,13 +20,23 @@ if (isset($_SESSION[SESSAO_USUARIO_NOME]))
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
 
-<div class="container p-2 cx_meio">
-    <div class="row apresentacao">
-        <div class="col-6 text">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit officiis quaerat sint officia eos repellendus itaque dolor impedit quia harum dolorem ex ratione, cum quasi maiores praesentium in doloremque modi?</p>
+<div class="container">
+
+    <center class="title"><h1>Sobre os Escoteiros</h1></center>
+    
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="img-wrapper">
+                <img src="<?= BASEURL ?>/view/pages/home/images/logoEscoteiros.png">
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-md-6 text">
+            <p>Há 43 anos o Grupo Escoteiro Guairacá desenvolve várias atividades socioambientais e detém dois importantes certificados de Honra ao Mérito Ambiental (1998 e 2002) e o Troféu Onda Verde do Prêmio Expressão de Ecologia 2012, com o projeto “Plantando Cidadãos”. Cerca de 90 jovens (com idade entre 7 e 21 anos) e 31 adultos voluntários participam do Grupo Escoteiro Guairacá. A entidade mantém ainda parcerias em atividades comunitárias e cívicas, como Natal Solidário, campanhas de educação ambiental e comunitárias em colaboração com outras entidades filantrópicas do município. </p>
+
         </div>
     </div>
-</div>
 </div>
 
 <?php

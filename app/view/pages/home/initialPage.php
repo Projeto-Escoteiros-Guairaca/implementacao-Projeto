@@ -13,14 +13,11 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 <div class="container p-2 cx_meio">
     <div class="row apresentacao">
         <div class="col-6 text">
-            
             <div> aviso 1</div>
             <div> aviso 2 </div>
             <div> aviso 3</div>
-
         </div>
     </div>
-</div>
 </div>
 
 <?php
