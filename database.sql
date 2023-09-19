@@ -38,9 +38,9 @@ CREATE TABLE tb_usuarios (
   PRIMARY KEY (id_usuario),
   FOREIGN KEY (id_endereco) REFERENCES tb_enderecos (id_endereco),
   FOREIGN KEY (id_contato) REFERENCES tb_contatos (id_contato),
-  FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia),
   CONSTRAINT uk_usuarios UNIQUE (login)
 );
+
 
 CREATE TABLE tb_encontros(
   id_encontro int AUTO_INCREMENT,
@@ -141,6 +141,8 @@ INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login,
 INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 1', '4');
 INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 2', '4');
 INSERT INTO tb_alcateias (nome,id_usuario_chefe) VALUES ('Alcateia 3', '4');
+
+ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia);
 
 /*Inserts encontros*/
 INSERT INTO tb_encontros (id_alcateia, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
