@@ -17,9 +17,12 @@
                 </div>
                 <h3>Status</h3>
                 <div id="status">
+                    <h5>Data de entrega máximo: </h5> 
+                    <?php echo "data e entrega vai aqui";?>
                     <hr>
-                    <h5>Veja o estado da entrega dos usuários: </h5> 
-                    <a href="<?=BASEURL?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$_SESSION[SESSAO_USUARIO_IDALCATEIA]?>"> lista de usuários</a>
+                    <h5>Estado da entrega: </h5> 
+                    <?php echo "Estado da entrega vai aqui";?>
+                    <hr>
                 
                 </div>
             </div>
