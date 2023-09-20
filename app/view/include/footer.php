@@ -1,6 +1,11 @@
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/footer.css">
+
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 10px;">
     <!-- Copyright -->
+    <div class="footer">
+        <span><p>Todos os direitos reservados @2023</p></span>
+    </div>
 
 </footer>
 
@@ -11,7 +16,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <!--Script da página inicial -->
-<script type="text/javascript" src="../view/js/main.js"></script>
+<script type="text/javascript" src="<?= BASEURL ?>/view/js/main.js"></script>
 
 <!-- Fecha as tags BODY e HTML -->
 </body>

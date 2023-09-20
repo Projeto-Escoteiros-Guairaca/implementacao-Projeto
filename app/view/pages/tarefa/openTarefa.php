@@ -15,6 +15,7 @@
                 <div id="descricao">
                     <?php echo $dados["tarefa"]->getDescricaoTarefa();?> 
                 </div>
+                <hr>
                 <h3>Status</h3>
                 <div id="status">
                     <hr>

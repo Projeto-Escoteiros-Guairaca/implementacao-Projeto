@@ -1,28 +1,80 @@
-.apresentacao{
-    position: relative;
-    height: 480px;
-    margin-right: 10px;
-    margin-top: 26px;
-    background: radial-gradient(circle, rgb(28, 121, 0) 0%, rgba(0,100,0,1) 69%);
-    border-radius: 9px 115px 9px 116px;
-    -webkit-border-radius: 9px 115px 9px 116px;
-    -moz-border-radius: 9px 115px 9px 116px;
-    color: white;
-    box-shadow: black 0.1em 0.1em 0.2em;
+/* Estilos para a página inicial */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    overflow-x: visible;
 }
 
-.text{
-    position: absolute;
-    height: 50%;
-    border-radius: 116px 10px 117px 11px;
-    -webkit-border-radius: 116px 10px 117px 11px;
-    -moz-border-radius: 116px 10px 117px 11px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 600;
-    font-size: large;
-    color: rgb(255, 255, 255); 
-    text-shadow:rgba(0, 0, 0, 0.15) 0.2rem, 0.2rem, 0.2rem;
+ .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+} 
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin: 60px 0 60px 0;
 }
+
+.modo-escuro h1, .modo-escuro p {
+    color: #fff;
+}
+    
+img {
+    max-width: 100%;
+    display: block;
+    margin:0 auto;
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 500px;
+    padding: 5px;
+    text-align: center center;
+}
+
+.img-caption {
+    padding: 5px;
+    font-size: 12.5px;
+    text-align: center;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 20px;
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container #cabecalho {
+    background-color: var(--fountain-blue) !important;
+}
+
+.container > div > img {  
+    width: 100%;  
+    height: 100%;  
+    object-fit: cover;  
+}
+
+/*Tablets*/
+/*@media screen and (max-width: 768px) {
+    body{
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/*Celulares*/
+/*@media screen and (max-width: 600px){
+    body{
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+}*/
