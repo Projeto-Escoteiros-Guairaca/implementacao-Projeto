@@ -5,7 +5,6 @@
 }.container {
     width: 50vw;
     height: 10vh;
-
     display: flex;
     justify-content: center;
 }
