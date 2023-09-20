@@ -34,3 +34,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
+.col-12{
+    display: flex;
+    flex-wrap: wrap;
+}
