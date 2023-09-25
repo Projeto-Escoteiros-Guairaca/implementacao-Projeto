@@ -140,7 +140,10 @@ class TarefaController extends Controller {
     }
 
     public function openTarefaUsuario(string $msgErro = "", string $msgSucesso = "") {
-        $tarefaUsuario = $this->tarefaDao->getTarefaUsuario();
+        $idTarefa = $_GET['id'];
+        $idUsuario = $_GET['idUsuario'];
+        $tarefaUsuario = $this->tarefaDao->getTarefaUsuario($idTarefa, $idUsuario);
+
         $dados["tarefa"] = $tarefa;
         $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, false);
     }

@@ -21,21 +21,5 @@ error_reporting(E_ALL);
 USAR ISSO NO TOPO DA PÁGINA PARA MOSTRAR ERROS
 Implementar depois 
 
-<!-- <div class="form-group">
-    <label>Papéis do usuário:</label>
-    <?php// foreach($dados["papeis"] as $papel):?>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="<?=// $papel?>" id="<?= //'ckc' . $papel?>"
-                <?php
-                    // if(isset($dados['usuario']) && in_array($papel, $dados['usuario']->getPapeisAsArray()))
-                    //     echo "checked";
-                ?>
-            />
-            <label for="<?= //'ckc' . $papel?>" id="<?= //'ckc' . $papel?>" class="form-check-label"><?=// $papel?></label>
-        </div>
-        <?php //endforeach; ?>
-
-</div> -->
-
 
 pagina inicial do lobinho e do chefe; iniciar a atividade

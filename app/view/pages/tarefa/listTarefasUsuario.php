@@ -37,7 +37,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                                 <tr>
                                     <td><?= $usu->getNome(); ?></td>
                                     <td>
-                                        <a class="btn btn-success" href="<?= BASEURL ?>"> Mostrar estado da tarefa </a>
+                                        <a class="btn btn-success" href="<?= BASEURL ?><?= BASEURL ?> /controller/TarefaController.php?action=openTarefaUsuario&id=<?=$dados["tarefa"]->getIdTarefa();?>&idUsuario=<?=$usu->getId();?>"> Mostrar estado da tarefa </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
