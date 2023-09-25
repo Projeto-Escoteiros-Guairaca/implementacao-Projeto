@@ -23,7 +23,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
         </div>
         <div>
             <label> Buscar usuário</label>
-            <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?php echo BASEURL ?>')">
+            <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?= BASEURL ?>', <?= $_SESSION[SESSAO_USUARIO_ID] ?>)">
         </div>
         <div id="bruh" class="row" style="margin-top: 10px;">
             
@@ -32,6 +32,10 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
                     <a style="display: flex;justify-content: center;" colspan="6">|Nenhum encontro encontrado, tente novamente.</a>
                 <?php else: ?>
                     <?php foreach($dados["lista"] as $usu): ?>
+                        <?php if ($usu->getId() == $_SESSION[SESSAO_USUARIO_ID]) {
+                            continue;
+                        }
+                        ?>
                         <div class="card my-2 mx-2" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $usu->getNome();?></h5>

@@ -1,6 +1,7 @@
 papelArray = ["LOBINHO", "ADMINISTRADOR", "CHEFE"];
-function findUsuario(BASEURL) {
-
+ var idUsuario;
+function findUsuario(BASEURL, idUsu) {
+idUsuario = idUsu;
     buscar = document.getElementById("buscar");
     input = buscar.value;
     var xhttp = new XMLHttpRequest();
@@ -12,7 +13,6 @@ function findUsuario(BASEURL) {
             var retorno = xhttp.responseText;
             var usuarioArray = JSON.parse(retorno);
 
-            console.log(usuarioArray);
             removeChildren({parentId:'card-pai',childName:'card'});
             createChildren(usuarioArray, BASEURL);
         }
@@ -44,6 +44,9 @@ function createChildren(usuarioArray, BASEURL) {
         return;
     }
     usuarioArray.forEach(element => {
+        if(idUsuario == element["idUsuario"]) {
+            return;
+        }
         div = document.createElement("div");
         div.className = "card my-2 mx-2";
         div.style = "width: 18rem;";
@@ -109,7 +112,7 @@ function createChildren(usuarioArray, BASEURL) {
         alcateia = document.createElement("p");
         alcateia.className = "card-text";
         insideDiv.appendChild(alcateia);
-        
+
         button = document.createElement("button");
         button.id = element["idUsuario"];
 
