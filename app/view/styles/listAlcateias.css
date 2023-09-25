@@ -27,14 +27,8 @@ body {
     z-index: 11;
 }
 
-.formPapel{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 .col-12{
     display: flex;
     flex-wrap: wrap;
 }
+

@@ -23,75 +23,68 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
         </div>
         <div>
             <label> Buscar usuário</label>
-            <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?php echo BASEURL ?>')">
+            <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?= BASEURL ?>', <?= $_SESSION[SESSAO_USUARIO_ID] ?>)">
         </div>
         <div id="bruh" class="row" style="margin-top: 10px;">
-            <div class="col-12">
-                <table id="tabUsuarios" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Login</th>
-                            <th>Papeis</th>
-                            <th>Status</th>           
-                            <th>Mudar Alcateia</th>
-                        </tr>
-                    </thead>
-                    <tbody id="usuarioTable">
-                        <?php if (count($dados["lista"]) == 0) : ?>
-                            <tr>
-                                <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
-                            </tr>
-                        <?php else: ?>
-                            <?php foreach($dados["lista"] as $usu): ?>
-                                <tr class="usuarioLinha" >
-                                    <td class="usuarioColumn"><?= $usu->getNome(); ?></td>
-                                    <td class="usuarioColumn"><?= $usu->getLogin(); ?></td>
-                                    <td class="usuarioColumn">
-                                        <?php
-                                            $usuario = new Usuario();
-                                            $papeis = new UsuarioPapel();
-                                            $arrayPapeis = $papeis->getAllAsArray();
-                                            $usuario->setPapeisAsArray($arrayPapeis);
-                                        
-                                            SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papel_usuario");
-                                        ?>
-                                    </td>
-                                    <td class="usuarioColumn">
-                                        <?php
-                                        if ($usu->getStatus() == 'ATIVO') {
-                                            echo "<a id='status' class='btn btn-outline-success' onclick='sendChange(1, ".$usu->getId().");' >ATIVO</a>";
-                                        } else {
-                                            echo "<a id='status' class='btn btn-outline-danger' onclick='sendChange(0, ".$usu->getId().")'>INATIVO</a>";
-                                        }
-                                        ?>
-                                    </td>
-
-                                    <td class="usuarioColumn">   
-                                        <button class="<?php if($usu->getAlcateia()) {
-                                                echo "btn btn-secondary";
-                                            }else {
-                                                echo "btn btn-warning";
-                                            }?>"
-                                            id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
-                                            , 'list', <?= $usu->getId();?>);"> 
-                                            <?php if($usu->getAlcateia()) {
-                                                echo $usu->getAlcateia()->getNome();
-                                            }else {
-                                                echo "sem alcateia";
-                                            }?>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-                <a class="btn btn-success" 
-                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+            
+            <div class="col-12" id="card-pai">
+                <?php if (count($dados["lista"]) == 0) : ?>
+                    <a style="display: flex;justify-content: center;" colspan="6">|Nenhum encontro encontrado, tente novamente.</a>
+                <?php else: ?>
+                    <?php foreach($dados["lista"] as $usu): ?>
+                        <?php if ($usu->getId() == $_SESSION[SESSAO_USUARIO_ID]) {
+                            continue;
+                        }
+                        ?>
+                        <div class="card my-2 mx-2" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $usu->getNome();?></h5>
+                                <hr>
+                                <p class="card-text">gmail</p>
+                                <p class="card-text">
+                                    <?php
+                                        $usuario = new Usuario();
+                                        $papeis = new UsuarioPapel();
+                                        $arrayPapeis = $papeis->getAllAsArray();
+                                        $usuario->setPapeisAsArray($arrayPapeis);
+                                    
+                                        SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papel_usuario");
+                                    ?>
+                                </p>
+                                <p>
+                                <?php
+                                    if ($usu->getStatus() == 'ATIVO') {
+                                        echo "<a id='status' class='btn btn-outline-success' onclick='sendChange(1, ".$usu->getId().");' >ATIVO</a>";
+                                    } else {
+                                        echo "<a id='status' class='btn btn-outline-danger' onclick='sendChange(0, ".$usu->getId().")'>INATIVO</a>";
+                                    }
+                                    ?>
+                                </p>
+                                <button class="<?php if($usu->getAlcateia()) {
+                                        echo "btn btn-secondary";
+                                    }else {
+                                        echo "btn btn-warning";
+                                    }?>"
+                                    id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
+                                    , 'list', <?= $usu->getId();?>);"> 
+                                    <?php if($usu->getAlcateia()) {
+                                        echo $usu->getAlcateia()->getNome();
+                                    }else {
+                                        echo "sem alcateia";
+                                    }?>
+                                </button> 
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+            <a class="btn btn-success" 
+            href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+            
         </div>
     </div>
+
+<br><br><br><br><br>
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
     <script src="<?= BASEURL ?>/view/js/findUsuario.js"> </script> 
 

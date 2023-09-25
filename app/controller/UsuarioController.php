@@ -307,7 +307,6 @@ class UsuarioController extends Controller {
                     if($usu->getIdAlcateia() == $alc->getId_alcateia()) {
                         $usu->setAlcateia($alc);
                     }
-
                 }
             }
         }

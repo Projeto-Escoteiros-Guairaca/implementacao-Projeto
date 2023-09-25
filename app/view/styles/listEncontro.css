@@ -1,5 +1,7 @@
+.filters{
+    flex-direction: row;
+}
 .col-12{
     display: flex;
     flex-wrap: wrap;
 }
-

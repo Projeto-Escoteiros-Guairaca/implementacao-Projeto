@@ -42,7 +42,7 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
                         }
                     ?>
                     <?php if($isAdministrador == 1) {
-                            echo "<a href = " .BASEURL. "/controller/UsuarioController.php?action=list> Cadastro</a>";
+                            echo "<a href = " .BASEURL. "/controller/UsuarioController.php?action=list> Lobinhos</a>";
                             echo "<a href = " .BASEURL. "/controller/AlcateiaController.php?action=list> Alcateias</a>";
                             echo "<a href = " .BASEURL. "/controller/EncontroController.php?action=list> Encontros</a>";
                             echo "<a href = " .BASEURL. "/controller/AtividadeController.php?action=list> Atividades</a>";
