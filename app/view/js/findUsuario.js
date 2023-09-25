@@ -12,8 +12,8 @@ function findUsuario(BASEURL) {
             var retorno = xhttp.responseText;
             var usuarioArray = JSON.parse(retorno);
 
-            
-            removeChildren({parentId:'usuarioTable',childName:'usuarioLinha'});
+            console.log(usuarioArray);
+            removeChildren({parentId:'card-pai',childName:'card'});
             createChildren(usuarioArray, BASEURL);
         }
     }
@@ -24,8 +24,9 @@ function findUsuario(BASEURL) {
 function removeChildren(params) {
     var parentId = params.parentId;
     var childName = params.childName;
+    var pai = document.getElementById(parentId);
 
-    var childNodesToRemove = document.getElementById(parentId).getElementsByClassName(childName);
+    var childNodesToRemove = pai.getElementsByClassName(childName);
     for(var i=childNodesToRemove.length-1;i >= 0;i--){
         var childNode = childNodesToRemove[i];
         childNode.parentNode.removeChild(childNode);
@@ -33,21 +34,41 @@ function removeChildren(params) {
 }
 
 function createChildren(usuarioArray, BASEURL) {
-    tabela = document.getElementById('usuarioTable');
- 
-    usuarioArray.forEach(element => {
-        var linha = tabela.insertRow();
-        linha.className = "usuarioLinha";
-    
-        nome = linha.insertCell();
-        nome.innerHTML += element["nome"];
-        nome.className = "usuarioLinha";
-        
-        login = linha.insertCell();
-        login.innerHTML += element["login"];
-        login.className = "usuarioLinha";
+    divPai = document.getElementById("card-pai");
 
-        papelLinha = linha.insertCell();
+    if(usuarioArray.length < 1) {
+        a = document.createElement("a");
+        a.className = "card";
+        a.innerHTML = "Nenhum usuário encontrado, tente novamente.";
+        divPai.appendChild(a);
+        return;
+    }
+    usuarioArray.forEach(element => {
+        div = document.createElement("div");
+        div.className = "card my-2 mx-2";
+        div.style = "width: 18rem;";
+        divPai.appendChild(div);
+
+        insideDiv = document.createElement("div");
+        insideDiv.className = "card-body";
+        div.appendChild(insideDiv);
+
+        h5 = document.createElement("h5");
+        h5.className = "card-title";
+        h5.innerHTML = element["nome"];
+        insideDiv.appendChild(h5);
+    
+        hr = document.createElement("hr");
+        insideDiv.appendChild(hr);
+        
+        gmail = document.createElement("p");
+        gmail.className = "card-text";
+        gmail.innerHTML = "aqui vai o gmail"; //element['email'];
+        insideDiv.appendChild(gmail);
+
+        papel = document.createElement("p");
+        papel.className = "card-text";
+        insideDiv.appendChild(papel);
 
         select = document.createElement("select");
         select.className = "form-control selecPapel";
@@ -62,10 +83,12 @@ function createChildren(usuarioArray, BASEURL) {
             }
             select.appendChild(option);
         }
-        papelLinha.appendChild(select);
-        
-        ativo = linha.insertCell();
+        papel.appendChild(select);
 
+        statusUsu = document.createElement("p");
+        statusUsu.className = "card-text";
+        insideDiv.appendChild(statusUsu);
+        
         a = document.createElement("a");
 
         if(element["status"] == "ATIVO") {
@@ -81,9 +104,12 @@ function createChildren(usuarioArray, BASEURL) {
             a.setAttribute("onclick", "sendChange(0, "+element["idUsuario"]+");");
             a.innerHTML = "INATIVO";    
         }
-        ativo.appendChild(a);
+        statusUsu.appendChild(a);
 
-        alcateia = linha.insertCell();
+        alcateia = document.createElement("p");
+        alcateia.className = "card-text";
+        insideDiv.appendChild(alcateia);
+        
         button = document.createElement("button");
         button.id = element["idUsuario"];
 
@@ -98,10 +124,6 @@ function createChildren(usuarioArray, BASEURL) {
             button.setAttribute("onclick", "findTheAlcateias(0, 'list', "+element["idUsuario"]+")"); 
             button.innerHTML = "Sem alcateia";
         }
-
-        
         alcateia.appendChild(button);
-
     });
-
 }

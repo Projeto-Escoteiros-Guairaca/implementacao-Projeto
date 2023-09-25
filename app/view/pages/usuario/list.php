@@ -26,57 +26,57 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
             <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?php echo BASEURL ?>')">
         </div>
         <div id="bruh" class="row" style="margin-top: 10px;">
-            <div class="col-12">
-                <div class="col-12">
-                    <?php if (count($dados["lista"]) == 0) : ?>
-                        <center colspan="6">Nenhum encontro encontrado, tente novamente.</center>
-                    <?php else: ?>
-                        <?php foreach($dados["lista"] as $usu): ?>
-                            <div class="card my-2 mx-2" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $usu->getNome();?></h5>
-                                    <hr>
-                                    <p class="card-text"><?php echo $usu->getLogin();?></p>
-                                    <p class="card-text">
-                                        <?php
-                                            $usuario = new Usuario();
-                                            $papeis = new UsuarioPapel();
-                                            $arrayPapeis = $papeis->getAllAsArray();
-                                            $usuario->setPapeisAsArray($arrayPapeis);
-                                        
-                                            SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papel_usuario");
-                                        ?>
-                                    </p>
-                                    <p>
-                                        <?php
-                                        if ($usu->getStatus() == 'ATIVO') {
-                                            echo "<a id='status' class='btn btn-outline-success' onclick='sendChange(1, ".$usu->getId().");' >ATIVO</a>";
-                                        } else {
-                                            echo "<a id='status' class='btn btn-outline-danger' onclick='sendChange(0, ".$usu->getId().")'>INATIVO</a>";
-                                        }
-                                        ?>
-                                    </p>
-                                    <button class="<?php if($usu->getAlcateia()) {
-                                            echo "btn btn-secondary";
-                                        }else {
-                                            echo "btn btn-warning";
-                                        }?>"
-                                        id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
-                                        , 'list', <?= $usu->getId();?>);"> 
-                                        <?php if($usu->getAlcateia()) {
-                                            echo $usu->getAlcateia()->getNome();
-                                        }else {
-                                            echo "sem alcateia";
-                                        }?>
-                                    </button> 
-                                </div>
+            
+            <div class="col-12" id="card-pai">
+                <?php if (count($dados["lista"]) == 0) : ?>
+                    <a style="display: flex;justify-content: center;" colspan="6">|Nenhum encontro encontrado, tente novamente.</a>
+                <?php else: ?>
+                    <?php foreach($dados["lista"] as $usu): ?>
+                        <div class="card my-2 mx-2" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $usu->getNome();?></h5>
+                                <hr>
+                                <p class="card-text">gmail</p>
+                                <p class="card-text">
+                                    <?php
+                                        $usuario = new Usuario();
+                                        $papeis = new UsuarioPapel();
+                                        $arrayPapeis = $papeis->getAllAsArray();
+                                        $usuario->setPapeisAsArray($arrayPapeis);
+                                    
+                                        SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papel_usuario");
+                                    ?>
+                                </p>
+                                <p>
+                                <?php
+                                    if ($usu->getStatus() == 'ATIVO') {
+                                        echo "<a id='status' class='btn btn-outline-success' onclick='sendChange(1, ".$usu->getId().");' >ATIVO</a>";
+                                    } else {
+                                        echo "<a id='status' class='btn btn-outline-danger' onclick='sendChange(0, ".$usu->getId().")'>INATIVO</a>";
+                                    }
+                                    ?>
+                                </p>
+                                <button class="<?php if($usu->getAlcateia()) {
+                                        echo "btn btn-secondary";
+                                    }else {
+                                        echo "btn btn-warning";
+                                    }?>"
+                                    id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
+                                    , 'list', <?= $usu->getId();?>);"> 
+                                    <?php if($usu->getAlcateia()) {
+                                        echo $usu->getAlcateia()->getNome();
+                                    }else {
+                                        echo "sem alcateia";
+                                    }?>
+                                </button> 
                             </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-                <a class="btn btn-success" 
-                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+            <a class="btn btn-success" 
+            href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+            
         </div>
     </div>
 
