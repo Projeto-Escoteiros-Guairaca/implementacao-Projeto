@@ -62,12 +62,27 @@ class TarefaDAO {
 
     }
 
+    public function getTarefaUsuario($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM  tb_tarefas t WHERE t.id_tarefa = ?" .
+        "INNER JOIN tb_tarefas_usuarios "  .
+        "ON tb_tarefas.id_tarefa = tb_tarefas_usuarios.id_tarefa";
+        $stm = $conn->prepare($sql);
+        
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        var_dump($result);
+
+    }
+
     public function findById(int $id) {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_tarefas u" .
                " WHERE u.id_tarefa = ?";
-        $stm = $conn->prepare($sql);    
+        $stm = $conn->prepare($sql);
         $stm->execute([$id]);
         $result = $stm->fetchAll();
 

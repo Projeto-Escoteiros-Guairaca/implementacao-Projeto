@@ -20,7 +20,7 @@
                 <div id="status">
                     <hr>
                     <h5>Veja o estado da entrega dos usuários: </h5> 
-                    <a href="<?=BASEURL?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$_SESSION[SESSAO_USUARIO_IDALCATEIA]?>"> lista de usuários</a>
+                    <a href="<?=BASEURL?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$_SESSION[SESSAO_USUARIO_IDALCATEIA]?>&tarefa=1"> lista de usuários</a>
                 
                 </div>
             </div>

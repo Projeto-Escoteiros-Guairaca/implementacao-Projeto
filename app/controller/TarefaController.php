@@ -131,16 +131,32 @@ class TarefaController extends Controller {
     }
 
     public function openTarefa(string $msgErro = "", string $msgSucesso = "") {
+        if( isset($_GET['id'])) {
+            $_SESSION['activeTarefa'] = $_GET['id'];
+        }
         $tarefa = $this->findById();
+        $dados["tarefa"] = $tarefa;
+        $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, false);
+    }
+
+    public function openTarefaUsuario(string $msgErro = "", string $msgSucesso = "") {
+        $tarefaUsuario = $this->tarefaDao->getTarefaUsuario();
         $dados["tarefa"] = $tarefa;
         $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, false);
     }
 
     protected function findById(){
         $id = 0;
-        if(isset($_GET['id']))
+        if(isset($_GET['id'])) {
             $id = $_GET['id'];
-
+        }
+        else {
+            if( isset($_SESSION['activeTarefa'])) {
+                $id = $_SESSION['activeTarefa'];
+            }
+        }
+        
+        
         $tarefa = $this->tarefaDao->findById($id);
         return $tarefa;
     }
