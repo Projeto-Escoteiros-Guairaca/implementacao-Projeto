@@ -19,49 +19,37 @@ function usuarios(id, BASEURL) {
             var retorno = xhttp.responseText;
             var usuarioArray = JSON.parse(retorno);
             var primoExists = "Sem primo";
-                tabela = document.getElementById("tabAlcateias " + id);
-
-                if(usuarioArray.length > 1) {
-                    primoExists = usuarioArray[1]["nome"];
-                }
+            if(usuarioArray.length > 1) {
+                primoExists = usuarioArray[1]["nome"];
+            }
                 
 
-
-                    var linha = tabela.insertRow();
-                    linha.className = "infoDaTabela"+id;
-                    papelChefe = linha.insertCell();
-                    papelChefe.innerHTML += "<b> Chefe: </b>";
-                    papelChefe.className = "infoDaTabela"+id;
-
-                    papelPrimo = linha.insertCell();
-                    papelPrimo.innerHTML = "<b> Primo: </b>";
-                    papelPrimo.className = "infoDaTabela"+id;
-
-                    usuario = linha.insertCell();
-                    usuario.innerHTML = "<b> Usuarios: </b>";
-                    usuario.className = "infoDaTabela"+id;
-
-                    
-                    var linha = tabela.insertRow();
-                    linha.className = "infoDaTabela"+id;
-                    nomeChefe = linha.insertCell();
-                    nomeChefe.innerHTML += usuarioArray[0]["nome"];
-                    nomeChefe.className = "infoDaTabela"+id;
-
-                    nomePrimo = linha.insertCell();
-                    nomePrimo.innerHTML = primoExists;
-                    nomePrimo.className = "infoDaTabela"+id;
-                    
-                    
-                    a = document.createElement("a");
-                    a.className = "btn btn-success";
-                    a.innerHTML = "lista de usuários";
-                    a.href= BASEURL+"/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia="+idSelectedAlcateia;
-
-                    listaUsuarios = linha.insertCell();
-                    listaUsuarios.className = "infoDaTabela"+id;
-                    listaUsuarios.appendChild(a);
+            const modalBackground = document.createElement("div");
+            modalBackground.className = "modal-background";
+            modalBackground.id = "modalBackground";
+            
+            const modal = document.createElement("div");
+            modal.className = "modal";
+            modal.name = "modal";
+            modal.setAttribute("id", id +"modal");
+        
+            body.appendChild(modalBackground);
+            body.appendChild(modal);
+            const h2 = document.createElement("h2");
+            h2.innerHTML = "";
+            modal.appendChild(h2);
+                
+            a = document.createElement("a");
+            a.className = "btn btn-success";
+            a.innerHTML = "lista de usuários";
+            a.href= BASEURL+"/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia="+idSelectedAlcateia;
             AlcateiasAlreadyUsed.push(id);
+
+            modalBackground.addEventListener("click", () => {
+                body.removeChild(modalBackground);
+                body.removeChild(modal);
+        
+            });
         };
     }
 

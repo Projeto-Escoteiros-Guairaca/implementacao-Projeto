@@ -49,49 +49,31 @@
     </div>
 
     <div class="row" style="margin-top: 10px;">
-            <div class="col-12">
-                <table id="tabencontros" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Descrição</th>
-                            <th>Alcateia</th>
-                            <th>Alterar</th>
-                            <th>Frequência</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php if (count($dados["lista"]) == 0) : ?>
-                        <tr>
-                            <td colspan="6">Nenhum encontro encontrado, tente novamente.</td>
-                        </tr>
-                    <?php else: ?>
-                        <?php foreach($dados["lista"] as $enc): ?>
-                            <tr>
-                                <td><?php echo $enc->getDataFormated(); ?></td>
-                                <td><?= $enc->getDescricao(); ?></td>
-                                <td><?= $enc->getAlcateia()->getNome(); ?></td>
-                                <td>
-                                    <a class="btn btn-primary" 
-                                        href="<?= BASEURL ?>/controller/EncontroController.php?action=edit&id=<?= $enc->getId_encontro() ?>">
-                                        Alterar</a> 
-                                </td>
-                                <td>
-                                    <a class="btn btn-secondary" 
-                                        href="<?= BASEURL ?>/controller/FrequenciaController.php?action=createFrequencias&idEncontro=<?= 
-                                            $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">
-                                        Registrar Frequência</a> 
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-
-                    </tbody>
-                </table>
-                <a class="btn btn-success" 
-                    href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
-            </div>
+        <div class="col-12">
+            <?php if (count($dados["lista"]) == 0) : ?>
+                <center colspan="6">Nenhum encontro encontrado, tente novamente.</center>
+            <?php else: ?>
+                <?php foreach($dados["lista"] as $enc): ?>
+                    <div class="card my-2 mx-2" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $enc->getDataFormated();?></h5>
+                            <hr>
+                            <p class="card-text"><?php echo $enc->getAlcateia()->getNome();?></p>
+                            <p class="card-text"><?php echo $enc->getDescricao();?></p>
+                            <a class="btn btn-primary my-1" 
+                                href="<?= BASEURL ?>/controller/EncontroController.php?action=edit&id=<?= $enc->getId_encontro() ?>">
+                                Alterar</a> 
+                            <a class="btn btn-secondary" 
+                                href="<?= BASEURL ?>/controller/FrequenciaController.php?action=createFrequencias&idEncontro=<?= 
+                                    $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">Registrar Frequência</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
+        <a class="btn btn-success" 
+                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+    </div>
 </div>
 
 <?php

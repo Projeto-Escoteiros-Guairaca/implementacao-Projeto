@@ -6,9 +6,12 @@ require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/EnderecoDAO.php");
 require_once(__DIR__ . "/../dao/ContatoDAO.php");
 
+require_once(__DIR__ . "/../dao/TarefaDAO.php");
+
 require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
 require_once(__DIR__ . "/../service/UsuarioService.php");
 
+require_once(__DIR__ . "/../model/Tarefa.php");
 require_once(__DIR__ . "/../model/Alcateia.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/Endereco.php");
@@ -17,6 +20,7 @@ require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
 class UsuarioController extends Controller {
 
+    private TarefaDAO $tarefaDao;
     private AlcateiaDAO $alcateiaDao;
     private UsuarioDAO $usuarioDao;
     private EnderecoDAO $enderecoDao;
@@ -45,7 +49,10 @@ class UsuarioController extends Controller {
            
             if(! $accessVerified and $isRegistering == false) {
                 return;
+
             }
+            
+        $this->tarefaDao = new TarefaDAO();
         $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
@@ -100,11 +107,28 @@ class UsuarioController extends Controller {
     }
 
     public function listUsuariosByAlcateia(string $msgErro = "", string $msgSucesso = "") {
+        
         $usuarios = $this->findUsuarioByIdAlcateia();
+
         $dados["lista"] = $usuarios['usuarios'];
         $dados["alcateia"] = $usuarios['nome_alcateia'];
 
-        $this->loadView("pages/usuario/listUsuariosByAlcateia.php", $dados,$msgErro, $msgSucesso, false);
+        if(isset($_GET['tarefa'])) {
+            if(isset($_SESSION['activeTarefa'])) {
+                $tarefa = $this->tarefaDao->findById($_SESSION['activeTarefa']);
+                $dados['tarefa'] = $tarefa;
+
+            }
+            else {
+                $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
+                die;
+            }
+            
+            $this->loadView("pages/tarefa/listTarefasUsuario.php", $dados,$msgErro, $msgSucesso, false);    
+        }
+        else {
+            $this->loadView("pages/usuario/listUsuariosByAlcateia.php", $dados,$msgErro, $msgSucesso, false);
+        }
     }
     protected function findUsuarioByIdAlcateia(){
         $id = 0;
@@ -283,7 +307,6 @@ class UsuarioController extends Controller {
                     if($usu->getIdAlcateia() == $alc->getId_alcateia()) {
                         $usu->setAlcateia($alc);
                     }
-
                 }
             }
         }

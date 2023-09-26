@@ -2,6 +2,8 @@
 
 include_once(__DIR__ . "/../util/Connection.php");
 include_once(__DIR__ . "/../model/Tarefa.php");
+include_once(__DIR__ . "/../model/Usuario.php");
+
 include_once(__DIR__ . "/../model/Atividade.php");
 
 class TarefaDAO {
@@ -62,12 +64,27 @@ class TarefaDAO {
 
     }
 
+    public function getTarefaUsuario($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = " SELECT * FROM  tb_tarefas t INNER JOIN tb_tarefas_usuarios tu ON tu.id_tarefa = t.id_tarefa ".
+        "INNER JOIN tb_usuarios u ON u.id_usuario = tu.id_usuario WHERE t.id_tarefa = ?";
+
+        $stm = $conn->prepare($sql);
+        
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        var_dump($result);
+
+    }
+
     public function findById(int $id) {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_tarefas u" .
                " WHERE u.id_tarefa = ?";
-        $stm = $conn->prepare($sql);    
+        $stm = $conn->prepare($sql);
         $stm->execute([$id]);
         $result = $stm->fetchAll();
 
@@ -80,6 +97,29 @@ class TarefaDAO {
 
         die("atividadeDAO.findById()" . 
             " - Erro: mais de um usuário encontrado.");
+    }
+
+    public function mapTarefaUsuario($result){
+        $tarefas = array();
+        foreach ($result as $reg) {
+            $usuario = new Usuario();
+            $tarefa = new Tarefa();
+
+            $tarefa->setIdtarefa($reg['id_tarefa']);
+            $tarefa->setNometarefa($reg['nome']);
+            $tarefa->setDescricaoTarefa($reg['descricao']);
+            $tarefa->setId_atividade($reg['id_atividade']);
+
+            $tarefa->setStatusEntrega($reg['status']);
+            $tarefa->setDescricaoEntrega($reg['descricao']);
+            $tarefa->setDataEntrega($reg['id_atividade']);
+            $usuario->setNome($reg['nome']);
+            
+            $tarefa->getUsuario($usuario);
+            array_push($tarefas, $tarefa);
+
+        }
+        return $tarefas;
     }
 
 }

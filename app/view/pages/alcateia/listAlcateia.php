@@ -4,6 +4,8 @@
 
 ?>
 
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listAlcateias.css" />
+
 <h3 class='text-center'>Alcateias</h3>
 
 <div class="container">
@@ -17,43 +19,30 @@
     </div>
 
     <div class="row" style="margin-top: 10px;">
-            <div class="col-12">
-                <table id="tabAlcateias" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Alterar</th>
-                            <th>Listar usuários</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (count($dados["lista"]) == 0) : ?>
-                            <tr>
-                                <td colspan="6">Nenhum alcateia encontrada, tente novamente.</td>
-                            </tr>
-                        <?php else: ?>
-                            <?php foreach($dados["lista"] as $alc): ?>
-                                <table id="tabAlcateias <?php echo $alc->getId_alcateia(); ?>" class="table table-striped table-bordered">
-                                    <tr >
-                                        <td><?= $alc->getNome(); ?></td>
-                                        <td><a class="btn btn-warning" 
-                                            href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
-                                            Alterar</a> 
-                                        </td>
-                                        <td>        <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, '<?php echo BASEURL ?>')">
-                                        Mostrar Dados da Alcateia: </button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-                <a class="btn btn-success" 
-                    href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
-            </div>
+        <div class="col-12">
+            <?php if (count($dados["lista"]) == 0) : ?>
+                <center colspan="6">Nenhum encontro encontrado, tente novamente.</center>
+            <?php else: ?>
+                <?php foreach($dados["lista"] as $alc): ?>
+                    <div class="card my-2 mx-2" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $alc->getNome();?></h5>
+                            <hr>
+                            <a class="btn btn-warning my-1" 
+                                href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
+                                Alterar</a> 
+                            <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, '<?php echo BASEURL ?>')">
+                                    Mostrar Dados da Alcateia: </button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
+        <a class="btn btn-success" 
+                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+    </div>
 </div>
+<br><br><br><br><br>
 
 <script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
 <?php
