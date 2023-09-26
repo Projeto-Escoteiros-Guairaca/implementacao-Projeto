@@ -1,3 +1,7 @@
+
+
+
+
 :root {
     --cor-dark-mod: #293556; /* Substitua pelo código de cor que desejar */
   }
@@ -64,37 +68,19 @@
     color: rgb(0, 0, 0);
 }
 
-.btn {
-    
-    margin-top: 3vh;
-    cursor: pointer;
-    outline: none;
-    transition: 1s ease-in-out;
-    border: 1px solid var(--cor_dark_mod);
+.botoes_login{
+ 
+  display: inline;
+  border: 2px solid rgba(112, 238, 123, 0.6);
+  border-radius: 8px;
+  width: 15vh;
+  height: 8vh;
+  background-color: rgba(112, 238, 123, 0.3);
+  box-sizing: border-box;
+  
 }
 
-#btn_logar:hover {transition: 1s ease-in-out;}
 
-#btn_logar:hover svg {stroke-dashoffset: -480;}
-
-#btn_logar span {
-    font-size: 18px;
-    font-weight: 100;
-    color: var(--cor_dark_mod);
-}
-
-#btn_voltar:hover {
-    transition: 0.2s ease-in-out;
-    opacity: 0.8;
-}
-
-#btn_voltar:hover svg {stroke-dashoffset: -480;}
-
-#btn_voltar span {
-    font-size: 18px;
-    font-weight: 100;
-    color: var(--cor_dark_mod);
-}
 
 .btn-primary{text-align: center;}
 
