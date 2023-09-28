@@ -61,7 +61,8 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
                 </section>
         </div>
 
-    </div>
+        <div class= "row" class= ></div>
+</div>
 
     <div class="nomeUsu">
     <?php

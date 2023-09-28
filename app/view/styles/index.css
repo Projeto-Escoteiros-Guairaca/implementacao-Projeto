@@ -6,7 +6,9 @@ body {
     padding: 0;
     overflow-x: visible;
 }
-
+*{
+    border-image-width: 0;
+}
  .container {
     box-sizing: border-box;
   /*border: 1px black solid;*/ 
@@ -22,7 +24,16 @@ body {
    
 }
 
-
+.botoes_redirecionais{
+    width: 45vh;
+    height: 60vh;
+    box-sizing: border-box;
+    border: 1px black solid;
+    align-items: center;
+    border-radius: 15px;
+    display: inline;
+    margin: 5vh auto 5vh;
+}
 .div_redirecionais{
     background-color: transparent;
     position: relative;
@@ -42,16 +53,6 @@ body {
     color: black;
     max-width: 21vw;
     max-height: 18vh;
-}
-.botoes_redirecionais{
-    width: 45vh;
-    height: 60vh;
-    box-sizing: border-box;
-    border: 1px black solid;
-    align-items: center;
-    border-radius: 15px;
-    display: inline;
-    margin: 5vh auto 5vh;
 }
 .text-box {
     margin-left: 44vw;

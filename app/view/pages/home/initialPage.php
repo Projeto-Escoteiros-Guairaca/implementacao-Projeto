@@ -23,13 +23,13 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
                 <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
             </div>
         </a>
-        <a class="botoes_redirecionais btn btn-white btn-animate">
+        <a class="botoes_redirecionais btn btn-white btn-animate" >
             <div class= "div_redirecionais">
                 <p class= "p_redirecionais">Alcateias</p>
                 <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobinhos.png" alt="">
             </div>
         </a>
-        <a class="botoes_redirecionais btn btn-white btn-animate">
+        <a class="botoes_redirecionais btn btn-white btn-animate" >
             <div class= "div_redirecionais">
                 <p class= "p_redirecionais">Encontros</p>
                 <i class="bi bi-people incons_redirecionais"></i>
