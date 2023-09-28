@@ -10,14 +10,27 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
 
-<div class="container p-2 cx_meio">
-    <div class="row apresentacao">
-        <div class="col-6 text">
-            <div> aviso 1</div>
-            <div> aviso 2 </div>
-            <div> aviso 3</div>
-        </div>
-    </div>
+<div class="container cx_meio col-12">
+    
+        <a class="botoes_redirecionais">
+            <div class= "div_redirecionais">
+                <p class= "p_redirecionais">Cadastro</p>
+                <i class="bi bi-person-add incons_redirecionais"></i>
+            </div>
+        </a>
+        <a class="botoes_redirecionais">
+            <div class= "div_redirecionais">
+                <p class= "p_redirecionais">Alcateias</p>
+
+            </div>
+        </a>
+        <a class="botoes_redirecionais">
+            <div class= "div_redirecionais">
+                <p class= "p_redirecionais">Encontros</p>
+                <i class="bi bi-people incons_redirecionais"></i>
+            </div>
+        </a>
+
 </div>
 
 <?php
