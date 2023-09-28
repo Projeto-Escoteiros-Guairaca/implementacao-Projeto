@@ -11,20 +11,19 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
 
 <div class="container cx_meio col-12">
-    
-        <a class="botoes_redirecionais">
+        <a class="botoes_redirecionais btn btn-white btn-animate" >
             <div class= "div_redirecionais">
                 <p class= "p_redirecionais">Cadastro</p>
                 <i class="bi bi-person-add incons_redirecionais"></i>
             </div>
         </a>
-        <a class="botoes_redirecionais">
+        <a class="botoes_redirecionais btn btn-white btn-animate">
             <div class= "div_redirecionais">
                 <p class= "p_redirecionais">Alcateias</p>
 
             </div>
         </a>
-        <a class="botoes_redirecionais">
+        <a class="botoes_redirecionais btn btn-white btn-animate">
             <div class= "div_redirecionais">
                 <p class= "p_redirecionais">Encontros</p>
                 <i class="bi bi-people incons_redirecionais"></i>
