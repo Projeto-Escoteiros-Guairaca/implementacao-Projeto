@@ -22,22 +22,26 @@ body {
    
 }
 
+
 .div_redirecionais{
     background-color: transparent;
     position: relative;
     top: 50%;
     transform: translateY(-50%); 
-  /*border:black solid 1px;
-    border-radius: 15px;*/
+    border-radius: 15px;
+    min-height: 37vh ;
 }
 .p_redirecionais{
     text-align: center;
     font-size: 5vh;  
     color: black;
+    margin: 5px auto 10px;
 }
 .incons_redirecionais{
     font-size: 18vh;    
     color: black;
+    max-width: 21vw;
+    max-height: 18vh;
 }
 .botoes_redirecionais{
     width: 45vh;

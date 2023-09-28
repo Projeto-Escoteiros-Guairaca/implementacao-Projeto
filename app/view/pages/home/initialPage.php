@@ -13,14 +13,20 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 <div class="container cx_meio col-12">
         <a class="botoes_redirecionais btn btn-white btn-animate" >
             <div class= "div_redirecionais">
-                <p class= "p_redirecionais">Cadastro</p>
-                <i class="bi bi-person-add incons_redirecionais"></i>
+                <p class= "p_redirecionais">Atividades</p>
+                <i class="bi bi-journal-check incons_redirecionais"></i>
+            </div>
+        </a>
+        <a class="botoes_redirecionais btn btn-white btn-animate" >
+            <div class= "div_redirecionais">
+                <p class= "p_redirecionais">Lobinhos</p>
+                <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
             </div>
         </a>
         <a class="botoes_redirecionais btn btn-white btn-animate">
             <div class= "div_redirecionais">
                 <p class= "p_redirecionais">Alcateias</p>
-
+                <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobinhos.png" alt="">
             </div>
         </a>
         <a class="botoes_redirecionais btn btn-white btn-animate">
@@ -29,6 +35,8 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
                 <i class="bi bi-people incons_redirecionais"></i>
             </div>
         </a>
+
+        
 
 </div>
 
