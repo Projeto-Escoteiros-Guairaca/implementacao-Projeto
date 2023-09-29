@@ -175,6 +175,17 @@ class Tarefa {
         return $this;
     }
 
+    public function getStatusEntregaPalavra()
+    {
+        $status = "";
+        if($this->statusEntrega == 1)
+            $status = "Pendente";
+        else if($this->statusEntrega == 2)
+            $status= "Entregado";
+
+        return $status;
+    }
+
     /**
      * Get the value of statusEntrega
      */ 

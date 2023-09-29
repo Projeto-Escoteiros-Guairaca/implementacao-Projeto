@@ -18,7 +18,7 @@ class TarefaController extends Controller {
     function __construct(){
         $administradorChefeActions = [
             "list", "listByIdAtiv", "create", "createTarefaAtiv", 
-        "edit", "delete", "save", "update", "openTarefa"
+        "edit", "delete", "save", "update", "openTarefa", "openTarefaUsuario"
         ];
         $lobinhoActions = ["list","listByIdAtiv", "openTarefa"];
         $papelNecessario = array();
@@ -141,11 +141,10 @@ class TarefaController extends Controller {
 
     public function openTarefaUsuario(string $msgErro = "", string $msgSucesso = "") {
         $idTarefa = $_GET['id'];
-        $idUsuario = $_GET['idUsuario'];
-        $tarefaUsuario = $this->tarefaDao->getTarefaUsuario($idTarefa, $idUsuario);
+        $tarefaUsuario = $this->tarefaDao->getTarefaUsuario($idTarefa);
 
-        $dados["tarefa"] = $tarefa;
-        $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, false);
+        $dados["tarefa"] = $tarefaUsuario;
+        $this->loadView("pages/tarefa/openTarefaUsuario.php", $dados, $msgErro, $msgSucesso, false);
     }
 
     protected function findById(){

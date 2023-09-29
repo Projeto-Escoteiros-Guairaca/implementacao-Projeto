@@ -75,8 +75,15 @@ class TarefaDAO {
         
         $stm->execute([$id]);
         $result = $stm->fetchAll();
-        var_dump($result);
+        $tarefa_usuario = $this->mapTarefaUsuario($result);
 
+        if(count($tarefa_usuario) == 1)
+            return $tarefa_usuario[0];
+        elseif(count($tarefa_usuario) == 0)
+            return null;
+
+        die("UsuarioDAO.findById()" . 
+            " - Erro: mais de um usuário encontrado.");
     }
 
     public function findById(int $id) {
@@ -106,16 +113,17 @@ class TarefaDAO {
             $tarefa = new Tarefa();
 
             $tarefa->setIdtarefa($reg['id_tarefa']);
-            $tarefa->setNometarefa($reg['nome']);
-            $tarefa->setDescricaoTarefa($reg['descricao']);
+            $tarefa->setNometarefa($reg['2']);
+            $tarefa->setDescricaoTarefa($reg['3']);
             $tarefa->setId_atividade($reg['id_atividade']);
 
             $tarefa->setStatusEntrega($reg['status']);
             $tarefa->setDescricaoEntrega($reg['descricao']);
-            $tarefa->setDataEntrega($reg['id_atividade']);
+            $tarefa->setDataEntrega($reg['data']);
             $usuario->setNome($reg['nome']);
+            $usuario->setId($reg['id_usuario']);
             
-            $tarefa->getUsuario($usuario);
+            $tarefa->setUsuario($usuario);
             array_push($tarefas, $tarefa);
 
         }
