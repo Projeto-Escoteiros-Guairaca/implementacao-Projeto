@@ -4,11 +4,12 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    border-radius: 3%;
 
 }
 .tarefa {
     flex-wrap: wrap;
-
+    border-radius: 3%;
     height: fit-content;
     width: 60%;
     border: solid 1px #000000;

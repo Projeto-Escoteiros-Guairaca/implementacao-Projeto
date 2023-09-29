@@ -111,9 +111,12 @@ INSERT INTO tb_atividades (nome_atividade, descricao) VALUES ('Caçador', 'Caça
 
 /*Inserts arquivos*/
 INSERT INTO tb_arquivos (nome, caminho) VALUES ('Video', 'https://pin.it/2aYGxms');
-
+INSERT INTO tb_arquivos (nome, caminho) VALUES ('Imagem', 'asd');
+INSERT INTO tb_arquivos (nome, caminho) VALUES ('Video', 'https://pin.it/2aYGxms');
 /*Inserts de tarefas*/
-INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Fogueira', 'Faça uma fogueira sem usar qualquer tipo de acendedor artificial');
+INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Fogueira', 'Faça uma fogueira sem usar qualquer tipo de acendedor artificial.');
+INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Cocinhar', 'Cozinhe uma carne caçada utilizando a fogueira da tarefa anterior.');
+INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Cace um coelho', 'Cace um coeho selvagem utilizando as ferramentas aprendidas no encontro anterior.');
 
 
 /*Inserts enderecos*/
@@ -146,6 +149,13 @@ INSERT INTO tb_alcateias (nome,id_usuario_chefe) VALUES ('Alcateia 3', '4');
 
 ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia);
 
+/*Inserts tarefa_usuarios*/
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
+('1', '1', '1', '2', '2020-01-01', '');
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
+('1', '2', '2', '2', '2020-01-01', 'Bruh');
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
+('1', '3', '3', '2', '2020-01-01', 'Coelho comido');
 /*Inserts encontros*/
 INSERT INTO tb_encontros (id_alcateia, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
 INSERT INTO tb_encontros (id_alcateia, data, descricao) VALUES (2, '2020-01-01', 'Encontro 2');

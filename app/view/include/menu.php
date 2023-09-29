@@ -80,6 +80,7 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
       </li>
 
       <?php
+      if (isset($_SESSION[SESSAO_USUARIO_ID])){
         if ($_SESSION[SESSAO_USUARIO_ID] == 0){
             echo "<a class='nav-link' href = " .LOGIN_PAGE."> Login</a>";
             echo "<a class='nav-link' href = " .REGISTER_PAGE."> Registre-se</a>";
@@ -87,9 +88,18 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
         else {
             echo "<a class='nav-link' href = " .LOGOUT_PAGE."> Sair</a>";
         }
+<<<<<<< HEAD
         if($nome != "Entrar"){
           echo "<a class='nav-link'>".$nome."</a>";
         }
+=======
+      }
+      else {
+        echo "<a class='nav-link' href = " .LOGIN_PAGE."> Login</a>";
+        echo "<a class='nav-link' href = " .REGISTER_PAGE."> Registre-se</a>";
+      }
+
+>>>>>>> 905450bd8142309d0c564d02d608f170f8231ce7
       ?>
 
     </ul>
