@@ -87,6 +87,9 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
         else {
             echo "<a class='nav-link' href = " .LOGOUT_PAGE."> Sair</a>";
         }
+        if($nome != "Entrar"){
+          echo "<a class='nav-link'>".$nome."</a>";
+        }
       ?>
 
     </ul>
