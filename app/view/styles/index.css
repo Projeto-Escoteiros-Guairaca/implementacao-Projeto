@@ -6,9 +6,7 @@ body {
     padding: 0;
     overflow-x: visible;
 }
-*{
-    border-image-width: 0;
-}
+
  .container {
     box-sizing: border-box;
   /*border: 1px black solid;*/ 
@@ -24,16 +22,7 @@ body {
    
 }
 
-.botoes_redirecionais{
-    width: 45vh;
-    height: 60vh;
-    box-sizing: border-box;
-    border: 1px black solid;
-    align-items: center;
-    border-radius: 15px;
-    display: inline;
-    margin: 5vh auto 5vh;
-}
+
 .div_redirecionais{
     background-color: transparent;
     position: relative;
@@ -54,6 +43,16 @@ body {
     max-width: 21vw;
     max-height: 18vh;
 }
+.botoes_redirecionais{
+    width: 45vh;
+    height: 60vh;
+    box-sizing: border-box;
+    border: 1px black solid;
+    align-items: center;
+    border-radius: 15px;
+    display: inline;
+    margin: 5vh auto 5vh;
+}
 .text-box {
     margin-left: 44vw;
    margin-top: 42vh;
@@ -61,17 +60,17 @@ body {
 
 .btn:link,
 .btn:visited {
-    text-transform: uppercase;
+    /* text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
-    display: inline-block;
+    padding: 15px 40px; 
+    display: inline-block;*/
     border-radius: 100px;
-    transition: all .2s;
-    position: absolute;
+    /* transition: all .2s;
+    position: absolute; */
 }
 
 .btn:hover {
-    transform: translateY(-3px);
+    /* transform: translateY(-3px); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -189,3 +188,36 @@ p {
         width: 100%;
     }
 }*/
+
+/* NOVA HOME */
+
+
+.bg-sweg {
+    background-color: #1d7874;
+}
+
+.bg-sweg a {
+    color: #fff; 
+}
+
+
+
+.navbar-icon{
+    border: solid 1px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+
+.card-sweg {
+    min-height: 420px;
+}
+
+.card-sweg-details {
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 50px;
+}

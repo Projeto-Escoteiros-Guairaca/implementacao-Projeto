@@ -5,41 +5,96 @@
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../../controller/AcessoController.php");
 require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
+require_once(__DIR__."/../../include/menu.php");
+
 ?>
-<?php require_once(__DIR__ . "/../../include/menu.php"); ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
 
-<div class="container cx_meio col-12">
-        <a class="botoes_redirecionais btn btn-white btn-animate" >
-            <div class= "div_redirecionais">
-                <p class= "p_redirecionais">Atividades</p>
-                <i class="bi bi-journal-check incons_redirecionais"></i>
-            </div>
-        </a>
-        <a class="botoes_redirecionais btn btn-white btn-animate" >
-            <div class= "div_redirecionais">
-                <p class= "p_redirecionais">Lobinhos</p>
-                <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
-            </div>
-        </a>
-        <a class="botoes_redirecionais btn btn-white btn-animate" >
-            <div class= "div_redirecionais">
-                <p class= "p_redirecionais">Alcateias</p>
-                <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobinhos.png" alt="">
-            </div>
-        </a>
-        <a class="botoes_redirecionais btn btn-white btn-animate" >
-            <div class= "div_redirecionais">
-                <p class= "p_redirecionais">Encontros</p>
-                <i class="bi bi-people incons_redirecionais"></i>
-            </div>
-        </a>
+<!-- COMECO DOS CARDS -->
+<div class="container-fluid pt-4">
 
-        
+  <div class="row">
+    
+    <div class="col-sm-6 col-md-3 pb-4">
+      <div class="card text-center card-sweg">
+        <div class="card-body">
+          <p class="card-text text-center">
+            <i class="bi bi-journal-check incons_redirecionais"></i>
+          </p>
+
+          <div class="card-sweg-details">
+            <h5 class="card-title">Atividades</h5>
+            <a href="<?= BASEURL ?>/controller/AtividadeController.php?action=list" class="btn btn-primary">Atividades</a>
+
+            
+          </div>  
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-3 pb-4">
+      <div class="card text-center card-sweg">
+        <div class="card-body">
+          <p class="card-text text-center">
+          <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
+          </p>
+
+          <div class="card-sweg-details">
+            <h5 class="card-title">Lobinhos</h5>
+
+            <a href=" <?=BASEURL ?>/controller/UsuarioController.php?action=list" class="btn btn-primary">Lobinhos</a>
+          </div>  
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-3 pb-4">
+      <div class="card text-center card-sweg">
+        <div class="card-body">
+          <p class="card-text text-center">
+          <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobinhos.png" alt="">
+          </p>
+
+          <div class="card-sweg-details">
+            <h5 class="card-title">Alcateias</h5>
+
+            <a href="<?=BASEURL ?>/controller/AlcateiaController.php?action=list" class="btn btn-primary">Alcateias</a>
+          </div>  
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-3 pb-4">
+      <div class="card text-center card-sweg">
+        <div class="card-body">
+          <p class="card-text text-center">
+             <i class="bi bi-people incons_redirecionais"></i>
+          </p>
+
+          <div class="card-sweg-details">
+            <h5 class="card-title">Encontros</h5>
+            <a href="<?=BASEURL ?>/controller/EncontroController.php?action=list" class="btn btn-primary">Encontros</a>
+          </div>  
+          
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 
 </div>
 
 <?php
-require_once(__DIR__ . "/../../include/footer.php");
+    require_once(__DIR__."/../../include/footer.php");
 ?>
