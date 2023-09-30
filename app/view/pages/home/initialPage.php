@@ -76,17 +76,18 @@ require_once(__DIR__."/../../include/menu.php");
     <div class="col-sm-6 col-md-3 pb-4">
       <div class="card text-center card-sweg">
         <div class="card-body btn">
-        <a href="<?=BASEURL ?>/controller/EncontroController.php?action=list">Encontros
           <p class="card-text text-center">
              <i class="bi bi-people incons_redirecionais"></i>
           </p>
 
-    
+          <div class="card-sweg-details">
+            <h5 class="card-title">Encontros</h5>
+            <a href="<?=BASEURL ?>/controller/EncontroController.php?action=list" class="btn btn-primary">Encontros</a>
+          </div>  
           
 
         </div>
-        </div>
-        </a>
+      </div>
     </div>
 
 
