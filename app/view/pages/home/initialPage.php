@@ -18,12 +18,12 @@ require_once(__DIR__."/../../include/menu.php");
     
     <div class="col-sm-6 col-md-3 pb-4">
       <div class="card text-center card-sweg">
-        <div class="card-body">
+        <div class="card-body btn">
           <p class="card-text text-center">
             <i class="bi bi-journal-check incons_redirecionais"></i>
           </p>
 
-          <div class="card-sweg-details">
+          <div class="card-sweg-details btn">
             <h5 class="card-title">Atividades</h5>
             <a href="<?= BASEURL ?>/controller/AtividadeController.php?action=list" class="btn btn-primary">Atividades</a>
 
@@ -37,12 +37,12 @@ require_once(__DIR__."/../../include/menu.php");
 
     <div class="col-sm-6 col-md-3 pb-4">
       <div class="card text-center card-sweg">
-        <div class="card-body">
+        <div class="card-body btn">
           <p class="card-text text-center">
           <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
           </p>
 
-          <div class="card-sweg-details">
+          <div class="card-sweg-details ">
             <h5 class="card-title">Lobinhos</h5>
 
             <a href=" <?=BASEURL ?>/controller/UsuarioController.php?action=list" class="btn btn-primary">Lobinhos</a>
@@ -56,7 +56,7 @@ require_once(__DIR__."/../../include/menu.php");
 
     <div class="col-sm-6 col-md-3 pb-4">
       <div class="card text-center card-sweg">
-        <div class="card-body">
+        <div class="card-body btn">
           <p class="card-text text-center">
           <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobinhos.png" alt="">
           </p>
@@ -75,19 +75,18 @@ require_once(__DIR__."/../../include/menu.php");
 
     <div class="col-sm-6 col-md-3 pb-4">
       <div class="card text-center card-sweg">
-        <div class="card-body">
+        <div class="card-body btn">
+        <a href="<?=BASEURL ?>/controller/EncontroController.php?action=list">Encontros
           <p class="card-text text-center">
              <i class="bi bi-people incons_redirecionais"></i>
           </p>
 
-          <div class="card-sweg-details">
-            <h5 class="card-title">Encontros</h5>
-            <a href="<?=BASEURL ?>/controller/EncontroController.php?action=list" class="btn btn-primary">Encontros</a>
-          </div>  
+    
           
 
         </div>
-      </div>
+        </div>
+        </a>
     </div>
 
 
