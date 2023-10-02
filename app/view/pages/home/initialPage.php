@@ -36,26 +36,22 @@ require_once(__DIR__."/../../include/menu.php");
 
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <div class="card text-center card-sweg">
-        <div class="card-body btn">
+      <a class="card text-center card-sweg" href=" <?=BASEURL ?>/controller/UsuarioController.php?action=list">
+       <div class="card-body btn">
           <p class="card-text text-center">
-          <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
+            <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
           </p>
-
           <div class="card-sweg-details ">
             <h5 class="card-title">Lobinhos</h5>
-
-            <a href=" <?=BASEURL ?>/controller/UsuarioController.php?action=list" class="btn btn-primary">Lobinhos</a>
           </div>  
-
-
         </div>
-      </div>
+      </a>
     </div>
+    
 
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AlcateiaController.php?action=list" class="btn btn-primary">          
+      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AlcateiaController.php?action=list">          
         <div class="card-body btn">
           <p class="card-text text-center">
             <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobinhos.png" alt="">
@@ -69,25 +65,17 @@ require_once(__DIR__."/../../include/menu.php");
 
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <div class="card text-center card-sweg">
+      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/EncontroController.php?action=list">
         <div class="card-body btn">
           <p class="card-text text-center">
              <i class="bi bi-people incons_redirecionais"></i>
           </p>
-
           <div class="card-sweg-details">
             <h5 class="card-title">Encontros</h5>
-            <a href="<?=BASEURL ?>/controller/EncontroController.php?action=list" class="btn btn-primary">Encontros</a>
-          </div>  
-          
-
-        </div>
-      </div>
-    </div>
-
-
+          </div>
+     </div>
+     </a>
   </div>
-
 </div>
 
 <?php
