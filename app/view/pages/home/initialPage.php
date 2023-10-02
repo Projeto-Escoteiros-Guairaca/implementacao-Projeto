@@ -17,7 +17,7 @@ require_once(__DIR__."/../../include/menu.php");
   <div class="row">
     
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href="<?= BASEURL ?>/controller/AtividadeController.php?action=list" class="btn btn-primary">
+      <a class="card text-center card-sweg"  href="<?= BASEURL ?>/controller/AtividadeController.php?action=list" class="btn btn-primary">
         <div class="card-body btn">
             <p class="card-text text-center">
               <i class="bi bi-journal-check incons_redirecionais"></i>
@@ -48,7 +48,7 @@ require_once(__DIR__."/../../include/menu.php");
       <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AlcateiaController.php?action=list">          
         <div class="card-body btn">
           <p class="card-text text-center">
-            <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobinhos.png" alt="">
+            <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/alcateia.png" alt="">
           </p>
           <div class="card-sweg-details">
             <h5 class="card-title">Alcateias</h5>

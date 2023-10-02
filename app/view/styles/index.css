@@ -16,20 +16,23 @@ body {
     justify-content: center;
     text-align: center;    
 } 
-.cx_meio{
-   
-    height: 70vh;
-   
+.cx_meio{height: 70vh;}
+
+.card-sweg {
+    min-height: 420px;
 }
 
+.card-sweg-details {
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 50px;
+}
 
-.div_redirecionais{
-    background-color: transparent;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); 
-    border-radius: 15px;
-    min-height: 37vh ;
+.card-title{
+   font-size: 38px;
 }
 .p_redirecionais{
     text-align: center;
@@ -209,19 +212,3 @@ p {
 }
 
 
-.card-sweg {
-    min-height: 420px;
-}
-
-.card-sweg-details {
-    box-sizing: border-box;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-bottom: 50px;
-}
-
-.card-title{
-   font-size: 38px;
-}
