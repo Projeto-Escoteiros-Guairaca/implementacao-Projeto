@@ -72,7 +72,7 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
             }
         ?>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="bi bi-moon-stars navbar-icon"></i></a>
+        <a id="dark-button" class="nav-link" href="#"><i id="dark-icon" class="bi bi-moon-stars navbar-icon"></i></a>
       </li>
 
       <li class="nav-item">

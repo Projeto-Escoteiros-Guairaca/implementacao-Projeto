@@ -32,13 +32,13 @@ require_once(__DIR__ . "/../../include/menu.php");
                             maxlength="15" placeholder="Informe a senha"
                             value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />        
                     </div>
-                    <button type="submit" class="botoes_login ">
+                    <button type="submit" class="btn btn-success ">
                         <span>Logar</span>
                     </button>
-                    <a class="botoes_login"href="<?= BASEURL ?>/controller/HomeController.php">
+                    <a class="btn btn-secondary"href="<?= BASEURL ?>/controller/HomeController.php">
                         <span>Voltar</span>
                     </a>
-                    <a class="botoes_login" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
+                    <a class="btn btn-primary" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
                 </form>
             </div>
         </div>

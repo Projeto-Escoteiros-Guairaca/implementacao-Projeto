@@ -25,38 +25,31 @@ function fechar_nav(){
 
 }
 
-var darkButton = document.querySelector('#dark-mode');
+var darkButton = document.querySelector('#dark-button');
+var darkIcon = document.querySelector('#dark-icon');
 
 darkButton.addEventListener('click', () => {
   body.classList.toggle('modo-escuro');
-  if(darkButton.getAttribute('class') == 'btn btn-outline-light'){
-    darkButton.removeAttribute('class');
-    darkButton.setAttribute('class', 'btn btn-light');
-    darkButton.style.color = 'black';
-    darkButton.innerHTML = 'Modo Claro';
+  if(darkIcon.getAttribute('class') == 'bi bi-moon-stars navbar-icon'){
+    darkIcon.removeAttribute('class');
+    darkIcon.setAttribute('class', 'bi bi-sun-fill navbar-icon');
     localStorage.setItem('modo-escuro', 'true');
   }
   else{
-    darkButton.removeAttribute('class');
-    darkButton.setAttribute('class', 'btn btn-outline-light');
-    darkButton.style.color = 'white';
-    darkButton.innerHTML = 'Modo Escuro';
+    darkIcon.removeAttribute('class');
+    darkIcon.setAttribute('class', 'bi bi-moon-stars navbar-icon');
     localStorage.setItem('modo-escuro', 'false');
   }
 });
 function carregar_modo(){
   if(localStorage.getItem('modo-escuro') == 'true'){
     body.classList.toggle('modo-escuro');
-    darkButton.removeAttribute('class');
-    darkButton.setAttribute('class', 'btn btn-light');
-    darkButton.style.color = 'black';
-    darkButton.innerHTML = 'Modo Claro';
+    darkIcon.removeAttribute('class');
+    darkIcon.setAttribute('class', 'bi bi-sun-fill navbar-icon');
   }
   else{
-    darkButton.removeAttribute('class');
-    darkButton.setAttribute('class', 'btn btn-outline-light');
-    darkButton.style.color = 'white';
-    darkButton.innerHTML = 'Modo Escuro';
+    darkIcon.removeAttribute('class');
+    darkIcon.setAttribute('class', 'bi bi-moon-stars navbar-icon');
   }
 }
 
