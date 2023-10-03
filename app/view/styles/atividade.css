@@ -8,8 +8,17 @@
     border: solid black 1px;
     padding: 1vh 1vh;
 }
+.principais_btn_cards_atv{
+    min-width: 10vh;
+    width: 10vh;
+    border: solid black 1px;
+    padding: 1vh 1vh;
+   /* position: absolute;*/
+    
+}
 .card-body{
-   
+   /*background-color: black;*/
+    display: inline;
 }
 .titulos_atv{
     font-size: 5vh;
@@ -17,6 +26,8 @@
 .btn_cards_atv{
     box-sizing: border-box;
     border: solid black 1px;
+    /*border: solid black 1px;*/
     padding: 1vh 1vh;
+    min-width: 50vh;
 }
 
