@@ -18,9 +18,16 @@ if(isset($_SESSION[SESSAO_USUARIO_NOME]))
 
 //Variável para validar o acesso
 $acessoCont = new AcessoController();
+$isChefe = $acessoCont->usuarioPossuiPapel([UsuarioPapel::CHEFE]);
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
 
+if($isChefe == 1) {
+  $_SESSION["chefeAlcateia"] = $_SESSION[SESSAO_USUARIO_IDALCATEIA];
+}
+else {
+  $_SESSION["chefeAlcateia"] = "";
+}
 ?>
 
 
@@ -30,9 +37,9 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
 
 
 <div class="logo" style="padding: 5px; background: #1d7874">
-
+  <a href="<?=BASEURL?>/controller/HomeController.php">
     <img src="<?= BASEURL ?>/view/pages/home/images/lobo-amarelo.png" alt="" height="100">
-
+  </a>
 </div>
 
 
@@ -46,23 +53,37 @@ $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
     <ul class="navbar-nav">
         <?php if($isAdministrador == 1){
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = " .BASEURL. "/controller/UsuarioController.php?action=list>Lobinhos</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/UsuarioController.php'>Lobinhos</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = " .BASEURL. "/controller/AlcateiaController.php?action=list> Alcateias</";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AlcateiaController.php'> Alcateias</";
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = " .BASEURL. "/controller/EncontroController.php?action=list> Encontros</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/EncontroController.php'> Encontros</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = " .BASEURL. "/controller/AtividadeController.php?action=list> Atividades</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AtividadeController.php'> Atividades</a>";
                 echo '</li>';
             }
-            if($isLobinho == 1) {
+            elseif($isLobinho == 1) {
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = " .BASEURL. "/controller/AtividadeController.php?action=list> Minhas Tarefas</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AtividadeController.php'> Minhas Tarefas</a>";
                 echo '</li>';
             }
+            elseif($isChefe == 1) {
+              echo '<li class="nav-item">';
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/UsuarioController.php'>Lobinhos</a>";
+              echo '</li>';
+              echo '<li class="nav-item">';
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AlcateiaController.php'> Alcateias</";
+              echo '</li>';
+              echo '<li class="nav-item">';
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/EncontroController.php'> Encontros</a>";
+              echo '</li>';
+              echo '<li class="nav-item">';
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AtividadeController.php'> Atividades</a>";
+              echo '</li>';
+          }
         ?>
 
         <?php
