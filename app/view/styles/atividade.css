@@ -20,7 +20,11 @@
     z-index: 1;
     align-items: center;
     text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
 }
+
 #p_editar_atv{
     z-index: 1;
     position: absolute;
@@ -156,6 +160,14 @@
   
 .card{
     
+}
+.card:after {
+    transition: all 0.3s ease;
+}
+.card:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
 }
 .card-body{
    
