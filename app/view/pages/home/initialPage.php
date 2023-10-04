@@ -17,7 +17,7 @@ require_once(__DIR__."/../../include/menu.php");
   <div class="row">
     
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg"  href="<?= BASEURL ?>/controller/AtividadeController.php?action=list" class="btn btn-primary">
+      <a class="card text-center card-sweg"  href="<?= BASEURL ?>/controller/AtividadeController.php" class="btn btn-primary">
         <div class="card-body btn">
             <p class="card-text text-center">
               <i class="bi bi-journal-check incons_redirecionais"></i>
@@ -31,7 +31,7 @@ require_once(__DIR__."/../../include/menu.php");
 
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href=" <?=BASEURL ?>/controller/UsuarioController.php?action=list">
+      <a class="card text-center card-sweg" href=" <?=BASEURL ?>/controller/UsuarioController.php">
        <div class="card-body btn">
           <p class="card-text text-center">
             <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
@@ -45,7 +45,7 @@ require_once(__DIR__."/../../include/menu.php");
     
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AlcateiaController.php?action=list">          
+      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AlcateiaController.php">          
         <div class="card-body btn">
           <p class="card-text text-center">
             <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/alcateia.png" alt="">
@@ -59,7 +59,7 @@ require_once(__DIR__."/../../include/menu.php");
 
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/EncontroController.php?action=list">
+      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/EncontroController.php">
         <div class="card-body btn">
           <p class="card-text text-center">
              <i class="bi bi-people incons_redirecionais"></i>

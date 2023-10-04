@@ -18,6 +18,7 @@ class AlcateiaController extends Controller{
 
         $papelNecessario = array();
         $papelNecessario[0] = "ADMINISTRADOR";
+        $papelNecessario[1] = "CHEFE";
         $accessVerified = $this->verifyAccess($papelNecessario);
         
         if(! $accessVerified) {
@@ -26,7 +27,7 @@ class AlcateiaController extends Controller{
         $this->usuarioDao = new UsuarioDAO();
         $this->alcateiaDao = new AlcateiaDAO();
         $this->alcateiaService = new AlcateiaService();
-        $this->setActionDefault("list", true);
+        $this->setActionDefault("listAlcateia", true);
         $this->handleAction();
     }
 
@@ -44,21 +45,30 @@ class AlcateiaController extends Controller{
         die;
     }
     
-    
+    public function listAlcateia(string $msgErro = "", string $msgSucesso = "") {
+        if($_SESSION['chefeAlcateia'] != "") {
+            $_GET['id'] = $_SESSION['chefeAlcateia'];
+
+            $usuarios = $this->usuarioDao->findUsuariosByIdAcateia($_GET['id']);
+            $alcateias = $this->findAlcateiaById();
+
+            $dados["usuarios"] = $usuarios;
+            $dados["alcateia"] = $alcateias;
+            $this->loadView("pages/alcateia/alcateia.php", $dados, $msgErro, $msgSucesso, true);
+        }
+        else {
+            $this->list();
+        }
+    }
     public function list(string $msgErro = "", string $msgSucesso = ""){
         $alcateias = $this->alcateiaDao->list();
-        $sendAlcateias = false;
-     
         if(isset($_GET['sendAlcateias'])) {
-            $sendAlcateias = $_GET['sendAlcateias'];
-        } 
-        if($sendAlcateias == 'true') {
             echo json_encode($alcateias);
             return;
         }
 
         $dados["lista"] = $alcateias;
-        $this->loadView("pages/alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);
+        $this->loadView("pages/alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);    
     }
 
     public function create(){
