@@ -1,12 +1,50 @@
+*{
+  text-decoration: none;
+  
+}
+
 .col-12{
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    margin-top: 7vh;
 }
 
 #btn_inserir_atv{
     box-sizing: border-box;
     border: solid black 1px;
-    padding: 1vh 1vh;
+    padding: 0.5vh 0.5vh 0.5vh 0.5vh;
+    height: 6vh;
+    width: 6vh;
+    text-align: center;
+    align-items: center;
+    margin-top:1vh;
+    font-size: 25px;
+    position: absolute;
+    font-size: 35px;
+}
+.btn_inserir_atv:hover{
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+  margin-top: 5vh;
+  
+}
+.card{
+  border: 1px solid #071e22 ;
+ 
+}
+.card:after {
+    transition: all 0.3s ease;
+}
+.card:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+}
+.card-body{
+   
+    display: inline;
 }
 .card-img-top{
     text-align: center;
@@ -159,21 +197,7 @@
   }
   
   
-.card{
-    
-}
-.card:after {
-    transition: all 0.3s ease;
-}
-.card:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
-}
-.card-body{
-   
-    display: inline;
-}
+
 .titulos_atv{
     font-size: 5vh;
 }
@@ -183,5 +207,14 @@
     /*border: solid black 1px;*/
     padding: 1vh 1vh;
     min-width: 50vh;
+    color:#071e22;
+    
+    
+}
+.btn_cards_atv:hover{
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+ 
 }
 
