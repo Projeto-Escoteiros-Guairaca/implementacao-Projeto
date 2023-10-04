@@ -8,16 +8,74 @@
     border: solid black 1px;
     padding: 1vh 1vh;
 }
+.card-img-top{
+    text-align: center;
+    
+}
 .principais_btn_cards_atv{
-    min-width: 10vh;
-    width: 10vh;
+    max-width: 7vh;
     border: solid black 1px;
-    padding: 1vh 1vh;
-   /* position: absolute;*/
+    padding: 1vh 1vh 1vh 1vh ;
+    position: absolute;
+    z-index: 1;
+}
+#editar_atv{
+    color: #679289;
+    background-color: #071e22;
+    border-color: #679289;
+    z-index: 1;
+    
+}
+
+  #editar_atv:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #071e22;
+    transition: all 0.3s ease;
+  }
+
+  #editar_atv:hover:after {
+    left: 0;
+    right: 0;
+    width: 20vh;
+  }
+  #p_editar_tv{}
+#deletar_atv{
+    top:7vh;
+    color: #ee2e31;
+    background-color: #071e22;
+    border-color: #ee2e31;
+    z-index: 1;
+}
+  
+  #deletar_atv:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #071e22;
+    transition: all 0.3s ease;
+  }
+
+  #deletar_atv:hover:after {
+    left: 0;
+    right: 0;
+    width: 20vh;
+  }
+  
+.card{
     
 }
 .card-body{
-   /*background-color: black;*/
+   
     display: inline;
 }
 .titulos_atv{
