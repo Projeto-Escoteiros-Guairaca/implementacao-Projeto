@@ -1,14 +1,13 @@
 <?php
-#Nome do arquivo: usuario/list.php
-#Objetivo: interface para listagem dos usuários do sistema
-require_once(__DIR__ . "/../../include/header.php");
-require_once(__DIR__ . "/../../include/menu.php");
-require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
-require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
-require_once(__DIR__ . "/../../../dao/UsuarioDAO.php");
-require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
-require_once(__DIR__ . "/selectPapeis.php");
-require_once(__DIR__ . "/../../../model/Usuario.php");
+
+require_once(__DIR__ . "/../../../include/header.php");
+require_once(__DIR__ . "/../../../include/menu.php");
+require_once(__DIR__ . "/../../../../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../../../../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../../../../dao/UsuarioDAO.php");
+require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
+require_once(__DIR__ . "/../selectPapeis.php");
+require_once(__DIR__ . "/../../../../model/Usuario.php");
 
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
@@ -18,7 +17,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
     <div class='container'>
         <div class="row">
             <div class="col-9">
-                <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+                <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
             </div>
         </div>
         <div>
@@ -40,7 +39,7 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $usu->getNome();?></h5>
                                 <hr>
-                                <p class="card-text">gmail</p>
+                                <p class="card-text"><?php echo $usu->getcontato()->getEmail();?></p>
                                 <p class="card-text">
                                     <?php
                                         $usuario = new Usuario();
@@ -89,5 +88,5 @@ require_once(__DIR__ . "/../../../model/Usuario.php");
     <script src="<?= BASEURL ?>/view/js/findUsuario.js"> </script> 
 
 <?php  
-require_once(__DIR__ . "/../../include/footer.php");
+require_once(__DIR__ . "/../../../include/footer.php");
 ?>

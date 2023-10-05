@@ -71,7 +71,7 @@ class TarefaController extends Controller {
 
     public function createTarefaAtiv(){
         $dados["id_atividade"] = $_GET['idAtividade'];
-        $this->loadView("pages/tarefa/formTarefa.php", $dados, "", "", true);
+        $this->loadView("pages/tarefa/chefeOnly/formTarefa.php", $dados, "", "", true);
     }
 
     public function save(){

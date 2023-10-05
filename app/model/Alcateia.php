@@ -4,9 +4,12 @@ class Alcateia implements JsonSerializable {
 
     private $id_alcateia;
     private $nome;
+    private $usuariochefe;
+    private $usuarioPrimo;
+
     private $idChefe;
     private $idPrimo;
-
+    
     
     #[\ReturnTypeWillChange]
     public function jsonSerialize() {
@@ -94,6 +97,46 @@ class Alcateia implements JsonSerializable {
     public function setIdPrimo($idPrimo)
     {
         $this->idPrimo = $idPrimo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of usuariochefe
+     */ 
+    public function getUsuariochefe()
+    {
+        return $this->usuariochefe;
+    }
+
+    /**
+     * Set the value of usuariochefe
+     *
+     * @return  self
+     */ 
+    public function setUsuariochefe($usuariochefe)
+    {
+        $this->usuariochefe = $usuariochefe;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of usuarioPrimo
+     */ 
+    public function getUsuarioPrimo()
+    {
+        return $this->usuarioPrimo;
+    }
+
+    /**
+     * Set the value of usuarioPrimo
+     *
+     * @return  self
+     */ 
+    public function setUsuarioPrimo($usuarioPrimo)
+    {
+        $this->usuarioPrimo = $usuarioPrimo;
 
         return $this;
     }

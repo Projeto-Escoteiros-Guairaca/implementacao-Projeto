@@ -103,7 +103,7 @@ class UsuarioController extends Controller {
             }
         }
         $dados["lista"] = $usuarios;
-        $this->loadView("pages/usuario/list.php", $dados,$msgErro, $msgSucesso, true);
+        $this->loadView("pages/usuario/chefeOnly/list.php", $dados,$msgErro, $msgSucesso, true);
     }
 
     public function listUsuariosByAlcateia(string $msgErro = "", string $msgSucesso = "") {
@@ -124,10 +124,7 @@ class UsuarioController extends Controller {
                 die;
             }
             
-            $this->loadView("pages/tarefa/listTarefasUsuario.php", $dados,$msgErro, $msgSucesso, false);    
-        }
-        else {
-            $this->loadView("pages/usuario/listUsuariosByAlcateia.php", $dados,$msgErro, $msgSucesso, false);
+            $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados,$msgErro, $msgSucesso, false);    
         }
     }
     protected function findUsuarioByIdAlcateia(){
@@ -149,7 +146,7 @@ class UsuarioController extends Controller {
         $dados['id_endereco'] = 0;
 
         $dados["papeis"] = UsuarioPapel::getAllAsArray();
-        $this->loadView("pages/usuario/form.php", $dados, "", "", true);
+        $this->loadView("pages/usuario/chefeOnly/form.php", $dados, "", "", true);
     }
 
     protected function edit() {
@@ -168,7 +165,7 @@ class UsuarioController extends Controller {
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;        
 
-            $this->loadView("pages/usuario/form.php", $dados, "", "", true);
+            $this->loadView("pages/usuario/chefeOnly/form.php", $dados, "", "", true);
         } else {
             $this->list("Usuário não enconpages/ado.");
         }
@@ -244,7 +241,7 @@ class UsuarioController extends Controller {
         $dados["email"] = $contato->getEmail();
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("pages/usuario/form.php", $dados, $msgsErro, "", "", true);
+        $this->loadView("pages/usuario/chefeOnly/form.php", $dados, $msgsErro, "", "", true);
     }
     protected function saveEndereco() {
           // Captura dados endereço

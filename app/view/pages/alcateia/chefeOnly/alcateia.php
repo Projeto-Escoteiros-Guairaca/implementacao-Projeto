@@ -1,6 +1,6 @@
 <?php
-    require_once(__DIR__ . "/../../include/header.php");
-    require_once(__DIR__ . "/../../include/menu.php");
+    require_once(__DIR__ . "/../../../include/header.php");
+    require_once(__DIR__ . "/../../../include/menu.php");
 ?>
 
 </style>
@@ -14,10 +14,17 @@
                 <div id="status">
                     <hr>
                     <h4>Primo: </h4>
-                    <h5 style="color:brown;"><?php echo $dados['alcateia']->getIdPrimo(); ?></h5 > 
+                    <h5 style="color:brown;"><?php 
+                    if($dados['alcateia']->getIdPrimo() != null) {
+                        echo $dados['alcateia']->getIdPrimo();
+                    }  
+                    else {
+                       echo "O primo ainda não foi selecionado.";
+                    }
+                    ?></h5>
                     <hr>
-                    <h4>Chefe: </h4>
-                    <h5 style="color:darkorange;"><?php echo $dados['alcateia']->getIdChefe(); ?></h5 > 
+                    <h4>Chefe responsável: </h4>
+                    <h5 style="color:darkorange;"><?php echo $dados['alcateia']->getUsuarioChefe()->getNome(); ?></h5 > 
                 </div>
             </div>
         </div>
@@ -44,5 +51,5 @@
     </section>
 <script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
 <?php
-    require_once(__DIR__ . "/../../include/footer.php");
+    require_once(__DIR__ . "/../../../include/footer.php");
 ?>

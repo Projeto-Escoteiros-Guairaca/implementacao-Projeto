@@ -1,6 +1,6 @@
 <?php
-    require_once(__DIR__ . "/../../include/header.php");
-    require_once(__DIR__ . "/../../include/menu.php");
+    require_once(__DIR__ . "/../../../include/header.php");
+    require_once(__DIR__ . "/../../../include/menu.php");
 
 ?>
 
@@ -14,7 +14,7 @@
             <a class="btn btn-success" href="<?= BASEURL ?>/controller/AlcateiaController.php?action=create">Inserir</a>
         </div>
         <div class="col-9">
-            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+            <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
         </div>
     </div>
 
@@ -29,10 +29,10 @@
                             <h5 class="card-title"><?php echo $alc->getNome();?></h5>
                             <hr>
                             <a class="btn btn-warning my-1" 
-                                href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?= $alc->getId_alcateia() ?>">
+                                href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?php echo $alc->getId_alcateia(); ?>">
                                 Alterar</a> 
-                            <button class="btn btn-info" onclick="usuarios(<?php echo $alc->getId_alcateia(); ?>, '<?php echo BASEURL ?>')">
-                                    Mostrar Dados da Alcateia: </button>
+                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AlcateiaController.php?idAlcateia=<?= $alc->getId_alcateia()?>">
+                                    Mostrar Dados da Alcateia: </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -46,5 +46,5 @@
 
 <script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
 <?php
-    require_once(__DIR__ . "/../../include/footer.php");
+    require_once(__DIR__ . "/../../../include/footer.php");
 ?>

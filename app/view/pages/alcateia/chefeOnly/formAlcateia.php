@@ -1,12 +1,12 @@
 <?php
-    require_once(__DIR__ . "/../../include/header.php");
-    require_once(__DIR__ . "/../../include/menu.php");
-    require_once(__DIR__ . "/../../../dao/UsuarioDAO.php");
-    require_once(__DIR__ . "/../../../model/Usuario.php");
-    require_once(__DIR__ . "/../usuario/selectUsuChefe.php");
-    require_once(__DIR__ . "/../usuario/selectUsuPrimo.php");
-    require_once(__DIR__ . "/../../../controller/AcessoController.php");
-    require_once(__DIR__ . "/../../../controller/AlcateiaController.php");
+    require_once(__DIR__ . "/../../../include/header.php");
+    require_once(__DIR__ . "/../../../include/menu.php");
+    require_once(__DIR__ . "/../../../../dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../../../model/Usuario.php");
+    require_once(__DIR__ . "/../../usuario/selectUsuChefe.php");
+    require_once(__DIR__ . "/../../usuario/selectUsuPrimo.php");
+    require_once(__DIR__ . "/../../../../controller/AcessoController.php");
+    require_once(__DIR__ . "/../../../../controller/AlcateiaController.php");
 ?>
 
 <div class="container">
@@ -66,7 +66,7 @@
        
 
         <div class="col-9">
-            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+            <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
         </div>
 
     </div>
@@ -74,5 +74,5 @@
 </div>
 
 <?php
-    require_once(__DIR__ . "/../../include/footer.php");
+    require_once(__DIR__ . "/../../../include/footer.php");
 ?>

@@ -19,7 +19,7 @@
         <div class="tarefas">
             <?php if (count($dados["lista"]) == 0) : ?>
                 <tr>
-                    <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
+                    <td colspan="6">Nenhuma tarefa encontrada, tente novamente.</td>
                 </tr>
             <?php else: ?>
                 <?php foreach($dados["lista"] as $taref): ?>
@@ -41,7 +41,7 @@
     </div>
 
     <a class="btn btn-success my-2 btn-return" 
-                href="<?= BASEURL ?>/controller/AtividadeController.php">Voltar</a>
+        href="<?= BASEURL ?>/controller/AtividadeController.php">Voltar</a>
 
 </div>
 

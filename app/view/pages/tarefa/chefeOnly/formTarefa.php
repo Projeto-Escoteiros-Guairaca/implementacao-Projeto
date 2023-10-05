@@ -1,10 +1,10 @@
 <?php
-    require_once(__DIR__ . "/../../include/header.php");
-    require_once(__DIR__ . "/../../include/menu.php");
-    require_once(__DIR__ . "/../../../dao/UsuarioDAO.php");
-    require_once(__DIR__ . "/../../../model/Usuario.php");
-    require_once(__DIR__ . "/../../../controller/AcessoController.php");
-    require_once(__DIR__ . "/../../../controller/TarefaController.php");
+    require_once(__DIR__ . "/../../../include/header.php");
+    require_once(__DIR__ . "/../../../include/menu.php");
+    require_once(__DIR__ . "/../../../../dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../../../model/Usuario.php");
+    require_once(__DIR__ . "/../../../../controller/AcessoController.php");
+    require_once(__DIR__ . "/../../../../controller/TarefaController.php");
 ?>
 
 <div class="container">
@@ -44,17 +44,10 @@
             <a class="btn btn-secondary" 
                 href="<?= BASEURL ?>/controller/AtividadeController.php">Voltar</a>
         </div>
-       
-        <div class="row">
-            <div class="col-12">
-                <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
-            </div>
-        </div>
-
     </div>
 
 </div>
 
 <?php
-    require_once(__DIR__ . "/../../include/footer.php");
+    require_once(__DIR__ . "/../../../include/footer.php");
 ?>

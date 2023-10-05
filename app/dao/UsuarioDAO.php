@@ -13,11 +13,13 @@ class UsuarioDAO {
     public function list() {
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_usuarios u ORDER BY u.nome";
+        $sql = "SELECT * FROM tb_usuarios u " .
+        "INNER JOIN tb_enderecos e ON u.id_endereco = e.id_endereco " .
+        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato ORDER BY u.nome";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
-        return $this->mapUsuarios($result);
+        return $this->mapFullUsuarios($result);
        
     }
     
@@ -257,6 +259,40 @@ class UsuarioDAO {
             //Seta os campos provisórios
             $usuario->setIdEndereco($reg['id_endereco']);
             $usuario->setIdContato($reg['id_contato']);
+            $usuario->setIdAlcateia($reg['id_alcateia']);
+
+            array_push($usuarios, $usuario);
+        }
+        return $usuarios;
+    }
+
+    private function mapFullUsuarios($result) {
+        $usuarios = array();
+        foreach ($result as $reg) {
+            $usuario = new Usuario();
+            $usuario->setId($reg['id_usuario']);
+            $usuario->setNome($reg['nome']);
+            $usuario->setCpf($reg['cpf']);
+            $usuario->setLogin($reg['login']);
+            $usuario->setSenha($reg['senha']);
+            $usuario->setPapeis($reg['papeis']);
+            $usuario->setStatus($reg['status_usuario']);
+
+            $endereco = new Endereco();
+            $endereco->setBairro($reg['bairro']);
+            $endereco->setCep($reg['cep']);
+            $endereco->setPais($reg['pais']);
+            $endereco->setCidade($reg['cidade']);
+            $endereco->setLogradouro($reg['logradouro']);
+            $endereco->setNumeroEndereco($reg['numero_endereco']);
+            $usuario->setEndereco($endereco);
+            
+            $contato = new Contato();
+            $contato->setEmail($reg['email']);
+            $contato->setCelular($reg['celular']);
+            $contato->setTelefone($reg['telefone']);
+            $usuario->setContato($contato);
+            //Seta os campos provisórios
             $usuario->setIdAlcateia($reg['id_alcateia']);
 
             array_push($usuarios, $usuario);

@@ -12,12 +12,12 @@ class AlcateiaDao{
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_alcateias a ORDER BY a.id_alcateia";
+        $sql = "SELECT * FROM tb_alcateias a ".
+         "INNER JOIN tb_usuarios u ON a.id_usuario_chefe = u.id_usuario ORDER BY a.id_alcateia";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
-        
-        return $this->mapAlcateia($result);
+        return $this->mapFullAlcateia($result);
     }
    
     public function findById(int $id){
@@ -54,7 +54,27 @@ class AlcateiaDao{
         }
         return $alcateias;
     }
+    
+    public function mapFullAlcateia($result){
+        $alcateias = array();
+        foreach ($result as $reg) {
+            $alcateia = new Alcateia();
+            $alcateia->setId_alcateia($reg['0']);
+            $alcateia->setNome($reg['3']);
 
+            $usuario = new Usuario();
+            $usuario->setNome($reg['nome']);
+            $alcateia->setUsuariochefe($usuario);
+
+            $alcateia->setIdChefe($reg['4']);
+            $alcateia->setIdPrimo($reg['2']);
+
+
+            array_push($alcateias, $alcateia);
+
+        }
+        return $alcateias;
+    }
     public function insert(Alcateia $alcateia){
         $conn = Connection::getConn();
 
