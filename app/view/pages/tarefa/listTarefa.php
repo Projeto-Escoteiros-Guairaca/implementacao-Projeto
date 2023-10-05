@@ -7,9 +7,9 @@
 </style>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listaTarefa.css" />
 
-<h3 class='text-center'>Tarefas da atividade <?= $dados["atividade"]->getNomeAtividade(); ?> </h3>
+<h3 class='text-center'>Tarefas da atividade<?= $dados["atividade"]->getNomeAtividade(); ?> </h3>
 
-<div class='container'>
+<div class='container dados_universais_atv'>
         <div class="row">
             <div class="col-12">
                 <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
@@ -24,13 +24,11 @@
             <?php else: ?>
                 <?php foreach($dados["lista"] as $taref): ?>
 
-                <div class="containerTarefa">
-                <a class="leftPart" href="<?= BASEURL ?> /controller/TarefaController.php?action=openTarefa&id=<?=$taref->getIdTarefa(); ?>">
-                    <div>
-                            <?php echo $taref->getNomeTarefa(); ?> 
-                        </div>
+                <div class="containerTarefa dados_universais_atv">
+                <a class="leftPart dados_universais_atv" href="<?= BASEURL ?> /controller/TarefaController.php?action=openTarefa&id=<?=$taref->getIdTarefa(); ?>">
+                            <p class=""p_atv><?php echo $taref->getNomeTarefa(); ?> </p>
                 </a>
-                        <div class="rightPart">
+                        <div class="rightPart dados_universais_atv">
                             <button class="tarefaCheckada"></button>
                         </div>
                 </div>
