@@ -26,7 +26,7 @@
 
                 <div class="containerTarefa dados_universais_atv">
                 <a class="leftPart dados_universais_atv" href="<?= BASEURL ?> /controller/TarefaController.php?action=openTarefa&id=<?=$taref->getIdTarefa(); ?>">
-                            <p class=""p_atv><?php echo $taref->getNomeTarefa(); ?> </p>
+                            <p class="p_atv"><?php echo $taref->getNomeTarefa(); ?> </p>
                 </a>
                         <div class="rightPart dados_universais_atv">
                             <button class="tarefaCheckada"></button>
@@ -36,14 +36,9 @@
             <?php endforeach; ?>
             <?php endif; ?>
         </div>
-    </div>
-
-    <a class="btn btn-success my-2 btn-return" 
-        href="<?= BASEURL ?>/controller/AtividadeController.php">Voltar</a>
-
 </div>
 
-<script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
+<script src="<?= BASEURL ?>/view/js/alcateia.js"> </script>
 <?php
     require_once(__DIR__ . "/../../include/footer.php");
-?>
+?> 

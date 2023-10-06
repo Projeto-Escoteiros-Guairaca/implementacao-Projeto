@@ -6,10 +6,15 @@
     height: 150px;
     background-color: #1d7874;
     color: #ffffff;
+    margin-top: 5vh;
+    position: relative;
+
 }
 .footer p{
     color: #ffffff;
 }
 footer{
-    margin-bottom: -20px;
+    
+    bottom: 0;
+    
 }

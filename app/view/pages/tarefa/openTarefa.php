@@ -6,21 +6,21 @@
 
 </style>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/openTarefa.css" />
-
+<br>
 <h3 class='text-center'>Tarefa <?= $dados["tarefa"]->getNomeTarefa(); ?> </h3>
     <section class="container">
         <div class="tarefa">
             <div id="tarefa-container">
                 <h3>Descrição</h3>
-                <div id="descricao">
+                <div id="descricao" class="caixas_texto">
                     <?php echo $dados["tarefa"]->getDescricaoTarefa();?> 
                 </div>
-                <hr>
+                <br>
                 <h3>Status</h3>
-                <div id="status">
-                    <hr>
+                <div id="status" class="caixas_texto">
+                 
                     <h5>Veja o estado da entrega dos usuários: </h5> 
-                    <a href="<?=BASEURL?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$_SESSION[SESSAO_USUARIO_IDALCATEIA]?>&tarefa=1"> lista de usuários</a>
+                    <a class = "btn_lista_usu" href="<?=BASEURL?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$_SESSION[SESSAO_USUARIO_IDALCATEIA]?>&tarefa=1"> lista de usuários</a>
                 
                 </div>
             </div>

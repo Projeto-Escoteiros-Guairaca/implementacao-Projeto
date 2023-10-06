@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/footer.css">
 
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 10px;">
+<footer class="text-center text-lg-start bg-light text-muted" style="-top: 10px;">
     <!-- Copyright -->
     <div class="footer">
         <span><p>Todos os direitos reservados @2023</p></span>
