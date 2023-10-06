@@ -25,7 +25,7 @@
 .containerTarefa {
     margin: 2vh 0;
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid #679289;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     
@@ -48,14 +48,15 @@
 
 .rightPart {
     width: 30%;
-    display: flex;
-    text-align: right;
-    align-items: right;
     z-index: 1;
+    align-items: center;
 }
 .tarefaCheckada{
     width: 4vh;
     height: 4vh;
+    background:#679289;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    border: 1px black solid;
 
 }
 

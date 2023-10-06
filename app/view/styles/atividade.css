@@ -12,7 +12,7 @@
 
 #btn_inserir_atv{
     box-sizing: border-box;
-    border: solid black 1px;
+    border: solid #679289 1px;
     padding: 0.5vh 0.5vh 0.5vh 0.5vh;
     height: 6vh;
     width: 6vh;
@@ -31,7 +31,7 @@
   
 }
 .card{
-  border: 1px solid #071e22 ;
+  border: 1px solid #679289 ;
  
 }
 .card:after {
@@ -52,7 +52,7 @@
 }
 .principais_btn_cards_atv{
     max-width: 7vh;
-    border: solid black 1px;
+    border: solid #679289 1px;
     padding: 1vh 1vh 1vh 1vh ;
     position: absolute;
     z-index: 1;
@@ -203,7 +203,7 @@
 }
 .btn_cards_atv{
     box-sizing: border-box;
-    border: solid black 1px;
+    border: solid #679289 1px;
     /*border: solid black 1px;*/
     padding: 1vh 1vh;
     min-width: 50vh;

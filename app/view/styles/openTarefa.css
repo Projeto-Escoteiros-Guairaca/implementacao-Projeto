@@ -10,7 +10,7 @@
     padding: 8vh;
     height: fit-content;
     width: 100vh;
-    border: solid 1px #000000;
+    border: solid 1px #679289;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     background-color: transparent;
     height: fit-content;
-    border: solid #000000 1px;
+    border: solid #679289 1px;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     width: 60vh;
     text-align: center;
@@ -38,7 +38,7 @@
 }
 .btn_lista_usu{
     box-sizing: border-box;
-    border: solid black 1px;
+    border: solid #679289 1px;
     padding: 1vh 1vh;
     min-width: 50vh;
     color:#071e22;
