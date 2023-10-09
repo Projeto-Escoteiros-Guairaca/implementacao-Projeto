@@ -21,8 +21,8 @@ class Usuario implements JsonSerializable {
     private $idEndereco;
     private $idContato;
     private $idAlcateia;
-    private $contatoEmail;
-    private $contatoCelular;
+    private $tarefaEnviada;
+
 
     #[\ReturnTypeWillChange]
     public function jsonSerialize() {
@@ -32,8 +32,6 @@ class Usuario implements JsonSerializable {
             'nome' => $this->nome,
             'login' => $this->login,
             'papel' => $this->papeis,
-            'email' =>$this->contatoEmail,
-            'celular' => $this->contatoCelular,
             'papel' => $this->papeis,
             'status' => $this->status,
             'idAlcateia' => $this->idAlcateia,
@@ -279,41 +277,21 @@ class Usuario implements JsonSerializable {
     }
 
     /**
-     * Get the value of contatoCelular
+     * Get the value of tarefaEnviada
      */ 
-    public function getContatoCelular()
+    public function getTarefaEnviada()
     {
-        return $this->contatoCelular;
+        return $this->tarefaEnviada;
     }
 
     /**
-     * Set the value of contatoCelular
+     * Set the value of tarefaEnviada
      *
      * @return  self
      */ 
-    public function setContatoCelular($contatoCelular)
+    public function setTarefaEnviada($tarefaEnviada)
     {
-        $this->contatoCelular = $contatoCelular;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of contatoEmail
-     */ 
-    public function getContatoEmail()
-    {
-        return $this->contatoEmail;
-    }
-
-    /**
-     * Set the value of contatoEmail
-     *
-     * @return  self
-     */ 
-    public function setContatoEmail($contatoEmail)
-    {
-        $this->contatoEmail = $contatoEmail;
+        $this->tarefaEnviada = $tarefaEnviada;
 
         return $this;
     }

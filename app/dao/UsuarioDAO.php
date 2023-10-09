@@ -187,8 +187,6 @@ class UsuarioDAO {
                
         foreach($usuarios as $us):  
             $contato = $this->findContatosByIdUsuarios($us->getIdContato());
-            $us->setContatoEmail($contato->getEmail());
-            $us->setContatoCelular($contato->getCelular());
 
         endforeach;
 
@@ -318,5 +316,22 @@ class UsuarioDAO {
         $stm->execute();
         $result = $stm->fetchAll();
         return $this->mapUsuarios($result);
+    }
+
+    public function usuarioSended($id) {
+            $conn = Connection::getConn();
+
+            $sql = " SELECT * FROM  tb_usuarios u INNER JOIN tb_tarefas_usuarios tu ON tu.id_tarefa = u.id_usuario ".
+            "INNER JOIN tb_tarefas t ON t.id_tarefa = tu.id_tarefa WHERE u.id_usuario = ?";
+            $stm = $conn->prepare($sql);
+            $stm->execute([$id]);
+            $result = $stm->fetchAll();
+            if($result == null) {
+                return false;
+            }
+            else {
+                return true;
+            }
+
     }
 }

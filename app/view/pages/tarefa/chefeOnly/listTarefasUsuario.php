@@ -33,12 +33,27 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
                                 <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
                             </tr>
                         <?php else: ?>
-                            <?php foreach($dados["lista"] as $usu): ?>
+                            <?php foreach($dados["lista"] as $usu): 
+                                if($usu->getId() == $_SESSION[SESSAO_USUARIO_ID]) {
+                                    continue;
+                                }
+                                ?>
                                 <tr>
                                     <td><?= $usu->getNome(); ?></td>
-                                    <td>
-                                        <a class="btn btn-success" href="<?= BASEURL ?>/Controller/TarefaController.php?action=openTarefaUsuario&id=<?=$dados["tarefa"]->getIdTarefa();?>"> Mostrar estado da tarefa </a>
-                                    </td>
+                                    <?php if($usu->getTarefaEnviada() == true) {
+                                        echo '<td>
+                                        <a class="btn btn-success" 
+                                        href="'.BASEURL.'/Controller/TarefaController.php?action=openTarefaUsuario&id='.$dados["tarefa"]->getIdTarefa().'"> tarefa enviada </a>
+                                        </td> ';
+                                    }
+                                    else {
+                                        echo '<td>
+                                        <a class="btn btn-danger" 
+                                        > Tarefa sem enviar </a>
+                                        </td> ';
+                                    }
+                                    
+                                    ?>
                                 </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
