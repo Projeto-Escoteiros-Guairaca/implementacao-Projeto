@@ -77,8 +77,7 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            <a class="btn btn-success" 
-            href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+          
             
         </div>
     </div>
