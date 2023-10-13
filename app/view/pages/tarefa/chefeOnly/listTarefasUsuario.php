@@ -9,7 +9,7 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
 
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
-
+    <br>
     <h3 class='text-center'>Estado da tarefa "<?php echo $dados['tarefa']->getNomeTarefa(); ?>"</h3>
 
     <div class='container'>
@@ -21,7 +21,7 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
 
         <div id="pinto" class="row" style="margin-top: 10px;">
             <div class="col-12">
-                <table id="tabUsuarios" class="table table-striped table-bordered">
+                <table id="tabUsuarios" class="table table-striped">
                     <thead>
                         <tr>
                             <th>Nome</th>       
@@ -59,8 +59,6 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
                         <?php endif; ?>
                     </tbody>
                 </table>
-                <a class="btn btn-success" 
-                href="<?= BASEURL ?>/controller/TarefaController.php">Voltar</a>
             </div>
         </div>
     </div>

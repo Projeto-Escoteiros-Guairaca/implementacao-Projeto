@@ -38,8 +38,6 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <a class="btn btn-success" 
-                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
     </div>
 </div>
 <br><br><br><br><br>
