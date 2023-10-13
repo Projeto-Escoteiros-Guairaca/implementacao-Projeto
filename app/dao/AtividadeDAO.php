@@ -16,7 +16,19 @@ class AtividadeDAO {
         
         return $this->mapAtividade($result);
     }
-    
+
+    public function listUndoneOrDone($status){
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_atividades a WHERE a.status = ? ORDER BY a.id_atividade";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$status]);
+        $result = $stm->fetchAll();
+        
+        return $this->mapAtividade($result);
+    }
+
     public function mapAtividade($result){
         $Atividades = array();
         foreach ($result as $reg) {

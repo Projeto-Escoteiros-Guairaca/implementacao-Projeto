@@ -5,8 +5,6 @@ require_once(__DIR__ . "/Controller.php");
 class HomeController extends Controller {
 
     public function __construct() {
-        /*if(! $this->usuarioLogado())
-            exit;*/
         $this->setActionDefault('home',true);
         $this->handleAction();
     }
@@ -14,7 +12,15 @@ class HomeController extends Controller {
     protected function home() {
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
             if(in_array("LOBINHO",$_SESSION[SESSAO_USUARIO_PAPEIS])) {
-                $this->loadView("pages/home/initialLobinhoPage.php", [], "", "", true);
+                if(! isset($_SESSION['usuarioLobinho'])) {
+                    $_SESSION['usuarioLobinho'] = "initialLobinhoPage";
+                    $this->loadController("Usuario", "?action=initialLobinhoPage");
+                }
+                else {    
+
+                    $this->loadController("Usuario", "?action=initialLobinhoPage");
+                }
+
             }
             else {
                 $this->loadView("pages/home/initialPage.php", [], "", "", true);

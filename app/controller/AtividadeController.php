@@ -20,6 +20,7 @@ class AtividadeController extends Controller {
         if(isset($_GET['action'])) {
             if(in_array($_GET['action'], $administradorChefeActions)) {
                 $papelNecessario[] = "ADMINISTRADOR";
+                $papelNecessario[] = "CHEFE";
             }
             if(in_array($_GET['action'], $lobinhoActions)) {
                 $papelNecessario[] = "LOBINHO";
@@ -28,6 +29,7 @@ class AtividadeController extends Controller {
         else {
             $papelNecessario[] = "ADMINISTRADOR";
             $papelNecessario[] = "LOBINHO";
+            $papelNecessario[] = "CHEFE";
        }
 
         $accessVerified = $this->verifyAccess($papelNecessario);        

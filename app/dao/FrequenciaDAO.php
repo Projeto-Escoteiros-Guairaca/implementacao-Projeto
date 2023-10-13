@@ -35,6 +35,18 @@ class FrequenciaDAO {
         return $this->mapFrequencia($result);
     }
 
+    public function listByFrequencia($id, $frequencia){
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_frequencias e WHERE e.id_usuario = ? AND e.frequencia = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id, $frequencia]);
+        $result = $stm->fetchAll();
+        return $this->mapFrequencia($result);
+    }
+
+    
     public function listFrequenciasByIdUsuario($id) {
         
         $conn = Connection::getConn();
@@ -48,6 +60,17 @@ class FrequenciaDAO {
         
     }
    
+    public function listConsecutiveFrequenciasOfUsuario($id) {
+        
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_frequencias e WHERE e.id_usuario = ? ORDER BY e.id_frequencia DESC";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        return $this->mapFrequencia($result);
+        
+    }
 
     public function findFrequenciaByIdEncontro(int $id){
         $conn = Connection::getConn();

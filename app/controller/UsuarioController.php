@@ -5,12 +5,15 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/EnderecoDAO.php");
 require_once(__DIR__ . "/../dao/ContatoDAO.php");
-
 require_once(__DIR__ . "/../dao/TarefaDAO.php");
-
 require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../dao/AtividadeDAO.php");
+require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
+
 require_once(__DIR__ . "/../service/UsuarioService.php");
 
+require_once(__DIR__ . "/../model/Frequencia.php");
+require_once(__DIR__ . "/../model/Atividade.php");
 require_once(__DIR__ . "/../model/Tarefa.php");
 require_once(__DIR__ . "/../model/Alcateia.php");
 require_once(__DIR__ . "/../model/Usuario.php");
@@ -20,7 +23,8 @@ require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
 class UsuarioController extends Controller
 {
-
+    private FrequenciaDao $frequenciaDao;
+    private AtividadeDAO $atividadeDao;
     private TarefaDAO $tarefaDao;
     private AlcateiaDAO $alcateiaDao;
     private UsuarioDAO $usuarioDao;
@@ -28,21 +32,48 @@ class UsuarioController extends Controller
     private ContatoDAO $contatoDao;
     private UsuarioService $usuarioService;
 
-    public function __construct()
-    {
+    public function __construct() {
+        $administradorActions = [
+            "list","listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
+            "create", "createTarefaAtiv", "saveEndereco", "saveContato", "saveUsuario",
+            "edit", "delete", "save", "update", "findIt", "changeAlcateia", "updateToInativo", "updateToAtivo",
+            "findUsuarioById", "changePapel"
+        ];
+        $ChefeActions = [
+            "listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
+            "createTarefaAtiv", "findIt", "changeAlcateia", "findUsuarioById"
+        ];
+        $lobinhoActions = [
+            "profile", "initialLobinhoPage"
+        ];
 
         $isRegistering = false;
         $papelNecessario = array();
         $accessVerified = true;
 
+        if(isset($_SESSION['usuarioLobinho']) and ! isset($_GET['action'])) {
+            $_GET['action'] = $_SESSION['usuarioLobinho'];
+        }
+
         if (isset($_GET['action'])) {
             if ($_GET['action'] == "create" or $_GET['action'] == "save") {
                 $isRegistering = true;
-            } else {
-                $papelNecessario[0] = "ADMINISTRADOR";
-                $accessVerified = $this->verifyAccess($papelNecessario);
             }
-        } else {
+            else
+            { 
+                if(in_array($_GET['action'], $administradorActions)) {
+                    $papelNecessario[] = "ADMINISTRADOR";
+                } 
+                if(in_array($_GET['action'], $ChefeActions)) {
+                    $papelNecessario[] = "CHEFE";
+                }   
+                if(in_array($_GET['action'], $lobinhoActions)) {
+                    $papelNecessario[] = "LOBINHO";
+                }
+            }
+
+        } 
+        else {
             $papelNecessario[0] = "ADMINISTRADOR";
             $accessVerified = $this->verifyAccess($papelNecessario);
         }
@@ -51,6 +82,8 @@ class UsuarioController extends Controller
             return;
         }
 
+        $this->frequenciaDao = new frequenciaDAO();
+        $this->atividadeDao = new AtividadeDAO();
         $this->tarefaDao = new TarefaDAO();
         $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
@@ -62,8 +95,7 @@ class UsuarioController extends Controller
         $this->handleAction();
     }
 
-    protected function profile(string $msgErro = "", string $msgSucesso = "")
-    {
+    protected function profile(string $msgErro = "", string $msgSucesso = "") {
 
         $usuario = $this->findUsuarioById();
 
@@ -86,8 +118,7 @@ class UsuarioController extends Controller
     }
 
     /* Método para chamar a view com a listagem dos Usuarios */
-    protected function list(string $msgErro = "", string $msgSucesso = "")
-    {
+    protected function list(string $msgErro = "", string $msgSucesso = "") {
 
         $usuarios = $this->usuarioDao->list();
         $alcateias = $this->alcateiaDao->list();
@@ -105,8 +136,7 @@ class UsuarioController extends Controller
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
 
-    public function listUsuariosByAlcateia(string $msgErro = "", string $msgSucesso = "")
-    {
+    public function listUsuariosByAlcateia(string $msgErro = "", string $msgSucesso = "") {
 
         $usuarios = $this->findUsuarioByIdAlcateia();
         foreach ($usuarios["usuarios"] as $usu):
@@ -129,8 +159,8 @@ class UsuarioController extends Controller
             $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, false);
         }
     }
-    protected function findUsuarioByIdAlcateia()
-    {
+    
+    protected function findUsuarioByIdAlcateia(){
         $id = 0;
         if (isset($_GET['idAlcateia']))
             $id = $_GET['idAlcateia'];
@@ -143,8 +173,7 @@ class UsuarioController extends Controller
         return $dados;
     }
 
-    protected function create()
-    {
+    protected function create() {
         $dados["id"] = 0;
         $dados['id_contato'] = 0;
         $dados['id_endereco'] = 0;
@@ -153,8 +182,7 @@ class UsuarioController extends Controller
         $this->loadView("pages/usuario/chefeOnly/form.php", $dados, "", "", true);
     }
 
-    protected function edit()
-    {
+    protected function edit() {
         $usuario = $this->findUsuarioById();
 
         if ($usuario) {
@@ -176,8 +204,7 @@ class UsuarioController extends Controller
         }
     }
 
-    protected function save()
-    {
+    protected function save() {
 
         $dados["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
         $dados["id_contato"] = isset($_POST['id_contato']) ? $_POST['id_contato'] : 0;
@@ -246,8 +273,7 @@ class UsuarioController extends Controller
         $msgsErro = implode("<br>", $erros);
         $this->loadView("pages/usuario/chefeOnly/form.php", $dados, $msgsErro, "", "", true);
     }
-    protected function saveEndereco()
-    {
+    protected function saveEndereco() {
         // Captura dados endereço
         $cep = isset($_POST['cep']) ? trim($_POST['cep']) : NULL;
         $logradouro = isset($_POST['logradouro']) ? trim($_POST['logradouro']) : "";
@@ -265,8 +291,7 @@ class UsuarioController extends Controller
         $endereco->setPais($pais);
         return $endereco;
     }
-    protected function saveContato()
-    {
+    protected function saveContato() {
         // Captura dados contato
         $telefone = isset($_POST['telefone']) ? trim($_POST['telefone']) : "";
         $celular = isset($_POST['celular']) ? trim($_POST['celular']) : "";
@@ -278,8 +303,7 @@ class UsuarioController extends Controller
         $contato->setEmail($email);
         return $contato;
     }
-    protected function saveUsuario(Endereco $endereco, Contato $contato)
-    {
+    protected function saveUsuario(Endereco $endereco, Contato $contato) {
         //Captura os dados do usuário
         $id_endereco["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
         $id_contato["id_contato"] = isset($_POST['id_contato']) ? $_POST['id_contato'] : 0;
@@ -300,8 +324,7 @@ class UsuarioController extends Controller
         return $usuario;
     }
 
-    protected function findIt()
-    {
+    protected function findIt() {
         $arrayUsuarios = $this->usuarioDao->findItByName($_GET["word"]);
         $alcateias = $this->alcateiaDao->list();
 
@@ -319,8 +342,7 @@ class UsuarioController extends Controller
         return;
     }
 
-    protected function changeAlcateia()
-    {
+    protected function changeAlcateia() {
         $id = $_GET["id"];
         $idAlcateia = $_GET["idAlcateia"];
         $this->usuarioDao->changeAlcateia($id, $idAlcateia);
@@ -328,8 +350,7 @@ class UsuarioController extends Controller
         return;
     }
 
-    protected function updateToInativo()
-    {
+    protected function updateToInativo() {
         $usuario = $this->findUsuarioById();
         if ($usuario) {
             $this->usuarioDao->updateToInativo($usuario->getId());
@@ -337,8 +358,7 @@ class UsuarioController extends Controller
             return;
         }
     }
-    protected function updateToAtivo()
-    {
+    protected function updateToAtivo() {
         $usuario = $this->findUsuarioById();
         if ($usuario) {
             $this->usuarioDao->updateToAtivo($usuario->getId());
@@ -347,8 +367,7 @@ class UsuarioController extends Controller
         }
     }
 
-    protected function findUsuarioById()
-    {
+    protected function findUsuarioById() {
         $id = 0;
         if (isset($_GET['id']))
             $id = $_GET['id'];
@@ -359,8 +378,7 @@ class UsuarioController extends Controller
         return $usuario;
     }
 
-    protected function changePapel()
-    {
+    protected function changePapel() {
         $papelUsu = $_GET['newPapel'];
 
         $usuario = $this->findUsuarioById();
@@ -369,6 +387,91 @@ class UsuarioController extends Controller
             echo $papelUsu;
             return;
         }
+    }
+
+    protected function initialLobinhoPage() {
+    
+        $atividades = $this->checkDoneAtividades();
+        $dados['atividades'] = $atividades[0];
+        $dados['atividadesFeitas'] = $atividades[1];
+
+        $frequencias = $this->checkFaltas();
+        $dados['frequenciasTotais'] = $frequencias[0];
+        $dados['faltas'] = $frequencias[1];
+
+        $faltasConsecutivas = $this->checkConsecutiveFaltas();
+        $dados['faltasConsecutivas'] = $faltasConsecutivas;
+        $this->loadView("pages/home/initialLobinhoPage.php", $dados, "", "", true);
+    }
+
+    protected function checkDoneAtividades() {
+        $atividades = $this->atividadeDao->list();
+        $atividadesFeitas = $this->atividadeDao->listUndoneOrDone(0);
+        
+        $dados[0] = count($atividades);
+        $dados[1] = (count($atividades) - count($atividadesFeitas));
+        return $dados;
+    }
+    protected function checkFaltas($idUsuario = 0) {
+        if($idUsuario == 0) {
+            $idUsuario = $_SESSION[SESSAO_USUARIO_ID];
+        }
+        $frequencias = $this->frequenciaDao->listFrequenciasByIdUsuario($idUsuario);
+        $faltas = $this->frequenciaDao->listByFrequencia($idUsuario, 1);
+
+        $dados[0] = count($frequencias);
+        $dados[1] = count($faltas);
+        return $dados;
+    }
+    protected function checkConsecutiveFaltas($idUsuario = 0) {
+        if($idUsuario == 0) {
+            $idUsuario = $_SESSION[SESSAO_USUARIO_ID];
+        }
+
+        $frequencias = $this->frequenciaDao->listConsecutiveFrequenciasOfUsuario($idUsuario);
+
+        if(isset($frequencias[0])) {
+            switch ($frequencias[0]->getFrequencia()) {
+                case 0:
+                    $primeiraFaltaConsecutiva = 1;
+                    break;
+                case 1:
+                    $primeiraFaltaConsecutiva = 0;
+                    break;
+            }
+            if(isset($frequencias[1])) {
+                switch ($frequencias[1]->getFrequencia()) {
+                    case 0:
+                        $segundaFaltaConsecutiva = 1;
+                        break;
+                    case 1:
+                        $segundaFaltaConsecutiva = 0;
+                        break;
+                }
+
+                if(isset($frequencias[2])) {
+                    switch ($frequencias[2]->getFrequencia()) {
+                        case 0:
+                            $terceiraFaltaConsecutiva = 1;
+                            break;
+                        case 1:
+                            $terceiraFaltaConsecutiva = 0;
+                            break;
+                    }
+                }
+                else {
+                    $terceiraFaltaConsecutiva = 0;
+                }
+            }
+             else {
+                $segundaFaltaConsecutiva = 0;
+             }
+        }
+        else {
+            $primeiraFaltaConsecutiva = 0;
+        }
+        $faltasConsecutivasTotais = $primeiraFaltaConsecutiva + $segundaFaltaConsecutiva + $terceiraFaltaConsecutiva;
+        return $faltasConsecutivasTotais;
     }
 }
 #Criar objeto da classe

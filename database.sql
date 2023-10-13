@@ -67,6 +67,7 @@ CREATE TABLE tb_atividades(
   nome_atividade VARCHAR(45) NOT NULL,
   descricao VARCHAR(255) NOT NULL,
   imagem_atividade VARCHAR(400),
+  status BOOLEAN DEFAULT 0,
   PRIMARY KEY (id_atividade)
 
 );

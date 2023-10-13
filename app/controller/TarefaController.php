@@ -26,14 +26,20 @@ class TarefaController extends Controller {
         if(isset($_GET['action'])) {
             if(in_array($_GET['action'], $administradorChefeActions)) {
                 $papelNecessario[] = "ADMINISTRADOR";
+                $papelNecessario[] = "CHEFE";
+
             }
+
             if(in_array($_GET['action'], $lobinhoActions)) {
                 $papelNecessario[] = "LOBINHO";
+                
             }
         }
         else {
             $papelNecessario[] = "ADMINISTRADOR";
             $papelNecessario[] = "LOBINHO";
+            $papelNecessario[] = "CHEFE";
+
        }
 
         $accessVerified = $this->verifyAccess($papelNecessario);        
