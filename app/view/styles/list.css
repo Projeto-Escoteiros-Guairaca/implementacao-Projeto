@@ -49,11 +49,10 @@ body {
 .card{
     border: 1px solid #679289;
 }
-#tabUsuarios{
-    border: solid 1px  #1d7874;
-}
+
 .nome_usuario{
     border: #1d7874 1px solid;
+    padding: 2vh;
 }
 .th_tarefa{
    padding: 1vh ;
@@ -64,10 +63,9 @@ body {
     border-collapse: collapse;
     box-sizing: border-box;
     width: 120vh;
-    margin: auto 20vh;
+    margin: 5vh auto;
     text-indent: initial;
-    border-spacing: 2px;
-    border-color: gray;
+    border: #1d7874 1px solid;
 }
 a{
     text-decoration: none;
