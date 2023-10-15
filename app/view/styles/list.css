@@ -49,3 +49,63 @@ body {
 .card{
     border: 1px solid #679289;
 }
+#tabUsuarios{
+    border: solid 1px  #1d7874;
+}
+.nome_usuario{
+    border: #1d7874 1px solid;
+}
+.th_tarefa{
+   padding: 1vh ;
+   border: #1d7874 1px solid;
+}
+#tabUsuarios{
+    display: table;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    width: 120vh;
+    margin: auto 20vh;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+}
+a{
+    text-decoration: none;
+    /*esse text_decoration na tag  "<a>" elimina o texto em azul*/
+}
+.td_universal{
+    padding: 2vh ;
+   border: #1d7874 1px solid;
+}
+.btn_dados_gerais{
+    box-sizing: border-box;
+    padding: 1vh 1vh 1vh 1vh ;
+    border: solid 1px rgb(29, 120, 116);
+    border-image: initial;
+}
+#btn_tarefa_enviada{
+    background-color: #679289;
+    text-decoration: none;
+    /*esse text_decoration no elemento elimina o sublinhamento*/
+    color: #f7f7f7;
+}
+#btn_tarefa_enviada:hover{
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #414141;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+  
+}
+#btn_tarefa_nao_enviada{
+    background-color: #d81159;
+    text-decoration: none;
+    /*esse text_decoration no elemento elimina o sublinhamento*/
+    color: #f7f7f7;
+}
+#btn_tarefa_nao_enviada:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #414141;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    
+  }

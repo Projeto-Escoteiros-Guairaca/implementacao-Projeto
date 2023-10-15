@@ -21,10 +21,10 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
 
         <div id="pinto" class="row" style="margin-top: 10px;">
             <div class="col-12">
-                <table id="tabUsuarios" class="table table-striped">
+                <table id="tabUsuarios">
                     <thead>
                         <tr>
-                            <th>Nome</th>       
+                            <th class= "th_tarefa">Nome</th>       
                         </tr>
                     </thead>
                     <tbody>
@@ -39,16 +39,16 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
                                 }
                                 ?>
                                 <tr>
-                                    <td><?= $usu->getNome(); ?></td>
+                                    <td class= "nome_usuario"><?= $usu->getNome(); ?></td>
                                     <?php if($usu->getTarefaEnviada() == true) {
-                                        echo '<td>
-                                        <a class="btn btn-success" 
+                                        echo '<td class="td_universal">
+                                        <a id= "btn_tarefa_enviada" class="btn_dados_gerais" 
                                         href="'.BASEURL.'/Controller/TarefaController.php?action=openTarefaUsuario&id='.$dados["tarefa"]->getIdTarefa().'"> tarefa enviada </a>
                                         </td> ';
                                     }
                                     else {
-                                        echo '<td>
-                                        <a class="btn btn-danger" 
+                                        echo '<td class="td_universal">
+                                        <a id="btn_tarefa_nao_enviada" class="btn_dados_gerais"
                                         > Tarefa sem enviar </a>
                                         </td> ';
                                     }
