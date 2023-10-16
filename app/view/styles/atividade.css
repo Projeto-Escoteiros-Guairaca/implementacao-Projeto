@@ -6,23 +6,22 @@
   --color-p:#667;
 }
 .col-12{
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    margin-top: 7vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 7vh;
 }
 #btn_inserir_atv{
-    box-sizing: border-box;
-    border: var(--bordas);
-    padding: 0.5vh 0.5vh 0.5vh 0.5vh;
-    height: 6vh;
-    width: 6vh;
-    text-align: center;
-    align-items: center;
-    margin-top:1vh;
-    font-size: 25px;
-    position: absolute;
-    font-size: 35px;
+  box-sizing: border-box;
+  border: var(--bordas);
+  padding: 0.5vh 0.5vh 0.5vh 0.5vh;
+  height: 6vh;
+  width: 6vh;
+  text-align: center;
+  align-items: center;
+  margin-top:1vh;
+  position: absolute;
+  font-size: 35px;
 }
 .btn_inserir_atv:hover{
   cursor: pointer;
@@ -97,7 +96,7 @@
   border-color: #679289;
   z-index: 1;   
 }
-  #editar_atv:after {
+#editar_atv:after {
   position: absolute;
   content: "";
   width: 0;
@@ -109,13 +108,13 @@
   background-color: #071e22;
   transition: all 0.3s ease;
   }
-  #editar_atv:hover:after {
+#editar_atv:hover:after {
   left: 0;
   right: 0;
   width: 13vh;
   border-color: solid 1px #679289;
   }
-  #p_deletar_atv{
+#p_deletar_atv{
   z-index: 1;
   position: absolute;
   color: transparent;
