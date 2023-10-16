@@ -345,9 +345,38 @@ class UsuarioController extends Controller
     protected function changeAlcateia() {
         $id = $_GET["id"];
         $idAlcateia = $_GET["idAlcateia"];
-        $this->usuarioDao->changeAlcateia($id, $idAlcateia);
-        $alcateia = $this->alcateiaDao->findById($idAlcateia);
-        return;
+        $usuario = $this->usuarioDao->findById($id);
+      
+        if(isset($_GET['chefeChangeAlcateia'])) {
+         
+            if($_GET['chefeChangeAlcateia'] == true) {
+                
+                $usuario = $this->usuarioDao->findById($id);
+                $alcateia = $this->alcateiaDao->findById($idAlcateia);
+
+                $this->alcateiaDao->changeChefe($usuario->getIdAlcateia(), NULL);
+
+                $this->usuarioDao->changeAlcateia($alcateia->getIdChefe(), NULL);
+                
+                $this->usuarioDao->changeAlcateia($id, $idAlcateia);
+
+                $this->alcateiaDao->changeChefe($idAlcateia, $id);
+               
+                print_r($alcateia->getIdChefe());
+                
+                return;
+            }
+        }
+        if($usuario->getPapeis() == "CHEFE") {
+            echo "nope";
+            return;
+        }
+        else {
+            
+$this->usuarioDao->changeAlcateia($id, $idAlcateia);
+            return;    
+        }
+        
     }
 
     protected function updateToInativo() {
@@ -424,6 +453,11 @@ class UsuarioController extends Controller
         return $dados;
     }
     protected function checkConsecutiveFaltas($idUsuario = 0) {
+        
+        $primeiraFaltaConsecutiva = 0;
+        $segundaFaltaConsecutiva = 0;
+        $terceiraFaltaConsecutiva = 0;
+
         if($idUsuario == 0) {
             $idUsuario = $_SESSION[SESSAO_USUARIO_ID];
         }

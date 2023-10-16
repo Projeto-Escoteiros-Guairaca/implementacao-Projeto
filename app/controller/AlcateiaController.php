@@ -48,14 +48,18 @@ class AlcateiaController extends Controller{
     public function listAlcateia(string $msgErro = "", string $msgSucesso = "") {
         if($_SESSION['chefeAlcateia'] != "" or isset($_GET['idAlcateia'])) {
             $_GET['id'] = $_SESSION['chefeAlcateia'];
+
             if(isset($_GET['idAlcateia'])) {
                 $_GET['id'] = $_GET['idAlcateia'];
             }
 
             $usuarios = $this->usuarioDao->findUsuariosByIdAcateia($_GET['id']);
             $alcateia = $this->findAlcateiaById();
-
-            $alcateia->setUsuarioChefe($this->usuarioDao->findById($alcateia->getIdChefe()));
+            
+            if($alcateia->getIdChefe() != null) {
+                $alcateia->setUsuarioChefe($this->usuarioDao->findById($alcateia->getIdChefe()));
+            }
+            
             if($alcateia->getIdPrimo() != null) {
                 $alcateia->setUsuarioChefe($this->usuarioDao->findById($alcateia->getIdPrimo()));
             }
@@ -63,6 +67,9 @@ class AlcateiaController extends Controller{
             $dados["usuarios"] = $usuarios;
             $dados["alcateia"] = $alcateia;
             $this->loadView("pages/alcateia/chefeOnly/alcateia.php", $dados, $msgErro, $msgSucesso, false);
+        }
+        else if($_SESSION["chefeAlcateia"] == "SemAlcateia") {
+            $this->loadView("pages/Errors/accessDenied.php", [], $msgErro, $msgSucesso, true);    
         }
         else {
             $this->list();

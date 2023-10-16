@@ -24,7 +24,16 @@
                     ?></h5>
                     <hr>
                     <h4>Chefe responsável: </h4>
-                    <h5 style="color:darkorange;"><?php echo $dados['alcateia']->getUsuarioChefe()->getNome(); ?></h5 > 
+                    <h5 style="color:darkorange;">
+                    <?php 
+                    if($dados['alcateia']->getIdChefe() != null) {
+                        echo $dados['alcateia']->getUsuarioChefe()->getNome();
+                    }  
+                    else {
+                       echo "Esta alcateia está sem um chefe. Defina ele na página dos Lobinhos.";
+                    }
+                    ?>
+                </h5 > 
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 let AlcateiasAlreadyUsed = [];
 let idAlcateiaUsuario = 0;
 let UsuarioId= 0;
+var chefeChangeAlcateia = false;
 // const body = document.body;
 
 function findTheAlcateias(id = 0, action, idUsu) {
@@ -88,37 +89,112 @@ function createModal(Alcateias) {
 }
 
 function sendAlcateiaChange() {
-    event.preventDefault();
+        event.preventDefault();
+    
+
     action = "changeAlcateia";
     idAlcateiaUsuario = id;    
     var checked = document.querySelector('[name="alcateias"]:checked');
     var alcateiaId = checked.value;
     var alcateiaName = checked.id;
-    console.log(alcateiaName);
+
     if(alcateiaId == idAlcateiaUsuario) {
         alert("Esse lobinho já está nessa alcateia!");
         return;
     }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId, true);
+    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia' + chefeChangeAlcateia, true);
     
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
+            response = xhttp.responseText;
 
-            modalBackground = document.getElementById('modalBackground');
-            modal = document.getElementById(idAlcateiaUsuario +"modal");
-            body.removeChild(modalBackground);
-            body.removeChild(modal);
-
-            var changeAlcateiaName = document.getElementById(UsuarioId);
-            changeAlcateiaName.innerHTML = alcateiaName;
-            changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+UsuarioId+");");
-            changeAlcateiaName.className = "btn btn-secondary";
+            if(response != "nope") {
+                chefeChangeAlcateia = false;
+                changeAlcateiaCorrectly(alcateiaName, alcateiaId);
+            }
+            else {
+                askChangeChefe(response);
+            }
+            
             
         }
     };
     xhttp.send();
+}
+
+function askChangeChefe() {
+    chefeChangeAlcateia = confirm("Tem certeza que quer mudar o chefe desta alcateia? A antiga será deixada sem chefe.");
+    if(chefeChangeAlcateia == true) {
+        chefeChangeAlcateia = "true";
+        sendAlcateiaChangeChefe();
+    }
+    else {
+        chefeChangeAlcateia = false;
+        return;
+    }
+    
+}
+
+function sendAlcateiaChangeChefe() {
+    
+action = "changeAlcateia";
+idAlcateiaUsuario = id;    
+var checked = document.querySelector('[name="alcateias"]:checked');
+var alcateiaId = checked.value;
+var alcateiaName = checked.id;
+
+if(alcateiaId == idAlcateiaUsuario) {
+    alert("Esse lobinho já está nessa alcateia!");
+    return;
+}
+
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia=' + chefeChangeAlcateia, true);
+
+xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
+        response = xhttp.responseText;
+
+        if(response == null) {
+            changeAlcateiaCorrectly(alcateiaName, alcateiaId)
+        }
+        changeAlcateiasChefes(response, alcateiaName, alcateiaId);
+    }
+};
+xhttp.send();
+}
+
+function changeAlcateiasChefes(idUsuarioToChange, alcateiaName, alcateiaId) {
+    modalBackground = document.getElementById('modalBackground');
+    modal = document.getElementById(idAlcateiaUsuario +"modal");
+    body.removeChild(modalBackground);
+    body.removeChild(modal);
+
+    var changeAlcateiaName = document.getElementById(UsuarioId);
+    var changeAlcateiaToNull = document.getElementById(idUsuarioToChange);
+
+    changeAlcateiaName.innerHTML = alcateiaName;
+    changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+UsuarioId+");");
+    changeAlcateiaName.className = "btn btn-secondary";
+
+    changeAlcateiaToNull.className = "btn btn-warning";
+    changeAlcateiaToNull.setAttribute("onclick", "findTheAlcateias(0, 'list', "+idUsuarioToChange+")"); 
+    changeAlcateiaToNull.innerHTML = "Sem alcateia";
+
+}
+
+function changeAlcateiaCorrectly(alcateiaName, alcateiaId) {
+    modalBackground = document.getElementById('modalBackground');
+    modal = document.getElementById(idAlcateiaUsuario +"modal");
+    body.removeChild(modalBackground);
+    body.removeChild(modal);
+
+    var changeAlcateiaName = document.getElementById(UsuarioId);
+    changeAlcateiaName.innerHTML = alcateiaName;
+    changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+UsuarioId+");");
+    changeAlcateiaName.className = "btn btn-secondary";
 }
 
 function sendChange(toChange, idUsu) {

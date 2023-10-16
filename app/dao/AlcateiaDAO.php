@@ -13,6 +13,18 @@ class AlcateiaDao{
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_alcateias a ".
+         "ORDER BY a.id_alcateia";
+        $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $this->mapAlcateia($result);
+    }
+
+    public function FullList(){
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_alcateias a ".
          "INNER JOIN tb_usuarios u ON a.id_usuario_chefe = u.id_usuario ORDER BY a.id_alcateia";
         $stm = $conn->prepare($sql);    
         $stm->execute();
@@ -64,7 +76,7 @@ class AlcateiaDao{
 
             $usuario = new Usuario();
             $usuario->setNome($reg['nome']);
-            $alcateia->setUsuariochefe($usuario);
+            $alcateia->setUsuarioChefe($usuario);
 
             $alcateia->setIdChefe($reg['4']);
             $alcateia->setIdPrimo($reg['2']);
@@ -108,6 +120,15 @@ class AlcateiaDao{
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("id", $id);
+        $stm->execute();
+    }
+    public function changeChefe($id, $idUsuario) {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE tb_alcateias SET id_usuario_chefe = :idUsuario WHERE id_alcateia = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $id);
+        $stm->bindValue("idUsuario", $idUsuario);
         $stm->execute();
     }
 }
