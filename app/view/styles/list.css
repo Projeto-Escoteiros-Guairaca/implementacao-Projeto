@@ -66,6 +66,7 @@ body {
     margin: 5vh auto;
     text-indent: initial;
     border: #1d7874 1px solid;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
 }
 a{
     text-decoration: none;
