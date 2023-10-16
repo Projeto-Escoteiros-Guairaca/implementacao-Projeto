@@ -33,7 +33,7 @@ body {
     top: 25vh;
     background-color: var(--verde-escuro);
     border: 1px solid #73d2de;
-    color: rgb(210, 212, 214);
+    color: #ffbc42;
     display: block;
     z-index: 11;
     box-shadow: var(--sombras_bordas);
@@ -116,3 +116,4 @@ a{
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     
   }
+
