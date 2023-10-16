@@ -1,220 +1,190 @@
-*{
-  text-decoration: none;
-  
+*{text-decoration: none;}
+:root{
+  --verde-escuro: #1d7874;
+  --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
+  --bordas:1px #679289 solid;
+  --color-p:#667;
 }
-
 .col-12{
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    margin-top: 7vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 7vh;
 }
-
 #btn_inserir_atv{
-    box-sizing: border-box;
-    border: solid #679289 1px;
-    padding: 0.5vh 0.5vh 0.5vh 0.5vh;
-    height: 6vh;
-    width: 6vh;
-    text-align: center;
-    align-items: center;
-    margin-top:1vh;
-    font-size: 25px;
-    position: absolute;
-    font-size: 35px;
+  box-sizing: border-box;
+  border: var(--bordas);
+  padding: 0.5vh 0.5vh 0.5vh 0.5vh;
+  height: 6vh;
+  width: 6vh;
+  text-align: center;
+  align-items: center;
+  margin-top:1vh;
+  position: absolute;
+  font-size: 35px;
 }
 .btn_inserir_atv:hover{
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--sombras_bordas);
   margin-top: 5vh;
-  
 }
-.card{
-  border: 1px solid #679289 ;
- 
-}
-.card:after {
-    transition: all 0.3s ease;
-}
+/*card das atv*/
+.card{border: var(--bordas);}
+
+.card:after {transition: all 0.3s ease;}
+
 .card:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--sombras_bordas);
 }
-.card-body{
-   
-    display: inline;
-}
-.card-img-top{
-    text-align: center;
-    
-}
+.card-body{display: inline;}
+
+.card-img-top{text-align: center;}
+
 .principais_btn_cards_atv{
-    max-width: 7vh;
-    border: solid #679289 1px;
-    padding: 1vh 1vh 1vh 1vh ;
-    position: absolute;
-    z-index: 1;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
+  max-width: 7vh;
+  border: var(--bordas);
+  padding: 1vh 1vh 1vh 1vh ;
+  position: absolute;
+  z-index: 1;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-
 #p_editar_atv{
-    z-index: 1;
-    position: absolute;
-    color: transparent;
-    margin-left: -3.5vh;
-    font-size: 17px;
-    height: 5.5vh;
-    width: 11vh;
-    text-align: end;
-    top: 0;
-    padding: 1vh 0px;
-  }
-  #p_editar_atv:after{
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    background-color: #071e22;
-    transition: all 0.3s ease;
-    color: #679289;
-   
-  }
-  #p_editar_atv:hover{
-    color: #679289;
-    cursor: pointer;
-    transition: all 1.0s ease;
+  z-index: 1;
+  position: absolute;
+  color: transparent;
+  margin-left: -3.5vh;
+  font-size: 17px;
+  height: 5.5vh;
+  width: 11vh;
+  text-align: end;
+  top: 0;
+  padding: 1vh 0px;
+}
+#p_editar_atv:after{
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #071e22;
+  transition: all 0.3s ease;
+  color: #679289;
+}
+#p_editar_atv:hover{
+  color: #679289;
+  cursor: pointer;
+  transition: all 1.0s ease;
 }
 
-  #p_editar_atv:hover:after {
-    left: 0;
-    right: 0;
-    z-index: -1;
-    color: #679289;    
-  }
-
-
-
-
+#p_editar_atv:hover:after {
+  left: 0;
+  right: 0;
+  z-index: -1;
+  color: #679289;    
+}
 #editar_atv{
-    color: #679289;
-    background-color: #071e22;
-    border-color: #679289;
-    z-index: 1;   
+  color: #679289;
+  background-color: #071e22;
+  border-color: #679289;
+  z-index: 1;   
 }
-  #editar_atv:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    background-color: #071e22;
-    transition: all 0.3s ease;
+#editar_atv:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #071e22;
+  transition: all 0.3s ease;
   }
-
-  #editar_atv:hover:after {
-    left: 0;
-    right: 0;
-    width: 13vh;
-    border-color: solid 1px #679289;
+#editar_atv:hover:after {
+  left: 0;
+  right: 0;
+  width: 13vh;
+  border-color: solid 1px #679289;
   }
-
-  #p_deletar_atv{
-    z-index: 1;
-    position: absolute;
-    color: transparent;
-    margin-left: -3.5vh;
-    font-size: 17px;
-    height: 5.5vh;
-    width: 13vh;
-    text-align: end;
-    top: 0;
-    padding: 1vh 0px;
-    
-  }
-  #p_deletar_atv:after{
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    background-color: #071e22;  
-  }
-  #p_deletar_atv:hover{
-    color: #ee2e31;
-    cursor: pointer;
-    transition: all 1.0s ease;
+#p_deletar_atv{
+  z-index: 1;
+  position: absolute;
+  color: transparent;
+  margin-left: -3.5vh;
+  font-size: 17px;
+  height: 5.5vh;
+  width: 13vh;
+  text-align: end;
+  top: 0;
+  padding: 1vh 0px;
 }
-
-  #p_deletar__atv:hover:after {
-    left: 0;
-    right: 0;
-    z-index: -1;
-    color: #679289;    
-  }
-
+#p_deletar_atv:after{
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #071e22;  
+}
+#p_deletar_atv:hover{
+  color: #ee2e31;
+  cursor: pointer;
+  transition: all 1.0s ease;
+}
+#p_deletar__atv:hover:after {
+  left: 0;
+  right: 0;
+  z-index: -1;
+  color: #679289;    
+}
 #deletar_atv{
-    top:7vh;
-    color: #ee2e31;
-    background-color: #071e22;
-    border-color: #ee2e31;
-    z-index: 1;
-    
+  top:7vh;
+  color: #ee2e31;
+  background-color: #071e22;
+  border-color: #ee2e31;
+  z-index: 1;  
 }
-  
-  #deletar_atv:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    background-color: #071e22;
-    transition: all 0.3s ease;
-    border-color: #ee2e31;
+#deletar_atv:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #071e22;
+  transition: all 0.3s ease;
+  border-color: #ee2e31;
   }
-
-  #deletar_atv:hover:after {
-    left: 0;
-    right: 0;
-    width: 15vh;
-    border-color: #ee2e31;
-  }
-  
-  
-
-.titulos_atv{
-    font-size: 5vh;
+#deletar_atv:hover:after {
+  left: 0;
+  right: 0;
+  width: 15vh;
+  border-color: #ee2e31;
 }
+.titulos_atv{font-size: 5vh;}
+
 .btn_cards_atv{
-    box-sizing: border-box;
-    border: solid #679289 1px;
-    /*border: solid black 1px;*/
-    padding: 1vh 1vh;
-    min-width: 50vh;
-    color:#071e22;
-    
-    
+  box-sizing: border-box;
+  border: var(--bordas);
+  padding: 1vh 1vh;
+  min-width: 50vh;
+  color: var(--verde-escuro);
 }
 .btn_cards_atv:hover{
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
- 
+  box-shadow: var(--sombras_bordas);
+  color: #071e22;
 }
-

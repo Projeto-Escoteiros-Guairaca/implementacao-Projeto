@@ -8,13 +8,6 @@
     color: #ffffff;
     margin-top: 5vh;
     position: relative;
-
 }
-.footer p{
-    color: #ffffff;
-}
-footer{
-    
-    bottom: 0;
-    
-}
+.footer p{color: #ffffff;}
+footer{bottom: 0;}
