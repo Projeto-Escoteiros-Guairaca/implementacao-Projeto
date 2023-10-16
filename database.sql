@@ -124,12 +124,18 @@ INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Cace um coelh
 INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais) VALUES ('00000000', 'Rua 1', 1, 'Bairro 1', 'Cidade 1', 'Pais 1');
 INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais) VALUES ('11111111', 'Rua 2', 2, 'Bairro 2', 'Cidade 2', 'Pais 2');
 INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais) VALUES ('11111111', 'Rua 2', 2, 'Bairro 2', 'Cidade 2', 'Pais 2');
+INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais) VALUES ('11111111', 'Rua 2', 2, 'Bairro 2', 'Cidade 2', 'Pais 2');
+INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais) VALUES ('11111111', 'Rua 2', 2, 'Bairro 2', 'Cidade 2', 'Pais 2');
+INSERT INTO tb_enderecos (cep, logradouro, numero_endereco, bairro, cidade, pais) VALUES ('11111111', 'Rua 2', 2, 'Bairro 2', 'Cidade 2', 'Pais 2');
 
 
 /*Inserts contatos*/
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('11111111', '11111111111', 'emailAdmin@gmail.com');
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('22222222', '22222222222', 'emailRoot@gmail.com');
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('33333333', '33333333333', 'Markinhos@gmail.com');
+INSERT INTO tb_contatos (telefone, celular, email) VALUES ('44444444', '44444444444', 'chefinho@gmail.com');
+INSERT INTO tb_contatos (telefone, celular, email) VALUES ('55555555', '44444444444', 'chefinho2@gmail.com');
+INSERT INTO tb_contatos (telefone, celular, email) VALUES ('66666666', '44444444444', 'chefinho3@gmail.com');
 
 /*Inserts usuarios*/
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES
@@ -139,14 +145,17 @@ INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login,
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (3, 3, 2, 'Marco', '69669669669', 'marco', 'marco', 'ADMINISTRADOR', 'ATIVO');
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
-                        (3, 3, 2, 'chefe', '50947509203', 'chefe', 'chefe', 'CHEFE', 'ATIVO');
-
+                        (4, 4, 1, 'chefe1', '50947509203', 'chefe1', 'chefe1', 'CHEFE', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+                        (5, 5, 2, 'chefe2', '50947509203', 'chefe2', 'chefe2', 'CHEFE', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+                        (6, 6, 3, 'chefe3', '50947509203', 'chefe3', 'chefe3', 'CHEFE', 'ATIVO');
 
 
 /*Inserts alcateias*/
 INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 1', '4');
-INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 2', '4');
-INSERT INTO tb_alcateias (nome,id_usuario_chefe) VALUES ('Alcateia 3', '4');
+INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 2', '5');
+INSERT INTO tb_alcateias (nome,id_usuario_chefe) VALUES ('Alcateia 3', '6');
 
 ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia);
 

@@ -22,8 +22,15 @@ $isChefe = $acessoCont->usuarioPossuiPapel([UsuarioPapel::CHEFE]);
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 $isLobinho = $acessoCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
 
+
 if($isChefe == 1) {
-  $_SESSION["chefeAlcateia"] = $_SESSION[SESSAO_USUARIO_IDALCATEIA];
+  if(isset($_SESSION[SESSAO_USUARIO_IDALCATEIA])) {
+    $_SESSION["chefeAlcateia"] = $_SESSION[SESSAO_USUARIO_IDALCATEIA];
+  }
+  else {
+    $_SESSION["chefeAlcateia"] = "SemAlcateia";
+  }
+  
 }
 else {
   $_SESSION["chefeAlcateia"] = "";

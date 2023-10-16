@@ -15,7 +15,7 @@ class UsuarioDAO {
 
         $sql = "SELECT * FROM tb_usuarios u " .
         "INNER JOIN tb_enderecos e ON u.id_endereco = e.id_endereco " .
-        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato ORDER BY u.nome";
+        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato ORDER BY u.id_usuario";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();

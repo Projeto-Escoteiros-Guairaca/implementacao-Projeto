@@ -104,7 +104,7 @@ class Alcateia implements JsonSerializable {
     /**
      * Get the value of usuariochefe
      */ 
-    public function getUsuariochefe()
+    public function getUsuarioChefe()
     {
         return $this->usuariochefe;
     }
@@ -114,7 +114,7 @@ class Alcateia implements JsonSerializable {
      *
      * @return  self
      */ 
-    public function setUsuariochefe($usuariochefe)
+    public function setUsuarioChefe($usuariochefe)
     {
         $this->usuariochefe = $usuariochefe;
 

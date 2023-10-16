@@ -8,8 +8,8 @@ require_once(__DIR__ . "/../../../../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
 require_once(__DIR__ . "/../selectPapeis.php");
 require_once(__DIR__ . "/../../../../model/Usuario.php");
-
 ?>
+
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
 
     <h3 class='text-center'>Usuários</h3>
