@@ -12,10 +12,10 @@ body {
 }
 /*tela traseira do pop up mudar alcateia*/
 .modal-background {
-    width: 100vw;
-    height: 150vh;
-    background-color: transparent;
-    opacity: 0.5;
+    width: 500vw;
+    height: 300vh;
+    background-color: black;
+    opacity: 0.2;
     z-index: 10;
     filter: blur(4px);
     position: absolute;
