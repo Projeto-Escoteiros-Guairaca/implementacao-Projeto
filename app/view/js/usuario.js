@@ -76,7 +76,7 @@ function createModal(Alcateias) {
     const submitData = document.createElement("button");
     submitData.setAttribute("onclick", "sendAlcateiaChange()");
     submitData.innerHTML = "Mudar alcateia";
-    submitData.className = "btn btn-primary";
+    submitData.className = "btn_mudar_alcateia";
     form.appendChild(br2);
     form.appendChild(submitData);
     modal.appendChild(form);
