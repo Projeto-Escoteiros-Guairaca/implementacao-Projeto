@@ -12,13 +12,13 @@ body {
 }
 /*tela traseira do pop up mudar alcateia*/
 .modal-background {
-    width: 500vw;
-    height: 300vh;
+    width: 100vw;
+    height: 100vh;
     background-color: black;
     opacity: 0.2;
     z-index: 10;
     filter: blur(4px);
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
 }
@@ -120,7 +120,13 @@ a{
 .btn_mudar_alcateia{
     height: 5vh;
     white-space: 8vh;
+    background-color: #ffbc42;
+    border-radius: 5px;
+    border: var(--bordas);
+    
 }
-.btn{
-                                                                                                                        w
-}
+.btn_mudar_alcateia:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombras_bordas);
+  }
