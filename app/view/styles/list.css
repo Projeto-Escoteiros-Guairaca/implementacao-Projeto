@@ -80,6 +80,10 @@ body {
     border: #1d7874 1px solid;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
 }
+#pinto{
+    max-height:20vh;
+    background-color: #414141;
+}
 a{
     text-decoration: none;
     /*esse text_decoration na tag  "<a>" elimina o texto em azul*/

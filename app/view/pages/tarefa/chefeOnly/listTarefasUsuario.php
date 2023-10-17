@@ -19,7 +19,7 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
             </div>
         </div>
 
-        <div id="pinto" class="row" style="margin-top: 10px;">
+        
             <div class="col-12">
                 <table id="tabUsuarios">
                     <thead>
@@ -60,7 +60,7 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
                     </tbody>
                 </table>
             </div>
-        </div>
+      
     </div>
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 
