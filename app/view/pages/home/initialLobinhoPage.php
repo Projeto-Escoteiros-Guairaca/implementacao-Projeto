@@ -13,11 +13,11 @@ require_once(__DIR__."/../../include/menu.php");
 
 <!-- COMECO DOS CARDS -->
 <div class="container-fluid pt-4">
-<div>
-<p>Atividades feitas: <?= $dados['atividadesFeitas']?>/<?=$dados['atividades'] ?></p>
-<p>Encontros participados: <?= $dados['faltas']?>/<?=$dados['frequenciasTotais'] ?></p>
-<p>Faltas consecutivas: <?= $dados['faltasConsecutivas']?>/3</p>
-</div>
+  <div class="dados-lobinhos">
+    <p>Atividades feitas: <?= $dados['atividadesFeitas']?>/<?=$dados['atividades'] ?></p>
+    <p>Encontros participados: <?= $dados['faltas']?>/<?=$dados['frequenciasTotais'] ?></p>
+    <p>Faltas consecutivas: <?= $dados['faltasConsecutivas']?>/3</p>
+  </div>
 
   <div class="row">
     
