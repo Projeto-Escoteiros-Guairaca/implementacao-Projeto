@@ -32,10 +32,16 @@ body {
 /*card total*/
 .card-sweg {
     min-height: 420px;
-    border: var(--bordas);
+    border: #ffbc42 1px solid;
     margin-top: 25vh;
     z-index: 20;
+    opacity: 0.9;
 
+}
+.card-sweg:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
 }
 /*div que fica encima dos titulos dos cards*/
 .card-sweg-details {
@@ -54,6 +60,7 @@ body {
 .incons_redirecionais{
     font-size: 18vh;    
     color: black;
+    opacity: 1.0;
     max-width: 21vw;
     max-height: 18vh;
 }
@@ -129,9 +136,4 @@ img {
     position: relative;
     margin-left: -15px;
 }
-.btn :hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: var(--sombras_bordas);
-    margin-top: 5vh;
-  }
+ 
