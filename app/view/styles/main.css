@@ -70,7 +70,7 @@ form{
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    z-index: 9;
-    margin-top: 200px;
+    z-index: 1;
+    margin-top:150px;
    
 }
