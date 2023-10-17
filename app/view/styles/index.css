@@ -1,17 +1,24 @@
+*{
+    overflow: hidden;
+}
+
 /* Estilos para a página inicial logado*/
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
-    overflow-x: visible;
+    overflow: visible;
+    padding-top: 500px;
 }
+
 :root{
     --verde-escuro: #1d7874;
     --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
     --bordas:solid #679289 1px;
     --color-p:#667;
 }
+
  .container {
     box-sizing: border-box;
     width: 200vh;
@@ -105,4 +112,16 @@ img {
     border: solid 1px;
     border-radius: 50%;
     padding: 10px;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    height: 22vh;
+    background-color: #1d7874;
+    color: #ffffff;
+    margin-top: 15vh;
+    position: relative;
+    margin-left: -15px;
 }
