@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: visible;
-    padding-top: 500px;
+   overflow-y: visible;
 }
 
 :root{
@@ -33,6 +33,9 @@ body {
 .card-sweg {
     min-height: 420px;
     border: var(--bordas);
+    margin-top: 25vh;
+    z-index: 20;
+
 }
 /*div que fica encima dos titulos dos cards*/
 .card-sweg-details {

@@ -66,3 +66,11 @@ form{
     text-align: center;
 }
 
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 9;
+    margin-top: 20vh;
+   
+}
