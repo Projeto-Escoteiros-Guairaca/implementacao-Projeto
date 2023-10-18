@@ -1,5 +1,5 @@
 *{
-    overflow: hidden;
+    
 }
 
 /* Estilos para a página inicial logado*/
@@ -8,8 +8,8 @@ body {
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
-    overflow: visible;
-   overflow-y: visible;
+    overflow-x: hidden;
+   
 }
 
 :root{

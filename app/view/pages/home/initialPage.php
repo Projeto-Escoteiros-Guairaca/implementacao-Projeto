@@ -70,8 +70,9 @@ require_once(__DIR__."/../../include/menu.php");
      </div>
      </a>
   </div>
-</div>
+
 
 <?php
     require_once(__DIR__."/../../include/footer.php");
 ?>
+</div>

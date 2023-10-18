@@ -33,7 +33,7 @@ else {
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/menu.css" />
 
-<div class="container-fluid px-0">
+<div class="container-fluid fixed-top px-0">
 
 
 <div class="logo" style="padding: 5px; background: #1d7874">

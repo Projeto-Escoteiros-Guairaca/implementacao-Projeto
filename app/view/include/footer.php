@@ -1,13 +1,11 @@
 <!-- Footer -->
-<div class="container-fluid p-0">
-    <footer class="text-center text-lg-start bg-light text-muted">
-
+<div class="row col-12">
+    <footer>
         <div class="footer">
             <p>Todos os direitos reservados @2023</p>
         </div>
-
-    </footer>   
-</div>
+    </footer>  
+</div> 
 
 <!-- BOOTSTRAP: scripts requeridos pelo framework -->
 <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
