@@ -1,4 +1,11 @@
 /* Estilos para a página inicial logado*/
+.project-header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+}
 
 .btn:link,
 .btn:visited {

@@ -13,11 +13,11 @@ require_once(__DIR__."/../../include/menu.php");
 
 <!-- COMECO DOS CARDS -->
 <div class="container-fluid pt-4">
-  <div class="dados-lobinhos">
-    <p>Atividades feitas: <?= $dados['atividadesFeitas']?>/<?=$dados['atividades'] ?></p>
-    <p>Encontros participados: <?= $dados['faltas']?>/<?=$dados['frequenciasTotais'] ?></p>
-    <p>Faltas consecutivas: <?= $dados['faltasConsecutivas']?>/3</p>
-  </div>
+<div>
+<p>Atividades feitas: <?= $dados['atividadesFeitas']?>/<?=$dados['atividades'] ?></p>
+<p>Encontros participados: <?= $dados['faltas']?>/<?=$dados['frequenciasTotais'] ?></p>
+<p>Faltas consecutivas: <?= $dados['faltasConsecutivas']?>/3</p>
+</div>
 
   <div class="row">
     
@@ -35,5 +35,5 @@ require_once(__DIR__."/../../include/menu.php");
     </div>
 
 <?php
-    require_once(__DIR__ . "/../../include/footer.php");
+    require_once(__DIR__."/../../include/footer.php");
 ?>

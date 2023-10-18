@@ -23,16 +23,16 @@
             <form id="formEncontro" method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save">
 
                 <div class="form-group col-6">
-                    <label style="width: fit-content;" for="dataEncontro">Data do Encontro:</label>
-                    <input style="width: 250px;" class="form-control" type="date" id="dataEncontro" name="dataEncontro" 
+                    <label for="dataEncontro">Data do Encontro:</label>
+                    <input class="form-control" type="date" id="dataEncontro" name="dataEncontro" 
                         placeholder="Informe a data"
                         value="<?php
                             echo (isset($dados['encontro']) ? $dados['encontro']->getData(): "");
                         ?>" />
                 </div>
                 <div class="form-group col-6">
-                    <label style="width: fit-content;" for="descricaoEncontro"> Descreva o encontro </label>
-                    <textarea style="width: 250px;" class="form-control" id="descricaoEncontro" name="descricaoEncontro" rows="3">
+                    <label for="descricaoEncontro"> Descreva o encontro </label>
+                    <textarea class="form-control" id="descricaoEncontro" name="descricaoEncontro" rows="3">
                         <?php
                             echo (isset($dados['encontro']) ? $dados['encontro']->getDescricao(): "");
                         ?>

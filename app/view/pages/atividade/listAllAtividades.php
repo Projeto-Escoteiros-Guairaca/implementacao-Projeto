@@ -20,7 +20,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
         <div class="row">
             <div class="col-12">
                 <?php foreach($dados["lista"] as $ativ):?>
-                    <div  class="card my-2 mx-2" style="width: 18rem;"> 
+                    <div  class="card my-2 mx-2 Card" style="width: 18rem;"> 
                     <a id= "editar_atv" class= "principais_btn_cards_atv" href="<?= BASEURL?>/controller/AtividadeController.php?action=edit&id=<?php echo $ativ->getIdAtividade()?>"><i class="bi bi-pencil"><span id= p_editar_atv >Editar</span></i></a>
 
                     <a id= "deletar_atv"class= "principais_btn_cards_atv" href="<?= BASEURL?>/controller/AtividadeController.php?action=delete&id=<?php echo $ativ->getIdAtividade()?>"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>

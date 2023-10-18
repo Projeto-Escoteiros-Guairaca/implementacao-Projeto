@@ -1,13 +1,13 @@
 .footer{
-    margin: 0 auto  ;
-    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 20vh;
     background-color: #1d7874;
-    padding-top: 25px;
-    padding-bottom: 25px;
-
-}
-.footer p {
     color: #ffffff;
-    text-align: center;
-
+    margin-top: 6.6vh;
+    position: relative;
 }
+.footer p{color: #ffffff;}
+footer{bottom: 0;}
