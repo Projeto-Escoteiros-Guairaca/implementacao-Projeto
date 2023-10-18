@@ -21,9 +21,6 @@ class AtividadeController extends Controller {
                 $papelNecessario[] = "ADMINISTRADOR";
                 $papelNecessario[] = "CHEFE";
             }
-            if(in_array($_GET['action'], $lobinhoActions)) {
-                $papelNecessario[] = "LOBINHO";
-            }
         }
         else {
             $papelNecessario[] = "ADMINISTRADOR";

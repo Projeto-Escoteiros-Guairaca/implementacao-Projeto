@@ -30,9 +30,9 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                             <hr>
                             <p class="card-text">
                             <?php echo $ativ->getDescricao();?></p>
-                            <a class= "btn_cards_atv" style="text-decoration: none" href="<?= BASEURL?>/controller/TarefaController.php?action=list&idAtividade=<?php echo $ativ->getIdAtividade()?>">Mostrar Tarefas</a>
+                            <a class= "btn_cards_atv" style="text-decoration: none" href="<?= BASEURL?>/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade=<?php echo $ativ->getIdAtividade()?>">Mostrar Tarefas</a>
                            
-                            <a class= "btn_cards_atv" style="text-decoration: none" href="<?= BASEURL?>/controller/TarefaController.php?action=createTarefaAtiv&idAtividade=<?php echo $ativ->getIdAtividade()?>">Criar Tarefas</a>
+                            <a class= "btn_cards_atv" style="text-decoration: none" href="<?= BASEURL?>/controller/AcessoController.php?controller=Tarefa&action=createTarefaAtiv&idAtividade=<?php echo $ativ->getIdAtividade()?>">Criar Tarefas</a>
                         </div>
                     </div>
                 <?php endforeach;?>

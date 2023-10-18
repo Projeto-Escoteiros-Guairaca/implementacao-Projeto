@@ -63,7 +63,7 @@ else {
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=list'> Encontros</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade&action=list'> Atividades</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade&action=listAtividades'> Atividades</a>";
                 echo '</li>';
             }
             elseif($isLobinho == 1) {
