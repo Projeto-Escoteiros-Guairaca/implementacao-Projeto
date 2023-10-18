@@ -12,7 +12,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
                 
     <h1> Dados do Usuário </h1>
     <button id="btn_altercao" class=" btn "> <a href="<?= BASEURL ?>
-        /controller/UsuarioController.php?action=edit&id=<?=$dados['usuario']->getId()?>">
+        /controller/AcessoController.php?controller=Usuario&action=edit&id=<?=$dados['usuario']->getId()?>">
         Quer alterar seus Dados? </a>  </button>
         <br>
   <div class="row justify-content-center" id="apresentacoes">

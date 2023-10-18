@@ -5,7 +5,7 @@
     require_once(__DIR__ . "/../../../../model/Usuario.php");
     require_once(__DIR__ . "/../../usuario/selectUsuChefe.php");
     require_once(__DIR__ . "/../../usuario/selectUsuPrimo.php");
-    require_once(__DIR__ . "/../../../../controller/AcessoController.php");
+    require_once(__DIR__ . "/../../../../controller/LinkController.php");
     require_once(__DIR__ . "/../../../../controller/AlcateiaController.php");
 ?>
 
@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-6">
-            <form id="formAlcateia" method="POST" action="<?= BASEURL ?>/controller/AlcateiaController.php?action=save">
+            <form id="formAlcateia" method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=save">
                 
                 <h2 class="text-center">
                     <?php if(isset($dados["id_alcateia"])): ?>
@@ -24,15 +24,15 @@
                 </h2>
 
                 <div class="form-group col-6">
-                    <label for="txtNomeAlcateia">Nome:</label>
-                    <input class="form-control" type="text" id="txtNomeAlcateia" name="nomeAlcateia" 
+                    <label style="width: fit-content;" for="txtNomeAlcateia">Nome:</label>
+                    <input style="width: 150px;" class="form-control" type="text" id="txtNomeAlcateia" name="nomeAlcateia" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php
                             echo (isset($dados['alcateia']) ? $dados['alcateia']->getNome(): "");
                         ?>" />
                 </div>
                 <div class="form-group col-6">
-                    <label for="somUsuChef">Chefe:</label>
+                    <label style="width: fit-content;" for="somUsuChef">Chefe:</label>
                     
                     <?php
                         $usuDao = new UsuarioDAO();
@@ -56,12 +56,12 @@
                 
                 <input type="hidden" id="hddId" name="id_alcateia" value="<?= $dados['id_alcateia']; ?>" />
                 
-                <button type="submit" class="btn btn-success">Gravar</button>
+                <button type="submit" class="btn btn-success my-2">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>
                 
             </form>
             <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AlcateiaController.php">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=listAlcateia">Voltar</a>
         </div>
        
 

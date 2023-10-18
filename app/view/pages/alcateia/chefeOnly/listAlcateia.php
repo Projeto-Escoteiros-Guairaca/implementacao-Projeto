@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AlcateiaController.php?action=create">Inserir</a>
+            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=create">Inserir</a>
         </div>
         <div class="col-9">
             <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
@@ -29,9 +29,9 @@
                             <h5 class="card-title"><?php echo $alc->getNome();?></h5>
                             <hr>
                             <a class="btn btn-warning my-1" 
-                                href="<?= BASEURL ?>/controller/AlcateiaController.php?action=edit&id=<?php echo $alc->getId_alcateia(); ?>">
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=edit&id=<?php echo $alc->getId_alcateia(); ?>">
                                 Alterar</a> 
-                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AlcateiaController.php?idAlcateia=<?= $alc->getId_alcateia()?>">
+                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=listAlcateia&idAlcateia=<?= $alc->getId_alcateia()?>">
                                     Mostrar Dados da Alcateia: </a>
                         </div>
                     </div>

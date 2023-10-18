@@ -16,14 +16,16 @@ class AlcateiaController extends Controller{
 
     public function __construct(){
 
-        $papelNecessario = array();
-        $papelNecessario[0] = "ADMINISTRADOR";
-        $papelNecessario[1] = "CHEFE";
-        $accessVerified = $this->verifyAccess($papelNecessario);
-        
-        if(! $accessVerified) {
-            return;
+        if(! isset($_GET['isAjax'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Usuario";
+    
+                $this->loadController("Acesso");
+                return;
+            }
+            $_SESSION['callAccessToken'] = true;
         }
+        
         $this->usuarioDao = new UsuarioDAO();
         $this->alcateiaDao = new AlcateiaDAO();
         $this->alcateiaService = new AlcateiaService();
@@ -66,7 +68,7 @@ class AlcateiaController extends Controller{
 
             $dados["usuarios"] = $usuarios;
             $dados["alcateia"] = $alcateia;
-            $this->loadView("pages/alcateia/chefeOnly/alcateia.php", $dados, $msgErro, $msgSucesso, false);
+            $this->loadView("pages/alcateia/chefeOnly/alcateia.php", $dados, $msgErro, $msgSucesso, true);
         }
         else if($_SESSION["chefeAlcateia"] == "SemAlcateia") {
             $this->loadView("pages/Errors/accessDenied.php", [], $msgErro, $msgSucesso, true);    

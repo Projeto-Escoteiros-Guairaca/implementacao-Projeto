@@ -33,54 +33,51 @@ class UsuarioController extends Controller
     private UsuarioService $usuarioService;
 
     public function __construct() {
-        $administradorActions = [
-            "list","listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
-            "create", "createTarefaAtiv", "saveEndereco", "saveContato", "saveUsuario",
-            "edit", "delete", "save", "update", "findIt", "changeAlcateia", "updateToInativo", "updateToAtivo",
-            "findUsuarioById", "changePapel"
-        ];
+        if(! isset($_GET['isAjax'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Usuario";
+    
+                $this->loadController("Acesso");
+                return;
+            }
+            $_SESSION['callAccessToken'] = true;
+        }
+        
+
         $ChefeActions = [
             "listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
             "createTarefaAtiv", "findIt", "changeAlcateia", "findUsuarioById"
         ];
-        $lobinhoActions = [
-            "profile", "initialLobinhoPage"
-        ];
+       
 
-        $isRegistering = false;
-        $papelNecessario = array();
-        $accessVerified = true;
+        // $isRegistering = false;
+        // $papelNecessario = array();
+        // $accessVerified = true;
 
-        if(isset($_SESSION['usuarioLobinho']) and ! isset($_GET['action'])) {
-            $_GET['action'] = $_SESSION['usuarioLobinho'];
-        }
+        // if(isset($_SESSION['usuarioLobinho']) and ! isset($_GET['action'])) {
+        //     $_GET['action'] = $_SESSION['usuarioLobinho'];
+        // }
 
-        if (isset($_GET['action'])) {
-            if ($_GET['action'] == "create" or $_GET['action'] == "save") {
-                $isRegistering = true;
-            }
-            else
-            { 
-                if(in_array($_GET['action'], $administradorActions)) {
-                    $papelNecessario[] = "ADMINISTRADOR";
-                } 
-                if(in_array($_GET['action'], $ChefeActions)) {
-                    $papelNecessario[] = "CHEFE";
-                }   
-                if(in_array($_GET['action'], $lobinhoActions)) {
-                    $papelNecessario[] = "LOBINHO";
-                }
-            }
+        // if (isset($_GET['action'])) {
+        //     if ($_GET['action'] == "create" or $_GET['action'] == "save") {
+        //         $isRegistering = true;
+        //     }
+        //     else
+        //     {  
+        //         if(in_array($_GET['action'], $ChefeActions)) {
+        //             $papelNecessario[] = "CHEFE";
+        //         }   
+        //     }
 
-        } 
-        else {
-            $papelNecessario[0] = "ADMINISTRADOR";
-            $accessVerified = $this->verifyAccess($papelNecessario);
-        }
+        // } 
+        // else {
+        //     $papelNecessario[0] = "ADMINISTRADOR";
+        //     $accessVerified = $this->verifyAccess($papelNecessario);
+        // }
 
-        if (!$accessVerified and $isRegistering == false) {
-            return;
-        }
+        // if (!$accessVerified and $isRegistering == false) {
+        //     return;
+        // }
 
         $this->frequenciaDao = new frequenciaDAO();
         $this->atividadeDao = new AtividadeDAO();
@@ -111,7 +108,7 @@ class UsuarioController extends Controller
             $dados["papeis"] = UsuarioPapel::getAllAsArray();
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;
-            $this->loadView("pages/usuario/profile.php", $dados, $msgErro, $msgSucesso, false);
+            $this->loadView("pages/usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
         } else {
             $this->list("Usuário não encontrado.");
         }
@@ -156,7 +153,7 @@ class UsuarioController extends Controller
                 die;
             }
 
-            $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, false);
+            $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, true);
         }
     }
     
@@ -434,13 +431,13 @@ $this->usuarioDao->changeAlcateia($id, $idAlcateia);
     }
 
     protected function checkDoneAtividades() {
-        $atividades = $this->atividadeDao->list();
-        $atividadesFeitas = $this->atividadeDao->listUndoneOrDone(0);
-        
-        $dados[0] = count($atividades);
-        $dados[1] = (count($atividades) - count($atividadesFeitas));
+        $atividades = $this->atividadeDao->countAtividades();
+        $atividadesFeitas = $this->atividadeDao->countUndoneOrDone(0);
+        $dados[0] = $atividades[0];
+        $dados[1] = $atividades[0] - $atividadesFeitas[0];
         return $dados;
     }
+
     protected function checkFaltas($idUsuario = 0) {
         if($idUsuario == 0) {
             $idUsuario = $_SESSION[SESSAO_USUARIO_ID];

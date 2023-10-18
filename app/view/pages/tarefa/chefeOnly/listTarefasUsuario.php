@@ -43,7 +43,7 @@ require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
                                     <?php if($usu->getTarefaEnviada() == true) {
                                         echo '<td class="td_universal">
                                         <a id= "btn_tarefa_enviada" class="btn_dados_gerais" 
-                                        href="'.BASEURL.'/Controller/TarefaController.php?action=openTarefaUsuario&id='.$dados["tarefa"]->getIdTarefa().'"> tarefa enviada </a>
+                                        href="'.BASEURL.'/Controller/AcessoController.php?controller=Tarefa&action=openTarefaUsuario&id='.$dados["tarefa"]->getIdTarefa().'"> tarefa enviada </a>
                                         </td> ';
                                     }
                                     else {

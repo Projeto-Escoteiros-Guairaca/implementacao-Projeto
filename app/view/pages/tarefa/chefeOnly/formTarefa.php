@@ -3,7 +3,7 @@
     require_once(__DIR__ . "/../../../include/menu.php");
     require_once(__DIR__ . "/../../../../dao/UsuarioDAO.php");
     require_once(__DIR__ . "/../../../../model/Usuario.php");
-    require_once(__DIR__ . "/../../../../controller/AcessoController.php");
+    require_once(__DIR__ . "/../../../../controller/LinkController.php");
     require_once(__DIR__ . "/../../../../controller/TarefaController.php");
 ?>
 
@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/TarefaController.php?action=save">
+            <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=save">
                 
                 <h2 class="text-center">
                     <?php if(isset($dados["id_tarefa"])): ?>
@@ -42,7 +42,7 @@
                 
             </form>
             <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AtividadeController.php">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
         </div>
     </div>
 

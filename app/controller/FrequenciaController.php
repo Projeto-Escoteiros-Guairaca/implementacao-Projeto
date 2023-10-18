@@ -15,7 +15,8 @@ class FrequenciaController extends Controller {
     private $encontroDao;
 
     public function __construct() {
-
+        
+       
         $papelNecessario = array();
         $papelNecessario[0] = "ADMINISTRADOR";
         $accessVerified = $this->verifyAccess($papelNecessario);
@@ -65,7 +66,7 @@ class FrequenciaController extends Controller {
 
         $dados["lista"] = $frequencias;
         $dados["encontro"] = $encontro;
-        $this->loadView("pages/frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, false);
+        $this->loadView("pages/frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, true);
     }
     
     public function listByUsuario(string $msgErro = "", string $msgSucesso = "") {
@@ -84,7 +85,7 @@ class FrequenciaController extends Controller {
         $dados["usuario"] = $usuario;
         $dados["lista"] = $frequenciasOfUsuarios;
         $dados["encontros"] = $encontros;
-        $this->loadView("pages/frequencia/listFrequenciasByUsuario.php", $dados,$msgErro, $msgSucesso, false);
+        $this->loadView("pages/frequencia/listFrequenciasByUsuario.php", $dados,$msgErro, $msgSucesso, true);
 
     }
 

@@ -46,7 +46,7 @@ class EncontroController extends Controller {
             $this->loadView("pages/encontro/listEncontro.php", $dados, $msgErro, $msgSucesso, true);
     
         }
-           }
+    }
 
     public function filter() {
         $encontros = [];
@@ -78,6 +78,7 @@ class EncontroController extends Controller {
         return $dados;
 
     }
+
     public function create(){
         $dados["id_encontro"] = 0;
         $this->loadView("pages/encontro/formEncontro.php", $dados, "", "", true);

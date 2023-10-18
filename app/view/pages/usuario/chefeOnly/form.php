@@ -20,7 +20,7 @@ require_once(__DIR__ . "/../../../include/header.php");
         
         <div class="col-6">
             <form id="frmUsuario" method="POST" 
-                action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
+                action="<?= BASEURL ?>/controller/AcessoController.php?controller=Usuario&action=save" >
 
                 <h2 class="text-center">
                     Dados de identificação do Usuário
@@ -192,7 +192,7 @@ require_once(__DIR__ . "/../../../include/header.php");
         <div class="col-12">
         <?php
         if($dados['id'] > 0)
-            echo "<a href='". BASEURL ."/controller/UsuarioController.php?action=profile&id=". $_SESSION[SESSAO_USUARIO_ID] ."'>Voltar</a>";
+            echo "<a href='". BASEURL ."/controller/AcessoController.php?controller=Usuario&action=profile&id=". $_SESSION[SESSAO_USUARIO_ID] ."'>Voltar</a>";
         else
             echo "<a href='". BASEURL ."/controller/HomeController.php'>Voltar</a>";
         ?>

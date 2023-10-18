@@ -17,16 +17,28 @@ class AtividadeDAO {
         return $this->mapAtividade($result);
     }
 
-    public function listUndoneOrDone($status){
+    public function countAtividades(){
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_atividades a WHERE a.status = ? ORDER BY a.id_atividade";
+        $sql = "SELECT COUNT(*) FROM tb_atividades";
+        $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+        
+        return $result[0];
+    }
+
+    public function countUndoneOrDone($status){
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT COUNT(*) FROM tb_atividades a WHERE a.status = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$status]);
         $result = $stm->fetchAll();
         
-        return $this->mapAtividade($result);
+        return $result[0];
     }
 
     public function mapAtividade($result){

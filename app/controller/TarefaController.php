@@ -16,46 +16,17 @@ class TarefaController extends Controller {
     private $tarefaService;
     
     function __construct(){
-        $administradorChefeActions = [
-            "list", "listByIdAtiv", "create", "createTarefaAtiv", 
-        "edit", "delete", "save", "update", "openTarefa", "openTarefaUsuario"
-        ];
-        $lobinhoActions = ["list","listByIdAtiv", "openTarefa"];
-        $papelNecessario = array();
-
-        if(isset($_GET['action'])) {
-            if(in_array($_GET['action'], $administradorChefeActions)) {
-                $papelNecessario[] = "ADMINISTRADOR";
-                $papelNecessario[] = "CHEFE";
-
-            }
-
-            if(in_array($_GET['action'], $lobinhoActions)) {
-                $papelNecessario[] = "LOBINHO";
-                
-            }
-        }
-        else {
-            $papelNecessario[] = "ADMINISTRADOR";
-            $papelNecessario[] = "LOBINHO";
-            $papelNecessario[] = "CHEFE";
-
-       }
-
-        $accessVerified = $this->verifyAccess($papelNecessario);        
-        if(! $accessVerified) {
-            return;
-        }
-        
+       
+       
         $this->atividadeDao = new AtividadeDAO();
         $this->tarefaDao = new TarefaDAO();
         $this->tarefaService = new TarefaService();
 
-        $this->setActionDefault("list", true);
+        $this->setActionDefault("listTarefas", true);
         $this->handleAction();
     }
 
-    public function list(string $msgErro = "", string $msgSucesso = ""){
+    public function listTarefas(string $msgErro = "", string $msgSucesso = ""){
 
         if(isset($_GET["idAtividade"])) {
             $_SESSION["activeAtividade"] = $_GET["idAtividade"];
@@ -142,7 +113,7 @@ class TarefaController extends Controller {
         }
         $tarefa = $this->findById();
         $dados["tarefa"] = $tarefa;
-        $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, false);
+        $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, true);
     }
 
     public function openTarefaUsuario(string $msgErro = "", string $msgSucesso = "") {
@@ -150,7 +121,7 @@ class TarefaController extends Controller {
         $tarefaUsuario = $this->tarefaDao->getTarefaUsuario($idTarefa);
 
         $dados["tarefa"] = $tarefaUsuario;
-        $this->loadView("pages/tarefa/openTarefaUsuario.php", $dados, $msgErro, $msgSucesso, false);
+        $this->loadView("pages/tarefa/chefeOnly/openTarefaUsuario.php", $dados, $msgErro, $msgSucesso, true);
     }
 
     protected function findById(){

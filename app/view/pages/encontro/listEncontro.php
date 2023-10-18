@@ -13,11 +13,11 @@
     <div class="row">
 
         <div class="col-3">
-            <a class="btn btn-success" href="<?= BASEURL ?>/controller/EncontroController.php?action=create">Inserir</a>
+            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=create">Inserir</a>
         </div>
         <div class="col-6">
 
-            <form method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?filtered=true">
+            <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true">
 
                 <input class="filters" class="form-control" type="date" placeholder="De" name="desde" 
                 value="<?php
@@ -38,7 +38,7 @@
                 </div>
 
                 <button class="btn btn-alert" type="submit"> Filtrar </button>
-                <a href="<?= BASEURL ?>/controller/EncontroController.php?action=list" class="btn btn-alert"> Limpar filtro </a>
+                <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=list" class="btn btn-alert"> Limpar filtro </a>
 
             </form>
 
@@ -61,10 +61,10 @@
                             <p class="card-text"><?php echo $enc->getAlcateia()->getNome();?></p>
                             <p class="card-text"><?php echo $enc->getDescricao();?></p>
                             <a class="btn btn-primary my-1" 
-                                href="<?= BASEURL ?>/controller/EncontroController.php?action=edit&id=<?= $enc->getId_encontro() ?>">
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=edit&id=<?= $enc->getId_encontro() ?>">
                                 Alterar</a> 
                             <a class="btn btn-secondary" 
-                                href="<?= BASEURL ?>/controller/FrequenciaController.php?action=createFrequencias&idEncontro=<?= 
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Frequencia&action=createFrequencias&idEncontro=<?= 
                                     $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">Registrar Frequência</a>
                         </div>
                     </div>
