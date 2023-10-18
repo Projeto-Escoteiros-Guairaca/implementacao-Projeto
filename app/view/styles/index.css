@@ -8,8 +8,8 @@ body {
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
-    overflow: visible;
-   overflow-y: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 :root{
@@ -22,9 +22,10 @@ body {
  .container {
     box-sizing: border-box;
     width: 200vh;
-    margin:  6vh auto 6vh;
+    margin:  200px;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;    
 } 
 .cx_meio{height: 70vh;}
@@ -41,6 +42,7 @@ body {
 .card-sweg:hover{
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 5px #1d7874 solid;
     box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
 }
 /*div que fica encima dos titulos dos cards*/

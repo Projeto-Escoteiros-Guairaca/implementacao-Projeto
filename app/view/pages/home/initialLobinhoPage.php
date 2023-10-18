@@ -35,5 +35,5 @@ require_once(__DIR__."/../../include/menu.php");
     </div>
 
 <?php
-    require_once(__DIR__."/../../include/footer.php");
+    require_once(__DIR__ . "/../../include/footer.php");
 ?>
