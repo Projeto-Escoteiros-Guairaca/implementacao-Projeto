@@ -10,7 +10,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
     <div class='container'>
         <div class="row">
             <div class="col-3">
-                <a id="btn_inserir_atv" href="<?= BASEURL ?>/controller/AtividadeController.php?action=create"><i class="bi bi-plus"></i></a>
+                <a id="btn_inserir_atv" href="<?= BASEURL ?>/controller/AtividadeController.php?action=create"><i id= "icon_inserir_atv"class="bi bi-plus"></i></a>
             </div>
             <div class="col-9">
                 <?php require_once(__DIR__ . "/../../include/msg.php"); ?>

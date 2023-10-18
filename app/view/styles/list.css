@@ -139,3 +139,40 @@ a{
     transition: all 0.3s ease;
     box-shadow: var(--sombras_bordas);
   }
+#bruh{
+    margin-top: 0;
+    padding: auto auto;
+    align-items: center;
+    text-align: center;
+    max-height: fit-content;
+}
+#card-pai{
+    box-sizing: border-box;
+    padding: 5vh auto;
+    margin: 2vh 0 0;
+}
+.card-body{
+    align-items: center;
+    text-align: center;
+    border: var(--bordas);
+    border-radius: 5px;
+}
+.card-body:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombras_bordas);
+    scale: 1.005;
+    border-radius: 5px;
+  }
+  .card-text{
+    padding: auto auto;
+    text-align: center;
+    align-items: center;
+  }
+  /*edita depois laranjola, e o bagulho de escolher o papel NAO ESQUECEEEEEE*/
+  .form-control, .selecPapel{
+    text-align: center;
+    align-items: center;
+    border: var(--bordas);
+    margin: 0 auto 0;
+  }

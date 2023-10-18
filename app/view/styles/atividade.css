@@ -2,7 +2,7 @@
 :root{
   --verde-escuro: #1d7874;
   --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
-  --bordas:1px #679289 solid;
+  --bordas:1px #1d7874 solid;
   --color-p:#667;
 }
 .col-12{
@@ -15,24 +15,28 @@
   box-sizing: border-box;
   border: var(--bordas);
   padding: 0.5vh 0.5vh 0.5vh 0.5vh;
-  height: 6vh;
-  width: 6vh;
   text-align: center;
   align-items: center;
-  margin-top:1vh;
+  margin-top: 20px ;
+  left: -5vw;
   position: absolute;
-  font-size: 35px;
+  border-radius: 5px;
+
 }
-.btn_inserir_atv:hover{
+#btn_inserir_atv:hover{
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: var(--sombras_bordas);
-  margin-top: 5vh;
+  scale: 1.025;
+}
+#icon_inserir_atv{
+  font-size: 25px;
+  color: var(--verde-escuro);
 }
 /*card das atv*/
 .card{border: var(--bordas);}
 
-.card:after {transition: all 0.3s ease;}
+
 
 .card:hover{
   cursor: pointer;
