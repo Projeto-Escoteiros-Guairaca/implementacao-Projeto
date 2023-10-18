@@ -24,15 +24,15 @@
                 </h2>
 
                 <div class="form-group col-6">
-                    <label for="txtNomeAlcateia">Nome:</label>
-                    <input class="form-control" type="text" id="txtNomeAlcateia" name="nomeAlcateia" 
+                    <label style="width: fit-content;" for="txtNomeAlcateia">Nome:</label>
+                    <input style="width: 150px;" class="form-control" type="text" id="txtNomeAlcateia" name="nomeAlcateia" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php
                             echo (isset($dados['alcateia']) ? $dados['alcateia']->getNome(): "");
                         ?>" />
                 </div>
                 <div class="form-group col-6">
-                    <label for="somUsuChef">Chefe:</label>
+                    <label style="width: fit-content;" for="somUsuChef">Chefe:</label>
                     
                     <?php
                         $usuDao = new UsuarioDAO();
@@ -56,7 +56,7 @@
                 
                 <input type="hidden" id="hddId" name="id_alcateia" value="<?= $dados['id_alcateia']; ?>" />
                 
-                <button type="submit" class="btn btn-success">Gravar</button>
+                <button type="submit" class="btn btn-success my-2">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>
                 
             </form>
