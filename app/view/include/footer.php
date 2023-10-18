@@ -1,11 +1,9 @@
 <!-- Footer -->
-<div class="row col-12">
-    <footer>
-        <div class="footer">
-            <p>Todos os direitos reservados @2023</p>
-        </div>
-    </footer>  
-</div> 
+<footer>
+    <div class="footer col-12">
+        <p>Todos os direitos reservados @2023</p>
+    </div>
+</footer>  
 
 <!-- BOOTSTRAP: scripts requeridos pelo framework -->
 <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
