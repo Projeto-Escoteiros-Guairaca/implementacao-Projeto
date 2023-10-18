@@ -40,7 +40,7 @@ class AtividadeController extends Controller {
         $this->handleAction();
     }
 
-    public function list(string $msgErro = "", string $msgSucesso = ""){
+    public function listAtividades(string $msgErro = "", string $msgSucesso = ""){
         $atividades = $this->atividadeDao->list();
         $dados["lista"] = $atividades;
         $this->loadView("pages/atividade/listAllAtividades.php", $dados, $msgErro, $msgSucesso, true);

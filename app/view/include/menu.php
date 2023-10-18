@@ -68,28 +68,28 @@ else {
             }
             elseif($isLobinho == 1) {
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AtividadeController.php'> Minhas Tarefas</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade'> Minhas Tarefas</a>";
                 echo '</li>';
             }
             elseif($isChefe == 1) {
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/UsuarioController.php'>Lobinhos</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario'>Lobinhos</a>";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AlcateiaController.php'> Alcateias</";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Alcateia'> Alcateias</";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/EncontroController.php'> Encontros</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro'> Encontros</a>";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AtividadeController.php'> Atividades</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade'> Atividades</a>";
               echo '</li>';
           }
         ?>
 
         <?php
             if (isset($_SESSION[SESSAO_USUARIO_ID])){
-                echo "<a class='nav-link' href='". BASEURL ."/controller/UsuarioController.php?action=profile&id=". 
+                echo "<a class='nav-link' href='". BASEURL ."/controller/AcessoController.php?controller=Usuarioaction=profile&id=". 
                 $_SESSION[SESSAO_USUARIO_ID] ."'><i class='bi bi-person navbar-icon'></i></a>";
             }
         ?>

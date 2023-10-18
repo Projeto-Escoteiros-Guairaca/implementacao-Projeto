@@ -8,7 +8,7 @@ require_once(__DIR__ . "/Controller.php");
 class AcessoController extends Controller {
 
     const administradorActions = [
-        "list","listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
+        "list","listAtividades", "listTarefas", "listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
         "create", "createTarefaAtiv", "saveEndereco", "saveContato", "saveUsuario",
         "edit", "delete", "save", "update", "findIt", "changeAlcateia", "updateToInativo", "updateToAtivo",
         "findUsuarioById", "changePapel", "findChefeAndPrimo", "listAlcateia", "findAlcateiaById", "filter",
@@ -16,7 +16,7 @@ class AcessoController extends Controller {
         "findUsuariosById",
         "findFrequenciasByIdEncontro", "findEncontroByIdEncontro",
         "updateToFalse", "updateToTrue", "findFrequenciaById", "listByIdAtiv", "createTarefaAtiv",
-        "openTarefa", "openTarefaUsuario"
+        "openTarefa", "openTarefaUsuario", 
     ];
 
     const lobinhoActions = [
