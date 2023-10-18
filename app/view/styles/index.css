@@ -1,27 +1,22 @@
-*{
-    overflow: hidden;
-}
-
 /* Estilos para a página inicial logado*/
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     overflow-x: hidden;
     overflow-y: visible;
+=======
+    overflow-x: visible;
+>>>>>>> 8fdc5c7e678a928f9519e05768bd4bbd9620f2c5
 }
 
-:root{
-    --verde-escuro: #1d7874;
-    --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
-    --bordas:solid #679289 1px;
-    --color-p:#667;
-}
-
- .container {
+.container {
     box-sizing: border-box;
+    /*border: 1px black solid;*/
     width: 200vh;
+<<<<<<< HEAD
     margin:  200px;
     display: flex;
     justify-content: center;
@@ -29,15 +24,25 @@ body {
     text-align: center;    
 } 
 .cx_meio{height: 70vh;}
+=======
+    margin: 6vh auto 6vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 
-/*card total*/
+
+
+.cx_meio {
+    height: 70vh;
+}
+>>>>>>> 8fdc5c7e678a928f9519e05768bd4bbd9620f2c5
+
 .card-sweg {
     min-height: 420px;
-    border: #ffbc42 1px solid;
-    margin-top: 25vh;
-    z-index: 20;
-    opacity: 0.9;
+}
 
+<<<<<<< HEAD
 }
 .card-sweg:hover{
     cursor: pointer;
@@ -46,32 +51,45 @@ body {
     box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
 }
 /*div que fica encima dos titulos dos cards*/
+=======
+>>>>>>> 8fdc5c7e678a928f9519e05768bd4bbd9620f2c5
 .card-sweg-details {
     box-sizing: border-box;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
-/*Titulos dos cards*/
-.card-title{
-   font-size: 38px;
+
+.card-sweg-details h5 {
+   color: #000;
+   font-size: 30px;
 }
-/*icons dos cards*/
-.incons_redirecionais{
-    font-size: 18vh;    
+
+.card-title {
+    font-size: 38px;
+}
+
+.p_redirecionais {
+    text-align: center;
+    font-size: 5vh;
     color: black;
-    opacity: 1.0;
+    margin: 5px auto 10px;
+}
+
+.incons_redirecionais {
+    font-size: 18vh;
+    color: black;
     max-width: 21vw;
     max-height: 18vh;
 }
-/*Links sobre os cards*/
-.botoes_redirecionais{
+
+.botoes_redirecionais {
     width: 45vh;
     height: 60vh;
     box-sizing: border-box;
-    border: var(--bordas);
+    border: 1px black solid;
     align-items: center;
     border-radius: 15px;
     display: inline;
@@ -83,59 +101,172 @@ body {
     margin-top: 42vh;
 }
 
-View Compiled
+.btn:link,
+.btn:visited {
+    /* text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px; 
+    display: inline-block;*/
+    border-radius: 100px;
+    /* transition: all .2s;
+    position: absolute; */
+}
 
-h1 {
-    color: var(--color-p);
+.btn:hover {
+    /* transform: translateY(-3px); */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #f7f7f7;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+View Compiled h1 {
+    color: #333;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     margin: 60px 0 60px 0;
 }
-.modo-escuro h1, .modo-escuro p {
+
+.modo-escuro h1,
+.modo-escuro p {
     color: #fff;
-}   
+}
+
 img {
     max-width: 100%;
     display: block;
-    margin:0 auto;
+    margin: 0 auto;
 }
+
 .img-wrapper {
     width: 100%;
     height: 500px;
     padding: 5px;
     text-align: center center;
 }
+
 .img-caption {
     padding: 5px;
     font-size: 12.5px;
     text-align: center;
 }
+
+p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 20px;
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+}
+
 .container #cabecalho {
     background-color: var(--fountain-blue) !important;
 }
 
+
+
+/*Tablets*/
+/*@media screen and (max-width: 768px) {
+    body{
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/*Celulares*/
+/*@media screen and (max-width: 600px){
+    body{
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+}*/
+
+/* NOVA HOME */
+
+
 .bg-sweg {
-    background-color: --verde-escuro;
+    background-color: #1d7874;
 }
 
 .bg-sweg a {
-    color: #fff; 
+    color: #fff;
 }
-.navbar-icon{
+
+
+
+.navbar-icon {
     border: solid 1px;
     border-radius: 50%;
     padding: 10px;
 }
-.footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 95vw;
-    height: 22vh;
-    background-color: #1d7874;
-    color: #ffffff;
-    margin-top: 15vh;
-    position: relative;
-    margin-left: -15px;
+
+
+
+/* RODAPÉ AO FINAL */
+
+footer {
+    max-width: 100vw    ;
 }
- 
+body {
+    /* necessáio  */
+    min-height: 100vh;      
+    display: flex;
+    flex-direction: column;
+}
+
+.container-main {
+    flex-grow: 1;
+}
+
+.card-body  p {
+    display: block;
+    width: 100%;
+}
