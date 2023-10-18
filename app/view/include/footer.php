@@ -1,13 +1,9 @@
-<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/footer.css">
-
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted" style="-top: 10px;">
-    <!-- Copyright -->
-    <div class="footer">
-        <span><p>Todos os direitos reservados @2023</p></span>
+<footer>
+    <div class="footer col-12">
+        <p>Todos os direitos reservados @2023</p>
     </div>
-
-</footer>
+</footer>  
 
 <!-- BOOTSTRAP: scripts requeridos pelo framework -->
 <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
