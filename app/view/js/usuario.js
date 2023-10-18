@@ -9,7 +9,7 @@ function findTheAlcateias(id = 0, action, idUsu) {
     UsuarioId= idUsu;
     if(AlcateiasAlreadyUsed.length == 0) {   
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateias=true", true);  
+        xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateias=true" + "&isAjax=true", true);  
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var retorno = xhttp.responseText;
@@ -104,7 +104,7 @@ function sendAlcateiaChange() {
     }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia' + chefeChangeAlcateia, true);
+    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia' + chefeChangeAlcateia +'&isAjax=true', true);
     
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
@@ -151,7 +151,7 @@ if(alcateiaId == idAlcateiaUsuario) {
 }
 
 var xhttp = new XMLHttpRequest();
-xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia=' + chefeChangeAlcateia, true);
+xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia=' + chefeChangeAlcateia + '&isAjax=true', true);
 
 xhttp.onreadystatechange = function() {
     if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
@@ -213,7 +213,7 @@ function sendChange(toChange, idUsu) {
         papel = select.value;
     }
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=" + action  + "&id=" + idUsu + "&newPapel=" + papel, true)
+    xhttp.open("GET", "UsuarioController.php?action=" + action  + "&id=" + idUsu + "&newPapel=" + papel + '&isAjax=true', true)
     
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {

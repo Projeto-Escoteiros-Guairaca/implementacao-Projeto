@@ -42,7 +42,7 @@ function usuarios(id, BASEURL) {
             a = document.createElement("a");
             a.className = "btn btn-success";
             a.innerHTML = "lista de usuários";
-            a.href= BASEURL+"/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia="+idSelectedAlcateia;
+            a.href= BASEURL+"/controller/AcessoController.php?controller=Usuario&action=listUsuariosByAlcateia&idAlcateia="+idSelectedAlcateia;
             AlcateiasAlreadyUsed.push(id);
 
             modalBackground.addEventListener("click", () => {

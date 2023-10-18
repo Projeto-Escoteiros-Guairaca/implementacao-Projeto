@@ -5,7 +5,7 @@ idUsuario = idUsu;
     buscar = document.getElementById("buscar");
     input = buscar.value;
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=findIt&word=" + input, true);
+    xhttp.open("GET", "UsuarioController.php?action=findIt&word=" + input + "&isAjax=true", true);
 
     //* verifica se está preparado ou não. Quando está preparado, recebe o retorno em JSON e o transforma em um array.
     xhttp.onreadystatechange = function() {
