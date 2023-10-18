@@ -3,7 +3,7 @@
     require_once(__DIR__ . "/../../include/menu.php");
     require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
     require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
-    require_once(__DIR__ . "/../../../controller/AcessoController.php");
+    require_once(__DIR__ . "/../../../controller/LinkController.php");
 ?>
 
 <div class="container">
@@ -20,7 +20,7 @@
                 <?php endif; ?>
             </h2>
 
-            <form id="formEncontro" method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save">
+            <form id="formEncontro" method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=save">
 
                 <div class="form-group col-6">
                     <label for="dataEncontro">Data do Encontro:</label>
@@ -55,7 +55,7 @@
                 
             </form>
             <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/EncontroController.php">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=list">Voltar</a>
         </div>
 
         <div class="col-9">

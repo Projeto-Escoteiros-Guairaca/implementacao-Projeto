@@ -20,7 +20,7 @@
                 <div id="status" class="caixas_texto">
                  
                     <h5>Veja o estado da entrega dos usuários: </h5> 
-                    <a class = "btn_lista_usu" href="<?=BASEURL?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$_SESSION[SESSAO_USUARIO_IDALCATEIA]?>&tarefa=1"> lista de usuários</a>
+                    <a class = "btn_lista_usu" href="<?=BASEURL?>/controller/AcessoController.php?controller=Usuario&action=listUsuariosByAlcateia&idAlcateia=<?=$_SESSION[SESSAO_USUARIO_IDALCATEIA]?>&tarefa=1"> lista de usuários</a>
                 
                 </div>
             </div>

@@ -14,7 +14,6 @@ class AtividadeController extends Controller {
 
     function __construct() {
         $administradorChefeActions = ["list", "create", "edit", "delete", "save", "update"];
-        $lobinhoActions = ["list"];
         $papelNecessario = array();
 
         if(isset($_GET['action'])) {
@@ -40,7 +39,7 @@ class AtividadeController extends Controller {
         $this->atividadeDao = new AtividadeDAO();
         $this->atividadeService = new AtividadeService();
 
-        $this->setActionDefault("list", true);
+        $this->setActionDefault("listAtividades", true);
         $this->handleAction();
     }
 

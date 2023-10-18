@@ -1,6 +1,6 @@
 <?php
-    require_once(__DIR__ . "/../../include/header.php");
-    require_once(__DIR__ . "/../../include/menu.php");
+    require_once(__DIR__ . "/../../../include/header.php");
+    require_once(__DIR__ . "/../../../include/menu.php");
 ?>
 
 </style>
@@ -64,5 +64,5 @@ textarea {
     </section>
 <script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
 <?php
-    require_once(__DIR__ . "/../../include/footer.php");
+    require_once(__DIR__ . "/../../../include/footer.php");
 ?>

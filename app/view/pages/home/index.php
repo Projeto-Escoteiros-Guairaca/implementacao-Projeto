@@ -3,7 +3,7 @@
 #Objetivo: interface com a página inicial do sistema
 
 require_once(__DIR__ . "/../../include/header.php");
-require_once(__DIR__ . "/../../../controller/AcessoController.php");
+require_once(__DIR__ . "/../../../controller/LinkController.php");
 require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 
 session_status();

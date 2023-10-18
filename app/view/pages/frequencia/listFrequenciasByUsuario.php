@@ -55,7 +55,7 @@
                         <?php endif; ?>
                     </tbody>
                 </table>
-                <a class="btn btn-success" href="<?= BASEURL ?>/controller/UsuarioController.php?action=listUsuariosByAlcateia&idAlcateia=<?=$dados['usuario']->getIdAlcateia(); ?>">Voltar</a>
+                <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Usuario&action=listUsuariosByAlcateia&idAlcateia=<?=$dados['usuario']->getIdAlcateia(); ?>">Voltar</a>
             </div>
         </div>
 </div>

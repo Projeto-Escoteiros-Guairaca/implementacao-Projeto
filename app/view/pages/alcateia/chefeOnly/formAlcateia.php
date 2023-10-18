@@ -5,7 +5,7 @@
     require_once(__DIR__ . "/../../../../model/Usuario.php");
     require_once(__DIR__ . "/../../usuario/selectUsuChefe.php");
     require_once(__DIR__ . "/../../usuario/selectUsuPrimo.php");
-    require_once(__DIR__ . "/../../../../controller/AcessoController.php");
+    require_once(__DIR__ . "/../../../../controller/LinkController.php");
     require_once(__DIR__ . "/../../../../controller/AlcateiaController.php");
 ?>
 
@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-6">
-            <form id="formAlcateia" method="POST" action="<?= BASEURL ?>/controller/AlcateiaController.php?action=save">
+            <form id="formAlcateia" method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=save">
                 
                 <h2 class="text-center">
                     <?php if(isset($dados["id_alcateia"])): ?>
@@ -61,7 +61,7 @@
                 
             </form>
             <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AlcateiaController.php">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=listAlcateia">Voltar</a>
         </div>
        
 
