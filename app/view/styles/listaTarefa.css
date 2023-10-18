@@ -1,3 +1,10 @@
+:root{
+    --verde-escuro: #1d7874;
+    --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
+    --bordas:solid #679289 1px;
+    --borda_dourada: solid 1px #ffbc42;
+    --color-p:#667;
+}
 .col-12{
     display: flex;
     flex-wrap: wrap;

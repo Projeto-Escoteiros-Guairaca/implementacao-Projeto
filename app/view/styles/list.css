@@ -8,6 +8,7 @@ body {
     --verde-escuro: #1d7874;
     --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
     --bordas:solid #679289 1px;
+    --borda_dourada: solid 1px #ffbc42;
     --color-p:#667;
 }
 /*tela traseira do pop up mudar alcateia*/
@@ -21,6 +22,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
+   
 }
 /*pop up mudar alcateia*/
 .modal {
@@ -28,15 +30,16 @@ body {
     height: 350px;
     align-items: center;
     text-align: center;
-    position: absolute;
+    /* position: absolute; */
     left: 35vw;
     top: 25vh;
     background-color: var(--verde-escuro);
-    border: 1px solid #73d2de;
+    border: 1px solid #ffbc42;
     color: #ffbc42;
     display: block;
     z-index: 11;
     box-shadow: var(--sombras_bordas);
+    position: fixed;
 }
 .formPapel{
     align-items: center;
@@ -49,15 +52,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-   
+    z-index: 9;
+    margin-top: 20vh;
 }
 .footer{
     top:25vh
 }
 .card{
-    border: 1px solid #679289;
-}
+    border: var(--bordas);
 
+}
+/* Aqui comeca o css do arquivo listTarefasUsuario.php*/
 .nome_usuario{
     border: #1d7874 1px solid;
     padding: 2vh;
@@ -71,10 +76,14 @@ body {
     border-collapse: collapse;
     box-sizing: border-box;
     width: 120vh;
-    margin: 5vh auto;
+    margin: 0vh auto;
     text-indent: initial;
     border: #1d7874 1px solid;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+}
+#pinto{
+    max-height:20vh;
+    background-color: #414141;
 }
 a{
     text-decoration: none;

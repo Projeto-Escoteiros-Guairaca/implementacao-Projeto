@@ -23,15 +23,8 @@ $isChefe = $linkCont->usuarioPossuiPapel([UsuarioPapel::CHEFE]);
 $isAdministrador = $linkCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 $isLobinho = $linkCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
 
-
 if($isChefe == 1) {
-  if(isset($_SESSION[SESSAO_USUARIO_IDALCATEIA])) {
-    $_SESSION["chefeAlcateia"] = $_SESSION[SESSAO_USUARIO_IDALCATEIA];
-  }
-  else {
-    $_SESSION["chefeAlcateia"] = "SemAlcateia";
-  }
-  
+  $_SESSION["chefeAlcateia"] = $_SESSION[SESSAO_USUARIO_IDALCATEIA];
 }
 else {
   $_SESSION["chefeAlcateia"] = "";
@@ -41,7 +34,7 @@ else {
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/menu.css" />
 
-<div class="container-fluid px-0">
+<div class="container-fluid fixed-top px-0">
 
 
 <div class="logo" style="padding: 5px; background: #1d7874">

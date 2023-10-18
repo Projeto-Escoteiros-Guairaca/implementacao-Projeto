@@ -1,10 +1,10 @@
 /* Estilos para a página inicial logado*/
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    overflow-x: visible;
+.project-header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
 }
 
 .btn:link,
@@ -111,6 +111,7 @@ View Compiled
 
 .bg-sweg {
     background-color: #1d7874;
+   
 }
 
 .bg-sweg a {
@@ -125,5 +126,5 @@ View Compiled
     padding: 10px;
 }
 #navbar-principal{
- 
+
 }
