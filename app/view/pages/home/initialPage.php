@@ -17,7 +17,7 @@ require_once(__DIR__."/../../include/menu.php");
   <div class="row">
     
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg"  href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=list" class="btn btn-primary">
+      <a class="card text-center card-sweg"  href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades" class="btn btn-primary">
         <div class="card-body btn">
             <p class="card-text text-center">
               <i class="bi bi-journal-check incons_redirecionais"></i>

@@ -68,7 +68,7 @@ else {
             }
             elseif($isLobinho == 1) {
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade'> Minhas Tarefas</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade&action=listAtividades'> Minhas Tarefas</a>";
                 echo '</li>';
             }
             elseif($isChefe == 1) {

@@ -16,7 +16,7 @@ class AcessoController extends Controller {
         "findUsuariosById",
         "findFrequenciasByIdEncontro", "findEncontroByIdEncontro",
         "updateToFalse", "updateToTrue", "findFrequenciaById", "listByIdAtiv", "createTarefaAtiv",
-        "openTarefa", "openTarefaUsuario", 
+        "openTarefa", "openTarefaUsuario"
     ];
 
     const lobinhoActions = [

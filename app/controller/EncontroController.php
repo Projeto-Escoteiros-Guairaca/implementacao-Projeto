@@ -13,15 +13,13 @@ class EncontroController extends Controller {
     private EncontroService $encontroService;
 
     public function __construct() {
+        if($_SESSION['callAccessToken'] == true) {
+            $_SESSION['controller'] = "Encontro";
 
-        $papelNecessario = array();
-        $papelNecessario[0] = "ADMINISTRADOR";
-        $accessVerified = $this->verifyAccess($papelNecessario);
-        
-        if(! $accessVerified) {
+            $this->loadController("Acesso");
             return;
         }
-
+        $_SESSION['callAccessToken'] = true;
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
         $this->setActionDefault("list", true);
