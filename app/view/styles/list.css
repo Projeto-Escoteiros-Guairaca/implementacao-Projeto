@@ -160,6 +160,9 @@ a{
 .card-body:hover{
     cursor: pointer;
     transition: all 0.3s ease;
+    border: #1d7874 solid 5px;
+    scale: ;
+    /*AAAAAAAAA ve depois */
     box-shadow: var(--sombras_bordas);
     scale: 1.005;
     border-radius: 5px;
@@ -169,7 +172,6 @@ a{
     text-align: center;
     align-items: center;
   }
-  /*edita depois laranjola, e o bagulho de escolher o papel NAO ESQUECEEEEEE*/
   .form-control, .selecPapel{
     text-align: center;
     align-items: center;
