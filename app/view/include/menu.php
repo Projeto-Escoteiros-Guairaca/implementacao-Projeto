@@ -34,7 +34,7 @@ else {
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/menu.css" />
 
-<div class="container-fluid fixed-top px-0">
+<div class="container-fluid px-0">
 
 
 <div class="logo" style="padding: 5px; background: #1d7874">
@@ -54,13 +54,13 @@ else {
     <ul class="navbar-nav">
         <?php if($isAdministrador == 1){
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=list'>Lobinhos</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'>Lobinhos</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Alcateia&action=listAlcateia'> Alcateias</";
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=list'> Encontros</a>";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=listEncontros'> Encontros</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade&action=listAtividades'> Atividades</a>";
@@ -89,7 +89,7 @@ else {
 
         <?php
             if (isset($_SESSION[SESSAO_USUARIO_ID])){
-                echo "<a class='nav-link' href='". BASEURL ."/controller/AcessoController.php?controller=Usuarioaction=profile&id=". 
+                echo "<a class='nav-link' href='". BASEURL ."/controller/AcessoController.php?controller=Usuario&action=profile&id=". 
                 $_SESSION[SESSAO_USUARIO_ID] ."'><i class='bi bi-person navbar-icon'></i></a>";
             }
         ?>

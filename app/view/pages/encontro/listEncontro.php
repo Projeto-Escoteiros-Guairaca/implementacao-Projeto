@@ -38,7 +38,7 @@
                 </div>
 
                 <button class="btn btn-alert" type="submit"> Filtrar </button>
-                <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=list" class="btn btn-alert"> Limpar filtro </a>
+                <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros" class="btn btn-alert"> Limpar filtro </a>
 
             </form>
 

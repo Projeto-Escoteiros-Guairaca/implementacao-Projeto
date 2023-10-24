@@ -31,7 +31,7 @@ require_once(__DIR__."/../../include/menu.php");
 
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href=" <?=BASEURL ?>/controller/AcessoController.php?controller=Usuario&action=list">
+      <a class="card text-center card-sweg" href=" <?=BASEURL ?>/controller/AcessoController.php?controller=Usuario&action=listUsuarios">
        <div class="card-body btn">
           <p class="card-text text-center">
             <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
@@ -59,7 +59,7 @@ require_once(__DIR__."/../../include/menu.php");
 
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=list">
+      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros">
         <div class="card-body btn">
           <p class="card-text text-center">
              <i class="bi bi-people incons_redirecionais"></i>

@@ -48,36 +48,6 @@ class UsuarioController extends Controller
             "listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
             "createTarefaAtiv", "findIt", "changeAlcateia", "findUsuarioById"
         ];
-       
-
-        // $isRegistering = false;
-        // $papelNecessario = array();
-        // $accessVerified = true;
-
-        // if(isset($_SESSION['usuarioLobinho']) and ! isset($_GET['action'])) {
-        //     $_GET['action'] = $_SESSION['usuarioLobinho'];
-        // }
-
-        // if (isset($_GET['action'])) {
-        //     if ($_GET['action'] == "create" or $_GET['action'] == "save") {
-        //         $isRegistering = true;
-        //     }
-        //     else
-        //     {  
-        //         if(in_array($_GET['action'], $ChefeActions)) {
-        //             $papelNecessario[] = "CHEFE";
-        //         }   
-        //     }
-
-        // } 
-        // else {
-        //     $papelNecessario[0] = "ADMINISTRADOR";
-        //     $accessVerified = $this->verifyAccess($papelNecessario);
-        // }
-
-        // if (!$accessVerified and $isRegistering == false) {
-        //     return;
-        // }
 
         $this->frequenciaDao = new frequenciaDAO();
         $this->atividadeDao = new AtividadeDAO();
@@ -110,12 +80,12 @@ class UsuarioController extends Controller
             $dados["usuario"] = $usuario;
             $this->loadView("pages/usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
         } else {
-            $this->list("Usuário não encontrado.");
+            $this->listUsuarios("Usuário não encontrado.");
         }
     }
 
     /* Método para chamar a view com a listagem dos Usuarios */
-    protected function list(string $msgErro = "", string $msgSucesso = "") {
+    protected function listUsuarios(string $msgErro = "", string $msgSucesso = "") {
 
         $usuarios = $this->usuarioDao->list();
         $alcateias = $this->alcateiaDao->list();
@@ -197,7 +167,7 @@ class UsuarioController extends Controller
 
             $this->loadView("pages/usuario/chefeOnly/form.php", $dados, "", "", true);
         } else {
-            $this->list("Usuário não enconpages/ado.");
+            $this->listUsuarios("Usuário não enconpages/ado.");
         }
     }
 

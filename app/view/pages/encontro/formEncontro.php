@@ -55,7 +55,7 @@
                 
             </form>
             <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=list">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros">Voltar</a>
         </div>
 
         <div class="col-9">

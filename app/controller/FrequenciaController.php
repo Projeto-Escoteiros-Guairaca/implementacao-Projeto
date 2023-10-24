@@ -43,7 +43,7 @@ class FrequenciaController extends Controller {
         $frequencias = array();
         $frequenciasTest = $this->findFrequenciasByIdEncontro();
         if($frequenciasTest) {
-            $this->list();
+            $this->listFrequencias();
         }
         else {
             $usuarios = $this->findUsuariosByIdAlcateia();
@@ -56,11 +56,11 @@ class FrequenciaController extends Controller {
                 $i++;
             }
             $this->frequenciaDao->create($frequencias);
-            $this->list();
+            $this->listFrequencias();
         }
     }
 
-    public function list(string $msgErro = "", string $msgSucesso = "") {
+    public function listFrequencias(string $msgErro = "", string $msgSucesso = "") {
         $encontro = $this->findEncontroByIdEncontro();
         $frequencias = $this->findFrequenciasByIdEncontro();
         $usuarios = $this->findUsuariosById($frequencias);
@@ -129,18 +129,18 @@ class FrequenciaController extends Controller {
         $frequencia = $this->findFrequenciaById();
         if($frequencia){
             $this->frequenciaDao->updateToFalse($frequencia->getId_frequencia());
-            $this->list("","Frequencia alterada com sucesso.");
+            $this->listFrequencias("","Frequencia alterada com sucesso.");
         } else {
-            $this->list("","Frequencia não encontrada.");
+            $this->listFrequencias("","Frequencia não encontrada.");
         }
     }
     protected function updateToTrue(){
         $frequencia = $this->findFrequenciaById();
         if($frequencia){
             $this->frequenciaDao->updateToTrue($frequencia->getId_frequencia());
-            $this->list("","Frequencia alterada com sucesso.");
+            $this->listFrequencias("","Frequencia alterada com sucesso.");
         } else {
-            $this->list("Frequencia não encontrada.");
+            $this->listFrequencias("Frequencia não encontrada.");
         }
     }
 
