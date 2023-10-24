@@ -53,4 +53,7 @@ function carregar_modo(){
   }
 }
 
-
+window.addEventListener("scroll",function(){
+  let header = document.querySelector('#navbar-principal')
+  header.classList.toggle('rolagem',window.scrollY > 80)
+})

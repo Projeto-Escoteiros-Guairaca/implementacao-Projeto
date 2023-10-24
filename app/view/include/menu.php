@@ -36,21 +36,17 @@ else {
 
 <div class="container-fluid px-0">
 
-
-<div class="logo" style="padding: 5px; background: #1d7874">
-  <a href="<?=BASEURL?>/controller/HomeController.php">
-    <img src="<?= BASEURL ?>/view/pages/home/images/lobo-amarelo.png" alt="" height="100">
-  </a>
-</div>
-
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-sweg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-principal" aria-controls="navbar-principal" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-md-center" id="navbar-principal">
+    <div id="navbar-principal" class="collapse navbar-collapse justify-content-md-center">
+              <div class="logo" style="background: #1d7874">
+              <a href="<?=BASEURL?>/controller/HomeController.php">
+                <img src="<?= BASEURL ?>/view/pages/home/images/lobo-amarelo.png" alt="" height="100">
+              </a>
+    </div>
     <ul class="navbar-nav">
         <?php if($isAdministrador == 1){
                 echo '<li class="nav-item">';
@@ -123,7 +119,7 @@ else {
     </ul>
   </div>
 </nav> 
-
+<script src ="main.js"> </script>
 
 </div>
     

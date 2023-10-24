@@ -1,11 +1,5 @@
 /* Estilos para a página inicial logado*/
-.project-header{
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 10;
-}
+
 
 .btn:link,
 .btn:visited {
@@ -111,7 +105,6 @@ View Compiled
 
 .bg-sweg {
     background-color: #1d7874;
-   
 }
 
 .bg-sweg a {
@@ -119,12 +112,39 @@ View Compiled
 }
 
 
-
+.navbar{
+    height: 110px;
+}
 .navbar-icon{
     border: solid 1px;
     border-radius: 50%;
     padding: 10px;
 }
 #navbar-principal{
+    width: 100vh;
+}
 
+#navbar-principal.rolagem{
+    background-color:#1d7874;
+    left: 0;
+    height: 70px;
+    top:0;
+    position:fixed;
+    width: 100vw;
+    animation: moveToRight 0.5s ease-in-out;
+    z-index: 30;
+  }
+
+  @keyframes moveToRight {
+    0% {
+      transform: translateY(-5vh);
+    }
+    100% {
+      transform: translateY(0vh);
+    }
+}
+.rolagem img{
+    height: 60px;
+    width: 45px;
+    
 }
