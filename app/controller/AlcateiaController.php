@@ -18,7 +18,7 @@ class AlcateiaController extends Controller{
 
         if(! isset($_GET['isAjax'])) {
             if($_SESSION['callAccessToken'] == true) {
-                $_SESSION['controller'] = "Usuario";
+                $_SESSION['controller'] = "Alcateia";
     
                 $this->loadController("Acesso");
                 return;

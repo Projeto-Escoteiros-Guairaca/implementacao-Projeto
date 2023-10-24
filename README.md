@@ -19,7 +19,3 @@ error_reporting(E_ALL);
 }
 
 USAR ISSO NO TOPO DA PÁGINA PARA MOSTRAR ERROS
-Implementar depois 
-
-
-pagina inicial do lobinho e do chefe; iniciar a atividade

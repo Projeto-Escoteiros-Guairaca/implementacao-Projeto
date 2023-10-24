@@ -13,26 +13,15 @@ class AtividadeController extends Controller {
 
 
     function __construct() {
-        $administradorChefeActions = ["list", "create", "edit", "delete", "save", "update"];
-        $papelNecessario = array();
 
-        if(isset($_GET['action'])) {
-            if(in_array($_GET['action'], $administradorChefeActions)) {
-                $papelNecessario[] = "ADMINISTRADOR";
-                $papelNecessario[] = "CHEFE";
-            }
-        }
-        else {
-            $papelNecessario[] = "ADMINISTRADOR";
-            $papelNecessario[] = "LOBINHO";
-            $papelNecessario[] = "CHEFE";
-       }
+        if($_SESSION['callAccessToken'] == true) {
+            $_SESSION['controller'] = "Atividade";
 
-        $accessVerified = $this->verifyAccess($papelNecessario);        
-        if(! $accessVerified) {
+            $this->loadController("Acesso");
             return;
         }
-        
+        $_SESSION['callAccessToken'] = true;
+
         $this->atividadeDao = new AtividadeDAO();
         $this->atividadeService = new AtividadeService();
 
@@ -73,7 +62,7 @@ class AtividadeController extends Controller {
                 }
                 // - Enviar mensagem de sucesso
                 $msg = "Atividade salva com sucesso.";
-                $this->list("", $msg);
+                $this->listAtividades("", $msg);
                 
                 exit;
             } catch (PDOException $e) {
@@ -135,7 +124,7 @@ class AtividadeController extends Controller {
             $dados["atividade"] = $atividade;        
             $this->loadView("pages/atividade/formAtividade.php", $dados, "", "", true);
         } else {
-            $this->list("Atividade não encontrada.");
+            $this->listAtividades("Atividade não encontrada.");
         }
     }
 
@@ -157,9 +146,9 @@ class AtividadeController extends Controller {
             $this->atividadeDao->deleteById($atividade->getIdAtividade());
             $this->atividadeDao->deleteImage($id = 0, $atividade);
             
-            $this->list("","Atividade excluída com sucesso.");
+            $this->listAtividades("","Atividade excluída com sucesso.");
         } else {
-            $this->list("Atividade não encontrada.");
+            $this->listAtividades("Atividade não encontrada.");
         }
     }
 }

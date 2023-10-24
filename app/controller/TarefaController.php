@@ -16,8 +16,14 @@ class TarefaController extends Controller {
     private $tarefaService;
     
     function __construct(){
-       
-       
+        if($_SESSION['callAccessToken'] == true) {
+            $_SESSION['controller'] = "Tarefa";
+
+            $this->loadController("Acesso");
+            return;
+        }
+
+        $_SESSION['callAccessToken'] = true;
         $this->atividadeDao = new AtividadeDAO();
         $this->tarefaDao = new TarefaDAO();
         $this->tarefaService = new TarefaService();
@@ -73,7 +79,7 @@ class TarefaController extends Controller {
                 // - Enviar mensagem de sucesso
                 $msg = "tarefa salva com sucesso.";
                 
-                $this->list("", $msg);
+                $this->listTarefas("", $msg);
                 exit;
             } 
             catch (PDOException $e) {
@@ -89,7 +95,7 @@ class TarefaController extends Controller {
 
 
         $msgsErro = implode("<br>", $erros);
-        $this->list("", "Tarefa salva com sucesso", true);
+        $this->listTarefas("", "Tarefa salva com sucesso", true);
     }
 
     public function saveTarefa() {

@@ -56,7 +56,7 @@
                         <?php endif; ?>
                     </tbody>
                 </table>
-                <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=list">Voltar</a>
+                <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros">Voltar</a>
             </div>
         </div>
 </div>

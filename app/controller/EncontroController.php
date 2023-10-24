@@ -13,22 +13,21 @@ class EncontroController extends Controller {
     private EncontroService $encontroService;
 
     public function __construct() {
+        if($_SESSION['callAccessToken'] == true) {
+            $_SESSION['controller'] = "Encontro";
 
-        $papelNecessario = array();
-        $papelNecessario[0] = "ADMINISTRADOR";
-        $accessVerified = $this->verifyAccess($papelNecessario);
-        
-        if(! $accessVerified) {
+            $this->loadController("Acesso");
             return;
         }
-
+        $_SESSION['callAccessToken'] = true;
+        
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
-        $this->setActionDefault("list", true);
+        $this->setActionDefault("listEncontros", true);
         $this->handleAction();
     }
 
-    public function list(string $msgErro = "", string $msgSucesso = ""){
+    public function listEncontros(string $msgErro = "", string $msgSucesso = ""){
         
         $encontros = [];
         $encontros = $this->encontroDao->list();
@@ -93,7 +92,7 @@ class EncontroController extends Controller {
             $dados["encontro"] = $encontro;      
             $this->loadView("pages/encontro/formEncontro.php", $dados, "", "", true);
         } else {
-            $this->list("Usuário não encontrado.");
+            $this->listEncontros("Usuário não encontrado.");
         }
     }
 
@@ -140,7 +139,7 @@ class EncontroController extends Controller {
                 // - Enviar mensagem de sucesso
                 $msg = "encontro salva com sucesso.";
                 
-                $this->list("", $msg);
+                $this->listEncontros("", $msg);
                 exit;
             } catch (PDOException $e) {
                 $erros = ["[Erro ao salvar a encontro na base de dados.]"];
