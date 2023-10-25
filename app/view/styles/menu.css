@@ -1,5 +1,7 @@
 /* Estilos para a página inicial logado*/
-
+body{
+    max-height: 100vh;
+}
 
 .btn:link,
 .btn:visited {
@@ -122,6 +124,7 @@ View Compiled
 }
 #navbar-principal{
     width: 100vh;
+    
 }
 
 #navbar-principal.rolagem{

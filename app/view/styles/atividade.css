@@ -192,3 +192,6 @@
   box-shadow: var(--sombras_bordas);
   color: #071e22;
 }
+.container{
+  margin-top: 5vh;
+}

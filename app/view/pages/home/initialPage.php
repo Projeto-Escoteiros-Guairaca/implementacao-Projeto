@@ -34,7 +34,7 @@ require_once(__DIR__."/../../include/menu.php");
       <a class="card text-center card-sweg" href=" <?=BASEURL ?>/controller/AcessoController.php?controller=Usuario&action=listUsuarios">
        <div class="card-body btn">
           <p class="card-text text-center">
-            <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/wolf-pack-battalion.svg" alt="">
+            <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/lobo.png" alt="">
           </p>
           <div class="card-sweg-details ">
             <h5 class="card-title">Lobinhos</h5>

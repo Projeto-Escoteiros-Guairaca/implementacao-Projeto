@@ -22,8 +22,8 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-   
 }
+
 /*pop up mudar alcateia*/
 .modal {
     width: 450px;
@@ -53,15 +53,8 @@ body {
     flex-wrap: wrap;
     position: relative;
     z-index: 9;
-    margin-top: 20vh;
 }
-.footer{
-    top:25vh
-}
-.card{
-    border: var(--bordas);
-
-}
+.card{border: var(--bordas);}
 /* Aqui comeca o css do arquivo listTarefasUsuario.php*/
 .nome_usuario{
     border: #1d7874 1px solid;

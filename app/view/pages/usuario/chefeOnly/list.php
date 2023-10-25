@@ -15,15 +15,15 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
     <h3 class='text-center'>Usuários</h3>
 
     <div class='container'>
-        <div class="row">
-            <div class="col-9">
-                <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
-            </div>
-        </div>
-        <div>
-            <label> Buscar usuário</label>
-            <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?= BASEURL ?>', <?= $_SESSION[SESSAO_USUARIO_ID] ?>)">
-        </div>
+            <div class="row">
+                <div class="col-9">
+                    <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
+                </div>
+             </div>
+             <div>
+                 <label> Buscar usuário</label>
+                 <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?= BASEURL ?>', <?= $_SESSION[SESSAO_USUARIO_ID] ?>)">
+             </div>
         <div id="bruh" class="row" >
             <div class="col-12" id="card-pai">
                 <?php if (count($dados["lista"]) == 0) : ?>
@@ -75,16 +75,12 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
-            </div>
-          
-            
+            </div>     
         </div>
     </div>
-
-<br><br><br><br><br>
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
-    <script src="<?= BASEURL ?>/view/js/findUsuario.js"> </script> 
-
-<?php  
-require_once(__DIR__ . "/../../../include/footer.php");
-?>
+    <script src="<?= BASEURL ?>/view/js/findUsuario.js"> </script>
+    
+    <?php  
+    require_once(__DIR__ . "/../../../include/footer.php");
+    ?> 
