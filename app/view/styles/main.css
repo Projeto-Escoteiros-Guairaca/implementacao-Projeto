@@ -5,6 +5,7 @@
 body{
     overflow-x: hidden;
     min-height: 100vh;
+    position: relative;
 }
 form{
     margin-top: 20px;
@@ -72,5 +73,5 @@ form{
     position: relative;
     z-index: 1;
     margin-top:2vh;
-   
+    height: fit-content;
 }

@@ -11,7 +11,6 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
 ?>
 
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
-
     <h3 class='text-center'>Usuários</h3>
 
     <div class='container'>

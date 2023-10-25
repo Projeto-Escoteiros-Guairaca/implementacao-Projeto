@@ -6,9 +6,9 @@
     height: 13vh;
     background-color: #1d7874;
     color: #ffffff;
-    margin-top: 5vh;
-    position: relative;
-    
+    margin-top: 6.6vh;
+    position: fixed;
+    bottom: 0;
 }
 .footer p{
     color: #ffffff;
