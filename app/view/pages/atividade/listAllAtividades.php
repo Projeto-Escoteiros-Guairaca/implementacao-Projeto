@@ -13,7 +13,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
         if($isLobinho == 2) {
                     echo 
                         '<div class="col-3">
-                         <a id="btn_inserir_atv" href="<?= BASEURL ?>/controller/AcessoController?controller=Atividade&action=create"><i id= "icon_inserir_atv"class="bi bi-plus"></i></a>
+                         <a id="btn_inserir_atv" href="'. BASEURL .'/controller/AcessoController?controller=Atividade&action=create"><i id= "icon_inserir_atv"class="bi bi-plus"></i></a>
                          </div> 
                          ';
                     }
@@ -45,7 +45,7 @@ require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
                             <?php 
                                 if($isLobinho == 2) {
                                     echo 
-                                        '<a class= "btn_cards_atv" style="text-decoration: none" href="<?= BASEURL?>/controller/AcessoController.php?controller=Tarefa&action=createTarefaAtiv&idAtividade=<?php echo $ativ->getIdAtividade()?>">Criar Tarefas</a>';
+                                        '<a class= "btn_cards_atv" style="text-decoration: none" href="'. BASEURL .'/controller/AcessoController.php?controller=Tarefa&action=createTarefaAtiv&idAtividade=<?php echo $ativ->getIdAtividade()?>">Criar Tarefas</a>';
                                 }
                             ?>
                             

@@ -70,3 +70,10 @@
 .footer{
     top:50vh
 }
+.btn_cards_atv{
+    box-sizing: border-box;
+    border: var(--bordas);
+    padding: 1vh 1vh;
+    min-width: 50vh;
+    color: var(--verde-escuro);
+  }
