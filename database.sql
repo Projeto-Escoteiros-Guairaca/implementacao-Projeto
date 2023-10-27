@@ -16,19 +16,28 @@ CREATE TABLE tb_contatos (
   email VARCHAR(100),
   PRIMARY KEY (id_contato)
 );
+
 CREATE TABLE tb_alcateias (
   id_alcateia int AUTO_INCREMENT,
+  nome_alcateia VARCHAR(45),
+  PRIMARY KEY (id_alcateia)
+);
+
+CREATE TABLE tb_matilhas (
+  id_matilha int AUTO_INCREMENT,
+  id_alcateia int,
   id_usuario_chefe int,
   id_usuario_primo int,
   nome VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id_alcateia)
+  PRIMARY KEY (id_matilha),
+  FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia)
 );
 
 CREATE TABLE tb_usuarios ( 
   id_usuario int AUTO_INCREMENT, 
   id_endereco int NOT NULL,
   id_contato int NOT NULL,
-  id_alcateia int ,
+  id_matilha int ,
   nome varchar(70) NOT NULL, 
   cpf char(11) NOT NULL,
   login varchar(15) NOT NULL,
@@ -44,11 +53,11 @@ CREATE TABLE tb_usuarios (
 
 CREATE TABLE tb_encontros(
   id_encontro int AUTO_INCREMENT,
-  id_alcateia int NOT NULL,
+  id_matilha int NOT NULL,
   data DATE NOT NULL,
   descricao TEXT(255) NOT NULL,
   PRIMARY KEY (id_encontro),
-  FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia)
+  FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_matilha)
 );
 
 CREATE TABLE tb_frequencias(
@@ -103,8 +112,8 @@ CREATE TABLE tb_tarefas_usuarios(
 
 );
 
-ALTER TABLE tb_alcateias ADD CONSTRAINT fk_alcateias_chefe FOREIGN KEY (id_usuario_chefe) REFERENCES tb_usuarios (id_usuario);
-ALTER Table tb_alcateias ADD CONSTRAINT fk_alcateias_primo FOREIGN KEY (id_usuario_primo) REFERENCES tb_usuarios (id_usuario);
+ALTER TABLE tb_matilhas ADD CONSTRAINT fk_usuario_chefe FOREIGN KEY (id_usuario_chefe) REFERENCES tb_usuarios (id_usuario);
+ALTER Table tb_matilhas ADD CONSTRAINT fk_usuario_primo FOREIGN KEY (id_usuario_primo) REFERENCES tb_usuarios (id_usuario);
 
 
 /*Inserts atividades*/
@@ -138,26 +147,26 @@ INSERT INTO tb_contatos (telefone, celular, email) VALUES ('55555555', '44444444
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('66666666', '44444444444', 'chefinho3@gmail.com');
 
 /*Inserts usuarios*/
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES
                         (1, 1, 1, 'Sr. Administrador', '11122233344', 'admin', 'admin', 'ADMINISTRADOR', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (2, 2, 1, 'Sr. Root', '44433322211', 'root', 'root', 'LOBINHO', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (3, 3, 2, 'Marco', '69669669669', 'marco', 'marco', 'ADMINISTRADOR', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (4, 4, 1, 'chefe1', '50947509203', 'chefe1', 'chefe1', 'CHEFE', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (5, 5, 2, 'chefe2', '50947509203', 'chefe2', 'chefe2', 'CHEFE', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_alcateia, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (6, 6, 3, 'chefe3', '50947509203', 'chefe3', 'chefe3', 'CHEFE', 'ATIVO');
 
 
 /*Inserts alcateias*/
-INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 1', '4');
-INSERT INTO tb_alcateias (nome, id_usuario_chefe) VALUES ('Alcateia 2', '5');
-INSERT INTO tb_alcateias (nome,id_usuario_chefe) VALUES ('Alcateia 3', '6');
+INSERT INTO tb_matilhas (nome, id_usuario_chefe) VALUES ('Alcateia 1', '4');
+INSERT INTO tb_matilhas (nome, id_usuario_chefe) VALUES ('Alcateia 2', '5');
+INSERT INTO tb_matilhas (nome,id_usuario_chefe) VALUES ('Alcateia 3', '6');
 
-ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia);
+ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_matilha);
 
 /*Inserts tarefa_usuarios*/
 INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
@@ -167,8 +176,8 @@ INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data
 INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
 ('1', '3', '3', '2', '2020-01-01', 'Coelho comido');
 /*Inserts encontros*/
-INSERT INTO tb_encontros (id_alcateia, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
-INSERT INTO tb_encontros (id_alcateia, data, descricao) VALUES (2, '2020-01-01', 'Encontro 2');
+INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
+INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (2, '2020-01-01', 'Encontro 2');
 
 INSERT INTO tb_frequencias (id_usuario, id_encontro, frequencia) VALUES (1, 1, TRUE);
 INSERT INTO tb_frequencias (id_usuario, id_encontro) VALUES (2, 1);

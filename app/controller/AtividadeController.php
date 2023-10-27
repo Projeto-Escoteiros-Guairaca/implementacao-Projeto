@@ -20,7 +20,10 @@ class AtividadeController extends Controller {
             $this->loadController("Acesso");
             return;
         }
-        $_SESSION['callAccessToken'] = true;
+        if($_GET['action'] != "create") {
+            $_SESSION['callAccessToken'] = true;
+        }
+        
 
         $this->atividadeDao = new AtividadeDAO();
         $this->atividadeService = new AtividadeService();
@@ -81,7 +84,6 @@ class AtividadeController extends Controller {
         $this->loadView("pages/atividade/formAtividade.php", $dados, $msgsErro, "", "", true);
     }
     protected function saveAtividade(int $id) {
-
         $imagem = $_FILES['imagem'];
         $nomeAtividade = isset($_POST['nomeAtividade']) ? trim($_POST['nomeAtividade']) : "";
         $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : "";
