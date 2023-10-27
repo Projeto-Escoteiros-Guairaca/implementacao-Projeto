@@ -160,6 +160,10 @@ INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, 
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (6, 6, 3, 'chefe3', '50947509203', 'chefe3', 'chefe3', 'CHEFE', 'ATIVO');
 
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+                        (6, 6, 3, 'chefe4', '50947509203', 'chefe4', 'chefe4', 'CHEFE', 'ATIVO');
+
+
 INSERT INTO tb_alcateias (nome_alcateia) VALUES ('Guairacá');
 INSERT INTO tb_alcateias (nome_alcateia) VALUES ('Tarobá');
 
