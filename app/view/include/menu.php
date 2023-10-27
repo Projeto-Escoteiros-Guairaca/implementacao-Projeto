@@ -53,7 +53,7 @@ else {
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'>Lobinhos</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha&action=listMatilha'> Matilhas</";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Alcateia&action=listAlcateias'> Alcateias</";
                 echo '</li>';
                 echo '<li class="nav-item">';
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=listEncontros'> Encontros</a>";

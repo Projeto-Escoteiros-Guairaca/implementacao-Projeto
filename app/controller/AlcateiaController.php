@@ -1,0 +1,41 @@
+<?php
+
+require_once(__DIR__ . "/Controller.php");
+require_once(__DIR__ . "/../model/Alcateia.php");
+require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../service/AlcateiaService.php");
+
+    
+class AlcateiaController extends Controller{
+
+    private AlcateiaDAO $alcateiaDao;
+    private AlcateiaService $alcateiaService;
+
+    public function __construct(){
+
+       
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Alcateia";
+    
+                $this->loadController("Acesso");
+                return;
+            }
+            $_SESSION['callAccessToken'] = true;
+        
+        
+        $this->alcateiaDao = new AlcateiaDAO();
+        $this->alcateiaService = new AlcateiaService();
+        $this->setActionDefault("listAlcateias", true);
+        $this->handleAction();
+    }
+
+    public function listAlcateias(string $msgErro = "", string $msgSucesso = ""){
+        $alcateias = $this->alcateiaDao->list();
+       
+        $dados["alcateias"] = $alcateias;
+        $this->loadView("pages/alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);    
+    }
+
+} 
+
+$alcCont = new AlcateiaController();

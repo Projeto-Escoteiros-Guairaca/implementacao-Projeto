@@ -8,14 +8,14 @@ require_once(__DIR__ . "/../model/Contato.php");
 
 class MatilhaDao{
 
-    public function list(){
+    public function list($id){
 
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_matilhas a ".
-         "ORDER BY a.id_matilha";
+         "WHERE a.id_alcateia = ? ORDER BY a.id_matilha";
         $stm = $conn->prepare($sql);    
-        $stm->execute();
+        $stm->execute([$id]);
         $result = $stm->fetchAll();
         return $this->mapMatilha($result);
     }
