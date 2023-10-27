@@ -2,9 +2,9 @@
 
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/EncontroDAO.php");
-require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../model/Encontro.php");
-require_once(__DIR__ . "/../model/Alcateia.php");
+require_once(__DIR__ . "/../model/Matilha.php");
 require_once(__DIR__ . "/../service/EncontroService.php");
 
 class EncontroController extends Controller {
@@ -49,21 +49,21 @@ class EncontroController extends Controller {
 
     public function filter() {
         $encontros = [];
-        $idAlcateiaIsEmpty = empty($_POST['alcateiaEncontro']);
+        $idMatilhaIsEmpty = empty($_POST['matilhaEncontro']);
         $desdeDataIsEmpty = empty($_POST['desde']);
         $ateDataIsEmpty = empty($_POST['ate']);
 
         $dados['IsActuallyFiltered'] = false;
         $dados["desde"] = isset($_POST['desde']) ? $_POST['desde'] : 0;
         $dados["ate"] = isset($_POST['ate']) ? $_POST['ate'] : 0;
-        $dados["id_alcateia"] = isset($_POST['alcateiaEncontro']) ? $_POST['alcateiaEncontro'] : 0;
+        $dados["id_matilha"] = isset($_POST['matilhaEncontro']) ? $_POST['matilhaEncontro'] : 0;
 
-        if(!$idAlcateiaIsEmpty) {
+        if(!$idMatilhaIsEmpty) {
             if($desdeDataIsEmpty or $ateDataIsEmpty) {
-                $encontros = $this->encontroDao->filterByAlcateia($dados["id_alcateia"]);
+                $encontros = $this->encontroDao->filterByMatilha($dados["id_matilha"]);
             }
             if(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
-                $encontros = $this->encontroDao->filterByBoth( $dados["desde"], $dados["ate"], $dados["id_alcateia"]);
+                $encontros = $this->encontroDao->filterByBoth( $dados["desde"], $dados["ate"], $dados["id_matilha"]);
             }
         }
         elseif(!$desdeDataIsEmpty and !$ateDataIsEmpty) {
@@ -112,14 +112,14 @@ class EncontroController extends Controller {
         $dados["id_encontro"] = isset($_POST['id_encontro']) ? $_POST['id_encontro'] : 0;
         $dataEncontro = isset($_POST['dataEncontro']) ? trim($_POST['dataEncontro']) : NULL;
         $descricaoEncontro = isset($_POST['descricaoEncontro']) ? trim($_POST['descricaoEncontro']) : NULL;
-        $id_alcateia = isset($_POST['alcateiaEncontro']) ? trim($_POST['alcateiaEncontro']) : NULL;
+        $id_matilha = isset($_POST['matilhaEncontro']) ? trim($_POST['matilhaEncontro']) : NULL;
 
         $encontro = new encontro();
         $encontro->setData($dataEncontro);
         $encontro->setDescricao($descricaoEncontro);
-        $alcateia = new Alcateia();
-        $alcateia -> setId_alcateia($id_alcateia);
-        $encontro->setAlcateia($alcateia);
+        $matilha = new Matilha();
+        $matilha -> setId_matilha($id_matilha);
+        $encontro->setMatilha($matilha);
 
         $erros = $this->encontroService->validarDados($encontro);
         if(empty($erros)) {
@@ -148,7 +148,7 @@ class EncontroController extends Controller {
        
         $dados["dataEncontro"] = $dataEncontro;
         $dados["descricaoEncontro"] = $descricaoEncontro;
-        $dados["id_alcateia"] = $id_alcateia;
+        $dados["id_matilha"] = $id_matilha;
 
 
         $msgsErro = implode("<br>", $erros);

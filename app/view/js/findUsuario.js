@@ -109,24 +109,24 @@ function createChildren(usuarioArray, BASEURL) {
         }
         statusUsu.appendChild(a);
 
-        alcateia = document.createElement("p");
-        alcateia.className = "card-text";
-        insideDiv.appendChild(alcateia);
+        matilha = document.createElement("p");
+        matilha.className = "card-text";
+        insideDiv.appendChild(matilha);
 
         button = document.createElement("button");
         button.id = element["idUsuario"];
 
-        if(element["idAlcateia"] != null) { 
+        if(element["idMatilha"] != null) { 
             button.className = "btn btn-secondary"; 
-            button.setAttribute("onclick", "findTheAlcateias("+element["idAlcateia"] +
+            button.setAttribute("onclick", "findTheMatilhas("+element["idMatilha"] +
             ", 'list', "+element["idUsuario"]+")");
-            button.innerHTML = element["alcateia"]["nome"];
+            button.innerHTML = element["matilha"]["nome"];
         }
         else { 
             button.className = "btn btn-warning";
-            button.setAttribute("onclick", "findTheAlcateias(0, 'list', "+element["idUsuario"]+")"); 
-            button.innerHTML = "Sem alcateia";
+            button.setAttribute("onclick", "findTheMatilhas(0, 'list', "+element["idUsuario"]+")"); 
+            button.innerHTML = "Sem matilha";
         }
-        alcateia.appendChild(button);
+        matilha.appendChild(button);
     });
 }

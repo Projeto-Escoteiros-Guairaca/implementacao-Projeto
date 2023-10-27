@@ -4,14 +4,14 @@
 
 ?>
 
-<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listAlcateias.css" />
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listMatilhas.css" />
 
-<h3 class='text-center'>Alcateias</h3>
+<h3 class='text-center'>Matilhas</h3>
 
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=create">Inserir</a>
+            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=create">Inserir</a>
         </div>
         <div class="col-9">
             <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
@@ -29,10 +29,10 @@
                             <h5 class="card-title"><?php echo $alc->getNome();?></h5>
                             <hr>
                             <a class="btn btn-warning my-1" 
-                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=edit&id=<?php echo $alc->getId_alcateia(); ?>">
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getId_matilha(); ?>">
                                 Alterar</a> 
-                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=listAlcateia&idAlcateia=<?= $alc->getId_alcateia()?>">
-                                    Mostrar Dados da Alcateia: </a>
+                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getId_matilha()?>">
+                                    Mostrar Dados da Matilha: </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -42,7 +42,7 @@
 </div>
 <br><br><br><br><br>
 
-<script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
+<script src="<?= BASEURL ?>/view/js/matilha.js"> </script> 
 <?php
     require_once(__DIR__ . "/../../../include/footer.php");
 ?>

@@ -3,13 +3,13 @@
 class Encontro{
 
     private $id_encontro;
-    private $alcateia;
+    private $matilha;
     private $data;
     private $descricao;
 
     //campos provisórios
-    private $id_alcateia;
-    private $alcateiaNome;
+    private $id_matilha;
+    private $matilhaNome;
     
 
 
@@ -34,21 +34,21 @@ class Encontro{
     }
 
     /**
-     * Get the value of alcateia
+     * Get the value of matilha
      */ 
-    public function getAlcateia()
+    public function getMatilha()
     {
-        return $this->alcateia;
+        return $this->matilha;
     }
 
     /**
-     * Set the value of alcateia
+     * Set the value of matilha
      *
      * @return  self
      */ 
-    public function setAlcateia($alcateia)
+    public function setMatilha($matilha)
     {
-        $this->alcateia = $alcateia;
+        $this->matilha = $matilha;
 
         return $this;
     }
@@ -102,41 +102,41 @@ class Encontro{
     }
 
     /**
-     * Get the value of id_alcateia
+     * Get the value of id_matilha
      */ 
-    public function getId_alcateia()
+    public function getId_matilha()
     {
-        return $this->id_alcateia;
+        return $this->id_matilha;
     }
 
     /**
-     * Set the value of id_alcateia
+     * Set the value of id_matilha
      *
      * @return  self
      */ 
-    public function setId_alcateia($id_alcateia)
+    public function setId_matilha($id_matilha)
     {
-        $this->id_alcateia = $id_alcateia;
+        $this->id_matilha = $id_matilha;
 
         return $this;
     }
 
     /**
-     * Get the value of alcateiaNome
+     * Get the value of matilhaNome
      */ 
-    public function getAlcateiaNome()
+    public function getMatilhaNome()
     {
-        return $this->alcateiaNome;
+        return $this->matilhaNome;
     }
 
     /**
-     * Set the value of alcateiaNome
+     * Set the value of matilhaNome
      *
      * @return  self
      */ 
-    public function setAlcateiaNome($alcateiaNome)
+    public function setMatilhaNome($matilhaNome)
     {
-        $this->alcateiaNome = $alcateiaNome;
+        $this->matilhaNome = $matilhaNome;
 
         return $this;
     }

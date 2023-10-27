@@ -42,11 +42,11 @@
                                         if ($freq->getFrequencia() == 1) {
                                             echo "<a class='btn btn-outline-success' href='". BASEURL .
                                             "/controller/AcessoController.php?controller=Frequencia&action=updateToFalse&id=". $freq->getId_frequencia() .
-                                            "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>C</a>";
+                                            "&idMatilha=". $freq->getUsuario()->getIdMatilha() ."&idEncontro=". $freq->getId_encontro() ."'>C</a>";
                                         } else {
                                             echo "<a class='btn btn-outline-danger' href='". BASEURL .
                                             "/controller/AcessoController.php?controller=Frequencia&action=updateToTrue&id=". $freq->getId_frequencia() .
-                                            "&idAlcateia=". $freq->getUsuario()->getIdAlcateia() ."&idEncontro=". $freq->getId_encontro() ."'>F</a>";
+                                            "&idMatilha=". $freq->getUsuario()->getIdMatilha() ."&idEncontro=". $freq->getId_encontro() ."'>F</a>";
                                         }
                                         ?>
                                     </td>

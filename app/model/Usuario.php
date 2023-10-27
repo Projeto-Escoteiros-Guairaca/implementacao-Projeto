@@ -9,7 +9,7 @@ class Usuario implements JsonSerializable {
     private $id;
     private $endereco;
     private $contato;
-    private $alcateia;
+    private $matilha;
     private $nome;
     private $login;
     private $senha;
@@ -20,7 +20,7 @@ class Usuario implements JsonSerializable {
     //Campos provisórios
     private $idEndereco;
     private $idContato;
-    private $idAlcateia;
+    private $idMatilha;
     private $tarefaEnviada;
 
 
@@ -34,8 +34,8 @@ class Usuario implements JsonSerializable {
             'papel' => $this->papeis,
             'papel' => $this->papeis,
             'status' => $this->status,
-            'idAlcateia' => $this->idAlcateia,
-            'alcateia' => $this->alcateia
+            'idMatilha' => $this->idMatilha,
+            'matilha' => $this->matilha
         ];
     }
     
@@ -83,14 +83,14 @@ class Usuario implements JsonSerializable {
         return $this;
     }
 
-    public function getAlcateia()
+    public function getMatilha()
     {
-        return $this->alcateia;
+        return $this->matilha;
     }
 
-    public function setAlcateia($alcateia)
+    public function setMatilha($matilha)
     {
-        $this->alcateia = $alcateia;
+        $this->matilha = $matilha;
 
         return $this;
     }
@@ -257,21 +257,21 @@ class Usuario implements JsonSerializable {
     }
 
     /**
-     * Get the value of idAlcateia
+     * Get the value of idMatilha
      */ 
-    public function getIdAlcateia()
+    public function getIdMatilha()
     {
-        return $this->idAlcateia;
+        return $this->idMatilha;
     }
 
     /**
-     * Set the value of idAlcateia
+     * Set the value of idMatilha
      *
      * @return  self
      */ 
-    public function setIdAlcateia($idAlcateia)
+    public function setIdMatilha($idMatilha)
     {
-        $this->idAlcateia = $idAlcateia;
+        $this->idMatilha = $idMatilha;
 
         return $this;
     }

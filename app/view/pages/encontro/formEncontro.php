@@ -1,8 +1,8 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
-    require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
-    require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
+    require_once(__DIR__ . "/../../../dao/MatilhaDAO.php");
+    require_once(__DIR__ . "/../matilha/selectMatilha.php");
     require_once(__DIR__ . "/../../../controller/LinkController.php");
 ?>
 
@@ -39,13 +39,13 @@
                     </textarea>
                 </div>
                 <div class="form-group">
-                    <label style="width: fit-content;" for="somAlcateia">Alcateia:</label>
+                    <label style="width: fit-content;" for="somMatilha">Matilha:</label>
                     
                     <?php
-                        $alcDao = new AlcateiaDAO();
-                        $alcateias = $alcDao->list();
+                        $alcDao = new MatilhaDAO();
+                        $matilhas = $alcDao->list();
 
-                        SelectAlcateia::desenhaSelect($alcateias, "alcateiaEncontro", "somAlcateia", isset($dados['id_alcateia']) ? $dados['id_alcateia'] : 0);
+                        SelectMatilha::desenhaSelect($matilhas, "matilhaEncontro", "somMatilha", isset($dados['id_matilha']) ? $dados['id_matilha'] : 0);
                     ?>
                 </div>
                 <input type="hidden" id="hddId" name="id_encontro" value="<?= $dados['id_encontro']; ?>" />

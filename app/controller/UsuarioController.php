@@ -6,7 +6,7 @@ require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/EnderecoDAO.php");
 require_once(__DIR__ . "/../dao/ContatoDAO.php");
 require_once(__DIR__ . "/../dao/TarefaDAO.php");
-require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../dao/AtividadeDAO.php");
 require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
 
@@ -15,7 +15,7 @@ require_once(__DIR__ . "/../service/UsuarioService.php");
 require_once(__DIR__ . "/../model/Frequencia.php");
 require_once(__DIR__ . "/../model/Atividade.php");
 require_once(__DIR__ . "/../model/Tarefa.php");
-require_once(__DIR__ . "/../model/Alcateia.php");
+require_once(__DIR__ . "/../model/Matilha.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/Endereco.php");
 require_once(__DIR__ . "/../model/Contato.php");
@@ -26,7 +26,7 @@ class UsuarioController extends Controller
     private FrequenciaDao $frequenciaDao;
     private AtividadeDAO $atividadeDao;
     private TarefaDAO $tarefaDao;
-    private AlcateiaDAO $alcateiaDao;
+    private MatilhaDAO $matilhaDao;
     private UsuarioDAO $usuarioDao;
     private EnderecoDAO $enderecoDao;
     private ContatoDAO $contatoDao;
@@ -45,14 +45,14 @@ class UsuarioController extends Controller
         
 
         $ChefeActions = [
-            "listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
-            "createTarefaAtiv", "findIt", "changeAlcateia", "findUsuarioById"
+            "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
+            "createTarefaAtiv", "findIt", "changeMatilha", "findUsuarioById"
         ];
 
         $this->frequenciaDao = new frequenciaDAO();
         $this->atividadeDao = new AtividadeDAO();
         $this->tarefaDao = new TarefaDAO();
-        $this->alcateiaDao = new AlcateiaDAO();
+        $this->matilhaDao = new MatilhaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
         $this->contatoDao = new ContatoDAO();
@@ -88,13 +88,13 @@ class UsuarioController extends Controller
     protected function listUsuarios(string $msgErro = "", string $msgSucesso = "") {
 
         $usuarios = $this->usuarioDao->list();
-        $alcateias = $this->alcateiaDao->list();
+        $matilhas = $this->matilhaDao->list();
 
         foreach ($usuarios as $usu) {
-            if ($usu->getIdAlcateia()) {
-                foreach ($alcateias as $alc) {
-                    if ($usu->getIdAlcateia() == $alc->getId_alcateia()) {
-                        $usu->setAlcateia($alc);
+            if ($usu->getIdMatilha()) {
+                foreach ($matilhas as $alc) {
+                    if ($usu->getIdMatilha() == $alc->getId_matilha()) {
+                        $usu->setMatilha($alc);
                     }
                 }
             }
@@ -103,16 +103,16 @@ class UsuarioController extends Controller
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
 
-    public function listUsuariosByAlcateia(string $msgErro = "", string $msgSucesso = "") {
+    public function listUsuariosByMatilha(string $msgErro = "", string $msgSucesso = "") {
 
-        $usuarios = $this->findUsuarioByIdAlcateia();
+        $usuarios = $this->findUsuarioByIdMatilha();
         foreach ($usuarios["usuarios"] as $usu):
             $usuarioEnviou = $this->usuarioDao->usuarioSended($usu->getId());
             $usu->setTarefaEnviada($usuarioEnviou);
         endforeach;
         
         $dados["lista"] = $usuarios['usuarios'];
-        $dados["alcateia"] = $usuarios['nome_alcateia'];
+        $dados["matilha"] = $usuarios['nome_matilha'];
 
         if (isset($_GET['tarefa'])) {
             if (isset($_SESSION['activeTarefa'])) {
@@ -127,15 +127,15 @@ class UsuarioController extends Controller
         }
     }
     
-    protected function findUsuarioByIdAlcateia(){
+    protected function findUsuarioByIdMatilha(){
         $id = 0;
-        if (isset($_GET['idAlcateia']))
-            $id = $_GET['idAlcateia'];
+        if (isset($_GET['idMatilha']))
+            $id = $_GET['idMatilha'];
 
-        $alcateia = $this->alcateiaDao->findById($id);
-        $usuario = $this->usuarioDao->findUsuariosByIdAlcateia($id);
+        $matilha = $this->matilhaDao->findById($id);
+        $usuario = $this->usuarioDao->findUsuariosByIdMatilha($id);
 
-        $dados['nome_alcateia'] = $alcateia;
+        $dados['nome_matilha'] = $matilha;
         $dados['usuarios'] = $usuario;
         return $dados;
     }
@@ -293,13 +293,13 @@ class UsuarioController extends Controller
 
     protected function findIt() {
         $arrayUsuarios = $this->usuarioDao->findItByName($_GET["word"]);
-        $alcateias = $this->alcateiaDao->list();
+        $matilhas = $this->matilhaDao->list();
 
         foreach ($arrayUsuarios as $usu) {
-            if ($usu->getIdAlcateia()) {
-                foreach ($alcateias as $alc) {
-                    if ($usu->getIdAlcateia() == $alc->getId_alcateia()) {
-                        $usu->setAlcateia($alc);
+            if ($usu->getIdMatilha()) {
+                foreach ($matilhas as $alc) {
+                    if ($usu->getIdMatilha() == $alc->getId_matilha()) {
+                        $usu->setMatilha($alc);
                     }
                 }
             }
@@ -309,27 +309,27 @@ class UsuarioController extends Controller
         return;
     }
 
-    protected function changeAlcateia() {
+    protected function changeMatilha() {
         $id = $_GET["id"];
-        $idAlcateia = $_GET["idAlcateia"];
+        $idMatilha = $_GET["idMatilha"];
         $usuario = $this->usuarioDao->findById($id);
       
-        if(isset($_GET['chefeChangeAlcateia'])) {
+        if(isset($_GET['chefeChangeMatilha'])) {
          
-            if($_GET['chefeChangeAlcateia'] == true) {
+            if($_GET['chefeChangeMatilha'] == true) {
                 
                 $usuario = $this->usuarioDao->findById($id);
-                $alcateia = $this->alcateiaDao->findById($idAlcateia);
+                $matilha = $this->matilhaDao->findById($idMatilha);
 
-                $this->alcateiaDao->changeChefe($usuario->getIdAlcateia(), NULL);
+                $this->matilhaDao->changeChefe($usuario->getIdMatilha(), NULL);
 
-                $this->usuarioDao->changeAlcateia($alcateia->getIdChefe(), NULL);
+                $this->usuarioDao->changeMatilha($matilha->getIdChefe(), NULL);
                 
-                $this->usuarioDao->changeAlcateia($id, $idAlcateia);
+                $this->usuarioDao->changeMatilha($id, $idMatilha);
 
-                $this->alcateiaDao->changeChefe($idAlcateia, $id);
+                $this->matilhaDao->changeChefe($idMatilha, $id);
                
-                print_r($alcateia->getIdChefe());
+                print_r($matilha->getIdChefe());
                 
                 return;
             }
@@ -340,7 +340,7 @@ class UsuarioController extends Controller
         }
         else {
             
-$this->usuarioDao->changeAlcateia($id, $idAlcateia);
+$this->usuarioDao->changeMatilha($id, $idMatilha);
             return;    
         }
         

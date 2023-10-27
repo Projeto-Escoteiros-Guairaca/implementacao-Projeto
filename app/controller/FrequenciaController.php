@@ -46,7 +46,7 @@ class FrequenciaController extends Controller {
             $this->listFrequencias();
         }
         else {
-            $usuarios = $this->findUsuariosByIdAlcateia();
+            $usuarios = $this->findUsuariosByIdMatilha();
             $i = 0;
             foreach ($usuarios as $us) {
                 $frequencia = new Frequencia();
@@ -95,9 +95,9 @@ class FrequenciaController extends Controller {
 
     }
 
-    public function findUsuariosByIdAlcateia() {
+    public function findUsuariosByIdMatilha() {
         $id = 0;
-        $id = $_GET['idAlcateia'];
+        $id = $_GET['idMatilha'];
 
         $usuarios = $this->usuarioDao->findUsuariosByIdAcateia($id);
         return $usuarios;

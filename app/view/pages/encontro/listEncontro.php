@@ -1,8 +1,8 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
-    require_once(__DIR__ . "/../../../dao/AlcateiaDAO.php");
-    require_once(__DIR__ . "/../alcateia/selectAlcateia.php");
+    require_once(__DIR__ . "/../../../dao/MatilhaDAO.php");
+    require_once(__DIR__ . "/../matilha/selectMatilha.php");
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listEncontro.css" />
@@ -28,12 +28,12 @@
                             echo (isset($dados['ate']) ? $dados['ate'] :  "");
                         ?>">
                 <div class="form-group">
-                    <label for="somAlcateia">Alcateia:</label>
+                    <label for="somMatilha">Matilha:</label>
                     <?php
-                        $alcDao = new AlcateiaDAO();
-                        $alcateias = $alcDao->list();
+                        $alcDao = new MatilhaDAO();
+                        $matilhas = $alcDao->list();
 
-                        SelectAlcateia::desenhaSelect($alcateias, "alcateiaEncontro", "somAlcateia", isset($dados['id_alcateia']) ? $dados['id_alcateia'] : 0);
+                        SelectMatilha::desenhaSelect($matilhas, "matilhaEncontro", "somMatilha", isset($dados['id_matilha']) ? $dados['id_matilha'] : 0);
                     ?>
                 </div>
 
@@ -58,14 +58,14 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $enc->getDataFormated();?></h5>
                             <hr>
-                            <p class="card-text"><?php echo $enc->getAlcateia()->getNome();?></p>
+                            <p class="card-text"><?php echo $enc->getMatilha()->getNome();?></p>
                             <p class="card-text"><?php echo $enc->getDescricao();?></p>
                             <a class="btn btn-primary my-1" 
                                 href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=edit&id=<?= $enc->getId_encontro() ?>">
                                 Alterar</a> 
                             <a class="btn btn-secondary" 
                                 href="<?= BASEURL ?>/controller/AcessoController.php?controller=Frequencia&action=createFrequencias&idEncontro=<?= 
-                                    $enc->getId_encontro()?>&idAlcateia=<?= $enc->getId_alcateia()?>">Registrar Frequência</a>
+                                    $enc->getId_encontro()?>&idMatilha=<?= $enc->getId_matilha()?>">Registrar Frequência</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

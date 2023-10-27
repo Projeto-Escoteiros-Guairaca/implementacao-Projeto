@@ -1,32 +1,32 @@
-let AlcateiasAlreadyUsed = [];
-let idAlcateiaUsuario = 0;
+let MatilhasAlreadyUsed = [];
+let idMatilhaUsuario = 0;
 let UsuarioId= 0;
-var chefeChangeAlcateia = false;
+var chefeChangeMatilha = false;
 // const body = document.body;
 
-function findTheAlcateias(id = 0, action, idUsu) {
-    idAlcateiaUsuario = id;
+function findTheMatilhas(id = 0, action, idUsu) {
+    idMatilhaUsuario = id;
     UsuarioId= idUsu;
-    if(AlcateiasAlreadyUsed.length == 0) {   
+    if(MatilhasAlreadyUsed.length == 0) {   
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateias=true" + "&isAjax=true", true);  
+        xhttp.open("GET", "MatilhaController.php?action=" + action + "&sendMatilhas=true" + "&isAjax=true", true);  
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var retorno = xhttp.responseText;
-                var AlcateiasArray = JSON.parse(retorno);
-                AlcateiasAlreadyUsed = AlcateiasArray;
-                createModal(AlcateiasArray);
+                var MatilhasArray = JSON.parse(retorno);
+                MatilhasAlreadyUsed = MatilhasArray;
+                createModal(MatilhasArray);
             }
         }
         xhttp.send();
     }
     else {
-        createModal(AlcateiasAlreadyUsed);
+        createModal(MatilhasAlreadyUsed);
     }
 }
 
-function createModal(Alcateias) {
-    id = idAlcateiaUsuario;
+function createModal(Matilhas) {
+    id = idMatilhaUsuario;
 
     const modalBackground = document.createElement("div");
     modalBackground.className = "modal-background";
@@ -42,24 +42,24 @@ function createModal(Alcateias) {
 
     const form = document.createElement("form");
     const h2 = document.createElement("h2");
-    h2.innerHTML = "Escolha a nova alcateia";
+    h2.innerHTML = "Escolha a nova matilha";
     form.appendChild(h2);
         
     i = 0;
-    Alcateias.forEach(element => {
+    Matilhas.forEach(element => {
         const br = document.createElement("br");
         const radio = document.createElement("input");
         radio.type = "radio";
-        radio.className = "alcateias";
-        radio.name = "alcateias";
+        radio.className = "matilhas";
+        radio.name = "matilhas";
 
-        const{ id_alcateia } = Alcateias[i];
-        const{ nome } = Alcateias[i];
+        const{ id_matilha } = Matilhas[i];
+        const{ nome } = Matilhas[i];
 
         radio.setAttribute("id", nome);
-        radio.setAttribute("value",id_alcateia); 
+        radio.setAttribute("value",id_matilha); 
 
-        if(radio.value == idAlcateiaUsuario) {
+        if(radio.value == idMatilhaUsuario) {
             radio.checked = true;
         }
         const label = document.createElement("label");
@@ -74,9 +74,9 @@ function createModal(Alcateias) {
 });
     const br2 = document.createElement("br");
     const submitData = document.createElement("button");
-    submitData.setAttribute("onclick", "sendAlcateiaChange()");
-    submitData.innerHTML = "Mudar alcateia";
-    submitData.className = "btn_mudar_alcateia";
+    submitData.setAttribute("onclick", "sendMatilhaChange()");
+    submitData.innerHTML = "Mudar matilha";
+    submitData.className = "btn_mudar_matilha";
     form.appendChild(br2);
     form.appendChild(submitData);
     modal.appendChild(form);
@@ -88,31 +88,31 @@ function createModal(Alcateias) {
     });
 }
 
-function sendAlcateiaChange() {
+function sendMatilhaChange() {
         event.preventDefault();
     
 
-    action = "changeAlcateia";
-    idAlcateiaUsuario = id;    
-    var checked = document.querySelector('[name="alcateias"]:checked');
-    var alcateiaId = checked.value;
-    var alcateiaName = checked.id;
+    action = "changeMatilha";
+    idMatilhaUsuario = id;    
+    var checked = document.querySelector('[name="matilhas"]:checked');
+    var matilhaId = checked.value;
+    var matilhaName = checked.id;
 
-    if(alcateiaId == idAlcateiaUsuario) {
-        alert("Esse lobinho já está nessa alcateia!");
+    if(matilhaId == idMatilhaUsuario) {
+        alert("Esse lobinho já está nessa matilha!");
         return;
     }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia' + chefeChangeAlcateia +'&isAjax=true', true);
+    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idMatilha=" + matilhaId + '&chefeChangeMatilha' + chefeChangeMatilha +'&isAjax=true', true);
     
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
             response = xhttp.responseText;
 
             if(response != "nope") {
-                chefeChangeAlcateia = false;
-                changeAlcateiaCorrectly(alcateiaName, alcateiaId);
+                chefeChangeMatilha = false;
+                changeMatilhaCorrectly(matilhaName, matilhaId);
             }
             else {
                 askChangeChefe(response);
@@ -125,76 +125,76 @@ function sendAlcateiaChange() {
 }
 
 function askChangeChefe() {
-    chefeChangeAlcateia = confirm("Tem certeza que quer mudar o chefe desta alcateia? A antiga será deixada sem chefe.");
-    if(chefeChangeAlcateia == true) {
-        chefeChangeAlcateia = "true";
-        sendAlcateiaChangeChefe();
+    chefeChangeMatilha = confirm("Tem certeza que quer mudar o chefe desta matilha? A antiga será deixada sem chefe.");
+    if(chefeChangeMatilha == true) {
+        chefeChangeMatilha = "true";
+        sendMatilhaChangeChefe();
     }
     else {
-        chefeChangeAlcateia = false;
+        chefeChangeMatilha = false;
         return;
     }
     
 }
 
-function sendAlcateiaChangeChefe() {
+function sendMatilhaChangeChefe() {
     
-action = "changeAlcateia";
-idAlcateiaUsuario = id;    
-var checked = document.querySelector('[name="alcateias"]:checked');
-var alcateiaId = checked.value;
-var alcateiaName = checked.id;
+action = "changeMatilha";
+idMatilhaUsuario = id;    
+var checked = document.querySelector('[name="matilhas"]:checked');
+var matilhaId = checked.value;
+var matilhaName = checked.id;
 
-if(alcateiaId == idAlcateiaUsuario) {
-    alert("Esse lobinho já está nessa alcateia!");
+if(matilhaId == idMatilhaUsuario) {
+    alert("Esse lobinho já está nessa matilha!");
     return;
 }
 
 var xhttp = new XMLHttpRequest();
-xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idAlcateia=" + alcateiaId + '&chefeChangeAlcateia=' + chefeChangeAlcateia + '&isAjax=true', true);
+xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idMatilha=" + matilhaId + '&chefeChangeMatilha=' + chefeChangeMatilha + '&isAjax=true', true);
 
 xhttp.onreadystatechange = function() {
     if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
         response = xhttp.responseText;
 
         if(response == null) {
-            changeAlcateiaCorrectly(alcateiaName, alcateiaId)
+            changeMatilhaCorrectly(matilhaName, matilhaId)
         }
-        changeAlcateiasChefes(response, alcateiaName, alcateiaId);
+        changeMatilhasChefes(response, matilhaName, matilhaId);
     }
 };
 xhttp.send();
 }
 
-function changeAlcateiasChefes(idUsuarioToChange, alcateiaName, alcateiaId) {
+function changeMatilhasChefes(idUsuarioToChange, matilhaName, matilhaId) {
     modalBackground = document.getElementById('modalBackground');
-    modal = document.getElementById(idAlcateiaUsuario +"modal");
+    modal = document.getElementById(idMatilhaUsuario +"modal");
     body.removeChild(modalBackground);
     body.removeChild(modal);
 
-    var changeAlcateiaName = document.getElementById(UsuarioId);
-    var changeAlcateiaToNull = document.getElementById(idUsuarioToChange);
+    var changeMatilhaName = document.getElementById(UsuarioId);
+    var changeMatilhaToNull = document.getElementById(idUsuarioToChange);
 
-    changeAlcateiaName.innerHTML = alcateiaName;
-    changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+UsuarioId+");");
-    changeAlcateiaName.className = "btn btn-secondary";
+    changeMatilhaName.innerHTML = matilhaName;
+    changeMatilhaName.setAttribute("onclick", "findTheMatilhas("+ matilhaId +", 'list', "+UsuarioId+");");
+    changeMatilhaName.className = "btn btn-secondary";
 
-    changeAlcateiaToNull.className = "btn btn-warning";
-    changeAlcateiaToNull.setAttribute("onclick", "findTheAlcateias(0, 'list', "+idUsuarioToChange+")"); 
-    changeAlcateiaToNull.innerHTML = "Sem alcateia";
+    changeMatilhaToNull.className = "btn btn-warning";
+    changeMatilhaToNull.setAttribute("onclick", "findTheMatilhas(0, 'list', "+idUsuarioToChange+")"); 
+    changeMatilhaToNull.innerHTML = "Sem matilha";
 
 }
 
-function changeAlcateiaCorrectly(alcateiaName, alcateiaId) {
+function changeMatilhaCorrectly(matilhaName, matilhaId) {
     modalBackground = document.getElementById('modalBackground');
-    modal = document.getElementById(idAlcateiaUsuario +"modal");
+    modal = document.getElementById(idMatilhaUsuario +"modal");
     body.removeChild(modalBackground);
     body.removeChild(modal);
 
-    var changeAlcateiaName = document.getElementById(UsuarioId);
-    changeAlcateiaName.innerHTML = alcateiaName;
-    changeAlcateiaName.setAttribute("onclick", "findTheAlcateias("+ alcateiaId +", 'list', "+UsuarioId+");");
-    changeAlcateiaName.className = "btn btn-secondary";
+    var changeMatilhaName = document.getElementById(UsuarioId);
+    changeMatilhaName.innerHTML = matilhaName;
+    changeMatilhaName.setAttribute("onclick", "findTheMatilhas("+ matilhaId +", 'list', "+UsuarioId+");");
+    changeMatilhaName.className = "btn btn-secondary";
 }
 
 function sendChange(toChange, idUsu) {

@@ -1,8 +1,8 @@
 <?php
 
-class Alcateia implements JsonSerializable {
+class Matilha implements JsonSerializable {
 
-    private $id_alcateia;
+    private $id_matilha;
     private $nome;
     private $usuariochefe;
     private $usuarioPrimo;
@@ -15,33 +15,33 @@ class Alcateia implements JsonSerializable {
     public function jsonSerialize() {
         return
         [
-            'id_alcateia' => $this->id_alcateia,
+            'id_matilha' => $this->id_matilha,
             'nome' => $this->nome
         ];
     }
 
     /**
-     * Get the value of id_alcateia
+     * Get the value of id_matilha
      */
-    public function getId_alcateia()
+    public function getId_matilha()
     {
-        return $this->id_alcateia;
+        return $this->id_matilha;
     }
 
     /**
-     * Set the value of id_alcateia
+     * Set the value of id_matilha
      *
      * @return  self
      */
-    public function setId_alcateia($id_alcateia)
+    public function setId_matilha($id_matilha)
     {
-        $this->id_alcateia = $id_alcateia;
+        $this->id_matilha = $id_matilha;
 
         return $this;
     }
 
     /**
-     * Get the value of nome_alcateia
+     * Get the value of nome_matilha
      */
     public function getNome()
     {
@@ -49,7 +49,7 @@ class Alcateia implements JsonSerializable {
     }
 
     /**
-     * Set the value of nome_alcateia
+     * Set the value of nome_matilha
      *
      * @return  self
      */

@@ -6,29 +6,29 @@
     require_once(__DIR__ . "/../../usuario/selectUsuChefe.php");
     require_once(__DIR__ . "/../../usuario/selectUsuPrimo.php");
     require_once(__DIR__ . "/../../../../controller/LinkController.php");
-    require_once(__DIR__ . "/../../../../controller/AlcateiaController.php");
+    require_once(__DIR__ . "/../../../../controller/MatilhaController.php");
 ?>
 
 <div class="container">
 
     <div class="row">
         <div class="col-6">
-            <form id="formAlcateia" method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=save">
+            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=save">
                 
                 <h2 class="text-center">
-                    <?php if(isset($dados["id_alcateia"])): ?>
-                        Alterar Alcateia
+                    <?php if(isset($dados["id_matilha"])): ?>
+                        Alterar Matilha
                     <?php else: ?>
-                        Criar uma nova Alcateia
+                        Criar uma nova Matilha
                     <?php endif; ?>
                 </h2>
 
                 <div class="form-group col-6">
-                    <label style="width: fit-content;" for="txtNomeAlcateia">Nome:</label>
-                    <input style="width: 150px;" class="form-control" type="text" id="txtNomeAlcateia" name="nomeAlcateia" 
+                    <label style="width: fit-content;" for="txtNomeMatilha">Nome:</label>
+                    <input style="width: 150px;" class="form-control" type="text" id="txtNomeMatilha" name="nomeMatilha" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php
-                            echo (isset($dados['alcateia']) ? $dados['alcateia']->getNome(): "");
+                            echo (isset($dados['matilha']) ? $dados['matilha']->getNome(): "");
                         ?>" />
                 </div>
                 <div class="form-group col-6">
@@ -37,31 +37,31 @@
                     <?php
                         $usuDao = new UsuarioDAO();
                         $usuarios = $usuDao->findByPapel("CHEFE");
-                        SelectUsuChefe::desenhaSelect($usuarios, "chefeAlcateia", "somUsuChef", isset($dados['alcateia']) ? $dados['alcateia']->getIdChefe() : 0);
+                        SelectUsuChefe::desenhaSelect($usuarios, "chefeMatilha", "somUsuChef", isset($dados['matilha']) ? $dados['matilha']->getIdChefe() : 0);
                     ?>
 
                 </div>
                 <?php
-                    if($dados["id_alcateia"] > 0):
+                    if($dados["id_matilha"] > 0):
                 
                         echo "<div class='form-group col-6'>";
                             echo "<label for='somUsuPrimo'>Primo:</label>";
 
-                                $primos = $usuDao->findPrimo($dados['id_alcateia']);
-                                SelectUsuChefe::desenhaSelect($primos, "primoAlcateia", "somUsuPrimo", isset($dados['alcateia']) ? $dados['alcateia']->getIdPrimo() : 0);
+                                $primos = $usuDao->findPrimo($dados['id_matilha']);
+                                SelectUsuChefe::desenhaSelect($primos, "primoMatilha", "somUsuPrimo", isset($dados['matilha']) ? $dados['matilha']->getIdPrimo() : 0);
 
                         echo "</div>";
                     endif;
                 ?>
                 
-                <input type="hidden" id="hddId" name="id_alcateia" value="<?= $dados['id_alcateia']; ?>" />
+                <input type="hidden" id="hddId" name="id_matilha" value="<?= $dados['id_matilha']; ?>" />
                 
                 <button type="submit" class="btn btn-success my-2">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>
                 
             </form>
             <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=listAlcateia">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha">Voltar</a>
         </div>
        
 

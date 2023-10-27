@@ -17,28 +17,28 @@ class EncontroDao {
         $encontros = $this->mapEncontro($result);
 
         foreach($encontros as $enc):
-            $alcateia = new Alcateia();
-            $alcateia = $this->listAlcateias($enc->getId_alcateia());
-            $enc->setAlcateia($alcateia[0]);
+            $matilha = new Matilha();
+            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $enc->setMatilha($matilha[0]);
         endforeach;
         
         return $encontros;
     }
 
-    public function filterByAlcateia(int $idAlcateia) {
+    public function filterByMatilha(int $idMatilha) {
   $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.id_alcateia = ? ORDER BY e.data";
+        " WHERE e.id_matilha = ? ORDER BY e.data";
         $stm = $conn->prepare($sql);    
-        $stm->execute([$idAlcateia]);
+        $stm->execute([$idMatilha]);
         $result = $stm->fetchAll();
         $encontros = $this->mapEncontro($result);
 
         foreach($encontros as $enc):
-            $alcateia = new Alcateia();
-            $alcateia = $this->listAlcateias($enc->getId_alcateia());
-            $enc->setAlcateia($alcateia[0]);
+            $matilha = new Matilha();
+            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $enc->setMatilha($matilha[0]);
         endforeach;
         
         return $encontros;
@@ -54,54 +54,54 @@ class EncontroDao {
         $encontros = $this->mapEncontro($result);
 
         foreach($encontros as $enc):
-            $alcateia = new Alcateia();
-            $alcateia = $this->listAlcateias($enc->getId_alcateia());
-            $enc->setAlcateia($alcateia[0]);
+            $matilha = new Matilha();
+            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $enc->setMatilha($matilha[0]);
         endforeach;
         
         return $encontros;
     }
-    public function filterByBoth(string $desde, string $ate, int $idAlcateia) {
+    public function filterByBoth(string $desde, string $ate, int $idMatilha) {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.id_alcateia = ? AND e.data BETWEEN ? AND ? ORDER BY e.data";
+        " WHERE e.id_matilha = ? AND e.data BETWEEN ? AND ? ORDER BY e.data";
         $stm = $conn->prepare($sql);
-        $stm->execute([$idAlcateia, $desde, $ate]);
+        $stm->execute([$idMatilha, $desde, $ate]);
         $result = $stm->fetchAll();
         $encontros = $this->mapEncontro($result);
 
         foreach($encontros as $enc):
-            $alcateia = new Alcateia();
-            $alcateia = $this->listAlcateias($enc->getId_alcateia());
-            $enc->setAlcateia($alcateia[0]);
+            $matilha = new Matilha();
+            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $enc->setMatilha($matilha[0]);
         endforeach;
         
         return $encontros;
     }
 
-    public function listAlcateias(int $id){
+    public function listMatilhas(int $id){
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_alcateias a".
-                " WHERE a.id_alcateia = ?";
+        $sql = "SELECT * FROM tb_matilhas a".
+                " WHERE a.id_matilha = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
         $result = $stm->fetchAll();
         
-        return $this->mapAlcateia($result);
+        return $this->mapMatilha($result);
     }
-    public function mapAlcateia($result){
-        $alcateias = array();
+    public function mapMatilha($result){
+        $matilhas = array();
         foreach ($result as $reg) {
-            $alcateia = new Alcateia();
-            $alcateia->setId_alcateia($reg['id_alcateia']);
-            $alcateia->setNome($reg['nome']);
-            array_push($alcateias, $alcateia);
+            $matilha = new Matilha();
+            $matilha->setId_matilha($reg['id_matilha']);
+            $matilha->setNome($reg['nome']);
+            array_push($matilhas, $matilha);
         }
 
-        return $alcateias;
+        return $matilhas;
     }
 
     public function getEncontroByFrequencia($id) {
@@ -151,7 +151,7 @@ class EncontroDao {
             $encontro->setId_encontro($reg['id_encontro']);
             $encontro->setData($reg['data']);
             $encontro->setDescricao($reg['descricao']);
-            $encontro->setId_alcateia($reg['id_alcateia']);
+            $encontro->setId_matilha($reg['id_matilha']);
             
 
 
@@ -165,11 +165,11 @@ class EncontroDao {
     public function insert(encontro $encontro){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_encontros (id_alcateia, data, descricao)" .
-               " VALUES (:id_alcateia, :data, :descricao)";
+        $sql = "INSERT INTO tb_encontros (id_matilha, data, descricao)" .
+               " VALUES (:id_matilha, :data, :descricao)";
         
         $stm = $conn->prepare($sql);
-        $stm->bindValue(':id_alcateia', $encontro->getAlcateia()->getId_alcateia());
+        $stm->bindValue(':id_matilha', $encontro->getMatilha()->getId_matilha());
         $stm->bindValue(':data', $encontro->getData());
         $stm->bindValue(':descricao', $encontro->getDescricao());
         $stm->execute();
@@ -178,11 +178,11 @@ class EncontroDao {
     public function update(encontro $encontro) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_encontros SET id_alcateia = :id_alcateia , data = :data , descricao = :descricao" . 
+        $sql = "UPDATE tb_encontros SET id_matilha = :id_matilha , data = :data , descricao = :descricao" . 
                " WHERE id_encontro = :id";
            
         $stm = $conn->prepare($sql);
-        $stm->bindValue("id_alcateia", $encontro->getAlcateia()->getId_alcateia());
+        $stm->bindValue("id_matilha", $encontro->getMatilha()->getId_matilha());
         $stm->bindValue("data", $encontro->getData());
         $stm->bindValue("descricao", $encontro->getDescricao());
         $stm->bindValue("id", $encontro->getId_encontro());

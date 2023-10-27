@@ -4,8 +4,8 @@
 require_once(__DIR__ . "/../../../include/header.php");
 require_once(__DIR__ . "/../../../include/menu.php");
 require_once(__DIR__ . "/../../../../model/enum/UsuarioPapel.php");
-require_once(__DIR__ . "/../../../../dao/AlcateiaDAO.php");
-require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
+require_once(__DIR__ . "/../../../../dao/MatilhaDAO.php");
+require_once(__DIR__ . "/../../matilha/selectMatilha.php");
 
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />

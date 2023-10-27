@@ -160,12 +160,21 @@ INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, 
 INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
                         (6, 6, 3, 'chefe3', '50947509203', 'chefe3', 'chefe3', 'CHEFE', 'ATIVO');
 
+INSERT INTO tb_alcateias (nome_alcateia) VALUES ('Guairacá');
+INSERT INTO tb_alcateias (nome_alcateia) VALUES ('Tarobá');
 
-/*Inserts alcateias*/
-INSERT INTO tb_matilhas (nome, id_usuario_chefe) VALUES ('Alcateia 1', '4');
-INSERT INTO tb_matilhas (nome, id_usuario_chefe) VALUES ('Alcateia 2', '5');
-INSERT INTO tb_matilhas (nome,id_usuario_chefe) VALUES ('Alcateia 3', '6');
+/*Inserts matilhas*/
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Preta', '1', '4');
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Cinza', '1', '5');
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Vermelha', '1', '6');
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Branco', '1', '6');
 
+
+
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Preta', '2', '4');
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Cinza', '2', '5');
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Vermelha', '2', '6');
+INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Branco', '2', '6');
 ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_matilha);
 
 /*Inserts tarefa_usuarios*/

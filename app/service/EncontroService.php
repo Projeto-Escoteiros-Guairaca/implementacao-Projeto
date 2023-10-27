@@ -13,8 +13,8 @@ class EncontroService {
             array_push($erros, "O campo [Descricao] é obrigatório.");
         if(! $encontro->getData())
             array_push($erros, "O campo [Data] é obrigatório.");
-        if(! $encontro->getAlcateia())
-            array_push($erros, "O campo [Alcateia] é obrigatório.");
+        if(! $encontro->getMatilha())
+            array_push($erros, "O campo [Matilha] é obrigatório.");
 
         return $erros;
     }

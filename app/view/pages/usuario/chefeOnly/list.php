@@ -3,9 +3,9 @@
 require_once(__DIR__ . "/../../../include/header.php");
 require_once(__DIR__ . "/../../../include/menu.php");
 require_once(__DIR__ . "/../../../../model/enum/UsuarioPapel.php");
-require_once(__DIR__ . "/../../../../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../../../../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../../../../dao/UsuarioDAO.php");
-require_once(__DIR__ . "/../../alcateia/selectAlcateia.php");
+require_once(__DIR__ . "/../../matilha/selectMatilha.php");
 require_once(__DIR__ . "/../selectPapeis.php");
 require_once(__DIR__ . "/../../../../model/Usuario.php");
 ?>
@@ -57,17 +57,17 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                                     }
                                     ?>
                                 </p>
-                                <button class="<?php if($usu->getAlcateia()) {
+                                <button class="<?php if($usu->getMatilha()) {
                                         echo "btn btn-secondary";
                                     }else {
                                         echo "btn btn-warning";
                                     }?>"
-                                    id="<?= $usu->getId();?>" onclick="findTheAlcateias(<?php if($usu->getIdAlcateia()) {echo $usu->getIdAlcateia();} else {echo '0';}?>
+                                    id="<?= $usu->getId();?>" onclick="findTheMatilhas(<?php if($usu->getIdMatilha()) {echo $usu->getIdMatilha();} else {echo '0';}?>
                                     , 'list', <?= $usu->getId();?>);"> 
-                                    <?php if($usu->getAlcateia()) {
-                                        echo $usu->getAlcateia()->getNome();
+                                    <?php if($usu->getMatilha()) {
+                                        echo $usu->getMatilha()->getNome();
                                     }else {
-                                        echo "sem alcateia";
+                                        echo "sem matilha";
                                     }?>
                                 </button> 
                             </div>

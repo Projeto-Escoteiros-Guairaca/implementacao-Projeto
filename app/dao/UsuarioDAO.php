@@ -4,7 +4,7 @@
 
 include_once(__DIR__ . "/../util/Connection.php");
 include_once(__DIR__ . "/../model/Usuario.php");
-include_once(__DIR__ . "/../model/Alcateia.php");
+include_once(__DIR__ . "/../model/Matilha.php");
 
 
 class UsuarioDAO {
@@ -41,13 +41,13 @@ class UsuarioDAO {
             " - Erro: mais de um usuário encontrado.");
     }
 
-    public function changeAlcateia($id, $idAlcateia) {
+    public function changeMatilha($id, $idMatilha) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_usuarios SET id_alcateia = :idalcateia WHERE id_usuario = :id";
+        $sql = "UPDATE tb_usuarios SET id_matilha = :idmatilha WHERE id_usuario = :id";
         $stm = $conn->prepare($sql);
         $stm->bindValue("id", $id);
-        $stm->bindValue("idalcateia", $idAlcateia);
+        $stm->bindValue("idmatilha", $idMatilha);
         $stm->execute();
     }
     //Método para buscar um usuário por seu ID
@@ -115,7 +115,7 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_usuarios e" .
-               " WHERE e.id_alcateia = ? ORDER BY e.id_usuario";
+               " WHERE e.id_matilha = ? ORDER BY e.id_usuario";
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
         $result = $stm->fetchAll();
@@ -174,11 +174,11 @@ class UsuarioDAO {
         $stm->execute();
     }
 
-    public function findUsuariosByIdAlcateia(int $id){
+    public function findUsuariosByIdMatilha(int $id){
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_usuarios u" .
-               " WHERE u.id_alcateia = ?";
+               " WHERE u.id_matilha = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
         $result = $stm->fetchAll();
@@ -197,7 +197,7 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_usuarios u" .
-               " WHERE u.id_alcateia = ? and u.papeis = 'USUARIO' ";
+               " WHERE u.id_matilha = ? and u.papeis = 'USUARIO' ";
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
         $result = $stm->fetchAll();
@@ -225,9 +225,9 @@ class UsuarioDAO {
         $stm->execute([$id]);
         $result = $stm->fetchAll();
 
-        $alcateias = $this->mapContatos($result);
+        $matilhas = $this->mapContatos($result);
         
-        return $alcateias;
+        return $matilhas;
     }
      
     public function mapContatos($result) {
@@ -257,7 +257,7 @@ class UsuarioDAO {
             //Seta os campos provisórios
             $usuario->setIdEndereco($reg['id_endereco']);
             $usuario->setIdContato($reg['id_contato']);
-            $usuario->setIdAlcateia($reg['id_alcateia']);
+            $usuario->setIdMatilha($reg['id_matilha']);
 
             array_push($usuarios, $usuario);
         }
@@ -291,7 +291,7 @@ class UsuarioDAO {
             $contato->setTelefone($reg['telefone']);
             $usuario->setContato($contato);
             //Seta os campos provisórios
-            $usuario->setIdAlcateia($reg['id_alcateia']);
+            $usuario->setIdMatilha($reg['id_matilha']);
 
             array_push($usuarios, $usuario);
         }

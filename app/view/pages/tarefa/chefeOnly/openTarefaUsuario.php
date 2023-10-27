@@ -62,7 +62,7 @@ textarea {
             </div>
         </div>
     </section>
-<script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
+<script src="<?= BASEURL ?>/view/js/matilha.js"> </script> 
 <?php
     require_once(__DIR__ . "/../../../include/footer.php");
 ?>

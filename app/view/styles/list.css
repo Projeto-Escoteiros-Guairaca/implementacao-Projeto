@@ -11,7 +11,7 @@ body {
     --borda_dourada: solid 1px #ffbc42;
     --color-p:#667;
 }
-/*tela traseira do pop up mudar alcateia*/
+/*tela traseira do pop up mudar matilha*/
 .modal-background {
     width: 100vw;
     height: 100vh;
@@ -24,7 +24,7 @@ body {
     top: 0;
 }
 
-/*pop up mudar alcateia*/
+/*pop up mudar matilha*/
 .modal {
     width: 450px;
     height: 350px;
@@ -119,7 +119,7 @@ a{
     
   }
 
-.btn_mudar_alcateia{
+.btn_mudar_matilha{
     height: 5vh;
     white-space: 8vh;
     background-color: #ffbc42;
@@ -127,7 +127,7 @@ a{
     border: var(--bordas);
     
 }
-.btn_mudar_alcateia:hover{
+.btn_mudar_matilha:hover{
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--sombras_bordas);

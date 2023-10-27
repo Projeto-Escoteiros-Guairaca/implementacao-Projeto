@@ -8,11 +8,11 @@ class AcessoController extends Controller {
 
     const administradorActions = [
         "listFrequencias", "listUsuarios", "listAtividades", "listTarefas", "listEncontros", 
-        "listAlcateias", "listMatilhas", "listUsuariosByAlcateia", "findUsuarioByIdAlcateia", "profile", 
+        "listMatilhas", "listMatilhas", "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
         "create", "createTarefaAtiv", "saveEndereco", "saveContato", "saveUsuario",
-        "edit", "delete", "save", "update", "findIt", "changeAlcateia", "updateToInativo", "updateToAtivo",
-        "findUsuarioById", "changePapel", "findChefeAndPrimo", "listAlcateia", "findAlcateiaById", "filter",
-        "findEncontroById", "findUsuariosByIdAlcateia", "listByUsuario","createFrequencias", 
+        "edit", "delete", "save", "update", "findIt", "changeMatilha", "updateToInativo", "updateToAtivo",
+        "findUsuarioById", "changePapel", "findChefeAndPrimo", "listMatilha", "findMatilhaById", "filter",
+        "findEncontroById", "findUsuariosByIdMatilha", "listByUsuario","createFrequencias", 
         "findUsuariosById",
         "findFrequenciasByIdEncontro", "findEncontroByIdEncontro",
         "updateToFalse", "updateToTrue", "findFrequenciaById", "listByIdAtiv", "createTarefaAtiv",

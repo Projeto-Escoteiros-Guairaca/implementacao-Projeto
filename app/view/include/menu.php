@@ -24,10 +24,10 @@ $isAdministrador = $linkCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 $isLobinho = $linkCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
 
 if($isChefe == 1) {
-  $_SESSION["chefeAlcateia"] = $_SESSION[SESSAO_USUARIO_IDALCATEIA];
+  $_SESSION["chefeMatilha"] = $_SESSION[SESSAO_USUARIO_IDMATILHA];
 }
 else {
-  $_SESSION["chefeAlcateia"] = "";
+  $_SESSION["chefeMatilha"] = "";
 }
 ?>
 
@@ -53,7 +53,7 @@ else {
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'>Lobinhos</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Alcateia&action=listAlcateia'> Alcateias</";
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha&action=listMatilha'> Matilhas</";
                 echo '</li>';
                 echo '<li class="nav-item">';
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=listEncontros'> Encontros</a>";
@@ -72,7 +72,7 @@ else {
               echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario'>Lobinhos</a>";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Alcateia'> Alcateias</";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha'> Matilhas</";
               echo '</li>';
               echo '<li class="nav-item">';
               echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro'> Encontros</a>";

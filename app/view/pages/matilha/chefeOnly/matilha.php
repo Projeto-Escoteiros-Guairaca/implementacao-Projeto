@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/openTarefa.css" />
 
-<h2 class='text-center'>Alcateia <?= $dados["alcateia"]->getNome(); ?> </h3>
+<h2 class='text-center'>Matilha <?= $dados["matilha"]->getNome(); ?> </h3>
     <section class="container">
         <div class="tarefa">
             <div id="tarefa-container">
@@ -15,8 +15,8 @@
                     <hr>
                     <h4>Primo: </h4>
                     <h5 style="color:brown;"><?php 
-                    if($dados['alcateia']->getIdPrimo() != null) {
-                        echo $dados['alcateia']->getIdPrimo();
+                    if($dados['matilha']->getIdPrimo() != null) {
+                        echo $dados['matilha']->getIdPrimo();
                     }  
                     else {
                        echo "O primo ainda não foi selecionado.";
@@ -26,11 +26,11 @@
                     <h4>Chefe responsável: </h4>
                     <h5 style="color:darkorange;">
                     <?php 
-                    if($dados['alcateia']->getIdChefe() != null) {
-                        echo $dados['alcateia']->getUsuarioChefe()->getNome();
+                    if($dados['matilha']->getIdChefe() != null) {
+                        echo $dados['matilha']->getUsuarioChefe()->getNome();
                     }  
                     else {
-                       echo "Esta alcateia está sem um chefe. Defina ele na página dos Lobinhos.";
+                       echo "Esta matilha está sem um chefe. Defina ele na página dos Lobinhos.";
                     }
                     ?>
                 </h5 > 
@@ -58,7 +58,7 @@
             </div>
         </div>
     </section>
-<script src="<?= BASEURL ?>/view/js/alcateia.js"> </script> 
+<script src="<?= BASEURL ?>/view/js/matilha.js"> </script> 
 <?php
     require_once(__DIR__ . "/../../../include/footer.php");
 ?>

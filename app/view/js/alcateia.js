@@ -1,17 +1,17 @@
 
-var idSelectedAlcateia;
-var AlcateiasAlreadyUsed = []; 
+var idSelectedMatilha;
+var MatilhasAlreadyUsed = []; 
 
 function usuarios(id, BASEURL) {
-    idSelectedAlcateia = id;
+    idSelectedMatilha = id;
     action = "findChefeAndPrimo";
-    if(AlcateiasAlreadyUsed.includes(id) == true) {
+    if(MatilhasAlreadyUsed.includes(id) == true) {
         eliminate();
     }
     else {
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "AlcateiaController.php?action=" + action + "&idAlcateia=" + id, true);
+    xhttp.open("GET", "MatilhaController.php?action=" + action + "&idMatilha=" + id, true);
   
     //* verifica se está preparado ou não. Quando está preparado, recebe o retorno em JSON e o transforma em um array.
     xhttp.onreadystatechange = function() {
@@ -42,8 +42,8 @@ function usuarios(id, BASEURL) {
             a = document.createElement("a");
             a.className = "btn btn-success";
             a.innerHTML = "lista de usuários";
-            a.href= BASEURL+"/controller/AcessoController.php?controller=Usuario&action=listUsuariosByAlcateia&idAlcateia="+idSelectedAlcateia;
-            AlcateiasAlreadyUsed.push(id);
+            a.href= BASEURL+"/controller/AcessoController.php?controller=Usuario&action=listUsuariosByMatilha&idMatilha="+idSelectedMatilha;
+            MatilhasAlreadyUsed.push(id);
 
             modalBackground.addEventListener("click", () => {
                 body.removeChild(modalBackground);
@@ -58,9 +58,9 @@ function usuarios(id, BASEURL) {
 }
 
 function eliminate() {
-    removeElementsByClass("infoDaTabela"+idSelectedAlcateia);
-    index = AlcateiasAlreadyUsed.indexOf(idSelectedAlcateia);
-    AlcateiasAlreadyUsed.splice(index, 1);
+    removeElementsByClass("infoDaTabela"+idSelectedMatilha);
+    index = MatilhasAlreadyUsed.indexOf(idSelectedMatilha);
+    MatilhasAlreadyUsed.splice(index, 1);
 }
 
 function removeElementsByClass(className){
