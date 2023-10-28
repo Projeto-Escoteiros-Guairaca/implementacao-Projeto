@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listMatilhas.css" />
 
-<h3 class='text-center'>Matilhas</h3>
+<h3 class='text-center'>Matilhas da Alcateia <?php echo $dados['alcateia']; ?></h3>
 
 <div class="container">
     <div class="row">

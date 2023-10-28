@@ -2,9 +2,12 @@
 
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../model/Matilha.php");
+require_once(__DIR__ . "/../model/Alcateia.php");
+
+require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../service/MatilhaService.php");
-require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 
     
 class MatilhaController extends Controller{
@@ -78,12 +81,13 @@ class MatilhaController extends Controller{
         }
     }
     public function list(string $msgErro = "", string $msgSucesso = ""){
-        $matilhas = $this->matilhaDao->list();
+        $matilhas = $this->matilhaDao->list($_GET['idAlcateia']);
+
         if(isset($_GET['sendMatilhas'])) {
             echo json_encode($matilhas);
             return;
         }
-
+        $dados['alcateia'] = $_GET['nomeAlcateia'];
         $dados["lista"] = $matilhas;
         $this->loadView("pages/matilha/chefeOnly/listMatilha.php", $dados, $msgErro, $msgSucesso, true);    
     }

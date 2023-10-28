@@ -7,7 +7,7 @@ require_once(__DIR__ . "/Controller.php");
 class AcessoController extends Controller {
 
     const administradorActions = [
-        "listFrequencias", "listUsuarios", "listAtividades", "listTarefas", "listEncontros", 
+        "listFrequencias", "listUsuarios", "listAtividades", "listTarefas", "listEncontros","listAlcateias",
         "listMatilhas", "listMatilhas", "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
         "create", "createTarefaAtiv", "saveEndereco", "saveContato", "saveUsuario",
         "edit", "delete", "save", "update", "findIt", "changeMatilha", "updateToInativo", "updateToAtivo",
