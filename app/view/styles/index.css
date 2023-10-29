@@ -36,8 +36,8 @@ body {
 .card-sweg {
     min-height: 420px;
     border: #ffbc42 1px solid;
-    margin-top: 5vh;
-    
+    margin-top: 7vh;
+    background-color: transparent;
     opacity: 0.9;
 }
 .card-sweg:hover{

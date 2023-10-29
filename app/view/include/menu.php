@@ -42,7 +42,7 @@ else {
   </button>
 
     <div id="navbar-principal" class="collapse navbar-collapse justify-content-md-center">
-              <div class="logo" style="background: #1d7874">
+              <div class="logo" >
               <a href="<?=BASEURL?>/controller/HomeController.php">
                 <img src="<?= BASEURL ?>/view/pages/home/images/lobo-amarelo.png" alt="" height="100">
               </a>

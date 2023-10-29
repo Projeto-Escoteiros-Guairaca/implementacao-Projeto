@@ -3,6 +3,9 @@ body{
     max-height: 100vh;
 }
 
+img{
+    background-color: transparent;
+}
 .btn:link,
 .btn:visited {
     /* text-transform: uppercase;
@@ -70,40 +73,10 @@ body{
 
 View Compiled
 
-
-
-
-
 .modo-escuro h1, .modo-escuro p {
     color: #fff;
 }
     
-
-
-
-
-
-
-/*Tablets*/
-/*@media screen and (max-width: 768px) {
-    body{
-        float: none;
-        text-align: center;
-        width: 100%;
-    }
-}
-
-/*Celulares*/
-/*@media screen and (max-width: 600px){
-    body{
-        float: none;
-        text-align: center;
-        width: 100%;
-    }
-}*/
-
-/* NOVA HOME */
-
 
 .bg-sweg {
     background-color: #1d7874;
@@ -124,7 +97,6 @@ View Compiled
 }
 #navbar-principal{
     width: 100vh;
-    
 }
 
 #navbar-principal.rolagem{
@@ -149,5 +121,6 @@ View Compiled
 .rolagem img{
     height: 60px;
     width: 45px;
+    background-color: transparent;
     
 }

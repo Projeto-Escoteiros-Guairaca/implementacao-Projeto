@@ -12,7 +12,7 @@ require_once(__DIR__."/../../include/menu.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
 
 <!-- COMECO DOS CARDS -->
-<div class="container-fluid pt-4">
+<div class="container-fluid ">
 
   <div class="row">
     

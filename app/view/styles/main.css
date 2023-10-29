@@ -1,5 +1,12 @@
 :root {
-    --cor-dark-mod: #293556; /* Substitua pelo código de cor que desejar */
+    --cor-dark-mod: #121212; /* Substitua pelo código de cor que desejar */
+    --verde-escuro: #1d7874;
+    --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
+    --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
+    --bordas:solid #679289 1px;
+    --color-p:#667;
+
+    
   }
 
 body{
@@ -8,20 +15,34 @@ body{
     position: relative;
     height: fit-content;
 }
+
 form{
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .modo-escuro{
-    background-color: rgb(24, 24, 24);
+    background-color:  var(--cor-dark-mod);
     color: var(--cor-dark-mod);
 }
+.modo-escuro .bg-sweg {
+    background-color: transparent;
+    border: var(--bordas);
+    box-shadow: var(--sombras_bordas_modo_escuro);
+    width: 98%;
+    margin: 1vh auto 0;
 
-.modo-escuro #cabecalho{
-    background-color: rgb(24, 24, 24);
-    color: #fff;
-    border: 2px solid var(--cor-dark-mod);
+}
+
+.modo-escuro .incons_redirecionais{
+    color: #ffbc42;
+    
+}
+.modo-escuro img{
+   
+}
+.modo-escuro .card-title{
+    color:#ffbc42
 }
 
 .modo-escuro #principal{
@@ -56,18 +77,15 @@ form{
 .modo-escuro #txtlogin{
     background-color: black;
 }
-#dark-mode{
-    margin-left: 20px;
-    margin-top: 10px;
-    font-size: 12px;
-    cursor: pointer;
-    color: var(--cor-dark-mod);
-    transition: 0.5s;
-    width: 100px;
-    height: 40px;
-    text-align: center;
+.modo-escuro .footer{
+    background-color:transparent;
+    border: var(--bordas);
+    box-shadow: var(--sombras_bordas_modo_escuro);
+    width: 98%;
+    margin:5vh auto 1vh;
 }
 
+.modo-escuro
 .container{
     display: flex;
     flex-wrap: wrap;
