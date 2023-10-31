@@ -20,7 +20,7 @@ require_once(__DIR__ . "/../../../include/header.php");
         
         <div class="col-6">
             <form id="frmUsuario" method="POST" 
-                action="<?= BASEURL ?>/controller/AcessoController.php?controller=Usuario&action=save" >
+                action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
 
                 <h2 class="text-center">
                     Dados de identificação do Usuário

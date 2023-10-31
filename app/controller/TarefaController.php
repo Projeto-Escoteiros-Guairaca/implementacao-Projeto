@@ -22,8 +22,9 @@ class TarefaController extends Controller {
             $this->loadController("Acesso");
             return;
         }
-        $_SESSION['callAccessToken'] = true;
-
+        if($_GET['action'] != "create" &&$_GET['action'] != "save") {
+            $_SESSION['callAccessToken'] = true;
+        }
         $this->atividadeDao = new AtividadeDAO();
         $this->tarefaDao = new TarefaDAO();
         $this->tarefaService = new TarefaService();

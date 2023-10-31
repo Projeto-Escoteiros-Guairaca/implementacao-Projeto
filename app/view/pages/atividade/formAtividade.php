@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-6">
-            <form id="formatividade" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=save">
+            <form id="formatividade" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save">
                 
                 <h2 class="text-center">
                     <?php if(isset($dados["id_atividade"])): ?>

@@ -5,7 +5,6 @@
 require_once(__DIR__ . "/../../controller/LinkController.php");
 require_once(__DIR__ . "/../../model/enum/UsuarioPapel.php");
 
-$_SESSION['callAccessToken'] = true;
 
 if(session_status() !== PHP_SESSION_ACTIVE) 
 {

@@ -19,7 +19,7 @@ define('APP_NAME', 'SWEG - Escoteiros');
 define('HOME_PAGE', BASEURL . '/controller/HomeController.php?action=home');
 
 //Página de registração
-define('REGISTER_PAGE', BASEURL . '/controller/UsuarioController.php?action=create');
+define('REGISTER_PAGE', BASEURL . '/controller/AcessoController.php?controller=Usuario&action=create');
 
 
 //Página de logout do sistema
@@ -29,7 +29,7 @@ define('LOGIN_PAGE', BASEURL . '/controller/LoginController.php?action=login');
 define('LOGOUT_PAGE', BASEURL . '/controller/LoginController.php?action=logout');
 
 //Sessão do usuário
-define('SESSAO_USUARIO_ID_MATILHA', "usuarioLogadoIdMatilha");
+define('SESSAO_USUARIO_IDMATILHA', "usuarioLogadoIdMatilha");
 define('SESSAO_USUARIO_ID', "usuarioLogadoId");
 define('SESSAO_USUARIO_NOME', "usuarioLogadoNome");
 define('SESSAO_USUARIO_PAPEIS', "usuarioLogadoPapeis");

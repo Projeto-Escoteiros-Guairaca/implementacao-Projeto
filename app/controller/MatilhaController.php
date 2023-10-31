@@ -26,8 +26,9 @@ class MatilhaController extends Controller{
                 $this->loadController("Acesso");
                 return;
             }
-            $_SESSION['callAccessToken'] = true;
-        }
+            if($_GET['action'] != "create" &&$_GET['action'] != "save") {
+                $_SESSION['callAccessToken'] = true;
+            }        }
         
         $this->usuarioDao = new UsuarioDAO();
         $this->matilhaDao = new MatilhaDAO();
@@ -69,6 +70,8 @@ class MatilhaController extends Controller{
                 $matilha->setUsuarioChefe($this->usuarioDao->findById($matilha->getIdPrimo()));
             }
 
+            $dados['alcateia'][0] = $_GET['idAlcateia'];
+            $dados['alcateia'][1] = $_GET['nomeAlcateia'];
             $dados["usuarios"] = $usuarios;
             $dados["matilha"] = $matilha;
             $this->loadView("pages/matilha/chefeOnly/matilha.php", $dados, $msgErro, $msgSucesso, true);
@@ -81,13 +84,14 @@ class MatilhaController extends Controller{
         }
     }
     public function list(string $msgErro = "", string $msgSucesso = ""){
-        $matilhas = $this->matilhaDao->list($_GET['idAlcateia']);
+        $matilhas = $this->matilhaDao->listByIdAlcateia($_GET['idAlcateia']);
 
         if(isset($_GET['sendMatilhas'])) {
             echo json_encode($matilhas);
             return;
         }
-        $dados['alcateia'] = $_GET['nomeAlcateia'];
+        $dados['alcateia'][0] = $_GET['idAlcateia'];
+        $dados['alcateia'][1] = $_GET['nomeAlcateia'];
         $dados["lista"] = $matilhas;
         $this->loadView("pages/matilha/chefeOnly/listMatilha.php", $dados, $msgErro, $msgSucesso, true);    
     }

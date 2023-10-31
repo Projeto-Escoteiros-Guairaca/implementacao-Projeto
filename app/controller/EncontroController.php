@@ -19,8 +19,9 @@ class EncontroController extends Controller {
             $this->loadController("Acesso");
             return;
         }
-        $_SESSION['callAccessToken'] = true;
-        
+        if($_GET['action'] != "create" &&$_GET['action'] != "save") {
+            $_SESSION['callAccessToken'] = true;
+        }        
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
         $this->setActionDefault("listEncontros", true);

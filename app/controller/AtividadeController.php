@@ -20,10 +20,10 @@ class AtividadeController extends Controller {
             $this->loadController("Acesso");
             return;
         }
-        if($_GET['action'] != "create") {
+        if($_GET['action'] != "create" &&$_GET['action'] != "save") {
             $_SESSION['callAccessToken'] = true;
         }
-        
+    
 
         $this->atividadeDao = new AtividadeDAO();
         $this->atividadeService = new AtividadeService();

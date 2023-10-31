@@ -33,21 +33,25 @@ class UsuarioController extends Controller
     private UsuarioService $usuarioService;
 
     public function __construct() {
+        
         if(! isset($_GET['isAjax'])) {
+
             if($_SESSION['callAccessToken'] == true) {
                 $_SESSION['controller'] = "Usuario";
     
                 $this->loadController("Acesso");
                 return;
             }
-            $_SESSION['callAccessToken'] = true;
+            if($_GET['action'] != "create" &&$_GET['action'] != "save") {
+                $_SESSION['callAccessToken'] = true;
+            }
         }
         
 
-        $ChefeActions = [
-            "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
-            "createTarefaAtiv", "findIt", "changeMatilha", "findUsuarioById"
-        ];
+        // $ChefeActions = [
+        //     "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
+        //     "createTarefaAtiv", "findIt", "changeMatilha", "findUsuarioById"
+        // ];
 
         $this->frequenciaDao = new frequenciaDAO();
         $this->atividadeDao = new AtividadeDAO();

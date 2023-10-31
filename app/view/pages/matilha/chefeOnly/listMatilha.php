@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listMatilhas.css" />
 
-<h3 class='text-center'>Matilhas da Alcateia <?php echo $dados['alcateia']; ?></h3>
+<h3 class='text-center'>Matilhas da Alcateia <?php echo $dados['alcateia'][1]; ?></h3>
 
 <div class="container">
     <div class="row">
@@ -31,7 +31,7 @@
                             <a class="btn btn-warning my-1" 
                                 href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getId_matilha(); ?>">
                                 Alterar</a> 
-                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getId_matilha()?>">
+                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getId_matilha()?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
                                     Mostrar Dados da Matilha: </a>
                         </div>
                     </div>

@@ -103,7 +103,7 @@ function sendMatilhaChange() {
         return;
     }
 
-    var xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();   
     xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idMatilha=" + matilhaId + '&chefeChangeMatilha' + chefeChangeMatilha +'&isAjax=true', true);
     
     xhttp.onreadystatechange = function() {

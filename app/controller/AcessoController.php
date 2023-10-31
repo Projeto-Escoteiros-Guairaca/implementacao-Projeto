@@ -27,6 +27,10 @@ class AcessoController extends Controller {
     const chefeActions = [
         
     ];
+    
+    const noSessionActions = [
+        "create"
+    ];
 
     public function __construct() {  
         $this->setSessionVariables();
@@ -34,7 +38,9 @@ class AcessoController extends Controller {
 
     public function setSessionVariables() {
         $url = strstr("$_SERVER[REQUEST_URI]", "action");
+    
         $_SESSION['callAccessToken'] =  false;
+
        
         if(isset($_GET['action'])) {
             $_SESSION['ACTION'][$_GET['controller']] = $_GET['action'];
@@ -49,7 +55,9 @@ class AcessoController extends Controller {
     }  
 
     public function callRespectiveFunction() {
-        $papelMethod = $_SESSION[SESSAO_USUARIO_PAPEIS][0];
+        if(isset($_SESSION[SESSAO_USUARIO_PAPEIS][0])) { $papelMethod = $_SESSION[SESSAO_USUARIO_PAPEIS][0]; }
+        else { $papelMethod = "noSessionActive"; }
+        
 
         if(isset($_GET['controller'])) {
         
@@ -76,7 +84,10 @@ class AcessoController extends Controller {
     public function ADMINISTRADOR() {
         $this->checkAndCallController(AcessoController::administradorActions);
     }
-    
+    public function noSessionActive() {
+        $this->checkAndCallController(AcessoController::noSessionActions);
+    }
+
     public function checkAndCallController($actions) {
 
         if(isset($_GET['action'])) {
