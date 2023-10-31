@@ -58,6 +58,7 @@ body {
 /*Titulos dos cards*/
 .card-title{
    font-size: 38px;
+   color: #1d7874;
 }
 /*icons dos cards*/
 .incons_redirecionais{
@@ -78,7 +79,10 @@ body {
     display: inline;
     margin: 5vh auto 5vh;
 }
-
+.card-index{
+    box-shadow: 0px;
+    z-index: 10;
+}
 .text-box {
     margin-left: 44vw;
     margin-top: 42vh;
