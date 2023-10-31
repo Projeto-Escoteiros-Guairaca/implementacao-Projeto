@@ -6,6 +6,7 @@ require_once(__DIR__ . "/../../../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../matilha/selectMatilha.php");
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
+    <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
     <div class='container'>
         <div class="row">

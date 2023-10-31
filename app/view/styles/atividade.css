@@ -34,18 +34,25 @@
   color: var(--verde-escuro);
 }
 /*card das atv*/
-.card{border: var(--bordas);}
-
-
+.card{
+  border: var(--bordas);
+  background: transparent;
+}
 
 .card:hover{
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: var(--sombras_bordas);
 }
-.card-body{display: inline;}
+.card-body{
+  background-color: transparent;
+  display: inline;
+}
 
-.card-img-top{text-align: center;}
+.card-img-top{
+  text-align: center;
+  border-bottom: 1px #1d7874 solid;
+}
 
 .principais_btn_cards_atv{
   max-width: 7vh;

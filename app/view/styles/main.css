@@ -3,7 +3,8 @@
     --verde-escuro: #1d7874;
     --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
     --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
-    --bordas:solid #679289 1px;
+    --bordas_douradas:solid #ffbc42 1px;
+    --borda_verde_esc: #1d7874 1px solid;
     --color-p:#667;
 
     
@@ -27,20 +28,16 @@ form{
 }
 .modo-escuro .bg-sweg {
     background-color: transparent;
-    border: var(--bordas);
-    box-shadow: var(--sombras_bordas_modo_escuro);
     width: 98%;
     margin: 1vh auto 0;
-
 }
+
 
 .modo-escuro .incons_redirecionais{
     color: #ffbc42;
     
 }
-.modo-escuro img{
-   
-}
+
 .modo-escuro .card-title{
     color:#ffbc42
 }
@@ -77,6 +74,32 @@ form{
 .modo-escuro #txtlogin{
     background-color: black;
 }
+
+.modo-escuro .card-body{
+    background-color: transparent;
+    display: inline;
+    border: 3px solid #ffbc42;
+    border-top: 0px;
+    box-shadow: var(--sombras_bordas_modo_escuro);
+}
+
+.modo-escuro .card-img-top{
+    text-align: center;
+    border-bottom: var(--borda_verde_esc);
+    border: 3px solid #ffbc42;
+}
+.modo-escuro .btn_cards_atv{
+    border: var(--bordas_douradas);
+    color: #ffbc42;
+    
+}
+.modo-escuro .btn_cards_atv:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1d7874;
+}
+
+
 .modo-escuro .footer{
     background-color:transparent;
     border: var(--bordas);
