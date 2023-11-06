@@ -10,6 +10,7 @@ textarea {
 }
 </style>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/openTarefa.css" />
+<a class="btn_cards_atv" href = "<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=listTarefas"> voltar à lista de tarefas </a>
 
 <h2 class='text-center'>Tarefa <?= $dados["tarefa"]->getNomeTarefa(); ?> </h3>
     <section class="container">
@@ -21,32 +22,6 @@ textarea {
                     <?php echo $dados["tarefa"]->getDescricaoTarefa();?> 
                     <hr>
                 </div>
-                <h3>Status</h3>
-                <div id="status">
-                   
-                    
-                    <hr>
-                    <h4>Estado da entrega: </h4>
-                    <h5 style="color:brown;"><?php echo $dados['tarefa']->getStatusEntregaPalavra(); ?></h5 > 
-                    <hr>
-                    <h4>Data da entrega: </h4>
-                    <h5 style="color:darkorange;"><?php echo $dados['tarefa']->getDataEntrega(); ?></h5 > 
-                </div>
-            </div>
-        </div>
-    </section>
-    <br>
-    <br>
-    <section class="container">
-        <div class="tarefa">
-            <div id="tarefa-container">
-                <h3>Descrição da Entrega:</h3>
-                <div id="descricao">
-                    <hr><textarea disabled cols="30" rows="10"><?php echo $dados["tarefa"]->getDescricaoEntrega();?></textarea>
-                    
-                    <hr>
-                </div>
-                <h3>Entrega: </h3>
                 <div id="status">
                     <hr>
                     <h4>Estado da entrega: </h4>
@@ -60,9 +35,22 @@ textarea {
                         echo "Não entregou ainda.";
                     }
                     ?></h5 >
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <section class="container">
+        <div class="tarefa">
+            <div id="tarefa-container">
+                <h3>Escreva aqui qualquer detalhe que precises:</h3>
+                <div id="descricao">
+                    <hr><textarea cols="30" rows="10"><?php echo $dados["tarefa"]->getDescricaoEntrega();?></textarea>
                     <hr>
-                    <h4>Data da entrega: </h4>
-                    <h5 style="color:darkorange;"><?php echo $dados['tarefa']->getDataEntrega(); ?></h5 > 
+
+                    <h3>passe por aqui os arquivos!</h3>
+                    
+                    <input type="file"/> 
                 </div>
             </div>
         </div>

@@ -18,13 +18,13 @@ class TarefaController extends Controller {
     function __construct(){
         if($_SESSION['callAccessToken'] == true) {
             $_SESSION['controller'] = "Tarefa";
-
             $this->loadController("Acesso");
             return;
         }
         if($_GET['action'] != "create" &&$_GET['action'] != "save") {
             $_SESSION['callAccessToken'] = true;
         }
+
         $this->atividadeDao = new AtividadeDAO();
         $this->tarefaDao = new TarefaDAO();
         $this->tarefaService = new TarefaService();
@@ -118,11 +118,13 @@ class TarefaController extends Controller {
         if( isset($_GET['id'])) {
             $_SESSION['activeTarefa'] = $_GET['id'];
         }
-
         $tarefa = $this->findById();
         $dados["tarefa"] = $tarefa;
-        if($_SESSION[SESSAO_USUARIO_PAPEIS] == "LOBINHO") {
-            $this->loadView("pages/tarefa/openTarefa.php", $dados, $msgErro, $msgSucesso, true);
+        if($_SESSION[SESSAO_USUARIO_PAPEIS][0] == "LOBINHO") {
+            $this->loadView("pages/tarefa/lobinhoOnly/openTarefaLobinho.php", $dados, $msgErro, $msgSucesso, true);
+        }
+        else {
+            $this->loadView("pages/tarefa/chefeOnly/openTarefaUsuario.php", $dados, $msgErro, $msgSucesso, true);
         }
         
     }
