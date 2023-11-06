@@ -5,12 +5,6 @@
     --borda_dourada: solid 1px #ffbc42;
     --color-p:#667;
 }
-.col-12{
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    margin-top: 7vh;
-}
 .dados_universais_atv{
     height: 7vh;
     width: 50vh;
@@ -25,9 +19,6 @@
     text-align: center;
     z-index: 1;
    
-}.container {
-    display: flex;
-    justify-content: center;
 }
 .containerTarefa {
     margin: 2vh 0;

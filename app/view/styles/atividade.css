@@ -5,12 +5,7 @@
   --bordas:1px #1d7874 solid;
   --color-p:#667;
 }
-.col-12{
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  margin-top: 7vh;
-}
+
 #btn_inserir_atv{
   box-sizing: border-box;
   border: var(--bordas);
@@ -38,7 +33,6 @@
   border: var(--bordas);
   background: transparent;
 }
-
 .card:hover{
   cursor: pointer;
   transition: all 0.3s ease;
@@ -198,7 +192,4 @@
   transition: all 0.3s ease;
   box-shadow: var(--sombras_bordas);
   color: #071e22;
-}
-.container{
-  margin-top: 5vh;
 }

@@ -1,9 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    overflow-x: visible;}
 :root{
     --verde-escuro: #1d7874;
     --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -48,12 +42,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-.col-12{
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 9;
-}
+
 .card{border: var(--bordas);}
 /* Aqui comeca o css do arquivo listTarefasUsuario.php*/
 .nome_usuario{
@@ -142,9 +131,7 @@ a{
 }
 
 #card-pai{
-    box-sizing: border-box;
-    padding: 5vh auto;
-    margin: 2vh 0 0;
+
 }
 .card-body{
     align-items: center;
