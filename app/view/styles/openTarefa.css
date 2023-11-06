@@ -49,3 +49,11 @@
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
    
   }
+
+  .btn_cards_atv{
+    box-sizing: border-box;
+    border: var(--bordas);
+    padding: 1vh 1vh;
+    min-width: 50vh;
+    color: var(--verde-escuro);
+  }
