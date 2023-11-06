@@ -1,27 +1,40 @@
 :root {
-    --cor-dark-mod: #121212; /* Substitua pelo código de cor que desejar */
+    --cor-dark-mod: #121212; 
     --verde-escuro: #1d7874;
     --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
     --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
     --bordas_douradas:solid #ffbc42 1px;
     --borda_verde_esc: #1d7874 1px solid;
-    --color-p:#667;
-
-    
-  }
-
+    --color-p:#667; 
+}
+/*Abaixo serao declaradas classes que so podem ser editadas no arquivo main (classes universais)*/
 body{
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
-    height: fit-content;
 }
-
 form{
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
+.col-12{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    box-sizing: border-box;
+    padding: auto auto;
+    margin: auto auto;
+    position: relative;
+    height: fit-content;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top:2vh;
+    height: fit-content;
+}
+/*Aqui finaliza as classes universais*/
 .modo-escuro{
     background-color:  var(--cor-dark-mod);
     color: var(--cor-dark-mod);
@@ -32,10 +45,8 @@ form{
     margin: 1vh auto 0;
 }
 
-
 .modo-escuro .incons_redirecionais{
     color: #ffbc42;
-    
 }
 
 .modo-escuro .card-title{
@@ -60,7 +71,6 @@ form{
 }
 
 .modo-escuro .estilo_dados_form{
-  
     border: 2px solid #3e60c1;
     border-radius: 15px;
     display: block;
@@ -108,12 +118,4 @@ form{
     margin:5vh auto 1vh;
 }
 
-.modo-escuro
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-    margin-top:2vh;
-    height: fit-content;
-}
+

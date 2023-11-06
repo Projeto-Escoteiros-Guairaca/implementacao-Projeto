@@ -7,7 +7,7 @@
     background-color: #1d7874;
     color: #ffffff;
     margin-top: 6.6vh;
-    position: fixed;
+    position: relative;
     bottom: 0;
     margin: 6.6vh 0 0 2px;
 }
@@ -17,4 +17,5 @@
 footer{
     bottom: 0;
     width: 100%;
+    position: relative;
 }

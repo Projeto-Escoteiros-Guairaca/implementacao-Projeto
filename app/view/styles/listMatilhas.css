@@ -27,8 +27,5 @@ body {
     z-index: 11;
 }
 
-.col-12{
-    display: flex;
-    flex-wrap: wrap;
-}
+
 
