@@ -7,15 +7,16 @@
     height: 13vh;
     background-color: #1d7874;
     color: #ffffff;
-    position: relative;
+    position: absolute;
     bottom: 0;
-    margin-bottom: 0;
+    left: 0;
+    right: 0;
 }
 .footer p{
     color: #ffffff;
 }
 footer{
+    margin-top: 6.6vh;
     bottom: 0;
     width: 100%;
-    position: relative;
 }

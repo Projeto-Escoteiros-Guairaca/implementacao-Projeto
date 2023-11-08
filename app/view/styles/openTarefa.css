@@ -1,6 +1,5 @@
 
 .tarefa {
-    flex-wrap: wrap;
     padding: 8vh;
     height: fit-content;
     width: 100vh;
@@ -8,12 +7,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto auto;
+    margin-bottom: 5vh;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
 }
 #tarefa-container {
     width: 60vh;
 }
-
 .caixas_texto{
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     background-color: transparent;
