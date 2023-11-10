@@ -8,25 +8,39 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
-    <div class='container'>
-        <div class="row">
-        <?php 
-        if($isLobinho == 2) {
-                    echo 
-                        '<div class="col-3">
-                         <a id="btn_inserir_atv" href="'. BASEURL .'/controller/AcessoController?controller=Atividade&action=create"><i id= "icon_inserir_atv"class="bi bi-plus"></i></a>
-                         </div> 
-                         ';
-                    }
-                    ?>
-            
-            <div class="col-9">
-                <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
-            </div>
-        </div>
+    <div class="container">
 
-        <div class="row">
-            <div class="col-12">
+
+                <div class="row">
+                    <div class="row">
+                                <?php 
+                                if($isLobinho == 2) {
+                                    echo 
+                                '
+                                
+                            <a id="btn_inserir_atv" class="card my-2 mx-2 Card" style="width: 18rem;" href="'. BASEURL .'/
+                                controller/AcessoController?    controller=Atividade&action=create">
+                                <div class= "div_icon_inseriri_atv">
+                                <i id= "icon_inserir_atv"class="bi bi-plus"></i>
+                                </div>
+
+                                <div class="div_titulo_inserir_atv" style = "text-decoration:none;">
+                                    <h5 class="titulo_btn_inserir_atv">Inserir Atividades</h5>
+                                </div>  
+                            </a>
+                                
+                                
+                                ';
+                                }
+                                ?>
+                                <div class="col-9">
+                                    <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+                                </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-12">
+                            
                 <?php foreach($dados["lista"] as $ativ):?>
                     <div  class="card my-2 mx-2 Card" style="width: 18rem;"> 
                     <?php if($isLobinho == 2) {

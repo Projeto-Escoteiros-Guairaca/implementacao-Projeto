@@ -9,24 +9,45 @@
 #btn_inserir_atv{
   box-sizing: border-box;
   border: var(--bordas);
-  padding: 0.5vh 0.5vh 0.5vh 0.5vh;
   text-align: center;
   align-items: center;
-  margin-top: 20px ;
-  left: -5vw;
-  position: absolute;
   border-radius: 5px;
-
+  height: 55vh;
+  padding: 0;
+  display: block;
 }
 #btn_inserir_atv:hover{
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: var(--sombras_bordas);
+  box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
+  border: #1d7874 5px solid;
+  text-decoration: none;
   scale: 1.025;
 }
 #icon_inserir_atv{
-  font-size: 25px;
+  font-size: 150px;
   color: var(--verde-escuro);
+}
+.div_icon_inseriri_atv{
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
+.div_titulo_inserir_atv{
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 0;
+  position: relative;
+  text-decoration:none;
+}
+.titulo_btn_inserir_atv{
+   margin: auto auto;
+   font-size: 38px;
+   text-decoration:none;
+   color: #1d7874;
 }
 /*card das atv*/
 .card{
