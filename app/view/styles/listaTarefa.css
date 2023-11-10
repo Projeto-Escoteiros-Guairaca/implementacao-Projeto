@@ -5,27 +5,30 @@
     --borda_dourada: solid 1px #ffbc42;
     --color-p:#667;
 }
+
 .dados_universais_atv{
-    height: 7vh;
+    height: 10vh;
     width: 50vh;
-    display: space-evenly;
+    background-color: black;
+    position: relative;
 }
+/*Container inteiro de atividades*/
 .tarefas{
-    
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
     background: transparent;
     text-align: center;
-    z-index: 1;
-   
+    position: absolute;
 }
+/*Blocos que contem o check box e o nome da atv*/
 .containerTarefa {
     margin: 2vh 0;
     background-color: transparent;
     border: 1px solid #679289;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     display: flex;
+    position: relative;
     
 }
 .p_atv{
@@ -37,7 +40,7 @@
     text-align: center;
     color: rgb(18, 107, 0);
     width: 60%;
-    z-index: 1;
+    
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -46,7 +49,7 @@
 
 .rightPart {
     width: 30%;
-    z-index: 1;
+   
     align-items: center;
 }
 .tarefaCheckada{
@@ -56,10 +59,6 @@
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     border: 1px black solid;
 
-}
-
-.footer{
-    top:50vh
 }
 .btn_cards_atv{
     box-sizing: border-box;

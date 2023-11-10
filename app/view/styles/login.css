@@ -2,17 +2,6 @@
     --cor-dark-mod: #293556; /* Substitua pelo código de cor que desejar */
   }
 
-.col-12{
-    position: relative;
-    width: 100vh;
-    height: 60vh;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: transparent;
-}
 
 #h4_log{
     position: absolute;

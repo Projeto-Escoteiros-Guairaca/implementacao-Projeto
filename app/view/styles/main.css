@@ -9,15 +9,20 @@
 }
 /*Abaixo serao declaradas classes que so podem ser editadas no arquivo main (classes universais)*/
 body{
-    overflow-x: hidden;
-    min-height: 100vh;
-    position: relative;
+    
+    overflow-y: visible;
+    width: 100%;
+    min-height:100%;
+    position: absolute;
 }
+
 form{
     margin-top: 20px;
     margin-bottom: 20px;
 }
 .col-12{
+ 
+    overflow-y: visible;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
@@ -26,13 +31,20 @@ form{
     margin: auto auto;
     position: relative;
     height: fit-content;
+    
 }
 .container{
+    overflow-y: visible;
     display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    margin-top:2vh;
+    
+    position:static;
     height: fit-content;
+    text-align: center;
+    align-items: center;
+    left: auto;
+    right: auto;
+   
+    padding: 8vh;
 }
 /*Aqui finaliza as classes universais*/
 .modo-escuro{

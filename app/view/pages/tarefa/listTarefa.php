@@ -7,11 +7,12 @@
 </style>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listaTarefa.css" />
 
+
 <h3 class='text-center'>Tarefas da atividade<?= $dados["atividade"]->getNomeAtividade(); ?> </h3>
 <a class="btn_cards_atv" href = "<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades"> voltar à lista de Atividades </a>
-<div class='container dados_universais_atv'>
+<div class="col-12 dados_universais_atv">
         <div class="row">
-            <div class="col-12">
+            <div >
                 <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
             </div>
         </div>
@@ -37,7 +38,7 @@
             <?php endif; ?>
         </div>
 </div>
-
+               
 <script src="<?= BASEURL ?>/view/js/matilha.js"> </script>
 <?php
     require_once(__DIR__ . "/../../include/footer.php");
