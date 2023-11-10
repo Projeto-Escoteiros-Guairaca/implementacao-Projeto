@@ -1,4 +1,69 @@
+:root{
+    --verde-escuro: #1d7874;
+    --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
+    --bordas:solid #679289 1px;
+    --borda_dourada: solid 1px #ffbc42;
+    --color-p:#667;
+}
 
+/*Div total do formulario*/
+#formMatilha{
+    width: 50vw;
+    padding: 2vh 2vh ;
+    text-align: center;
+}
+/*Div do input e do label*/
+.form-group{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+/*input*/
+.form-control{
+    border: var(--bordas);
+    margin: 0 auto 0;
+    width: 18em;
+    background-color: transparent;
+}
+.form-control:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #414141;
+    box-shadow: var(--sombras_bordas);
+}
+/*div que aparece quando aperta no chefe*/
+option{
+    border: var(--bordas);
+}
+
+.btn_gravar{
+    border: var(--bordas);
+    width: 5vw;
+    height: 5vh;
+    border-radius: 5px;
+    background-color: transparent;
+}
+.btn_gravar:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    background-color: #1d7874;
+    box-shadow: var(--sombras_bordas);
+}
+.btn_limpar{
+    border: 1px red solid;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 5px;
+    background-color: transparent;
+}
+.btn_limpar:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    background-color: red;
+    box-shadow: var(--sombras_bordas);
+}
 .modal-background {
     width: 100vw;
     height: 100vh;

@@ -96,7 +96,6 @@ a{
   transition: all 0.3s ease;
   border: 1px solid #414141;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
-  
 }
 #btn_tarefa_nao_enviada{
     background-color: #d81159;
@@ -141,6 +140,7 @@ a{
     text-align: center;
     border: var(--bordas);
 }
+
 .card-body:hover{
     cursor: pointer;
     transition: all 0.3s ease;
@@ -156,7 +156,6 @@ a{
 }
 #card-pai{
     padding: auto auto ;
-    
 }
 .form-control, .selecPapel{
     text-align: center;
