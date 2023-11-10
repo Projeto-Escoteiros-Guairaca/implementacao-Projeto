@@ -21,7 +21,7 @@ class AcessoController extends Controller {
 
     const lobinhoActions = [
         "profile", "initialLobinhoPage", "listByIdAtiv", "openTarefa",
-         "list", "listAtividades", "listTarefas", "home"
+         "list", "listAtividades", "listTarefas", "home", "addTarefa"
     ];  
 
     const chefeActions = [

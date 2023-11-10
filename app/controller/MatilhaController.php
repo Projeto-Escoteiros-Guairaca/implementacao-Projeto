@@ -19,8 +19,10 @@ class MatilhaController extends Controller{
 
     public function __construct(){
 
-        if($_GET['action'] == "save" && $_GET['action'] == "edit") {
-            $_SESSION['callAccessToken'] = false;
+        if(isset($_GET['action'])) {
+            if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+                $_SESSION['callAccessToken'] = false;
+            }
         }
 
         if(! isset($_GET['isAjax'])) {

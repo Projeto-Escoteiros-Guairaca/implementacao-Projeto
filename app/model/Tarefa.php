@@ -13,7 +13,8 @@ class Tarefa {
     //campos provisórios
 
     private $id_atividade;
-    
+    private $idUsuario;
+
 
     /**
      * Get the value of idTarefa
@@ -202,6 +203,26 @@ class Tarefa {
     public function setStatusEntrega($statusEntrega)
     {
         $this->statusEntrega = $statusEntrega;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idUsuario
+     */ 
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+
+    /**
+     * Set the value of idUsuario
+     *
+     * @return  self
+     */ 
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
 
         return $this;
     }

@@ -13,8 +13,10 @@ class EncontroController extends Controller {
     private EncontroService $encontroService;
 
     public function __construct() {
-        if($_GET['action'] == "save" or $_GET['action'] == "edit") {
-            $_SESSION['callAccessToken'] = false;
+        if(isset($_GET['action'])) {
+            if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+                $_SESSION['callAccessToken'] = false;
+            }
         }
 
         if($_SESSION['callAccessToken'] == true) {
