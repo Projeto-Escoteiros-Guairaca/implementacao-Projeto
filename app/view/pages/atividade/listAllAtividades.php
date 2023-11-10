@@ -18,8 +18,8 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                                     echo 
                                 '
                                 
-                            <a id="btn_inserir_atv" class="card my-2 mx-2 Card" style="width: 18rem;" href="'. BASEURL .'/
-                                controller/AcessoController?    controller=Atividade&action=create">
+                            <a id="btn_inserir_atv" class="card my-2 mx-2 Card" style="width: 18rem;" 
+                            href="'. BASEURL .'/controller/AcessoController?controller=Atividade&action=create">
                                 <div class= "div_icon_inseriri_atv">
                                 <i id= "icon_inserir_atv"class="bi bi-plus"></i>
                                 </div>

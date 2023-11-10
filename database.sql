@@ -101,10 +101,9 @@ CREATE TABLE tb_tarefas_usuarios(
   id_tarefa_usuario int AUTO_INCREMENT,
   id_usuario int NOT NULL,
   id_tarefa int NOT NULL,
-  id_arquivo int NOT NULL,
+  id_arquivo int NOT NULL,  
   status int NOT NULL DEFAULT 0,
   data DATE NOT NULL,
-  descricao TEXT(255),
   PRIMARY KEY (id_tarefa_usuario),
   FOREIGN KEY (id_usuario) REFERENCES tb_usuarios (id_usuario), 
   FOREIGN KEY (id_tarefa) REFERENCES tb_tarefas (id_tarefa),
@@ -120,9 +119,9 @@ ALTER Table tb_matilhas ADD CONSTRAINT fk_usuario_primo FOREIGN KEY (id_usuario_
 INSERT INTO tb_atividades (nome_atividade, descricao) VALUES ('Caçador', 'Caçar, obviamente');
 
 /*Inserts arquivos*/
-INSERT INTO tb_arquivos (nome, caminho) VALUES ('Video', 'https://pin.it/2aYGxms');
-INSERT INTO tb_arquivos (nome, caminho) VALUES ('Imagem', 'asd');
-INSERT INTO tb_arquivos (nome, caminho) VALUES ('Video', 'https://pin.it/2aYGxms');
+INSERT INTO tb_arquivos (nome, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "");
+INSERT INTO tb_arquivos (nome, caminho, texto) VALUES ('Imagem', 'asd', "bruh");
+INSERT INTO tb_arquivos (nome, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "coelho comido");
 /*Inserts de tarefas*/
 INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Fogueira', 'Faça uma fogueira sem usar qualquer tipo de acendedor artificial.');
 INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Cocinhar', 'Cozinhe uma carne caçada utilizando a fogueira da tarefa anterior.');
@@ -182,12 +181,12 @@ INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Branco', 
 ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_matilha);
 
 /*Inserts tarefa_usuarios*/
-INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
-('1', '1', '1', '2', '2020-01-01', '');
-INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
-('2', '2', '2', '2', '2020-01-01', 'Bruh');
-INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
-('2', '3', '3', '2', '2020-01-01', 'Coelho comido');
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data) VALUES 
+('1', '1', '1', '2', '2020-01-01');
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data) VALUES 
+('2', '2', '2', '2', '2020-01-01');
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data) VALUES 
+('2', '3', '3', '2', '2020-01-01');
 /*Inserts encontros*/
 INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
 INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (2, '2020-01-01', 'Encontro 2');

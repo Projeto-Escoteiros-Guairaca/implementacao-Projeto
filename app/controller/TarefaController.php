@@ -2,6 +2,8 @@
 
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../service/TarefaService.php");
+require_once(__DIR__ . "/../model/Arquivo.php");
+
 require_once(__DIR__ . "/../model/Tarefa.php");
 require_once(__DIR__ . "/../dao/TarefaDAO.php");
 
@@ -19,9 +21,12 @@ class TarefaController extends Controller {
     private $tarefaService;
     
     function __construct(){
-        if($_GET['action'] == "save" or $_GET['action'] == "edit") {
-            $_SESSION['callAccessToken'] = false;
+        if(isset($_GET['action'])) {
+            if($_GET['action'] == "save" or $_GET['action'] == "edit" or $_GET['action'] == "addTarefa") {
+                $_SESSION['callAccessToken'] = false;
+            }
         }
+        
 
         if(isset($_GET["idAtividade"])) {
             $_SESSION["activeAtividade"] = $_GET["idAtividade"];
@@ -114,6 +119,44 @@ class TarefaController extends Controller {
 
         $this->loadView("pages/tarefa/chefeOnly/openTarefaUsuario.php", $dados, "", "", true);
 
+    }
+
+    public function addTarefa() {
+        $this->addArquivo();
+
+        $tarefaUsuario = new Tarefa();
+        $tarefaUsuario->setDataEntrega(date('d/m/Y'));
+        $tarefaUsuario->setIdUsuario($_SESSION[SESSAO_USUARIO_ID]);
+        $tarefaUsuario->setIdTarefa($_SESSION['activeTarefa']);
+
+        $this->tarefaDao->addTarefaUsuario($tarefaUsuario);
+        $this->openTarefa();
+    }
+    public function addArquivo() {
+        $texto = isset($_POST['texto']) ? $_POST['texto'] : "";
+        $imagem = $_FILES['imagem'];
+        $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+
+        if(strpos($imagem['type'], "image") !== false) {
+            $nome = "imagem";
+        }
+        else if(strpos($imagem['type'], "video") !== false) {
+            $nome = "video";
+        }
+        else {
+            $nome = "text";
+        }
+     
+        $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+        $caminho_imagem = "../view/img/imgTarefas/" . $nome_imagem;
+        move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
+
+        $arquivo = new Arquivo();
+        $arquivo->setTexto($texto);
+        $arquivo->setCaminhoArquivo($caminho_imagem);
+        $arquivo->setNomeArquivo($nome);
+        $this->tarefaDao->addArquivo($arquivo);
     }
 
     public function create(){

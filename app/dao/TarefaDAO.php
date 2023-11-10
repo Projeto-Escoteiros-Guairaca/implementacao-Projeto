@@ -3,6 +3,7 @@
 include_once(__DIR__ . "/../util/Connection.php");
 include_once(__DIR__ . "/../model/Tarefa.php");
 include_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/Arquivo.php");
 
 include_once(__DIR__ . "/../model/Atividade.php");
 
@@ -67,8 +68,10 @@ class TarefaDAO {
     public function getTarefaSendByUsuario($idUsuario, $idTarefa) {
         $conn = Connection::getConn();
 
-        $sql = " SELECT * FROM  tb_usuarios u INNER JOIN tb_tarefas_usuarios tu ON tu.id_tarefa = u.id_usuario ".
-        "INNER JOIN tb_tarefas t ON t.id_tarefa = tu.id_tarefa WHERE tu.id_usuario = :idUsuario AND tu.id_tarefa = :idTarefa";
+        $sql = " SELECT * FROM tb_usuarios u INNER JOIN tb_tarefas_usuarios tu ON tu.id_tarefa = u.id_usuario ".
+        "INNER JOIN tb_tarefas t ON t.id_tarefa = tu.id_tarefa ".
+        "INNER JOIN tb_arquivos a ON t.id_arquivo = tu.id_arquivo"
+         ." WHERE tu.id_usuario = :idUsuario AND tu.id_tarefa = :idTarefa";
         $stm = $conn->prepare($sql);
         $stm->bindValue("idUsuario", $idUsuario);
         $stm->bindValue("idTarefa", $idTarefa);
@@ -151,4 +154,29 @@ class TarefaDAO {
         return $tarefas;
     }
 
+    public function addArquivo(Arquivo $arquivo) {
+        $conn = Connection::getConn();
+
+        $sql = "INSERT INTO tb_arquivos (texto, caminho, nome)" .
+                    " VALUES (:texto, :caminho, :nome)";
+        $stm = $conn->prepare($sql);
+
+        $stm->bindValue("texto", $arquivo->getTexto());
+        $stm->bindValue("caminho", $arquivo->getCaminhoArquivo());
+        $stm->bindValue("nome", $arquivo->getNomeArquivo());
+        $stm->execute();
+
+    }
+    public function addTarefaUsuario(Tarefa $tarefaUsuario) {
+        $conn = Connection::getConn();
+
+        $sql = "INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, data)" .
+                    " VALUES (:id_usuario, :id_tarefa, :data)";
+        $stm = $conn->prepare($sql);
+
+        $stm->bindValue("id_usuario", $tarefaUsuario->getIdUsuario());
+        $stm->bindValue("id_tarefa", $tarefaUsuario->getIdTarefa());
+        $stm->bindValue("data", $tarefaUsuario->getDataEntrega());
+        $stm->execute();
+    }
 }
