@@ -16,13 +16,8 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                                     echo 
                                 '
                                 
-<<<<<<< HEAD
                             <a id="btn_inserir_atv" class="card my-2 mx-2 Card" style="width: 18rem;" 
                             href="'. BASEURL .'/controller/AcessoController?controller=Atividade&action=create">
-=======
-                            <a id="btn_inserir_atv"  style="width: 18rem;" href="'. BASEURL .'/
-                                controller/AcessoController?    controller=Atividade&action=create">
->>>>>>> 0d413746503221b8de8a1977dbde178ef4102a94
                                 <div class= "div_icon_inseriri_atv">
                                 <i id= "icon_inserir_atv"class="bi bi-plus"></i>
                                 </div>
