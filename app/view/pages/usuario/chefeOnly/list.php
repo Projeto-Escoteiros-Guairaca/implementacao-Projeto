@@ -13,17 +13,17 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
     <h3 class='text-center'>Usuários</h3>
 
-    <div class='container'>
+    <div class=" col-12 container">
+            <div  class="col-3 filtro_usu">
+                 <label> Buscar usuário</label>
+                 <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?= BASEURL ?>', <?= $_SESSION[SESSAO_USUARIO_ID] ?>)">
+             </div>
             <div class="row">
                 <div class="col-9">
                     <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
                 </div>
              </div>
-             <div>
-                 <label> Buscar usuário</label>
-                 <input type="text" name="buscar" id="buscar" oninput="findUsuario('<?= BASEURL ?>', <?= $_SESSION[SESSAO_USUARIO_ID] ?>)">
-             </div>
-        <div id="bruh" class="row" >
+        <div class="row col-12" >
             <div class="col-12" id="card-pai">
                 <?php if (count($dados["lista"]) == 0) : ?>
                     <a style="display: flex;justify-content: center;" colspan="6">|Nenhum encontro encontrado, tente novamente.</a>

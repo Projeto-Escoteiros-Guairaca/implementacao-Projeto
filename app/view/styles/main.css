@@ -25,6 +25,7 @@ form{
     overflow-y: visible;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     position: absolute;
     box-sizing: border-box;
     padding: auto auto;

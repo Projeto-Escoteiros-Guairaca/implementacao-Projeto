@@ -43,7 +43,11 @@
     justify-content: center;
 }
 
-.card{border: var(--bordas);}
+.card{
+    border: var(--bordas);
+    min-height: 40vh;
+}
+
 /* Aqui comeca o css do arquivo listTarefasUsuario.php*/
 .nome_usuario{
     border: #1d7874 1px solid;
@@ -104,9 +108,8 @@ a{
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid #414141;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
-    
-  }
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);    
+}
 
 .btn_mudar_matilha{
     height: 5vh;
@@ -129,30 +132,35 @@ a{
     text-align: center;
     max-height: fit-content;
 }
+/*aqui comeca o list*/
+.filtro_usu{
+    margin: 15px 0 15px 0;
+}
 .card-body{
     align-items: center;
     text-align: center;
     border: var(--bordas);
-    border-radius: 5px;
 }
 .card-body:hover{
     cursor: pointer;
     transition: all 0.3s ease;
     border: #1d7874 solid 5px;
-    scale: ;
     /*AAAAAAAAA ve depois */
     box-shadow: var(--sombras_bordas);
-    scale: 1.005;
     border-radius: 5px;
-  }
-  .card-text{
+}
+.card-text{
     padding: auto auto;
     text-align: center;
     align-items: center;
-  }
-  .form-control, .selecPapel{
+}
+#card-pai{
+    padding: auto auto ;
+    
+}
+.form-control, .selecPapel{
     text-align: center;
     align-items: center;
     border: var(--bordas);
     margin: 0 auto 0;
-  }
+}
