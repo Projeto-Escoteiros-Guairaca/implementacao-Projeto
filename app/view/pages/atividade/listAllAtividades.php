@@ -9,22 +9,20 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
     <div class="container">
-
-
-                <div class="row">
-                    <div class="row">
+        <div class="col-12">
+                        <div class="card my-2 mx-2 Card" >
                                 <?php 
                                 if($isLobinho == 2) {
                                     echo 
                                 '
                                 
-                            <a id="btn_inserir_atv" class="card my-2 mx-2 Card" style="width: 18rem;" href="'. BASEURL .'/
+                            <a id="btn_inserir_atv"  style="width: 18rem;" href="'. BASEURL .'/
                                 controller/AcessoController?    controller=Atividade&action=create">
                                 <div class= "div_icon_inseriri_atv">
                                 <i id= "icon_inserir_atv"class="bi bi-plus"></i>
                                 </div>
 
-                                <div class="div_titulo_inserir_atv" style = "text-decoration:none;">
+                                <div class="div_titulo_inserir_atv">
                                     <h5 class="titulo_btn_inserir_atv">Inserir Atividades</h5>
                                 </div>  
                             </a>
@@ -33,16 +31,11 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                                 ';
                                 }
                                 ?>
-                                <div class="col-9">
-                                    <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
-                                </div>
-                    </div>
-                </div>
-                    <div class="row">
-                        <div class="col-12">
+                               
+                        </div>
                             
                 <?php foreach($dados["lista"] as $ativ):?>
-                    <div  class="card my-2 mx-2 Card" style="width: 18rem;"> 
+                <div  class="card my-2 mx-2 Card" style="width: 18rem;"> 
                     <?php if($isLobinho == 2) {
                     echo '<a id= "editar_atv" class= "principais_btn_cards_atv" href="'.BASEURL.'/controller/AcessoController?controller=Atividade&action=edit&id='.$ativ->getIdAtividade().'"><i class="bi bi-pencil"><span id= p_editar_atv >Editar</span></i></a>
                           <a id= "deletar_atv"class= "principais_btn_cards_atv" href="'.BASEURL.'/controller/AtividadeController?action=delete&id='.$ativ->getIdAtividade().'"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>';
@@ -65,12 +58,13 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                             ?>
                             
                         </div>
-                    </div>
-                <?php endforeach;?>
-            </div>
-        </div>
-        
+                </div>
+        </div>        <?php endforeach;?>   
     </div>
+
+                                <div class="col-9">
+                                    <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+                                </div>
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 
 <?php  
