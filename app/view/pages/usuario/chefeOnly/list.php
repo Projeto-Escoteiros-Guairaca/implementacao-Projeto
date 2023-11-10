@@ -51,9 +51,9 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                                 <p>
                                 <?php
                                     if ($usu->getStatus() == 'ATIVO') {
-                                        echo "<a id='status' class='btn btn-outline-success' onclick='sendChange(1, ".$usu->getId().");' >ATIVO</a>";
+                                        echo "<a id='status".$usu->getId()."' class='btn btn-outline-success' onclick='sendChange(1, ".$usu->getId().");' >ATIVO</a>";
                                     } else {
-                                        echo "<a id='status' class='btn btn-outline-danger' onclick='sendChange(0, ".$usu->getId().")'>INATIVO</a>";
+                                        echo "<a id='status".$usu->getId()."' class='btn btn-outline-danger' onclick='sendChange(0, ".$usu->getId().")'>INATIVO</a>";
                                     }
                                     ?>
                                 </p>

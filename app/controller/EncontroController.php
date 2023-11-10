@@ -13,15 +13,18 @@ class EncontroController extends Controller {
     private EncontroService $encontroService;
 
     public function __construct() {
+        if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+            $_SESSION['callAccessToken'] = false;
+        }
+
         if($_SESSION['callAccessToken'] == true) {
             $_SESSION['controller'] = "Encontro";
 
             $this->loadController("Acesso");
             return;
         }
-        if($_GET['action'] != "create" &&$_GET['action'] != "save") {
-            $_SESSION['callAccessToken'] = true;
-        }        
+        $_SESSION['callAccessToken'] = true;
+           
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
         $this->setActionDefault("listEncontros", true);
@@ -109,6 +112,10 @@ class EncontroController extends Controller {
     }
 
     public function save(){
+        if(empty($_POST)) {
+            $this->create();
+            return;
+        }
 
         $dados["id_encontro"] = isset($_POST['id_encontro']) ? $_POST['id_encontro'] : 0;
         $dataEncontro = isset($_POST['dataEncontro']) ? trim($_POST['dataEncontro']) : NULL;

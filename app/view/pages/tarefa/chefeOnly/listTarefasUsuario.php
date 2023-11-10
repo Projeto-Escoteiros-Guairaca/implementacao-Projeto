@@ -4,6 +4,8 @@
 require_once(__DIR__ . "/../../../include/header.php");
 require_once(__DIR__ . "/../../../include/menu.php");
 require_once(__DIR__ . "/../../../../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../../../../model/Usuario.php");
+require_once(__DIR__ . "/../../../../model/Tarefa.php");
 require_once(__DIR__ . "/../../../../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../../matilha/selectMatilha.php");
 
@@ -28,12 +30,13 @@ require_once(__DIR__ . "/../../matilha/selectMatilha.php");
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (count($dados["lista"]) == 0) : ?>
+                        <?php if (count($dados["usuarios"]) == 0) : ?>
                             <tr>
                                 <td colspan="6">Nenhum usuário encontrado, tente novamente.</td>
                             </tr>
                         <?php else: ?>
-                            <?php foreach($dados["lista"] as $usu): 
+                            <?php foreach($dados["usuarios"] as $usu): 
+                       
                                 if($usu->getId() == $_SESSION[SESSAO_USUARIO_ID]) {
                                     continue;
                                 }
@@ -43,7 +46,7 @@ require_once(__DIR__ . "/../../matilha/selectMatilha.php");
                                     <?php if($usu->getTarefaEnviada() == true) {
                                         echo '<td class="td_universal">
                                         <a id= "btn_tarefa_enviada" class="btn_dados_gerais" 
-                                        href="'.BASEURL.'/Controller/AcessoController.php?controller=Tarefa&action=openTarefaUsuario&id='.$dados["tarefa"]->getIdTarefa().'"> tarefa enviada </a>
+                                        href="'.BASEURL.'/Controller/AcessoController.php?controller=Tarefa&action=openTarefaOfEspecificUsuario&idUsuario='.$usu->getId().'"> tarefa enviada </a>
                                         </td> ';
                                     }
                                     else {

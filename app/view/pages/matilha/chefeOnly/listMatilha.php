@@ -11,9 +11,9 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=create">Inserir</a>
+            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=create&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">Inserir</a>
         </div>
-        <div class="col-9">
+        <div class="col-6">
             <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
         </div>
     </div>
@@ -29,7 +29,7 @@
                             <h5 class="card-title"><?php echo $alc->getNome();?></h5>
                             <hr>
                             <a class="btn btn-warning my-1" 
-                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getId_matilha(); ?>">
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getId_matilha(); ?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
                                 Alterar</a> 
                             <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getId_matilha()?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
                                     Mostrar Dados da Matilha: </a>

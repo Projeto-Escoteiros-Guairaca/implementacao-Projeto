@@ -13,10 +13,11 @@
 
     <div class="row">
         <div class="col-6">
-            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=save">
+            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save">
                 
                 <h2 class="text-center">
-                    <?php if(isset($dados["id_matilha"])): ?>
+                    <?php 
+                    if(isset($dados["id_matilha"])): ?>
                         Alterar Matilha
                     <?php else: ?>
                         Criar uma nova Matilha
@@ -61,7 +62,7 @@
                 
             </form>
             <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idAlcateia=<?=$_SESSION['activeAlcateiaId'];?>&nomeAlcateia=<?= $_SESSION['activeAlcateiaNome'];?>">Voltar</a>
         </div>
        
 

@@ -1,11 +1,24 @@
 <?php
 
-class Contato {
+class Contato implements JsonSerializable {
 
     private $id_contato;
     private $telefone;
     private $celular;
     private $email;
+
+    
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize() {
+        return
+        [
+            'idContato' => $this->id_contato,
+            'telefone' => $this->telefone,
+            'celular' => $this->celular,
+            'email' => $this->email
+        ];
+    }
+    
 
     /**
      * Get the value of telefone

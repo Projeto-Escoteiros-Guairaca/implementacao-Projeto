@@ -185,9 +185,9 @@ ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_
 INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
 ('1', '1', '1', '2', '2020-01-01', '');
 INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
-('1', '2', '2', '2', '2020-01-01', 'Bruh');
+('2', '2', '2', '2', '2020-01-01', 'Bruh');
 INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data, descricao) VALUES 
-('1', '3', '3', '2', '2020-01-01', 'Coelho comido');
+('2', '3', '3', '2', '2020-01-01', 'Coelho comido');
 /*Inserts encontros*/
 INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
 INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (2, '2020-01-01', 'Encontro 2');

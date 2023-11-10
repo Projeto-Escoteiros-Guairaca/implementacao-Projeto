@@ -14,16 +14,17 @@ class AtividadeController extends Controller {
 
     function __construct() {
 
+        if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+            $_SESSION['callAccessToken'] = false;
+        }
+
         if($_SESSION['callAccessToken'] == true) {
             $_SESSION['controller'] = "Atividade";
 
             $this->loadController("Acesso");
             return;
         }
-        if($_GET['action'] != "create" &&$_GET['action'] != "save") {
-            $_SESSION['callAccessToken'] = true;
-        }
-    
+        $_SESSION['callAccessToken'] = true;
 
         $this->atividadeDao = new AtividadeDAO();
         $this->atividadeService = new AtividadeService();
@@ -38,14 +39,18 @@ class AtividadeController extends Controller {
         $this->loadView("pages/atividade/listAllAtividades.php", $dados, $msgErro, $msgSucesso, true);
     }
     
-    public function create(){
+    public function create(array $dados = [], $msgErro = ""){
         $dados["id_atividade"] = 0;
-        $this->loadView("pages/atividade/formAtividade.php", $dados,"","", true);
+        $this->loadView("pages/atividade/formAtividade.php", $dados, $msgErro,"", true);
     }
 
 
     protected function save() {
-
+        if(empty($_POST)) {
+            $this->create();
+            return;
+        }
+        
         $dados["id_atividade"] = isset($_POST['id_atividade']) ? $_POST['id_atividade'] : 0;
         $atividade = $this->saveAtividade($dados["id_atividade"]);
         //Validar os dados
@@ -81,7 +86,7 @@ class AtividadeController extends Controller {
         $dados["descricao"] = $atividade->getDescricao();
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("pages/atividade/formAtividade.php", $dados, $msgsErro, "", "", true);
+        $this->create($dados, $msgsErro);
     }
     protected function saveAtividade(int $id) {
         $imagem = $_FILES['imagem'];

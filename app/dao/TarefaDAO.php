@@ -64,6 +64,27 @@ class TarefaDAO {
 
     }
 
+    public function getTarefaSendByUsuario($idUsuario, $idTarefa) {
+        $conn = Connection::getConn();
+
+        $sql = " SELECT * FROM  tb_usuarios u INNER JOIN tb_tarefas_usuarios tu ON tu.id_tarefa = u.id_usuario ".
+        "INNER JOIN tb_tarefas t ON t.id_tarefa = tu.id_tarefa WHERE tu.id_usuario = :idUsuario AND tu.id_tarefa = :idTarefa";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("idUsuario", $idUsuario);
+        $stm->bindValue("idTarefa", $idTarefa);
+        $stm->execute();
+        $result = $stm->fetchAll();
+        $tarefa_usuario = $this->mapTarefaUsuario($result);
+        if(count($tarefa_usuario) == 1)
+            return $tarefa_usuario[0];
+        elseif(count($tarefa_usuario) == 0)
+            return null;
+
+        die("UsuarioDAO.findById()" . 
+            " - Erro: mais de um usuário encontrado.");
+
+    }
+
     public function getTarefaUsuario($id) {
 
         $conn = Connection::getConn();
@@ -118,9 +139,9 @@ class TarefaDAO {
             $tarefa->setId_atividade($reg['id_atividade']);
 
             $tarefa->setStatusEntrega($reg['status']);
-            $tarefa->setDescricaoEntrega($reg['descricao']);
+            $tarefa->setDescricaoEntrega($reg['16']);
             $tarefa->setDataEntrega($reg['data']);
-            $usuario->setNome($reg['nome']);
+            $usuario->setNome($reg['4']);
             $usuario->setId($reg['id_usuario']);
             
             $tarefa->setUsuario($usuario);

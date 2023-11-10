@@ -228,7 +228,7 @@ function sendChange(toChange, idUsu) {
 
 function changeStatus(retorno, idUsu) {
     
-    statusButton = document.getElementById("status");
+    statusButton = document.getElementById("status"+idUsu);
     statusButton.innerHTML = retorno;
 
     if(retorno == "ATIVO") {

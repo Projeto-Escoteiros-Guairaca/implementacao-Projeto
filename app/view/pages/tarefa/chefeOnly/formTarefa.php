@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=save">
+            <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/TarefaController.php?action=save">
                 
                 <h2 class="text-center">
                     <?php if(isset($dados["id_tarefa"])): ?>

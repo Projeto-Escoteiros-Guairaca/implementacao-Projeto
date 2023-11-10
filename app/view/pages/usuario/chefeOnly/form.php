@@ -5,7 +5,12 @@
 require_once(__DIR__ . "/../../../include/header.php");
 ?>
 
-<?php require_once(__DIR__ . "/../../../include/menu.php"); ?>
+<?php require_once(__DIR__ . "/../../../include/menu.php"); 
+
+if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
+    $_SESSION['callAccessToken'] = true;
+}
+?>
 
 <h3 class="text-center">
     <?php if($dados['id'] == 0) echo "Inserir"; else echo "Alterar"; ?> 

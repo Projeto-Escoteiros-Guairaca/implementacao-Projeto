@@ -5,6 +5,17 @@ require_once(__DIR__ . "/Controller.php");
 class HomeController extends Controller {
 
     public function __construct() {
+        $_GET['action'] = 'home';
+        // if($_SESSION['callAccessToken'] == true) {
+        //     $_SESSION['controller'] = "Home";
+
+        //     $this->loadController("Acesso");
+        //     return;
+        // }
+        // if($_GET['action'] != "create" && $_GET['action'] != "save" && $_GET['action'] != "edit") {
+        //     $_SESSION['callAccessToken'] = true;
+        // }
+    
         $this->setActionDefault('home',true);
         $this->handleAction();
     }

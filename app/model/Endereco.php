@@ -1,6 +1,6 @@
 <?php
 
-class Endereco{
+class Endereco implements JsonSerializable{
 
     private $id_endereco;
     private $cep;
@@ -10,6 +10,20 @@ class Endereco{
     private $cidade;
     private $pais;
 
+    
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize() {
+        return
+        [
+            'idEndereco' => $this->id_endereco,
+            'cep' => $this->cep,
+            'logradouro' => $this->logradouro,
+            'numeroEndereco' => $this->numeroEndereco,
+            'bairro' => $this->bairro,
+            'pais' => $this->pais,
+            'cidade' => $this->cidade
+        ];
+    }
     
 
     /**
