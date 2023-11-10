@@ -184,13 +184,7 @@ class UsuarioDAO {
         $result = $stm->fetchAll();
 
         $usuarios = $this->mapUsuarios($result);
-               
-        foreach($usuarios as $us):  
-            $contato = $this->findContatosByIdUsuarios($us->getIdContato());
 
-        endforeach;
-
-            
         return $usuarios;
     }
     public function findPrimo(int $id){
@@ -311,11 +305,13 @@ class UsuarioDAO {
     public function findItByName(string $word) {
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM `tb_usuarios` u WHERE u.nome LIKE '%".$word."%' ";
+        $sql = "SELECT * FROM `tb_usuarios` u ".
+        "INNER JOIN tb_enderecos e ON u.id_endereco = e.id_endereco " .
+        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato WHERE u.nome LIKE '%".$word."%' ORDER BY u.id_usuario";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
-        return $this->mapUsuarios($result);
+        return $this->mapFullUsuarios($result);
     }
 
     public function usuarioSended($id) {
@@ -330,6 +326,7 @@ class UsuarioDAO {
                 return false;
             }
             else {
+                
                 return true;
             }
 

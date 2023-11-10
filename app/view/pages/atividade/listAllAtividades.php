@@ -44,8 +44,8 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                 <?php foreach($dados["lista"] as $ativ):?>
                     <div  class="card my-2 mx-2 Card" style="width: 18rem;"> 
                     <?php if($isLobinho == 2) {
-                    echo '<a id= "editar_atv" class= "principais_btn_cards_atv" href="<?= BASEURL?>/controller/AcessoController?controller=Atividade&action=edit&id=<?php echo $ativ->getIdAtividade()?>"><i class="bi bi-pencil"><span id= p_editar_atv >Editar</span></i></a>
-                          <a id= "deletar_atv"class= "principais_btn_cards_atv" href="<?= BASEURL?>/controller/AcessoController?controller=Atividade&action=delete&id=<?php echo $ativ->getIdAtividade()?>"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>';
+                    echo '<a id= "editar_atv" class= "principais_btn_cards_atv" href="'.BASEURL.'/controller/AcessoController?controller=Atividade&action=edit&id='.$ativ->getIdAtividade().'"><i class="bi bi-pencil"><span id= p_editar_atv >Editar</span></i></a>
+                          <a id= "deletar_atv"class= "principais_btn_cards_atv" href="'.BASEURL.'/controller/AtividadeController?action=delete&id='.$ativ->getIdAtividade().'"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>';
                     }
                     ?>
 
@@ -60,7 +60,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                             <?php 
                                 if($isLobinho == 2) {
                                     echo 
-                                        '<a class= "btn_cards_atv" style="text-decoration: none" href="'. BASEURL .'/controller/AcessoController.php?controller=Tarefa&action=createTarefaAtiv&idAtividade=<?php echo $ativ->getIdAtividade()?>">Criar Tarefas</a>';
+                                        '<a class= "btn_cards_atv" style="text-decoration: none" href="'. BASEURL .'/controller/AcessoController.php?controller=Tarefa&action=create&idAtividade='. $ativ->getIdAtividade() .'">Criar Tarefas</a>';
                                 }
                             ?>
                             

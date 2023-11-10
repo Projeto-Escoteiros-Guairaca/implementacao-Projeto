@@ -27,10 +27,10 @@ textarea {
                     
                     <hr>
                     <h4>Estado da entrega: </h4>
-                    <h5 style="color:brown;"><?php echo $dados['tarefa']->getStatusEntregaPalavra(); ?></h5 > 
+                    <h5 style="color:brown;"><?php echo $dados['envioUsuario']->getStatusEntregaPalavra(); ?></h5 > 
                     <hr>
                     <h4>Data da entrega: </h4>
-                    <h5 style="color:darkorange;"><?php echo $dados['tarefa']->getDataEntrega(); ?></h5 > 
+                    <h5 style="color:darkorange;"><?php echo $dados['envioUsuario']->getDataEntrega(); ?></h5 > 
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@ textarea {
             <div id="tarefa-container">
                 <h3>Descrição da Entrega:</h3>
                 <div id="descricao">
-                    <hr><textarea disabled cols="30" rows="10"><?php echo $dados["tarefa"]->getDescricaoEntrega();?></textarea>
+                    <hr><textarea disabled cols="30" rows="10"><?php echo $dados["envioUsuario"]->getDescricaoEntrega();?></textarea>
                     
                     <hr>
                 </div>
@@ -53,11 +53,11 @@ textarea {
                     <h5 style="color:brown;">
                     
                     <?php
-                        echo $dados['tarefa']->getStatusEntregaPalavra();
+                        echo $dados['envioUsuario']->getStatusEntregaPalavra();
                     ?></h5 >
                     <hr>
                     <h4>Data da entrega: </h4>
-                    <h5 style="color:darkorange;"><?php echo $dados['tarefa']->getDataEntrega(); ?></h5 > 
+                    <h5 style="color:darkorange;"><?php echo $dados['envioUsuario']->getDataEntrega(); ?></h5 > 
                 </div>
             </div>
         </div>

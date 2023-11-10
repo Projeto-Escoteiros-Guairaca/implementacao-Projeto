@@ -11,8 +11,13 @@ class Controller {
     protected function handleAction() {
         //Captura a ação do parâmetro GET
         $action = NULL;
-        if(isset($_GET['action']))
+        if(isset($_GET['action'])){
             $action = $_GET['action'];
+        }
+        else if(isset($_SESSION['ACTION'])) {
+            $action = $_SESSION['ACTION'][$_SESSION['controller']];
+        }
+            
         
         //Chama a ação
         $this->callAction($action);

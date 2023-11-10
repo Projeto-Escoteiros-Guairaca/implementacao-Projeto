@@ -19,6 +19,10 @@ class MatilhaController extends Controller{
 
     public function __construct(){
 
+        if($_GET['action'] == "save" && $_GET['action'] == "edit") {
+            $_SESSION['callAccessToken'] = false;
+        }
+
         if(! isset($_GET['isAjax'])) {
             if($_SESSION['callAccessToken'] == true) {
                 $_SESSION['controller'] = "Matilha";
@@ -26,9 +30,9 @@ class MatilhaController extends Controller{
                 $this->loadController("Acesso");
                 return;
             }
-            if($_GET['action'] != "create" &&$_GET['action'] != "save") {
-                $_SESSION['callAccessToken'] = true;
-            }        }
+            $_SESSION['callAccessToken'] = true;
+           
+        }
         
         $this->usuarioDao = new UsuarioDAO();
         $this->matilhaDao = new MatilhaDAO();
@@ -52,6 +56,9 @@ class MatilhaController extends Controller{
     }
     
     public function listMatilha(string $msgErro = "", string $msgSucesso = "") {
+        $_SESSION['activeAlcateiaId'] = $_GET['idAlcateia'];
+        $_SESSION['activeAlcateiaNome'] = $_GET['nomeAlcateia'];
+        
         if($_SESSION['chefeMatilha'] != "" or isset($_GET['idMatilha'])) {
             $_GET['id'] = $_SESSION['chefeMatilha'];
 
@@ -127,7 +134,10 @@ class MatilhaController extends Controller{
     }
 
     public function save(){
-        
+        if(empty($_POST)) {
+            $this->create();
+            return;
+        }
         $dados["id_matilha"] = isset($_POST['id_matilha']) ? $_POST['id_matilha'] : 0;
         $nomeMatilha = isset($_POST['nomeMatilha']) ? trim($_POST['nomeMatilha']) : NULL;
         $chefeMatilha = isset($_POST['chefeMatilha']) ? trim($_POST['chefeMatilha']) : NULL;
@@ -156,7 +166,6 @@ class MatilhaController extends Controller{
 
                 // - Enviar mensagem de sucesso
                 $msg = "Matilha salva com sucesso.";
-                
                 $this->list("", $msg);
                 exit;
             } catch (PDOException $e) {

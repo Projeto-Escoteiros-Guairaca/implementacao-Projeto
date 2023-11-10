@@ -23,7 +23,7 @@ $isAdministrador = $linkCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 $isLobinho = $linkCont->usuarioPossuiPapel([UsuarioPapel::LOBINHO]);
 
 if($isChefe == 1) {
-  $_SESSION["chefeMatilha"] = $_SESSION[SESSAO_USUARIO_IDMATILHA];
+  $_SESSION["chefeMatilha"] = $_SESSION[SESSAO_USUARIO_ID_MATILHA];
 }
 else {
   $_SESSION["chefeMatilha"] = "";

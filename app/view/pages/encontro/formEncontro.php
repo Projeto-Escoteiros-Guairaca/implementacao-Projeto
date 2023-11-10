@@ -20,7 +20,7 @@
                 <?php endif; ?>
             </h2>
 
-            <form id="formEncontro" method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=save">
+            <form id="formEncontro" method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save">
 
                 <div class="form-group col-6">
                     <label style="width: fit-content;" for="dataEncontro">Data do Encontro:</label>

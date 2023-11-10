@@ -1,6 +1,7 @@
 <?php
     require_once(__DIR__ . "/../../../include/header.php");
     require_once(__DIR__ . "/../../../include/menu.php");
+
 ?>
 
 </style>
@@ -28,8 +29,8 @@ textarea {
                     <h5 style="color:brown;">
                     
                     <?php
-                    if(null != $dados['tarefa']->getStatusEntregaPalavra()) {
-                        echo $dados['tarefa']->getStatusEntregaPalavra();
+                    if(isset($dados['envioUsuario'])) {
+                        echo $dados['envioUsuario']->getStatusEntregaPalavra();
                     }
                     else {
                         echo "Não entregou ainda.";
@@ -45,12 +46,27 @@ textarea {
             <div id="tarefa-container">
                 <h3>Escreva aqui qualquer detalhe que precises:</h3>
                 <div id="descricao">
-                    <hr><textarea cols="30" rows="10"><?php echo $dados["tarefa"]->getDescricaoEntrega();?></textarea>
+                    <hr><textarea 
+                    <?php
+                    if(isset($dados['envioUsuario'])) {
+                        echo "disabled";
+                    }
+                    ?>
+                    cols="30" rows="10"><?php echo $dados["tarefa"]->getDescricaoEntrega();?></textarea>
                     <hr>
-
-                    <h3>passe por aqui os arquivos!</h3>
+                    <?php 
+                     if(isset($dados['envioUsuario'])) {
+                        echo "aqui seu arkivo:";
+                    }
+                    else {
+                        
+                        echo "<h3>passe por aqui os arquivos!</h3>
                     
-                    <input type="file"/> 
+                        <input type='file'/> 
+                        <br>
+                        <button> entregar tarefa </button>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>

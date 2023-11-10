@@ -33,7 +33,10 @@ class UsuarioController extends Controller
     private UsuarioService $usuarioService;
 
     public function __construct() {
-        
+        if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+            $_SESSION['callAccessToken'] = false;
+        }
+
         if(! isset($_GET['isAjax'])) {
 
             if($_SESSION['callAccessToken'] == true) {
@@ -42,9 +45,8 @@ class UsuarioController extends Controller
                 $this->loadController("Acesso");
                 return;
             }
-            if($_GET['action'] != "create" &&$_GET['action'] != "save") {
-                $_SESSION['callAccessToken'] = true;
-            }
+            
+            $_SESSION['callAccessToken'] = true;
         }
         
 
@@ -107,29 +109,30 @@ class UsuarioController extends Controller
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
 
-    public function listUsuariosByMatilha(string $msgErro = "", string $msgSucesso = "") {
+    //!  public function listUsuariosByMatilha(string $msgErro = "", string $msgSucesso = "") {
 
-        $usuarios = $this->findUsuarioByIdMatilha();
-        foreach ($usuarios["usuarios"] as $usu):
-            $usuarioEnviou = $this->usuarioDao->usuarioSended($usu->getId());
-            $usu->setTarefaEnviada($usuarioEnviou);
-        endforeach;
+    //!      $usuarios = $this->findUsuarioByIdMatilha();
+    //!      foreach ($usuarios["usuarios"] as $usu):
+    //!          $usuarioEnviou = $this->usuarioDao->usuarioSended($usu->getId());
+    //!          $usu->setTarefaEnviada($usuarioEnviou);
+    //!      endforeach;
         
-        $dados["lista"] = $usuarios['usuarios'];
-        $dados["matilha"] = $usuarios['nome_matilha'];
+    //!      $dados["lista"] = $usuarios['usuarios'];
+    //!      $dados["matilha"] = $usuarios['nome_matilha'];
 
-        if (isset($_GET['tarefa'])) {
-            if (isset($_SESSION['activeTarefa'])) {
-                $tarefa = $this->tarefaDao->findById($_SESSION['activeTarefa']);
-                $dados['tarefa'] = $tarefa;
-            } else {
-                $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
-                die;
-            }
+    //!      if (isset($_GET['tarefa'])) {
+    //!          if (isset($_SESSION['activeTarefa'])) {
+    //!              $tarefa = $this->tarefaDao->findById($_SESSION['activeTarefa']);
+    //!              $dados['tarefa'] = $tarefa;
+    //!          } 
+    //!          else {
+    //!              $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
+    //!              die;
+    //!          }
 
-            $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, true);
-        }
-    }
+    //!          $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, true);
+    //!      }
+    //!  }
     
     protected function findUsuarioByIdMatilha(){
         $id = 0;
@@ -176,6 +179,11 @@ class UsuarioController extends Controller
     }
 
     protected function save() {
+        
+        if(empty($_POST)) {
+            $this->create();
+            return;
+        }
 
         $dados["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
         $dados["id_contato"] = isset($_POST['id_contato']) ? $_POST['id_contato'] : 0;
@@ -185,7 +193,8 @@ class UsuarioController extends Controller
         $endereco = $this->saveEndereco();
         $contato = $this->saveContato();
         $usuario = $this->saveUsuario($endereco, $contato);
-        //Validar os dados
+        // Validar os dados
+        var_dump($usuario);
         $errorUsuario = $this->usuarioService->validarUsuario($usuario, $confSenha);
         $errorContato = $this->usuarioService->validarContato($contato);
         $errorEndereco = $this->usuarioService->validarEndereco($endereco);

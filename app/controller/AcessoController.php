@@ -16,12 +16,12 @@ class AcessoController extends Controller {
         "findUsuariosById",
         "findFrequenciasByIdEncontro", "findEncontroByIdEncontro",
         "updateToFalse", "updateToTrue", "findFrequenciaById", "listByIdAtiv", "createTarefaAtiv",
-        "openTarefa", "openTarefaUsuario"
+        "openTarefa", "openTarefaUsuario", "home", "openTarefaOfEspecificUsuario"
     ];
 
     const lobinhoActions = [
         "profile", "initialLobinhoPage", "listByIdAtiv", "openTarefa",
-         "list", "listAtividades", "listTarefas"
+         "list", "listAtividades", "listTarefas", "home"
     ];  
 
     const chefeActions = [
@@ -29,7 +29,7 @@ class AcessoController extends Controller {
     ];
     
     const noSessionActions = [
-        "create"
+        "create", "home"
     ];
 
     public function __construct() {  
@@ -39,7 +39,7 @@ class AcessoController extends Controller {
     public function setSessionVariables() {
         $url = strstr("$_SERVER[REQUEST_URI]", "action");
     
-        $_SESSION['callAccessToken'] =  false;
+        $_SESSION['callAccessToken'] = false;
 
        
         if(isset($_GET['action'])) {
@@ -57,7 +57,7 @@ class AcessoController extends Controller {
     public function callRespectiveFunction() {
         if(isset($_SESSION[SESSAO_USUARIO_PAPEIS][0])) { $papelMethod = $_SESSION[SESSAO_USUARIO_PAPEIS][0]; }
         else { $papelMethod = "noSessionActive"; }
-        
+            
 
         if(isset($_GET['controller'])) {
         

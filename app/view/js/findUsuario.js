@@ -33,7 +33,7 @@ function removeChildren(params) {
     }
 }
 
-function createChildren(usuarioArray, BASEURL) {
+function createChildren(usuarioArray) {
     divPai = document.getElementById("card-pai");
 
     if(usuarioArray.length < 1) {
@@ -66,7 +66,7 @@ function createChildren(usuarioArray, BASEURL) {
         
         gmail = document.createElement("p");
         gmail.className = "card-text";
-        gmail.innerHTML = "aqui vai o gmail"; //element['email'];
+        gmail.innerHTML = element['contato']['email']; //element['email'];
         insideDiv.appendChild(gmail);
 
         papel = document.createElement("p");
@@ -95,14 +95,14 @@ function createChildren(usuarioArray, BASEURL) {
         a = document.createElement("a");
 
         if(element["status"] == "ATIVO") {
-            a.id = "status";
+            a.id = "status"+element["idUsuario"];
             a.className = "btn btn-outline-success";
             a.setAttribute("onclick", "sendChange(1, "+element["idUsuario"]+");");
             a.innerHTML = "ATIVO";
         }
         
         else if(element["status"] == "INATIVO") {
-            a.id = "status";
+            a.id = "status"+element["idUsuario"];
             a.className = "btn btn-outline-danger";
             a.setAttribute("onclick", "sendChange(0, "+element["idUsuario"]+");");
             a.innerHTML = "INATIVO";    

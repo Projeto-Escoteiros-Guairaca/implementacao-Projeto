@@ -35,7 +35,10 @@ class Usuario implements JsonSerializable {
             'papel' => $this->papeis,
             'status' => $this->status,
             'idMatilha' => $this->idMatilha,
-            'matilha' => $this->matilha
+            'matilha' => $this->matilha,
+            'endereco' => $this->endereco,
+            'contato' => $this->contato
+
         ];
     }
     
