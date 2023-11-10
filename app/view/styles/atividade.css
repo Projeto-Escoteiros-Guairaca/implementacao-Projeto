@@ -33,6 +33,7 @@
   width: 100%;
   text-align: center;
   align-items: center;
+  position: relative;
 }
 .div_titulo_inserir_atv{
   width: 100%;
@@ -49,21 +50,21 @@
    text-decoration:none;
    color: #1d7874;
 }
-/*card das atv*/
+/*card total das atv*/
 .card{
   border: var(--bordas);
-  background: transparent;
 }
 .card:hover{
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: var(--sombras_bordas);
 }
+/*div dos dados da atv*/
 .card-body{
   background-color: transparent;
   display: inline;
 }
-
+/*card das imagens*/
 .card-img-top{
   text-align: center;
   border-bottom: 1px #1d7874 solid;
@@ -213,4 +214,58 @@
   transition: all 0.3s ease;
   box-shadow: var(--sombras_bordas);
   color: #071e22;
+}
+/*aqui comeca o formAtividades*/
+
+/*div que vai do titulo ate os botoes finais*/
+#formatividade{
+  width: 25em;
+  height: 25em;
+}
+/*div que contem os input e label*/
+.form-group{
+  width: 20em;
+  margin: 0 auto 0;
+  padding: 2vh 2vh;
+   /*border: var(--bordas);
+    margin: 0 auto 0;
+    width: 18em;
+    background-color: transparent;*/
+}
+.form-control{
+  border: var(--bordas);
+}
+/*div total do input e texto da img*/
+#img_form_atv{
+  border: var(--bordas);
+  margin-bottom: 1em;
+}
+.btn_gravar{
+  border: var(--bordas);
+  width: 5vw;
+  height: 5vh;
+  border-radius: 5px;
+  background-color: transparent;
+}
+.btn_gravar:hover{
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  background-color: #1d7874;
+  box-shadow: var(--sombras_bordas);
+}
+
+.btn_limpar{
+    border: 1px red solid;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 5px;
+    background-color: transparent;
+}
+.btn_limpar:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    background-color: red;
+    box-shadow: var(--sombras_bordas);
 }

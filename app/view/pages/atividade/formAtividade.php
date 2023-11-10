@@ -9,11 +9,12 @@
     require_once(__DIR__ . "/../../../controller/atividadeController.php");
     var_dump($_SESSION['callAccessToken']);
 ?>
-
+    <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
+    <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 <div class="container">
 
-    <div class="row">
-        <div class="col-6">
+    <div class="col-12">
+        
             <form id="formatividade" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save">
                 
                 <h2 class="text-center">
@@ -24,7 +25,7 @@
                     <?php endif; ?>
                 </h2>
 
-                <div class="form-group col-6">
+                <div class="form-group">
                     <label for="txtNomeatividade">Nome:</label>
                     <input class="form-control" type="text" id="txtNomeAtividade" name="nomeAtividade" 
                         maxlength="70" placeholder="Informe o nome"
@@ -32,26 +33,27 @@
                             echo (isset($dados['atividade']) ? $dados['atividade']->getNomeAtividade() : "");
                         ?>" />
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group">
                     <label for="descricaoAtividade">Descrição</label>
                     <textarea class="form-control" id="descricaoAtividade" name="descricao" rows="3"><?php echo (isset($dados['atividade']) ? $dados['atividade']->getDescricao(): "");?></textarea>
                 </div>
-                <input type="file" id="img" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
-                <input type="hidden" id="hddId" name="imagem_atividade" value="<?=isset($dados['atividade']) ? $dados['atividade']->getImagem() : "" ?>" />
+                <input type="file" id="img_form_atv" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
+                
+                <input type="hidden" id="input_img" name="imagem_atividade" value="<?=isset($dados['atividade']) ? $dados['atividade']->getImagem() : "" ?>" />
 
 <br>
                 <input type="hidden" id="hddId" name="id_atividade" value="<?= $dados['id_atividade']; ?>" />
                 
-                <button type="submit" class="btn btn-success">Gravar</button>
-                <button type="reset" class="btn btn-danger">Limpar</button>
+                <button type="submit" class="btn_gravar">Gravar</button>
+                <button type="reset" class="btn_limpar">Limpar</button>
                 
             </form>
-            <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
-        </div>
+        
        
+                   <a 
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
 
-        <div class="col-9">
+        <div class="row">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
 
