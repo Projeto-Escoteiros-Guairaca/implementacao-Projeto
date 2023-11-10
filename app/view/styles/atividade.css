@@ -12,9 +12,9 @@
   text-align: center;
   align-items: center;
   border-radius: 5px;
-  height: 55vh;
   padding: 0;
   display: block;
+  height: 100%;
 }
 #btn_inserir_atv:hover{
   cursor: pointer;
