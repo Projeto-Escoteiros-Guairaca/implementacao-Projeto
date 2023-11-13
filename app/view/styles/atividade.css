@@ -5,7 +5,7 @@
   --bordas:1px #1d7874 solid;
   --color-p:#667;
 }
-
+/*aqui comeca o listAllAtividades*/
 #btn_inserir_atv{
   box-sizing: border-box;
   border: var(--bordas);
@@ -53,6 +53,8 @@
 /*card total das atv*/
 .card{
   border: var(--bordas);
+  background-color: #071e22;
+  
 }
 .card:hover{
   cursor: pointer;
@@ -239,33 +241,4 @@
 #img_form_atv{
   border: var(--bordas);
   margin-bottom: 1em;
-}
-.btn_gravar{
-  border: var(--bordas);
-  width: 5vw;
-  height: 5vh;
-  border-radius: 5px;
-  background-color: transparent;
-}
-.btn_gravar:hover{
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: white;
-  background-color: #1d7874;
-  box-shadow: var(--sombras_bordas);
-}
-
-.btn_limpar{
-    border: 1px red solid;
-    width: 5vw;
-    height: 5vh;
-    border-radius: 5px;
-    background-color: transparent;
-}
-.btn_limpar:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: white;
-    background-color: red;
-    box-shadow: var(--sombras_bordas);
 }

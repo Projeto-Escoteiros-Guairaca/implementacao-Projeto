@@ -16,13 +16,20 @@ class FrequenciaController extends Controller {
 
     public function __construct() {
         
-        if($_SESSION['callAccessToken'] == true) {
-            $_SESSION['controller'] = "Frequencia";
-
-            $this->loadController("Acesso");
-            return;
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Frequencia";
+    
+                $this->loadController("Acesso");
+                return;
+            }
+            $_SESSION['callAccessToken'] = true;
         }
-        $_SESSION['callAccessToken'] = true;
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
+        }
+
         $papelNecessario = array();
         $papelNecessario[0] = "ADMINISTRADOR";
         $accessVerified = $this->verifyAccess($papelNecessario);

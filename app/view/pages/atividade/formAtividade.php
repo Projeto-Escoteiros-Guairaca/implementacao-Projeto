@@ -7,7 +7,6 @@
     require_once(__DIR__ . "/../usuario/selectUsuPrimo.php");
     require_once(__DIR__ . "/../../../controller/LinkController.php");
     require_once(__DIR__ . "/../../../controller/atividadeController.php");
-    var_dump($_SESSION['callAccessToken']);
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />

@@ -9,6 +9,7 @@
     require_once(__DIR__ . "/../../../../controller/MatilhaController.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listMatilhas.css" />
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 <div class="container">
     <div class="col-12">
             <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save">

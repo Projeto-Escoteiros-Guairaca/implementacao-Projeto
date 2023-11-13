@@ -19,13 +19,19 @@ class EncontroController extends Controller {
             }
         }
 
-        if($_SESSION['callAccessToken'] == true) {
-            $_SESSION['controller'] = "Encontro";
-
-            $this->loadController("Acesso");
-            return;
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Encontro";
+    
+                $this->loadController("Acesso");
+                return;
+            }
+            $_SESSION['callAccessToken'] = true;
         }
-        $_SESSION['callAccessToken'] = true;
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
+        }
            
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
@@ -150,6 +156,8 @@ class EncontroController extends Controller {
                 $msg = "encontro salva com sucesso.";
                 
                 $this->listEncontros("", $msg);
+                $_SESSION['URL'][$_SESSION['controller']] = "?controller=Encontro&action=listEncontros";
+
                 exit;
             } catch (PDOException $e) {
                 $erros = ["[Erro ao salvar a encontro na base de dados.]"];

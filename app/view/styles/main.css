@@ -37,16 +37,48 @@ form{
 .container{
     overflow-y: visible;
     display: flex;
-    
-    position:static;
     height: fit-content;
     text-align: center;
     align-items: center;
     left: auto;
     right: auto;
-   
     padding: 8vh;
 }
+.r_listATV{
+   
+}
+
+/*abaixo serao os comandos que sao universais nos formuarios*/
+.btn_gravar{
+    border: var(--bordas);
+    width: 5vw;
+    height: 5vh;
+    border-radius: 5px;
+    background-color: transparent;
+  }
+  .btn_gravar:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    background-color: #1d7874;
+    box-shadow: var(--sombras_bordas);
+  }
+  
+  .btn_limpar{
+      border: 1px red solid;
+      width: 5vw;
+      height: 5vh;
+      border-radius: 5px;
+      background-color: transparent;
+  }
+  .btn_limpar:hover{
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: white;
+      background-color: red;
+      box-shadow: var(--sombras_bordas);
+  }
+  
 /*Aqui finaliza as classes universais*/
 .modo-escuro{
     background-color:  var(--cor-dark-mod);

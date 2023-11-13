@@ -19,13 +19,19 @@ class AtividadeController extends Controller {
             }
         }
         
-        if($_SESSION['callAccessToken'] == true) {
-            $_SESSION['controller'] = "Atividade";
-
-            $this->loadController("Acesso");
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Atividade";
+    
+                $this->loadController("Acesso");
+                return;
+            }
+            $_SESSION['callAccessToken'] = true;
+        }
+        else {
+            $this->loadController('Login', '?action=login');
             return;
         }
-        $_SESSION['callAccessToken'] = true;
 
         $this->atividadeDao = new AtividadeDAO();
         $this->atividadeService = new AtividadeService();
@@ -71,6 +77,8 @@ class AtividadeController extends Controller {
                 }
                 // - Enviar mensagem de sucesso
                 $msg = "Atividade salva com sucesso.";
+                $_SESSION['URL'][$_SESSION['controller']] = "?controller=Atividade&action=listAtividades";
+
                 $this->listAtividades("", $msg);
                 
                 exit;

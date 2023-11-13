@@ -26,13 +26,19 @@ class MatilhaController extends Controller{
         }
 
         if(! isset($_GET['isAjax'])) {
-            if($_SESSION['callAccessToken'] == true) {
-                $_SESSION['controller'] = "Matilha";
-    
-                $this->loadController("Acesso");
-                return;
+            if(isset($_SESSION['callAccessToken'])) {
+                if($_SESSION['callAccessToken'] == true) {
+                    $_SESSION['controller'] = "Matilha";
+        
+                    $this->loadController("Acesso");
+                    return;
+                }
+                $_SESSION['callAccessToken'] = true;
             }
-            $_SESSION['callAccessToken'] = true;
+            else {
+                $this->loadController('Login', '?action=login');
+                die;
+            }
            
         }
         
@@ -169,6 +175,8 @@ class MatilhaController extends Controller{
                 // - Enviar mensagem de sucesso
                 $msg = "Matilha salva com sucesso.";
                 $this->list("", $msg);
+                $_SESSION['URL'][$_SESSION['controller']] = "?controller=Matilha&action=listMatilhas";
+
                 exit;
             } catch (PDOException $e) {
                 $erros = ["[Erro ao salvar a matilha na base de dados.]"];

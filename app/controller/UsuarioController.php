@@ -40,15 +40,19 @@ class UsuarioController extends Controller
         }
 
         if(! isset($_GET['isAjax'])) {
-
-            if($_SESSION['callAccessToken'] == true) {
-                $_SESSION['controller'] = "Usuario";
-    
-                $this->loadController("Acesso");
-                return;
+            if(isset($_SESSION['callAccessToken'])) {
+                if($_SESSION['callAccessToken'] == true) {
+                    $_SESSION['controller'] = "Usuario";
+        
+                    $this->loadController("Acesso");
+                    return;
+                }
+                $_SESSION['callAccessToken'] = true;
             }
-            
-            $_SESSION['callAccessToken'] = true;
+            else {
+                $this->loadController('Login', '?action=login');
+                die;
+            }
         }
         
 
@@ -196,7 +200,6 @@ class UsuarioController extends Controller
         $contato = $this->saveContato();
         $usuario = $this->saveUsuario($endereco, $contato);
         // Validar os dados
-        var_dump($usuario);
         $errorUsuario = $this->usuarioService->validarUsuario($usuario, $confSenha);
         $errorContato = $this->usuarioService->validarContato($contato);
         $errorEndereco = $this->usuarioService->validarEndereco($endereco);

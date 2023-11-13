@@ -16,7 +16,7 @@ class AlcateiaController extends Controller{
         if($_GET['action'] == "save" or $_GET['action'] == "edit") {
             $_SESSION['callAccessToken'] = false;
         }
-        
+        if(isset($_SESSION)) {
             if($_SESSION['callAccessToken'] == true) {
                 $_SESSION['controller'] = "Alcateia";
     
@@ -24,6 +24,11 @@ class AlcateiaController extends Controller{
                 return;
             }
             $_SESSION['callAccessToken'] = true;
+        }
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
+        }
         
         
         $this->alcateiaDao = new AlcateiaDAO();

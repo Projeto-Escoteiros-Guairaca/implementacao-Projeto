@@ -32,12 +32,19 @@ class TarefaController extends Controller {
             $_SESSION["activeAtividade"] = $_GET["idAtividade"];
         }
         
-        if($_SESSION['callAccessToken'] == true) {
-            $_SESSION['controller'] = "Tarefa";
-            $this->loadController("Acesso");
-            return;
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Tarefa";
+    
+                $this->loadController("Acesso");
+                return;
+            }
+            $_SESSION['callAccessToken'] = true;
         }
-        $_SESSION['callAccessToken'] = true;
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
+        }
         
         $this->usuarioDao = new UsuarioDAO();
         $this->atividadeDao = new AtividadeDAO();
@@ -192,6 +199,8 @@ class TarefaController extends Controller {
                 $msg = "tarefa salva com sucesso.";
                 
                 $this->listTarefas("", $msg);
+                $_SESSION['URL'][$_SESSION['controller']] = "?controller=Tarefa&action=listTarefas";
+
                 exit;
             } 
             catch (PDOException $e) {
