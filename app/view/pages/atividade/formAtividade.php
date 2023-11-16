@@ -10,19 +10,19 @@
 ?>
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
-<div class="container">
 
+<div class="container">
     <div class="col-12">
         
-            <form id="formatividade" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save">
+            <form id="formatividade" class= " for_universal"method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save">
                 
-                <h2 class="text-center">
+                <h3 class="titulos">
                     <?php if(isset($dados["id_atividade"])): ?>
                         Alterar atividade
                     <?php else: ?>
                         Criar uma nova atividade
                     <?php endif; ?>
-                </h2>
+                </h3>
 
                 <div class="form-group">
                     <label for="txtNomeatividade">Nome:</label>
@@ -49,8 +49,7 @@
             </form>
         
        
-                   <a 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
+                   <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
 
         <div class="row">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>

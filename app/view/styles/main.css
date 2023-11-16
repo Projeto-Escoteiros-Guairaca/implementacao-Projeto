@@ -5,7 +5,8 @@
     --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
     --bordas_douradas:solid #ffbc42 1px;
     --borda_verde_esc: #1d7874 1px solid;
-    --color-p:#667; 
+    --bordas:solid #679289 1px;
+    --color-p:#667;
 }
 /*Abaixo serao declaradas classes que so podem ser editadas no arquivo main (classes universais)*/
 body{
@@ -55,8 +56,36 @@ form{
     right: auto;
     padding: 8vh;
 }
+/*Titulos das paginas*/
+.titulos{
+    text-align: center !important;
+    color: var(--verde-escuro);
+    margin: 5px 5px ;
+}
 
 /*abaixo serao os comandos que sao universais nos formuarios*/
+.form_universal{
+    width: 25em;
+    height: 25em;
+}
+.form-group{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+/*input*/
+.form-control{
+    border: var(--bordas);
+    margin: 0 auto 0;
+    width: 18em;
+    background-color: transparent;
+}
+.form-control:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #414141;
+    box-shadow: var(--sombras_bordas);
+}
 .btn_gravar{
     border: var(--bordas);
     width: 5vw;
