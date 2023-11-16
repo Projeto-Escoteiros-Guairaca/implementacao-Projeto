@@ -52,9 +52,7 @@
 }
 /*card total das atv*/
 .card{
-  border: var(--bordas);
-  background-color: #071e22;
-  
+  border: var(--bordas);  
 }
 .card:hover{
   cursor: pointer;

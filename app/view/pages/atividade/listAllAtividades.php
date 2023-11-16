@@ -8,7 +8,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
-<div class="container">
+
     <div class="row r_listATV"> <!-- Adicionando a div com classe "row" -->
         <div class="col-12">
             <div class="card my-2 mx-2 Card">
@@ -60,7 +60,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
     <div class="col-9">
         <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
     </div>
-</div>
+
 </div>
 <script src="<?= BASEURL ?>/view/js/usuario.js"> </script>
 
