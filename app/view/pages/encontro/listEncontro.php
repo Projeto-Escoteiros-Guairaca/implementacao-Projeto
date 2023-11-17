@@ -7,49 +7,61 @@
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listEncontro.css" />
 
-<h3 class='text-center'>Encontros</h3>
+<h3 class='titulos'>Encontros</h3>
 
 <div class="container">
-    <div class="row">
+    <div class="col-12">
+        <div class="row row_ferramentas_encontro">
 
-        <div class="col-3">
-            <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=create">Inserir</a>
-        </div>
-        <div class="col-6">
+            <a class="btn_inserir" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=create">
+            <div class= "div_icon_inseriri">
+                <i class="icon_inserir bi bi-plus"></i>
+            </div>
+            <div class="div_titulo_inserir">
+                <h5 class="titulo_btn_inserir">Inserir Encontro</h5>
+            </div>
+            </a>
 
-            <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true">
+            <div class="div_filtro">
 
-                <input class="filters" class="form-control" type="date" placeholder="De" name="desde" 
-                value="<?php
+                <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true">
+
+                    <h6>Desde</h6>
+                    <input class="filters form-control" type="date" placeholder="De" name="desde" 
+                    value="<?php
                             echo (isset($dados['desde']) ? $dados['desde'] : "");
                         ?>">
-                <input class="filters" class="form-control" type="date" placeholder="Até" name="ate"
-                value="<?php
+                    <h6>Até</h6>
+                    <input class="filters form-control" type="date" placeholder="Até" name="ate"
+                    value="<?php
                             echo (isset($dados['ate']) ? $dados['ate'] :  "");
                         ?>">
-                <div class="form-group">
-                    <label for="somMatilha">Matilha:</label>
-                    <?php
+                    <div class="form-group">
+                        <label for="somMatilha">Matilha:</label>
+                        <?php
                         $alcDao = new MatilhaDAO();
                         $matilhas = $alcDao->list();
 
                         SelectMatilha::desenhaSelect($matilhas, "matilhaEncontro", "somMatilha", isset($dados['id_matilha']) ? $dados['id_matilha'] : 0);
-                    ?>
-                </div>
+                        ?>
+                    </div>
 
-                <button class="btn btn-alert" type="submit"> Filtrar </button>
-                <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros" class="btn btn-alert"> Limpar filtro </a>
+                        <button class="btn_gravar" type="submit"> Filtrar </button>
+                        
+                        <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros"  type="reset" class="btn_limpar"> Limpar </a>
 
-            </form>
+                </form>
 
+            </div>
         </div>
-        <div class="col-6">
-            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
-        </div>
-    </div>
 
-    <div class="row" style="margin-top: 10px;">
-        <div class="col-12">
+            <div class="">
+                <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+            </div>
+    
+
+        <div class="row row_cards_encontro" style="margin-top: 10px;">
+        
             <?php if (count($dados["lista"]) == 0) : ?>
                 <center colspan="6">Nenhum encontro encontrado, tente novamente.</center>
             <?php else: ?>
@@ -60,10 +72,11 @@
                             <hr>
                             <p class="card-text"><?php echo $enc->getMatilha()->getNome();?></p>
                             <p class="card-text"><?php echo $enc->getDescricao();?></p>
-                            <a class="btn btn-primary my-1" 
+                            <a class="btn_cards" 
                                 href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=edit&id=<?= $enc->getId_encontro() ?>">
                                 Alterar</a> 
-                            <a class="btn btn-secondary" 
+                                <br><br>
+                            <a class="btn_cards" 
                                 href="<?= BASEURL ?>/controller/AcessoController.php?controller=Frequencia&action=createFrequencias&idEncontro=<?= 
                                     $enc->getId_encontro()?>&idMatilha=<?= $enc->getId_matilha()?>">Registrar Frequência</a>
                         </div>
@@ -71,10 +84,11 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <a class="btn btn-success" 
-                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
-    </div>
+    </div>           
 </div>
+<a class="btn btn-success" 
+                    href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+
 
 <?php
     require_once(__DIR__ . "/../../include/footer.php");

@@ -5,7 +5,8 @@
     --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
     --bordas_douradas:solid #ffbc42 1px;
     --borda_verde_esc: #1d7874 1px solid;
-    --color-p:#667; 
+    --bordas:solid #679289 1px;
+    --color-p:#667;
 }
 /*Abaixo serao declaradas classes que so podem ser editadas no arquivo main (classes universais)*/
 body{
@@ -23,6 +24,7 @@ form{
 .col-12{
  
     overflow-y: visible;
+    overflow-x: visible;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -32,7 +34,7 @@ form{
     margin: auto auto;
     position: relative;
     height: fit-content;
-    
+    width: 100%;
 }
 .container{
     overflow-y: visible;
@@ -45,10 +47,106 @@ form{
     padding: 8vh;
 }
 .r_listATV{
-   
+    overflow-y: visible;
+    display: flex;
+    height: fit-content;
+    text-align: center;
+    align-items: center;
+    left: auto;
+    right: auto;
+    padding: 8vh;
+}
+/*botao inserir das paginas*/
+.btn_inserir{
+    box-sizing: border-box;
+    border: var(--bordas);
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0;
+    display: block;
+    height: 100%;
+  }
+  .btn_inserir:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
+    border: #1d7874 5px solid;
+    text-decoration: none;
+    scale: 1.025;
+  }
+  .icon_inserir{
+    font-size: 150px;
+    color: var(--verde-escuro);
+  }
+  .div_icon_inseriri{
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    position: relative;
+  }
+  .div_titulo_inserir{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 0;
+    position: relative;
+    text-decoration:none;
+  }
+  .titulo_btn_inserir{
+     margin: auto auto;
+     font-size: 38px;
+     text-decoration:none;
+     color: #1d7874;
+  }
+
+  .btn_cards{
+    border: var(--bordas);
+    box-sizing: border-box;
+    color: var(--verde-escuro);
+    display: inline;
+    padding: 4px 4px;
+  }
+  .btn_cards:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombras_bordas);
+    color: white;
+    background-color: #1d7874;
+    text-decoration: none;
+  }
+/*Titulos das paginas*/
+.titulos{
+    text-align: center !important;
+    color: var(--verde-escuro);
+    margin: 5px 5px ;
 }
 
 /*abaixo serao os comandos que sao universais nos formuarios*/
+.form_universal{
+    width: 25em;
+    height: 25em;
+}
+.form-group{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+/*input*/
+.form-control{
+    border: var(--bordas);
+    margin: 0 auto 0;
+    width: 18em;
+    background-color: transparent;
+}
+.form-control:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #414141;
+    box-shadow: var(--sombras_bordas);
+}
 .btn_gravar{
     border: var(--bordas);
     width: 5vw;
