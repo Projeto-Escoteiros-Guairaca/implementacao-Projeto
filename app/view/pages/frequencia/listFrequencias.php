@@ -6,20 +6,15 @@
 ?>
 
 <div class="container">
-    <div class="row">
-     
-        <div class="col-9">
-            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
-        </div>
-    </div>
 
-    <div class="row" style="margin-top: 10px;">
-            <div class="col-12">
-            <div class="col-12">
+    <div class="col-12">
+
+        <div class="row" style="margin-top: 10px;">
+    
             <h2>
             <?php echo"encontro do dia " . $dados['encontro']->getDataFormated(); ?>
             </h2>
-            </div>
+            
                 <table id="tabfrequencias" class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -56,10 +51,17 @@
                         <?php endif; ?>
                     </tbody>
                 </table>
-                <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros">Voltar</a>
-            </div>
+                
+            
         </div>
+    </div>
 </div>
+<div class="row">
+     <div class="">
+         <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+     </div>
+ </div>
+        <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros">Voltar</a>
 <br><br><br><br><br><br>
 
 <?php

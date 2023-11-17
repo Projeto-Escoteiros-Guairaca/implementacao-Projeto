@@ -56,6 +56,67 @@ form{
     right: auto;
     padding: 8vh;
 }
+/*botao inserir das paginas*/
+.btn_inserir{
+    box-sizing: border-box;
+    border: var(--bordas);
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0;
+    display: block;
+    height: 100%;
+  }
+  .btn_inserir:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
+    border: #1d7874 5px solid;
+    text-decoration: none;
+    scale: 1.025;
+  }
+  .icon_inserir{
+    font-size: 150px;
+    color: var(--verde-escuro);
+  }
+  .div_icon_inseriri{
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    position: relative;
+  }
+  .div_titulo_inserir{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 0;
+    position: relative;
+    text-decoration:none;
+  }
+  .titulo_btn_inserir{
+     margin: auto auto;
+     font-size: 38px;
+     text-decoration:none;
+     color: #1d7874;
+  }
+
+  .btn_cards{
+    border: var(--bordas);
+    box-sizing: border-box;
+    color: var(--verde-escuro);
+    display: inline;
+    padding: 4px 4px;
+  }
+  .btn_cards:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombras_bordas);
+    color: white;
+    background-color: #1d7874;
+    text-decoration: none;
+  }
 /*Titulos das paginas*/
 .titulos{
     text-align: center !important;

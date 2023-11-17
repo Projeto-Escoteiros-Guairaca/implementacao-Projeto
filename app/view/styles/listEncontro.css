@@ -1,0 +1,53 @@
+/*modificacao fora do main.css*/
+
+.titulo_btn_inserir{
+    font-size: 25px;
+    margin-top: 5px !important;
+}
+.icon_inserir{
+    font-size: 100px;
+}
+.btn_inserir{
+    height: 15rem;
+    width: 11rem;
+}
+.div_icon_inseriri{
+    height: 50%;
+    width: 100%;
+    padding: auto 2px;
+    
+  }
+.div_titulo_inserir{
+    width: 100%;
+    height: 50%;    
+    bottom: 0;
+}
+
+.row_ferramentas_encontro{
+    
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1rem;
+    gap: 4rem;
+}
+.row_cards_encontro{
+    
+    justify-content: center;
+}
+.div_filtro{
+    width: 30%;
+}
+.row_cards_encontro{
+    width: 100%;
+}
+.card{
+    border: var(--bordas);  
+  }
+.card:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombras_bordas);
+  }
+  
