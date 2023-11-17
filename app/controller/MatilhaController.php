@@ -25,21 +25,18 @@ class MatilhaController extends Controller{
             }
         }
 
-        if(! isset($_GET['isAjax'])) {
-            if(isset($_SESSION['callAccessToken'])) {
-                if($_SESSION['callAccessToken'] == true) {
-                    $_SESSION['controller'] = "Matilha";
-        
-                    $this->loadController("Acesso");
-                    return;
-                }
-                $_SESSION['callAccessToken'] = true;
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Matilha";
+    
+                $this->loadController("Acesso");
+                return;
             }
-            else {
-                $this->loadController('Login', '?action=login');
-                die;
-            }
-           
+            $_SESSION['callAccessToken'] = true;
+        }
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
         }
         
         $this->usuarioDao = new UsuarioDAO();

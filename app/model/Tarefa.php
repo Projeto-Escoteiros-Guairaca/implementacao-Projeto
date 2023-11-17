@@ -10,8 +10,10 @@ class Tarefa {
     private $dataEntrega;
     private $descricaoEntrega;
     private $Usuario;
+    private $Arquivo;
     //campos provisórios
 
+    private $idArquivo;
     private $id_atividade;
     private $idUsuario;
 
@@ -223,6 +225,46 @@ class Tarefa {
     public function setIdUsuario($idUsuario)
     {
         $this->idUsuario = $idUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Arquivo
+     */ 
+    public function getArquivo()
+    {
+        return $this->Arquivo;
+    }
+
+    /**
+     * Set the value of Arquivo
+     *
+     * @return  self
+     */ 
+    public function setArquivo($Arquivo)
+    {
+        $this->Arquivo = $Arquivo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idArquivo
+     */ 
+    public function getIdArquivo()
+    {
+        return $this->idArquivo;
+    }
+
+    /**
+     * Set the value of idArquivo
+     *
+     * @return  self
+     */ 
+    public function setIdArquivo($idArquivo)
+    {
+        $this->idArquivo = $idArquivo;
 
         return $this;
     }

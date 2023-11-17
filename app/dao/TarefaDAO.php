@@ -70,7 +70,7 @@ class TarefaDAO {
 
         $sql = " SELECT * FROM tb_usuarios u INNER JOIN tb_tarefas_usuarios tu ON tu.id_tarefa = u.id_usuario ".
         "INNER JOIN tb_tarefas t ON t.id_tarefa = tu.id_tarefa ".
-        "INNER JOIN tb_arquivos a ON t.id_arquivo = tu.id_arquivo"
+        "INNER JOIN tb_arquivos a ON a.id_arquivo = tu.id_arquivo"
          ." WHERE tu.id_usuario = :idUsuario AND tu.id_tarefa = :idTarefa";
         $stm = $conn->prepare($sql);
         $stm->bindValue("idUsuario", $idUsuario);
@@ -135,6 +135,7 @@ class TarefaDAO {
         foreach ($result as $reg) {
             $usuario = new Usuario();
             $tarefa = new Tarefa();
+            $arquivo = new Arquivo();
 
             $tarefa->setIdtarefa($reg['id_tarefa']);
             $tarefa->setNometarefa($reg['2']);
@@ -147,6 +148,12 @@ class TarefaDAO {
             $usuario->setNome($reg['4']);
             $usuario->setId($reg['id_usuario']);
             
+            $arquivo->setNomeArquivo($reg['21']);
+            $arquivo->setIdArquivo($reg['id_arquivo']);
+            $arquivo->setCaminhoArquivo($reg['caminho']);
+            $arquivo->setTexto($reg['texto']);
+
+            $tarefa->setArquivo($arquivo);
             $tarefa->setUsuario($usuario);
             array_push($tarefas, $tarefa);
 
@@ -165,18 +172,21 @@ class TarefaDAO {
         $stm->bindValue("caminho", $arquivo->getCaminhoArquivo());
         $stm->bindValue("nome", $arquivo->getNomeArquivo());
         $stm->execute();
+        $arquivo->setIdArquivo($conn->lastInsertId());
 
     }
     public function addTarefaUsuario(Tarefa $tarefaUsuario) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, data)" .
-                    " VALUES (:id_usuario, :id_tarefa, :data)";
+        $sql = "INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, data)" .
+                    " VALUES (:id_usuario, :id_tarefa, :id_arquivo, :data)";
         $stm = $conn->prepare($sql);
 
         $stm->bindValue("id_usuario", $tarefaUsuario->getIdUsuario());
         $stm->bindValue("id_tarefa", $tarefaUsuario->getIdTarefa());
         $stm->bindValue("data", $tarefaUsuario->getDataEntrega());
+        $stm->bindValue("id_arquivo", $tarefaUsuario->getIdArquivo());
+
         $stm->execute();
     }
 }

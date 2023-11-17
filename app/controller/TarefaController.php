@@ -129,29 +129,35 @@ class TarefaController extends Controller {
     }
 
     public function addTarefa() {
-        $this->addArquivo();
+        $arquivo = $this->addArquivo();
 
         $tarefaUsuario = new Tarefa();
-        $tarefaUsuario->setDataEntrega(date('d/m/Y'));
+        $tarefaUsuario->setDataEntrega(date('Y-m-d'));
         $tarefaUsuario->setIdUsuario($_SESSION[SESSAO_USUARIO_ID]);
         $tarefaUsuario->setIdTarefa($_SESSION['activeTarefa']);
-
+        $tarefaUsuario->setIdArquivo($arquivo->getIdArquivo());
+        
         $this->tarefaDao->addTarefaUsuario($tarefaUsuario);
         $this->openTarefa();
     }
     public function addArquivo() {
         $texto = isset($_POST['texto']) ? $_POST['texto'] : "";
-        $imagem = $_FILES['imagem'];
+        if(isset($_FILES['imagem'])) {
+            $imagem = $_FILES['imagem'];
+        }
+        else {
+            $imagem['type'] = 'Texto';
+        }
         $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 
         if(strpos($imagem['type'], "image") !== false) {
-            $nome = "imagem";
+            $nome = "Imagem";
         }
         else if(strpos($imagem['type'], "video") !== false) {
-            $nome = "video";
+            $nome = "Video";
         }
         else {
-            $nome = "text";
+            $nome = "Texto";
         }
      
         $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
@@ -164,6 +170,7 @@ class TarefaController extends Controller {
         $arquivo->setCaminhoArquivo($caminho_imagem);
         $arquivo->setNomeArquivo($nome);
         $this->tarefaDao->addArquivo($arquivo);
+        return $arquivo;
     }
 
     public function create(){

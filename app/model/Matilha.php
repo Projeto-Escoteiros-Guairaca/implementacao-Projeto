@@ -4,7 +4,7 @@ class Matilha implements JsonSerializable {
 
     private $id_matilha;
     private $nome;
-    private $usuariochefe;
+    private $usuarioChefe;
     private $usuarioPrimo;
 
     private $idChefe;
@@ -12,11 +12,13 @@ class Matilha implements JsonSerializable {
     
     
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() {
+    public function jsonSerialize() {   
         return
         [
             'id_matilha' => $this->id_matilha,
-            'nome' => $this->nome
+            'nome' => $this->nome,
+            'usuarioChefe' => $this->usuarioChefe,
+            'usuarioPrimo' => $this->usuarioPrimo
         ];
     }
 
@@ -102,21 +104,21 @@ class Matilha implements JsonSerializable {
     }
 
     /**
-     * Get the value of usuariochefe
+     * Get the value of usuarioChefe
      */ 
     public function getUsuarioChefe()
     {
-        return $this->usuariochefe;
+        return $this->usuarioChefe;
     }
 
     /**
-     * Set the value of usuariochefe
+     * Set the value of usuarioChefe
      *
      * @return  self
      */ 
-    public function setUsuarioChefe($usuariochefe)
+    public function setUsuarioChefe($usuarioChefe)
     {
-        $this->usuariochefe = $usuariochefe;
+        $this->usuarioChefe = $usuarioChefe;
 
         return $this;
     }

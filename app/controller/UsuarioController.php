@@ -358,7 +358,7 @@ class UsuarioController extends Controller
         }
         else {
             
-$this->usuarioDao->changeMatilha($id, $idMatilha);
+            $this->usuarioDao->changeMatilha($id, $idMatilha);
             return;    
         }
         
