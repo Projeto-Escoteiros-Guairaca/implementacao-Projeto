@@ -56,7 +56,7 @@ class TarefaController extends Controller {
     }
 
     public function listTarefas(string $msgErro = "", string $msgSucesso = ""){
-
+        $tarefaComplete = array();
         if(isset($_GET["idAtividade"])) {
             $_SESSION["activeAtividade"] = $_GET["idAtividade"];
         }
@@ -65,13 +65,17 @@ class TarefaController extends Controller {
 
         if(isset($_SESSION["activeAtividade"])) {
             $tarefas = $this->tarefaDao->listByIdAtiv($_SESSION["activeAtividade"]);
+            foreach($tarefas as $tar):
+                $tarefaUsuario = $this->tarefaDao->getTarefaSendByUsuario($_SESSION[SESSAO_USUARIO_ID], $tar->getIdTarefa());
+                array_push($tarefaComplete, $tarefaUsuario);
+            endforeach;
         }
         else {
-            $tarefas = $this->tarefaDao->list();
+            $tarefaComplete = $this->tarefaDao->list();
         }
 
         $dados["atividade"] = $atividade;
-        $dados["lista"] = $tarefas;
+        $dados["lista"] = $tarefaComplete;
         $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgErro, $msgSucesso, true);
     }
 

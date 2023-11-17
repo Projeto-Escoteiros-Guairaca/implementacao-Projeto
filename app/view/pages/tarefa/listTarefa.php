@@ -1,7 +1,7 @@
 <?php
     require_once(__DIR__ . "/../../include/header.php");
     require_once(__DIR__ . "/../../include/menu.php");
-var_dump($dados);
+    var_dump($dados);
 ?>
 
 </style>
@@ -30,7 +30,7 @@ var_dump($dados);
                             <p class="p_atv"><?php echo $taref->getNomeTarefa(); ?> </p>
                 </a>
                         <div class="rightPart dados_universais_atv">
-                            <button class="tarefaCheckada"></button>
+                         <!-- AQUI E O BOTAO Q MUDA DE COR-->   <button class="tarefaCheckada"></button>
                         </div>
                 </div>
 
