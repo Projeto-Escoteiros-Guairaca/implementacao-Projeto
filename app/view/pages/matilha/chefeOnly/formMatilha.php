@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 <div class="container">
     <div class="col-12">
-            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save">
+            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save&isForm=true">
                 
                 <h2 class="text-center">
                     <?php 

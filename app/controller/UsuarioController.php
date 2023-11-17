@@ -34,7 +34,7 @@ class UsuarioController extends Controller
 
     public function __construct() {
         if(isset($_GET['action'])) {
-            if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+            if(isset($_GET['isForm'])) {
                 $_SESSION['callAccessToken'] = false;
             }
         }

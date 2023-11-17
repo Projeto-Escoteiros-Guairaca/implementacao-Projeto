@@ -25,7 +25,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
         
         <div class="col-6">
             <form id="frmUsuario" method="POST" 
-                action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
+                action="<?= BASEURL ?>/controller/UsuarioController.php?action=save&isForm=true" >
 
                 <h2 class="text-center">
                     Dados de identificação do Usuário

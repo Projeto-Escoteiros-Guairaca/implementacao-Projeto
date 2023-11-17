@@ -130,8 +130,19 @@ class TarefaDAO {
             " - Erro: mais de um usuário encontrado.");
     }
 
+    public function validateTarefa($avaliacao, $idEntrega) {
+        $conn = Connection::getConn();
+        $sql = "UPDATE tb_tarefas_usuarios SET status = :avaliacao WHERE id_tarefa_usuario = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $idEntrega);
+        $stm->bindValue("avaliacao", $avaliacao);
+
+        $stm->execute();
+    }
+
     public function mapTarefaUsuario($result){
         $tarefas = array();
+        
         foreach ($result as $reg) {
             $usuario = new Usuario();
             $tarefa = new Tarefa();
@@ -142,6 +153,7 @@ class TarefaDAO {
             $tarefa->setDescricaoTarefa($reg['3']);
             $tarefa->setId_atividade($reg['id_atividade']);
 
+            $tarefa->setIdEntrega($reg['id_tarefa_usuario']);
             $tarefa->setStatusEntrega($reg['status']);
             $tarefa->setDescricaoEntrega($reg['16']);
             $tarefa->setDataEntrega($reg['data']);

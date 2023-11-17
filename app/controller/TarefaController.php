@@ -22,7 +22,7 @@ class TarefaController extends Controller {
     
     function __construct(){
         if(isset($_GET['action'])) {
-            if($_GET['action'] == "save" or $_GET['action'] == "edit" or $_GET['action'] == "addTarefa") {
+            if(isset($_GET['isForm'])) {
                 $_SESSION['callAccessToken'] = false;
             }
         }
@@ -128,6 +128,13 @@ class TarefaController extends Controller {
 
     }
 
+    public function validateTarefa() {
+        $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : "";
+        $idEntrega = $_GET['idEnvio'];
+   
+        $this->tarefaDao->validateTarefa($avaliacao, $idEntrega);
+        $this->openTarefaOfEspecificUsuario();
+    }
     public function addTarefa() {
         $arquivo = $this->addArquivo();
 
@@ -241,37 +248,6 @@ class TarefaController extends Controller {
         return $tarefa;
     }
 
-    //! public function openTarefa(string $msgErro = "", string $msgSucesso = "") {
-    //!     if( isset($_GET['id'])) {
-    //!         $_SESSION['activeTarefa'] = $_GET['id'];
-    //!     }
-    //!     $usuariosMatilha = $this->usuarioDao->findUsuariosByIdMatilha($_SESSION[SESSAO_USUARIO_ID_MATILHA]);
-    //!     $tarefa = $this->findById();
-
-    //!     foreach ($usuariosMatilha as $us):
-    //!         $usuarioEnviou = $this->usuarioDao->usuarioSended($us->getId());
-    //!         $us->setTarefaEnviada($usuarioEnviou);
-    //!     endforeach;
-
-    //!     $dados["tarefa"] = $tarefa;
-    //!     $dados["lista"] = $usuariosMatilha;
-
-    //!     if($_SESSION[SESSAO_USUARIO_PAPEIS][0] == "LOBINHO") {
-    //!         $this->loadView("pages/tarefa/lobinhoOnly/openTarefaLobinho.php", $dados, $msgErro, $msgSucesso, true);
-    //!     }
-    //!     else {
-    //!         $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, true);
-    //!     }
-        
-    //! }
-
-    //! public function openTarefaUsuario(string $msgErro = "", string $msgSucesso = "") {
-    //!     $idTarefa = $_GET['id'];
-    //!     $tarefaUsuario = $this->tarefaDao->getTarefaUsuario($idTarefa);
-
-    //!     $dados["tarefa"] = $tarefaUsuario;
-    //!     $this->loadView("pages/tarefa/chefeOnly/openTarefaUsuario.php", $dados, $msgErro, $msgSucesso, true);
-    //! }
 
     protected function findById(){
         $id = 0;

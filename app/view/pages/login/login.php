@@ -18,7 +18,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                 <br>
 
                 <!-- Formulário de login -->
-                <form id="frmLogin" action="./LoginController.php?action=logon" method="POST" >
+                <form id="frmLogin" action="./LoginController.php?action=logon&isForm=true" method="POST" >
                     <div class="form-group">
                         <label for="txtLogin">Login:</label>
                         <input type="text" class=" estilo_dados_form" name="login" id="txtLogin" 

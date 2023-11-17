@@ -6,6 +6,7 @@ class Tarefa {
     private $nomeTarefa;
     private $descricaoTarefa;
 
+    private $idEntrega;
     private $statusEntrega;
     private $dataEntrega;
     private $descricaoEntrega;
@@ -181,11 +182,12 @@ class Tarefa {
     public function getStatusEntregaPalavra()
     {
         $status = "";
-        if($this->statusEntrega == 1)
-            $status = "Pendente";
-        else if($this->statusEntrega == 2)
-            $status= "Entregado";
-
+        if($this->statusEntrega == 0)
+            $status = "Pendente para avaliação";
+        else if($this->statusEntrega == 1)
+            $status= "Precisa refazer";
+        else
+        $status = "Avaliado";
         return $status;
     }
 
@@ -265,6 +267,26 @@ class Tarefa {
     public function setIdArquivo($idArquivo)
     {
         $this->idArquivo = $idArquivo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idEntrega
+     */ 
+    public function getIdEntrega()
+    {
+        return $this->idEntrega;
+    }
+
+    /**
+     * Set the value of idEntrega
+     *
+     * @return  self
+     */ 
+    public function setIdEntrega($idEntrega)
+    {
+        $this->idEntrega = $idEntrega;
 
         return $this;
     }

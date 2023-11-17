@@ -12,7 +12,7 @@
 <div class="container">
     <div class="col-12">
  
-        <form id="formEncontro" class="form_universal"method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save">
+        <form id="formEncontro" class="form_universal"method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save&isForm=true">
 
             <h3 class="titulos">
                 <?php if(isset($dados["id_encontro"])): ?>

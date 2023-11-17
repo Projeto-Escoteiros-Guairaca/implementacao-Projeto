@@ -13,9 +13,10 @@ class AlcateiaController extends Controller{
 
     public function __construct(){
 
-        if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+        if(isset($_GET['isForm'])) {
             $_SESSION['callAccessToken'] = false;
         }
+        
         if(! isset($_GET['isAjax'])) {
             if(isset($_SESSION['callAccessToken'])) {
                 if($_SESSION['callAccessToken'] == true) {

@@ -47,7 +47,7 @@ textarea {
     <section class="container">
         <div class="tarefa">
             <div id="tarefa-container">
-                <form enctype="multipart/form-data" action="<?=BASEURL?>/controller/TarefaController.php?action=addTarefa" method="POST">
+                <form enctype="multipart/form-data" action="<?=BASEURL?>/controller/TarefaController.php?action=addTarefa&isForm=true" method="POST">
                     <h3>Escreva aqui qualquer detalhe que precises:</h3>
                     <div id="descricao">
                         

@@ -24,7 +24,7 @@
 
             <div class="div_filtro">
 
-                <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true">
+                <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true&isForm=true">
 
                     <h6>Desde</h6>
                     <input class="filters form-control" type="date" placeholder="De" name="desde" 
