@@ -20,7 +20,7 @@ class TarefaDAO {
         
         return $this->mapTarefas($result);
     }
-
+    
     public function mapTarefas($result){
         $tarefas = array();
         foreach ($result as $reg) {
@@ -152,10 +152,6 @@ class TarefaDAO {
             $tarefa->setDescricaoTarefa($reg['3']);
             $tarefa->setIdAtividade($reg['id_atividade']);
 
-            $tarefa->setIdEntrega($reg['id_tarefa_usuario']);
-            $tarefa->setStatusEntrega($reg['status']);
-            $tarefa->setDescricaoEntrega($reg['16']);
-            $tarefa->setDataEntrega($reg['data']);
             $usuario->setNome($reg['4']);
             $usuario->setId($reg['id_usuario']);
             
@@ -164,8 +160,7 @@ class TarefaDAO {
             $arquivo->setCaminhoArquivo($reg['caminho']);
             $arquivo->setTexto($reg['texto']);
 
-            $tarefa->setArquivo($arquivo);
-            $tarefa->setUsuario($usuario);
+
             array_push($tarefas, $tarefa);
 
         }
@@ -195,7 +190,6 @@ class TarefaDAO {
 
         $stm->bindValue("id_usuario", $tarefaUsuario->getIdUsuario());
         $stm->bindValue("id_tarefa", $tarefaUsuario->getIdTarefa());
-        $stm->bindValue("data", $tarefaUsuario->getDataEntrega());
         $stm->bindValue("id_arquivo", $tarefaUsuario->getIdArquivo());
 
         $stm->execute();
