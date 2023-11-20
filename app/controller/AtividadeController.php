@@ -35,7 +35,7 @@ class AtividadeController extends Controller {
 
         $this->atividadeDao = new AtividadeDAO();
         $this->atividadeService = new AtividadeService();
-
+        
         $this->setActionDefault("listAtividades", true);
         $this->handleAction();
     }

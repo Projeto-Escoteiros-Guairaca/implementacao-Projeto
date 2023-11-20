@@ -18,7 +18,7 @@ class FrequenciaDAO {
  
         $stm = $conn->prepare($sql);
         $stm->bindValue(':id_usuario', $freq->getUsuario()->getId());
-        $stm->bindValue(':id_encontro', $freq->getId_encontro());
+        $stm->bindValue(':id_encontro', $freq->getIdEncontro());
         $stm->execute();
         }
     }

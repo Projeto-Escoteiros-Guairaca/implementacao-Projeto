@@ -9,7 +9,7 @@ class EncontroDao {
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_encontros e ORDER BY e.data";
+        $sql = "SELECT * FROM tb_encontros e ORDER BY e.data_encontro";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
@@ -37,7 +37,7 @@ class EncontroDao {
 
         foreach($encontros as $enc):
             $matilha = new Matilha();
-            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $matilha = $this->listMatilhas($enc->getIdMatilha());
             $enc->setMatilha($matilha[0]);
         endforeach;
         
@@ -55,7 +55,7 @@ class EncontroDao {
 
         foreach($encontros as $enc):
             $matilha = new Matilha();
-            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $matilha = $this->listMatilhas($enc->getIdMatilha());
             $enc->setMatilha($matilha[0]);
         endforeach;
         
@@ -73,7 +73,7 @@ class EncontroDao {
 
         foreach($encontros as $enc):
             $matilha = new Matilha();
-            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $matilha = $this->listMatilhas($enc->getIdMatilha());
             $enc->setMatilha($matilha[0]);
         endforeach;
         
@@ -149,7 +149,7 @@ class EncontroDao {
         foreach ($result as $reg) {
             $encontro = new Encontro();
             $encontro->setIdEncontro($reg['id_encontro']);
-            $encontro->setDataEncontro($reg['data']);
+            $encontro->setDataEncontro($reg['data_encontro']);
             $encontro->setDescricaoEncontro($reg['descricao_encontro']);
             $encontro->setIdMatilha($reg['id_matilha']);
             
@@ -182,7 +182,7 @@ class EncontroDao {
                " WHERE id_encontro = :id";
            
         $stm = $conn->prepare($sql);
-        $stm->bindValue("id_matilha", $encontro->getMatilha()->getId_matilha());
+        $stm->bindValue("id_matilha", $encontro->getMatilha()->getIdMatilha());
         $stm->bindValue("data", $encontro->getDataEncontro());
         $stm->bindValue("descricao", $encontro->getDescricaoEncontro());
         $stm->bindValue("id", $encontro->getIdEncontro());

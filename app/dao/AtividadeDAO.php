@@ -33,7 +33,7 @@ class AtividadeDAO {
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT COUNT(*) FROM tb_atividades a WHERE a.status = ?";
+        $sql = "SELECT COUNT(*) FROM tb_atividades a WHERE a.status_atividade = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$status]);
         $result = $stm->fetchAll();

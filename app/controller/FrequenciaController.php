@@ -89,7 +89,7 @@ class FrequenciaController extends Controller {
         $usuario = $this->usuarioDao->findById($_GET['id']);
 
         foreach($frequenciasOfUsuarios as $freq):
-            $encontro = $this->encontroDao->getEncontroByFrequencia($freq->getId_encontro());
+            $encontro = $this->encontroDao->getEncontroByFrequencia($freq->getIdEncontro());
                 if(! in_array($encontro, $encontros)) {
                 array_push($encontros, $encontro);
             }

@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../service/TarefaService.php");
 require_once(__DIR__ . "/../model/Arquivo.php");
+require_once(__DIR__ . "/../model/EntregaTarefaUsuario.php");
 
 require_once(__DIR__ . "/../model/Tarefa.php");
 require_once(__DIR__ . "/../dao/TarefaDAO.php");
@@ -57,9 +58,9 @@ class TarefaController extends Controller {
 
     public function listTarefas(string $msgErro = "", string $msgSucesso = ""){
         $tarefaComplete = array();
-        if(isset($_GET["idAtividade"])) {
-            $_SESSION["activeAtividade"] = $_GET["idAtividade"];
-        }
+        // if(isset($_GET["idAtividade"])) {
+        //     $_SESSION["activeAtividade"] = $_GET["idAtividade"];
+        // }
         
         $atividade = $this->atividadeDao->findById($_SESSION["activeAtividade"]);
 
@@ -67,7 +68,14 @@ class TarefaController extends Controller {
             $tarefas = $this->tarefaDao->listByIdAtiv($_SESSION["activeAtividade"]);
             foreach($tarefas as $tar):
                 $tarefaUsuario = $this->tarefaDao->getTarefaSendByUsuario($_SESSION[SESSAO_USUARIO_ID], $tar->getIdTarefa());
+
+
+                if($tarefaUsuario == null) {
+                    $tarefaUsuario = new EntregaTarefaUsuario();
+                    $tarefaUsuario->setTarefa($tar);
+                }
                 array_push($tarefaComplete, $tarefaUsuario);
+
             endforeach;
         }
         else {
@@ -139,10 +147,11 @@ class TarefaController extends Controller {
         $this->tarefaDao->validateTarefa($avaliacao, $idEntrega);
         $this->openTarefaOfEspecificUsuario();
     }
+
     public function addTarefa() {
         $arquivo = $this->addArquivo();
 
-        $tarefaUsuario = new Tarefa();
+        $tarefaUsuario = new EntregaTarefaUsuario();
         $tarefaUsuario->setDataEntrega(date('Y-m-d'));
         $tarefaUsuario->setIdUsuario($_SESSION[SESSAO_USUARIO_ID]);
         $tarefaUsuario->setIdTarefa($_SESSION['activeTarefa']);

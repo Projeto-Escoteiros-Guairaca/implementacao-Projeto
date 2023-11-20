@@ -105,7 +105,7 @@ class UsuarioController extends Controller
         foreach ($usuarios as $usu) {
             if ($usu->getIdMatilha()) {
                 foreach ($matilhas as $alc) {
-                    if ($usu->getIdMatilha() == $alc->getId_matilha()) {
+                    if ($usu->getIdMatilha() == $alc->getIdMatilha()) {
                         $usu->setMatilha($alc);
                     }
                 }
@@ -316,7 +316,7 @@ class UsuarioController extends Controller
         foreach ($arrayUsuarios as $usu) {
             if ($usu->getIdMatilha()) {
                 foreach ($matilhas as $alc) {
-                    if ($usu->getIdMatilha() == $alc->getId_matilha()) {
+                    if ($usu->getIdMatilha() == $alc->getIdMatilha()) {
                         $usu->setMatilha($alc);
                     }
                 }

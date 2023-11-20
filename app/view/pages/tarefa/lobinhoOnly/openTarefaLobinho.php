@@ -3,7 +3,7 @@
     require_once(__DIR__ . "/../../../include/menu.php");
     require_once(__DIR__ . "/lobinhoSendedTarefa.php");
     require_once(__DIR__ . "/lobinhoDidNotSend.php");
-
+// var_dump($dados);
 ?>
 
 </style>
@@ -38,7 +38,24 @@ textarea {
                     else {
                         echo "Não entregou ainda.";
                     }
-                    ?></h5 >
+                    ?>
+                    </h5>
+                         <h3>Data de entrega</h3>
+                <div id="descricao">
+                    <hr>
+                    <h5 style="color:brown;">
+
+                    <?php
+                    if(isset($dados['envioUsuario'])) {
+                        echo $dados['envioUsuario']->getDataEntregaFormated();
+                    }
+                    else {
+                        echo "Sem data de entrega ainda.";
+                    }
+                    ?>
+                    </h5>
+                    <hr>
+                </div>
             </div>
         </div>
     </section>
