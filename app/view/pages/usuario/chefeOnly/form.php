@@ -18,12 +18,12 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
 </h3>
 
 
-
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 <div class="container">
     
-    <div class="row" style="margin-top: 10px;">
+    <div class="col-12" style="margin-top: 10px;">
         
-        <div class="col-6">
+        <div class="form_editar_dados">
             <form id="frmUsuario" method="POST" 
                 action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
 
@@ -32,7 +32,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                 </h2>
 
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group">
                         <label for="txtNome">Nome:</label>
                         <input class="form-control" type="text" id="txtNome" name="nome" 
                             maxlength="70" placeholder="Informe o nome"
@@ -40,7 +40,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset($dados['usuario']) ? $dados['usuario']->getNome(): "");
                             ?>" />
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group">
                         <label for="txtCpf">CPF:</label>
                         <input class="form-control" type="text" id="txtCpf" name="cpf" 
                             maxlength="11" placeholder="Informe o CPF"
@@ -50,7 +50,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                     </div>
                 </div>
                 
-                <div class="form-group"  style="width: 50%;">
+                <div class="form-group">
                     <label for="txtLogin">Login:</label>
                     <input class="form-control" type="text" id="txtLogin" name="login" 
                         maxlength="15" placeholder="Informe o login"
@@ -60,7 +60,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtSenha">Senha:</label>
                         <input class="form-control" type="password" id="txtPassword" name="senha" 
                             maxlength="15" placeholder="Informe a senha"
@@ -69,7 +69,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                             ?>"/>
                     </div>
 
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtConfSenha">Confirmação da senha:</label>
                         <input class="form-control" type="password" id="txtConfSenha" name="conf_senha" 
                             maxlength="15" placeholder="Informe a confirmação da senha"
@@ -87,7 +87,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                 </h2>
 
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtCep">CEP:</label>
                         <input class="form-control" type="text" id="txtCep" name="cep" 
                             maxlength="9" placeholder="Informe o CEP, ex: 00000-000"
@@ -95,7 +95,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getEndereco()->getCep(): "");
                         ?>" />
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtLogradouro">Logradouro:</label>
                         <input class="form-control" type="text" id="txtLogradouro" name="logradouro" 
                             maxlength="255" placeholder="Informe o logradouro, ex: Rua, Avenida, etc"
@@ -105,7 +105,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="numeroEndereco">Nº:</label>
                         <input class="form-control" type="number" id="numeroEndereco" name="numeroEndereco" 
                             maxlength="5" placeholder="Informe o número"
@@ -113,7 +113,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getEndereco()->getNumeroEndereco(): "");
                         ?>" />
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtBairro">Bairro:</label>
                         <input class="form-control" type="text" id="txtBairro" name="bairro" 
                             maxlength="100" placeholder="Informe o Bairro"
@@ -123,7 +123,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtCidade">Cidade:</label>
                         <input class="form-control" type="text" id="txtCidade" name="cidade" 
                             maxlength="100" placeholder="Informe a cidade"
@@ -131,7 +131,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getEndereco()->getCidade(): "");
                         ?>" />
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtPais">País:</label>
                         <input class="form-control" type="text" id="txtPais" name="pais" 
                             maxlength="45" placeholder="Informe o País"
@@ -150,7 +150,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                 </h2>
 
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group ">
                         <label for="txtTelefone">Telefone:</label>
                         <input class="form-control" type="text" id="txtTelefone" name="telefone" 
                             maxlength="10" placeholder="Informe um telefone"
@@ -158,7 +158,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getContato()->getTelefone(): "");
                         ?>" />
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group">
                         <label for="txtCelular">Celular:</label>
                         <input class="form-control" type="txt" id="txtCelular" name="celular" 
                             maxlength="11" placeholder="Informe um celular"
@@ -168,7 +168,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group">
                         <label for="txtEmail">E-mail:</label>
                         <input class="form-control" type="email" id="txtEmail" name="email" 
                             maxlength="100" placeholder="Informe um e-mail"
@@ -181,14 +181,14 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                 <input type="hidden" id="hddIdContato" name="id_contato"
                     value="<?= $dados['id_contato']; ?>" />
 
-                <button type="submit" class="btn btn-success">Gravar</button>
-                <button type="reset" class="btn btn-danger">Limpar</button>
+                <button type="submit" class="btn_gravar">Gravar</button>
+                <button type="reset" class="btn_limpar">Limpar</button>
             </form>
             
             
         </div>
 
-        <div class="col-6">
+        <div class="">
             <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
         </div>
     </div>

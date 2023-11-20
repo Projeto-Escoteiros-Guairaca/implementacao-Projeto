@@ -6,47 +6,13 @@
     --color-p:#667;
 }
 
-/*Div total do formulario*/
-#formMatilha{
-    width: 50vw;
-    padding: 2vh 2vh ;
-    text-align: center;
-}
-/*Div do input e do label*/
 
 /*div que aparece quando aperta no chefe*/
 option{
     border: var(--bordas);
 }
 
-.btn_gravar{
-    border: var(--bordas);
-    width: 5vw;
-    height: 5vh;
-    border-radius: 5px;
-    background-color: transparent;
-}
-.btn_gravar:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: white;
-    background-color: #1d7874;
-    box-shadow: var(--sombras_bordas);
-}
-.btn_limpar{
-    border: 1px red solid;
-    width: 5vw;
-    height: 5vh;
-    border-radius: 5px;
-    background-color: transparent;
-}
-.btn_limpar:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: white;
-    background-color: red;
-    box-shadow: var(--sombras_bordas);
-}
+
 .modal-background {
     width: 100vw;
     height: 100vh;
@@ -72,5 +38,32 @@ option{
     z-index: 11;
 }
 
-
+/*modificacao fora do main.css*/
+.titulo_btn_inserir{
+    font-size: 25px !important;
+    
+}
+.icon_inserir{
+    font-size: 80px !important;
+}
+.btn_inserir{
+    height: 12rem !important;
+    width: 12rem !important;
+}
+.div_icon_inseriri{
+    height: 70% !important;
+    width: 100% !important;
+    padding: auto 2px !important;
+    
+    
+  }
+.div_titulo_inserir{
+    width: 100% !important;
+    height: 30% !important;    
+    bottom: 0 !important;
+}
+.card{
+    
+    height: 30vh!important;
+}
 

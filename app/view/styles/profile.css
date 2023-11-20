@@ -1,66 +1,61 @@
-
-h2{
-    margin-top: 5vh;
-    padding-bottom: 4vh;
+:root {
+    --cor-dark-mod: #121212; 
+    --verde-escuro: #1d7874;
+    --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
+    --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
+    --bordas_douradas:solid #ffbc42 1px;
+    --borda_verde_esc: #1d7874 1px solid;
+    --bordas:solid #679289 1px;
+    --color-p:#667;
 }
-h1{
-    text-align: center;
+/*Div total dos dados*/
+.col-12{
+    gap: 5em;
 }
-#btn_altercao{
-    margin-left: 160vh;
-}
-#usuario {
-    text-align: center;
-    width: 30vh;
-    height: auto;
-    border-radius: 15px;
-    border: solid 2px rgb(16, 159, 11);
-}
-#apresentacoes{
-    height: 70vh;
-}
-.b_apresentacoes{
-    width: 60vh;
-}
-#endereco {
-    text-align: center;
-    width: 30vh;
-    height: 80vh;
-    border-radius: 15px;
-    border: solid 2px rgb(16, 159, 11);
-}
-#contato {
-    text-align: center;
-    width: 30vh;
-    height: auto;
-    border-radius: 15px;
-    border: solid 2px rgb(16, 159, 11);
-}
-
-.d_dados{
-    flex-direction: row;
-    margin: 0;
-    width: 100%;
-    height: 40vh;
-    display: inline-block;
+.card_dados{
+    width: 15em;
+    min-height: fit-content;
+    max-height: 52em;
+    border: var(--borda_verde_esc);
+    padding: 1em;
 }
 .p_dados{
-
+    color: #679289;
+}
+.h6_dados{
+    color: #1d7874;
     font-size: 20px;
-    font-weight: 600;
-    color: rgb(16, 159, 11);
+    margin-top: 1em;
 }
-
-#btn_voltar_profile{
-    position: absolute;
-    margin-left: 42vh;
-    margin-top: 8vh;
-}
-
-#btn_altercao{
-    background-color: rgb(16, 159, 11);
+/*modificacao fora do main.css*/
+.titulo_btn_inserir{
+    font-size: 25px !important;
     
 }
-#btn_voltar_profile{
-    background-color: rgb(16, 159, 11);
+.icon_inserir{
+    font-size: 80px !important;
 }
+.btn_inserir{
+    height: 12rem !important;
+    width: 12rem !important;
+    top: 40vh;
+    left: 1vw;
+    position: fixed;
+}
+.div_icon_inseriri{
+    height: 70% !important;
+    width: 100% !important;
+    padding: auto 2px !important;
+    
+    
+  }
+.div_titulo_inserir{
+    width: 100% !important;
+    height: 30% !important;    
+    bottom: 0 !important;
+}
+.card{
+    
+    height: 30vh!important;
+}
+

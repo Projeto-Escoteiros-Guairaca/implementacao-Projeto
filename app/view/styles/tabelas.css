@@ -1,0 +1,17 @@
+:root {
+    --cor-dark-mod: #121212; 
+    --verde-escuro: #1d7874;
+    --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
+    --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
+    --bordas_douradas:solid #ffbc42 1px;
+    --borda_verde_esc: #1d7874 1px solid;
+    --bordas:solid #679289 1px;
+    --color-p:#667;
+}
+tr, td, th{
+    border: var(--borda_verde_esc);
+    color: #1d7874;
+    padding: 1em 1em;
+    
+}
+

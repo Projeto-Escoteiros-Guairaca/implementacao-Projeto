@@ -1,5 +1,4 @@
 /*modificacao fora do main.css*/
-
 .titulo_btn_inserir{
     font-size: 25px;
     margin-top: 5px !important;
@@ -23,31 +22,5 @@
     bottom: 0;
 }
 
-.row_ferramentas_encontro{
-    
-    position: relative;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 1rem;
-    gap: 4rem;
-}
-.row_cards_encontro{
-    
-    justify-content: center;
-}
-.div_filtro{
-    width: 30%;
-}
-.row_cards_encontro{
-    width: 100%;
-}
-.card{
-    border: var(--bordas);  
-  }
-.card:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: var(--sombras_bordas);
-  }
+
   

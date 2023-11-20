@@ -10,7 +10,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 
 <a class="btn_inserir" href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $dados['usuario']->getId() ?>">
   <div class="div_icon_inseriri">
-    <i class="icon_inserir bi bi-pencil"></i>
+    <i class="icon_inserir bi bi-plus"></i>
   </div>
   <div class="div_titulo_inserir">
     <h5 class="titulo_btn_inserir">Editar dados</h5>

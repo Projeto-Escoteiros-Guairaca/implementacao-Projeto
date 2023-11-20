@@ -5,8 +5,10 @@
 
 ?>
 
-<div class="container">
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/tabelas.css" />
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
+<div class="container">
     <div class="col-12">
 
         <div class="row" style="margin-top: 10px;">
@@ -15,7 +17,7 @@
             <?php echo"encontro do dia " . $dados['encontro']->getDataFormated(); ?>
             </h2>
             
-                <table id="tabfrequencias" class="table table-striped table-bordered">
+                <table id="tabfrequencias">
                     <thead>
                         <tr>
                             <th>Usuario</th>

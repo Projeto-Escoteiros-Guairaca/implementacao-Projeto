@@ -6,22 +6,21 @@
     require_once(__DIR__ . "/../../../../controller/LinkController.php");
     require_once(__DIR__ . "/../../../../controller/TarefaController.php");
 ?>
+  <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
 <div class="container">
-
-    <div class="row">
         <div class="col-12">
             <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/TarefaController.php?action=save">
                 
-                <h2 class="text-center">
+               <h3 class="titulos">
                     <?php if(isset($dados["id_tarefa"])): ?>
                         Alterar Tarefa
                     <?php else: ?>
                         Criar uma nova Tarefa
                     <?php endif; ?>
-                </h2>
+                </h3>
 
-                <div class="form-group col-6">
+                <div class="form-group">
                     <label for="txtNomeTarefa">Nome da Tarefa</label>
                     <input class="form-control" type="text" id="txtNomeTarefa" name="nomeTarefa" 
                         maxlength="70" placeholder="Informe o nome da Tarefa"
@@ -29,7 +28,7 @@
                             echo (isset($dados['tarefa']) ? $dados['tarefa']->getNomeTarefa() : "");
                         ?>" />
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group">
                     <label for="descricaoTarefa">Descrição</label>
                     <textarea class="form-control" id="descricaoTarefa" name="descricaoTarefa" rows="3"><?php echo (isset($dados['tarefa']) ? $dados['tarefa']->getDescricao(): "");?></textarea>
                 </div>
@@ -37,17 +36,15 @@
                 <br>
                 <input type="hidden" id="hddId" name="id_atividade" value="<?= $dados['id_atividade']; ?>" />
                 
-                <button type="submit" class="btn btn-success">Gravar</button>
-                <button type="reset" class="btn btn-danger">Limpar</button>
+                <button type="submit" class="btn_gravar">Gravar</button>
+                <button type="reset" class="btn_limpar">Limpar</button>
                 
             </form>
-            <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
+      
         </div>
-    </div>
-
 </div>
-
+<a class="" 
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
 <?php
     require_once(__DIR__ . "/../../../include/footer.php");
 ?>

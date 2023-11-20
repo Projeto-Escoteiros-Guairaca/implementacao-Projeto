@@ -11,7 +11,7 @@
 
 <div class="container">
     <div class="col-12">
-        <div class="row row_ferramentas_encontro">
+        <div class="row row_ferramentas">
 
             <a class="btn_inserir" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=create">
             <div class= "div_icon_inseriri">
@@ -60,7 +60,7 @@
             </div>
     
 
-        <div class="row row_cards_encontro" style="margin-top: 10px;">
+        <div class="row row_cards_pequenos" style=" margin-top: 10px;">
         
             <?php if (count($dados["lista"]) == 0) : ?>
                 <center colspan="6">Nenhum encontro encontrado, tente novamente.</center>

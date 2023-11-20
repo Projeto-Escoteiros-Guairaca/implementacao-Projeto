@@ -8,62 +8,6 @@
 
 .cx_meio{height: 70vh;}
 
-/*card total*/
-.card-sweg {
-    min-height: 420px;
-    border: #ffbc42 1px solid;
-    margin-top: 7vh;
-    background-color: transparent;
-    opacity: 0.9;
-}
-.card-sweg:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
-    border: #1d7874 5px solid;
-}
-/*div que fica encima dos titulos dos cards*/
-.card-sweg-details {
-    box-sizing: border-box;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-bottom: 50px;
-}
-/*Titulos dos cards*/
-.card-title{
-   font-size: 38px;
-   color: #1d7874;
-}
-/*icons dos cards*/
-.incons_redirecionais{
-    font-size: 18vh;    
-    color: black;
-    opacity: 1.0;
-    max-width: 21vw;
-    max-height: 18vh;
-}
-/*Links sobre os cards*/
-.botoes_redirecionais{
-    width: 45vh;
-    height: 60vh;
-    box-sizing: border-box;
-    border: var(--bordas);
-    align-items: center;
-    border-radius: 15px;
-    display: inline;
-    margin: 5vh auto 5vh;
-}
-.card-index{
-    box-shadow: 0px;
-    z-index: 10;
-}
-.text-box {
-    margin-left: 44vw;
-    margin-top: 42vh;
-}
-
 View Compiled
 
 h1 {
