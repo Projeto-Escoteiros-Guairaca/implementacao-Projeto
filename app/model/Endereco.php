@@ -2,7 +2,7 @@
 
 class Endereco implements JsonSerializable{
 
-    private $id_endereco;
+    private $idEndereco;
     private $cep;
     private $logradouro;
     private $numeroEndereco;
@@ -15,7 +15,7 @@ class Endereco implements JsonSerializable{
     public function jsonSerialize() {
         return
         [
-            'idEndereco' => $this->id_endereco,
+            'idEndereco' => $this->idEndereco,
             'cep' => $this->cep,
             'logradouro' => $this->logradouro,
             'numeroEndereco' => $this->numeroEndereco,
@@ -147,21 +147,21 @@ class Endereco implements JsonSerializable{
     }
 
     /**
-     * Get the value of id_endereco
+     * Get the value of idEndereco
      */ 
-    public function getId_endereco()
+    public function getIdEndereco()
     {
-        return $this->id_endereco;
+        return $this->idEndereco;
     }
 
     /**
-     * Set the value of id_endereco
+     * Set the value of idEndereco
      *
      * @return  self
      */ 
-    public function setId_endereco($id_endereco)
+    public function setIdEndereco($idEndereco)
     {
-        $this->id_endereco = $id_endereco;
+        $this->idEndereco = $idEndereco;
 
         return $this;
     }

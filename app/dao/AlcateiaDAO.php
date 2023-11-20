@@ -43,7 +43,7 @@ class AlcateiaDao{
         foreach ($result as $reg) {
             $alcateia = new Alcateia();
             $alcateia->setIdAlcateia($reg['id_alcateia']);
-            $alcateia->setNome($reg['nome_alcateia']);
+            $alcateia->setNomeAlcateia($reg['nome_alcateia']);
 
             array_push($alcateias, $alcateia);
 
@@ -58,7 +58,7 @@ class AlcateiaDao{
                " VALUES (:nome)" ;
 
         $stm = $conn->prepare($sql);
-        $stm->bindValue(':nome', $alcateia->getNome());
+        $stm->bindValue(':nome', $alcateia->getNomeAlcateia());
         $stm->execute();
     }
 
@@ -69,7 +69,7 @@ class AlcateiaDao{
                " WHERE id_alcateia = :id";
            
         $stm = $conn->prepare($sql);
-        $stm->bindValue("nome", $alcateia->getNome());
+        $stm->bindValue("nome", $alcateia->getNomeAlcateia());
         $stm->bindValue("id", $alcateia->getIdAlcateia());
 
         $stm->execute();

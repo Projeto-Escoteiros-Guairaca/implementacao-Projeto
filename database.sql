@@ -28,7 +28,7 @@ CREATE TABLE tb_matilhas (
   id_alcateia int,
   id_usuario_chefe int,
   id_usuario_primo int,
-  nome VARCHAR(100) NOT NULL,
+  nome_matilha VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_matilha),
   FOREIGN KEY (id_alcateia) REFERENCES tb_alcateias (id_alcateia)
 );
@@ -54,8 +54,8 @@ CREATE TABLE tb_usuarios (
 CREATE TABLE tb_encontros(
   id_encontro int AUTO_INCREMENT,
   id_matilha int NOT NULL,
-  data DATE NOT NULL,
-  descricao TEXT(255) NOT NULL,
+  data_encontro DATE NOT NULL,
+  descricao_encontro TEXT(255) NOT NULL,
   PRIMARY KEY (id_encontro),
   FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_matilha)
 );
@@ -74,15 +74,15 @@ CREATE TABLE tb_atividades(
  
   id_atividade int auto_increment,
   nome_atividade VARCHAR(45) NOT NULL,
-  descricao VARCHAR(255) NOT NULL,
+  descricao_atividade VARCHAR(255) NOT NULL,
   imagem_atividade VARCHAR(400),
-  status BOOLEAN DEFAULT 0,
+  status_atividade BOOLEAN DEFAULT 0,
   PRIMARY KEY (id_atividade)
 
 );
 CREATE TABLE tb_arquivos(
   id_arquivo int auto_increment,
-  nome VARCHAR(45) NOT NULL,
+  nome_arquivo VARCHAR(45) NOT NULL,
   caminho VARCHAR(400) NOT NULL,
   texto VARCHAR(255),
   PRIMARY KEY (id_arquivo)
@@ -91,8 +91,8 @@ CREATE TABLE tb_arquivos(
 CREATE TABLE tb_tarefas(
   id_tarefa int AUTO_INCREMENT,
   id_atividade int NOT NULL,
-  nome VARCHAR(45) NOT NULL,
-  descricao VARCHAR(255) NOT NULL,
+  nome_tarefa VARCHAR(45) NOT NULL,
+  descricao_tarefa VARCHAR(255) NOT NULL,
   PRIMARY KEY (id_tarefa),
   FOREIGN KEY (id_atividade) REFERENCES tb_atividades (id_atividade)
 
@@ -102,8 +102,8 @@ CREATE TABLE tb_tarefas_usuarios(
   id_usuario int NOT NULL,
   id_tarefa int NOT NULL,
   id_arquivo int NOT NULL,  
-  status int NOT NULL DEFAULT 0,
-  data DATE NOT NULL,
+  status_tarefa_usuario int NOT NULL DEFAULT 0,
+  data_tarefa_usuario DATE NOT NULL,
   PRIMARY KEY (id_tarefa_usuario),
   FOREIGN KEY (id_usuario) REFERENCES tb_usuarios (id_usuario), 
   FOREIGN KEY (id_tarefa) REFERENCES tb_tarefas (id_tarefa),
@@ -116,16 +116,16 @@ ALTER Table tb_matilhas ADD CONSTRAINT fk_usuario_primo FOREIGN KEY (id_usuario_
 
 
 /*Inserts atividades*/
-INSERT INTO tb_atividades (nome_atividade, descricao) VALUES ('Caçador', 'Caçar, obviamente');
+INSERT INTO tb_atividades (nome_atividade, descricao_atividade) VALUES ('Caçador', 'Caçar, obviamente');
 
 /*Inserts arquivos*/
-INSERT INTO tb_arquivos (nome, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "");
-INSERT INTO tb_arquivos (nome, caminho, texto) VALUES ('Imagem', 'asd', "bruh");
-INSERT INTO tb_arquivos (nome, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "coelho comido");
+INSERT INTO tb_arquivos (nome_arquivo, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "");
+INSERT INTO tb_arquivos (nome_arquivo, caminho, texto) VALUES ('Imagem', 'asd', "bruh");
+INSERT INTO tb_arquivos (nome_arquivo, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "coelho comido");
 /*Inserts de tarefas*/
-INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Fogueira', 'Faça uma fogueira sem usar qualquer tipo de acendedor artificial.');
-INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Cocinhar', 'Cozinhe uma carne caçada utilizando a fogueira da tarefa anterior.');
-INSERT INTO tb_tarefas (id_atividade, nome, descricao) VALUES (1, 'Cace um coelho', 'Cace um coeho selvagem utilizando as ferramentas aprendidas no encontro anterior.');
+INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao_tarefa) VALUES (1, 'Fogueira', 'Faça uma fogueira sem usar qualquer tipo de acendedor artificial.');
+INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao_tarefa) VALUES (1, 'Cocinhar', 'Cozinhe uma carne caçada utilizando a fogueira da tarefa anterior.');
+INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao_tarefa) VALUES (1, 'Cace um coelho', 'Cace um coeho selvagem utilizando as ferramentas aprendidas no encontro anterior.');
 
 
 /*Inserts enderecos*/
@@ -167,29 +167,29 @@ INSERT INTO tb_alcateias (nome_alcateia) VALUES ('Guairacá');
 INSERT INTO tb_alcateias (nome_alcateia) VALUES ('Tarobá');
 
 /*Inserts matilhas*/
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Preta', '1', '4');
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Cinza', '1', '5');
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Vermelha', '1', '6');
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Branco', '1', '6');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Preta', '1', '4');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Cinza', '1', '5');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Vermelha', '1', '6');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Branco', '1', '6');
 
 
 
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Preta', '2', '4');
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Cinza', '2', '5');
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Vermelha', '2', '6');
-INSERT INTO tb_matilhas (nome, id_alcateia, id_usuario_chefe) VALUES ('Branco', '2', '6');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Preta', '2', '4');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Cinza', '2', '5');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Vermelha', '2', '6');
+INSERT INTO tb_matilhas (nome_matilha, id_alcateia, id_usuario_chefe) VALUES ('Branco', '2', '6');
 ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_matilha);
 
 /*Inserts tarefa_usuarios*/
-INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data) VALUES 
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status_tarefa_usuario, data_tarefa_usuario) VALUES 
 ('1', '1', '1', '2', '2020-01-01');
-INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data) VALUES 
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status_tarefa_usuario, data_tarefa_usuario) VALUES 
 ('2', '2', '2', '2', '2020-01-01');
-INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status, data) VALUES 
+INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status_tarefa_usuario, data_tarefa_usuario) VALUES 
 ('2', '3', '3', '2', '2020-01-01');
 /*Inserts encontros*/
-INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (1, '2020-01-01', 'Encontro 1');
-INSERT INTO tb_encontros (id_matilha, data, descricao) VALUES (2, '2020-01-01', 'Encontro 2');
+INSERT INTO tb_encontros (id_matilha, data_encontro, descricao_encontro) VALUES (1, '2020-01-01', 'Encontro 1');
+INSERT INTO tb_encontros (id_matilha, data_encontro, descricao_encontro) VALUES (2, '2020-01-01', 'Encontro 2');
 
 INSERT INTO tb_frequencias (id_usuario, id_encontro, frequencia) VALUES (1, 1, TRUE);
 INSERT INTO tb_frequencias (id_usuario, id_encontro) VALUES (2, 1);

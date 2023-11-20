@@ -18,7 +18,7 @@ class EncontroDao {
 
         foreach($encontros as $enc):
             $matilha = new Matilha();
-            $matilha = $this->listMatilhas($enc->getId_matilha());
+            $matilha = $this->listMatilhas($enc->getIdMatilha());
             $enc->setMatilha($matilha[0]);
         endforeach;
         
@@ -96,8 +96,8 @@ class EncontroDao {
         $matilhas = array();
         foreach ($result as $reg) {
             $matilha = new Matilha();
-            $matilha->setId_matilha($reg['id_matilha']);
-            $matilha->setNome($reg['nome']);
+            $matilha->setIdMatilha($reg['id_matilha']);
+            $matilha->setNomeMatilha($reg['nome_matilha']);
             array_push($matilhas, $matilha);
         }
 
@@ -148,10 +148,10 @@ class EncontroDao {
         $encontros = array();
         foreach ($result as $reg) {
             $encontro = new Encontro();
-            $encontro->setId_encontro($reg['id_encontro']);
-            $encontro->setData($reg['data']);
-            $encontro->setDescricao($reg['descricao']);
-            $encontro->setId_matilha($reg['id_matilha']);
+            $encontro->setIdEncontro($reg['id_encontro']);
+            $encontro->setDataEncontro($reg['data']);
+            $encontro->setDescricaoEncontro($reg['descricao_encontro']);
+            $encontro->setIdMatilha($reg['id_matilha']);
             
 
 
@@ -165,27 +165,27 @@ class EncontroDao {
     public function insert(encontro $encontro){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_encontros (id_matilha, data, descricao)" .
+        $sql = "INSERT INTO tb_encontros (id_matilha, data, descricao_encontro)" .
                " VALUES (:id_matilha, :data, :descricao)";
         
         $stm = $conn->prepare($sql);
-        $stm->bindValue(':id_matilha', $encontro->getMatilha()->getId_matilha());
-        $stm->bindValue(':data', $encontro->getData());
-        $stm->bindValue(':descricao', $encontro->getDescricao());
+        $stm->bindValue(':id_matilha', $encontro->getMatilha()->getIdMatilha());
+        $stm->bindValue(':data', $encontro->getDataEncontro());
+        $stm->bindValue(':descricao', $encontro->getDescricaoEncontro());
         $stm->execute();
     }
 
     public function update(encontro $encontro) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_encontros SET id_matilha = :id_matilha , data = :data , descricao = :descricao" . 
+        $sql = "UPDATE tb_encontros SET id_matilha = :id_matilha , data = :data , descricao_encontro = :descricao" . 
                " WHERE id_encontro = :id";
            
         $stm = $conn->prepare($sql);
         $stm->bindValue("id_matilha", $encontro->getMatilha()->getId_matilha());
-        $stm->bindValue("data", $encontro->getData());
-        $stm->bindValue("descricao", $encontro->getDescricao());
-        $stm->bindValue("id", $encontro->getId_encontro());
+        $stm->bindValue("data", $encontro->getDataEncontro());
+        $stm->bindValue("descricao", $encontro->getDescricaoEncontro());
+        $stm->bindValue("id", $encontro->getIdEncontro());
         $stm->execute();
     }
     

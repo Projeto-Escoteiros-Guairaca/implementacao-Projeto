@@ -6,16 +6,11 @@ class Tarefa {
     private $nomeTarefa;
     private $descricaoTarefa;
 
-    private $idEntrega;
-    private $statusEntrega;
-    private $dataEntrega;
-    private $descricaoEntrega;
-    private $Usuario;
-    private $Arquivo;
+   
     //campos provisórios
 
     private $idArquivo;
-    private $id_atividade;
+    private $idAtividade;
     private $idUsuario;
 
 
@@ -100,21 +95,21 @@ class Tarefa {
     }
 
     /**
-     * Get the value of id_atividade
+     * Get the value of idAtividade
      */ 
-    public function getId_atividade()
+    public function getIdAtividade()
     {
-        return $this->id_atividade;
+        return $this->idAtividade;
     }
 
     /**
-     * Set the value of id_atividade
+     * Set the value of idAtividade
      *
      * @return  self
      */ 
-    public function setId_atividade($id_atividade)
+    public function setIdAtividade($idAtividade)
     {
-        $this->id_atividade = $id_atividade;
+        $this->idAtividade = $idAtividade;
 
         return $this;
     }

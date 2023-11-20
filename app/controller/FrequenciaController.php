@@ -58,7 +58,7 @@ class FrequenciaController extends Controller {
             foreach ($usuarios as $us) {
                 $frequencia = new Frequencia();
                 $frequencia->setUsuario($usuarios[$i]);
-                $frequencia->setId_encontro($_GET['idEncontro']);
+                $frequencia->setIdEncontro($_GET['idEncontro']);
                 array_push($frequencias, $frequencia);
                 $i++;
             }

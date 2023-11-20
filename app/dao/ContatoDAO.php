@@ -41,7 +41,7 @@ class ContatoDAO{
         $contatos = array();
         foreach ($result as $reg) {
             $contato = new Contato();
-            $contato->setId_contato($reg['id_contato']);
+            $contato->setIdContato($reg['id_contato']);
             $contato->setTelefone($reg['telefone']);
             $contato->setCelular($reg['celular']);
             $contato->setEmail($reg['email']);
@@ -64,7 +64,7 @@ class ContatoDAO{
         $stm->bindValue("email", $contato->getEmail());
         $stm->execute();
 
-        $contato->setId_contato($conn->lastInsertId());
+        $contato->setIdContato($conn->lastInsertId());
 
     }
 
@@ -80,7 +80,7 @@ class ContatoDAO{
         $stm->bindValue("telefone", $contato->getTelefone());
         $stm->bindValue("celular", $contato->getCelular());
         $stm->bindValue("email", $contato->getEmail());
-        $stm->bindValue("id_contato", $contato->getId_contato());
+        $stm->bindValue("id_contato", $contato->getIdContato());
         $stm->execute();
 
         

@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/openTarefa.css" />
 <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">voltar</a>
-<h2 class='text-center'>Matilha <?= $dados["matilha"]->getNome(); ?> </h3>
+<h2 class='text-center'>Matilha <?= $dados["matilha"]->getNomeMatilha(); ?> </h3>
     <section class="container">
         <div class="tarefa">
             <div id="tarefa-container">

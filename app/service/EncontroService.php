@@ -9,9 +9,9 @@ class EncontroService {
    
     public function validarDados(Encontro $encontro) {
         $erros = array();
-        if(!$encontro->getDescricao())
+        if(!$encontro->getDescricaoEncontro())
             array_push($erros, "O campo [Descricao] é obrigatório.");
-        if(! $encontro->getData())
+        if(! $encontro->getDataEncontro())
             array_push($erros, "O campo [Data] é obrigatório.");
         if(! $encontro->getMatilha())
             array_push($erros, "O campo [Matilha] é obrigatório.");

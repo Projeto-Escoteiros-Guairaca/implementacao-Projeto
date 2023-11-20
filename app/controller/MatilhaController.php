@@ -149,7 +149,7 @@ class MatilhaController extends Controller{
         $primoMatilha = isset($_POST['primoMatilha']) ? trim($_POST['primoMatilha']) : NULL;
 
         $matilha = new Matilha();
-        $matilha->setNome($nomeMatilha);
+        $matilha->setNomeMatilha($nomeMatilha);
         $matilha->setIdChefe($chefeMatilha);
         $matilha->setIdPrimo($primoMatilha);
 
@@ -165,7 +165,7 @@ class MatilhaController extends Controller{
                 }
                 else {//Alterando
 
-                    $matilha->setId_matilha($dados["id_matilha"]);
+                    $matilha->setIdMatilha($dados["id_matilha"]);
                     $this->matilhaService->update($matilha);
                 }
 

@@ -38,7 +38,7 @@ class EnderecoDAO{
         $enderecos = array();
         foreach ($result as $reg) {
             $endereco = new Endereco();
-            $endereco->setId_endereco($reg['id_endereco']);
+            $endereco->setIdEndereco($reg['id_endereco']);
             $endereco->setCep($reg['cep']);
             $endereco->setLogradouro($reg['logradouro']);
             $endereco->setNumeroEndereco($reg['numero_endereco']);
@@ -66,7 +66,7 @@ class EnderecoDAO{
         $stm->bindValue("pais", $endereco->getPais());
         $stm->execute();
 
-        $endereco->setId_endereco($conn->lastInsertId());
+        $endereco->setIdEndereco($conn->lastInsertId());
 
     }
     //Método para atualizar um Endereço
@@ -85,7 +85,7 @@ class EnderecoDAO{
         $stm->bindValue("bairro", $endereco->getBairro());
         $stm->bindValue("cidade", $endereco->getCidade());
         $stm->bindValue("pais", $endereco->getPais());
-        $stm->bindValue("id_endereco", $endereco->getId_endereco());
+        $stm->bindValue("id_endereco", $endereco->getIdEndereco());
         $stm->execute();
         
     }

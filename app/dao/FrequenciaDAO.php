@@ -87,9 +87,9 @@ class FrequenciaDAO {
         $frequencias = array();
         foreach ($result as $reg) {
             $frequencia = new frequencia();
-            $frequencia->setId_usuario($reg['id_usuario']);
-            $frequencia->setId_frequencia($reg['id_frequencia']);
-            $frequencia->setId_encontro($reg['id_encontro']);
+            $frequencia->setIdUsuario($reg['id_usuario']);
+            $frequencia->setIdFrequencia($reg['id_frequencia']);
+            $frequencia->setIdEncontro($reg['id_encontro']);
             $frequencia->setFrequencia($reg['frequencia']);
 
 

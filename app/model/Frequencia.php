@@ -2,32 +2,32 @@
 
 class Frequencia {
     
-    private $id_frequencia; 
+    private $idFrequencia; 
     private $frequencia;
     
     private $usuario; 
-    private $id_usuario;
+    private $idUsuario;
 
     private $encontro;
-    private $id_encontro;
+    private $idEncontro;
 
 
     /**
-     * Get the value of id_frequencia
+     * Get the value of idFrequencia
      */ 
-    public function getId_frequencia()
+    public function getIdFrequencia()
     {
-        return $this->id_frequencia;
+        return $this->idFrequencia;
     }
 
     /**
-     * Set the value of id_frequencia
+     * Set the value of idFrequencia
      *
      * @return  self
      */ 
-    public function setId_frequencia($id_frequencia)
+    public function setIdFrequencia($idFrequencia)
     {
-        $this->id_frequencia = $id_frequencia;
+        $this->idFrequencia = $idFrequencia;
 
         return $this;
     }
@@ -53,21 +53,21 @@ class Frequencia {
     }
 
     /**
-     * Get the value of id_usuario
+     * Get the value of idUsuario
      */ 
-    public function getId_usuario()
+    public function getIdUsuario()
     {
-        return $this->id_usuario;
+        return $this->idUsuario;
     }
 
     /**
-     * Set the value of id_usuario
+     * Set the value of idUsuario
      *
      * @return  self
      */ 
-    public function setId_usuario($id_usuario)
+    public function setIdUsuario($idUsuario)
     {
-        $this->id_usuario = $id_usuario;
+        $this->idUsuario = $idUsuario;
 
         return $this;
     }
@@ -93,21 +93,21 @@ class Frequencia {
     }
 
     /**
-     * Get the value of id_encontro
+     * Get the value of idEncontro
      */ 
-    public function getId_encontro()
+    public function getIdEncontro()
     {
-        return $this->id_encontro;
+        return $this->idEncontro;
     }
 
     /**
-     * Set the value of id_encontro
+     * Set the value of idEncontro
      *
      * @return  self
      */ 
-    public function setId_encontro($id_encontro)
+    public function setIdEncontro($idEncontro)
     {
-        $this->id_encontro = $id_encontro;
+        $this->idEncontro = $idEncontro;
 
         return $this;
     }

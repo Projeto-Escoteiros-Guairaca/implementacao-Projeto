@@ -227,7 +227,7 @@ class UsuarioDAO {
     public function mapContatos($result) {
         foreach ($result as $reg) {
             $contato = new Contato();
-            $contato->setId_contato($reg['id_contato']);
+            $contato->setIdContato($reg['id_contato']);
             $contato->setEmail($reg['email']);
             $contato->setCelular($reg['celular']);
         }

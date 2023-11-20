@@ -131,10 +131,10 @@ class EncontroController extends Controller {
         $id_matilha = isset($_POST['matilhaEncontro']) ? trim($_POST['matilhaEncontro']) : NULL;
 
         $encontro = new encontro();
-        $encontro->setData($dataEncontro);
-        $encontro->setDescricao($descricaoEncontro);
+        $encontro->setDataEncontro($dataEncontro);
+        $encontro->setDescricaoEncontro($descricaoEncontro);
         $matilha = new Matilha();
-        $matilha -> setId_matilha($id_matilha);
+        $matilha -> setIdMatilha($id_matilha);
         $encontro->setMatilha($matilha);
 
         $erros = $this->encontroService->validarDados($encontro);
@@ -148,7 +148,7 @@ class EncontroController extends Controller {
                 }
                 else {//Alterando
 
-                    $encontro->setId_encontro($dados["id_encontro"]);
+                    $encontro->setIdEncontro($dados["id_encontro"]);
                     $this->encontroService->update($encontro);
                 }
 

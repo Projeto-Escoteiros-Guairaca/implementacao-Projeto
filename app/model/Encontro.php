@@ -2,33 +2,33 @@
     
 class Encontro{
 
-    private $id_encontro;
+    private $idEncontro;
     private $matilha;
-    private $data;
-    private $descricao;
+    private $dataEncontro;
+    private $descricaoEncontro;
 
     //campos provisórios
-    private $id_matilha;
+    private $idMatilha;
     private $matilhaNome;
     
 
 
     /**
-     * Get the value of id_encontro
+     * Get the value of idEncontro
      */ 
-    public function getId_encontro()
+    public function getIdEncontro()
     {
-        return $this->id_encontro;
+        return $this->idEncontro;
     }
 
     /**
-     * Set the value of id_encontro
+     * Set the value of idEncontro
      *
      * @return  self
      */ 
-    public function setId_encontro($id_encontro)
+    public function setIdEncontro($idEncontro)
     {
-        $this->id_encontro = $id_encontro;
+        $this->idEncontro = $idEncontro;
 
         return $this;
     }
@@ -54,69 +54,69 @@ class Encontro{
     }
 
     /**
-     * Get the value of data
+     * Get the value of dataEncontro
      */ 
-    public function getData()
+    public function getDataEncontro()
     {
-        return $this->data;
+        return $this->dataEncontro;
     }
 
-    public function getDataFormated()
+    public function getDataEncontroFormated()
     {
-        if($this->data)
-            return date_format(date_create($this->data),"d/m/Y");
+        if($this->dataEncontro)
+            return date_format(date_create($this->dataEncontro),"d/m/Y");
         
         return "";
     }
 
     /**
-     * Set the value of data
+     * Set the value of dataEncontro
      *
      * @return  self
      */ 
-    public function setData($data)
+    public function setDataEncontro($dataEncontro)
     {
-        $this->data = $data;
+        $this->dataEncontro = $dataEncontro;
 
         return $this;
     }
 
     /**
-     * Get the value of descricao
+     * Get the value of descricaoEncontro
      */ 
-    public function getDescricao()
+    public function getDescricaoEncontro()
     {
-        return $this->descricao;
+        return $this->descricaoEncontro;
     }
 
     /**
-     * Set the value of descricao
+     * Set the value of descricaoEncontro
      *
      * @return  self
      */ 
-    public function setDescricao($descricao)
+    public function setDescricaoEncontro($descricaoEncontro)
     {
-        $this->descricao = $descricao;
+        $this->descricaoEncontro = $descricaoEncontro;
 
         return $this;
     }
 
     /**
-     * Get the value of id_matilha
+     * Get the value of idMatilha
      */ 
-    public function getId_matilha()
+    public function getIdMatilha()
     {
-        return $this->id_matilha;
+        return $this->idMatilha;
     }
 
     /**
-     * Set the value of id_matilha
+     * Set the value of idMatilha
      *
      * @return  self
      */ 
-    public function setId_matilha($id_matilha)
+    public function setIdMatilha($idMatilha)
     {
-        $this->id_matilha = $id_matilha;
+        $this->idMatilha = $idMatilha;
 
         return $this;
     }

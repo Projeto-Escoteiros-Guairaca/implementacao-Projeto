@@ -215,9 +215,9 @@ class UsuarioController extends Controller
                 } else { //Alterando
                     $usuario->setId($dados["id"]);
                     $this->usuarioService->updateUsu($usuario);
-                    $endereco->setId_endereco($dados["id_endereco"]);
+                    $endereco->setIdEndereco($dados["id_endereco"]);
                     $this->usuarioService->updateEnd($endereco);
-                    $contato->setId_contato($dados["id_contato"]);
+                    $contato->setIdContato($dados["id_contato"]);
                     $this->usuarioService->updateCont($contato);
                 }
                 // - Enviar mensagem de sucesso

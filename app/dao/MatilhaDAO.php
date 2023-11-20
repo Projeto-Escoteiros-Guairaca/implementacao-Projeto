@@ -68,8 +68,8 @@ class MatilhaDao{
         $matilhas = array();
         foreach ($result as $reg) {
             $matilha = new Matilha();
-            $matilha->setId_matilha($reg['id_matilha']);
-            $matilha->setNome($reg['nome']);
+            $matilha->setIdMatilha($reg['id_matilha']);
+            $matilha->setNomeMatilha($reg['nome_matilha']);
             $matilha->setIdChefe($reg['id_usuario_chefe']);
             $matilha->setIdPrimo($reg['id_usuario_primo']);
 
@@ -83,8 +83,8 @@ class MatilhaDao{
         $matilhas = array();
         foreach ($result as $reg) {
             $matilha = new Matilha();
-            $matilha->setId_matilha($reg['0']);
-            $matilha->setNome($reg['3']);
+            $matilha->setIdMatilha($reg['0']);
+            $matilha->setNomeMatilha($reg['nome_matilha']);
 
             $usuario = new Usuario();
             $usuario->setNome($reg['nome']);
@@ -102,11 +102,11 @@ class MatilhaDao{
     public function insert(Matilha $matilha){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_matilhas (nome, id_usuario_chefe)" .
+        $sql = "INSERT INTO tb_matilhas (nome_matilha, id_usuario_chefe)" .
                " VALUES (:nome, :id_chefe)" ;
 
         $stm = $conn->prepare($sql);
-        $stm->bindValue(':nome', $matilha->getNome());
+        $stm->bindValue(':nome', $matilha->getNomeMatilha());
         $stm->bindValue(':id_chefe', $matilha->getIdChefe());
         $stm->execute();
     }
@@ -114,12 +114,12 @@ class MatilhaDao{
     public function update(Matilha $matilha) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_matilhas SET nome = :nome, id_usuario_chefe = :id_chefe, id_usuario_primo = :id_primo" . 
+        $sql = "UPDATE tb_matilhas SET nome_matilha = :nome, id_usuario_chefe = :id_chefe, id_usuario_primo = :id_primo" . 
                " WHERE id_matilha = :id";
            
         $stm = $conn->prepare($sql);
-        $stm->bindValue("nome", $matilha->getNome());
-        $stm->bindValue("id", $matilha->getId_matilha());
+        $stm->bindValue("nome", $matilha->getNomeMatilha());
+        $stm->bindValue("id", $matilha->getIdMatilha());
         $stm->bindValue(':id_chefe', $matilha->getIdChefe());
         $stm->bindValue(':id_primo', $matilha->getIdPrimo());
         $stm->execute();

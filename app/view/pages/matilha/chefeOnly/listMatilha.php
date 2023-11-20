@@ -26,12 +26,12 @@
                 <?php foreach($dados["lista"] as $alc): ?>
                     <div class="card my-2 mx-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $alc->getNome();?></h5>
+                            <h5 class="card-title"><?php echo $alc->getNomeMatilha();?></h5>
                             <hr>
                             <a class="btn btn-warning my-1" 
-                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getId_matilha(); ?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getIdMatilha(); ?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
                                 Alterar</a> 
-                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getId_matilha()?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
+                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getIdMatilha()?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
                                     Mostrar Dados da Matilha: </a>
                         </div>
                     </div>

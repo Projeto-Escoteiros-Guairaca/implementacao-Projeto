@@ -26,7 +26,7 @@
                     <input class="form-control" type="date" id="dataEncontro" name="dataEncontro" 
                         placeholder="Informe a data"
                         value="<?php
-                            echo (isset($dados['encontro']) ? $dados['encontro']->getData(): "");
+                            echo (isset($dados['encontro']) ? $dados['encontro']->getDataEncontro(): "");
                         ?>" />
                 </div>
 
@@ -34,7 +34,7 @@
                     <label for="descricaoEncontro"> Descreva o encontro </label>
                     <textarea class="form-control" id="descricaoEncontro" name="descricaoEncontro" rows="3">
                         <?php
-                            echo (isset($dados['encontro']) ? $dados['encontro']->getDescricao(): "");
+                            echo (isset($dados['encontro']) ? $dados['encontro']->getDescricaoEncontro(): "");
                         ?>
                     </textarea>
                 </div>

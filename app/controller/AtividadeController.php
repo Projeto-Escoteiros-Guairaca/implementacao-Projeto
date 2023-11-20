@@ -92,7 +92,7 @@ class AtividadeController extends Controller {
         //TODO - Transformar o array de erros em string
         $dados["atividade"] = $atividade;
         $dados["nomeAtividade"] = $atividade->getNomeAtividade();
-        $dados["descricao"] = $atividade->getDescricao();
+        $dados["descricao"] = $atividade->getDescricaoAtividade();
 
         $msgsErro = implode("<br>", $erros);
         $this->create($dados, $msgsErro);
@@ -104,7 +104,7 @@ class AtividadeController extends Controller {
 
         $atividade = new Atividade();
         $atividade->setNomeAtividade($nomeAtividade);
-        $atividade->setDescricao($descricao);
+        $atividade->setDescricaoAtividade($descricao);
 
         $caminho_imagem = $this->saveImage($imagem);
        

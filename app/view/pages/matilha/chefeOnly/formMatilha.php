@@ -28,7 +28,7 @@
                     <input class="form-control" type="text" id="txtNomeMatilha" name="nomeMatilha" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php
-                            echo (isset($dados['matilha']) ? $dados['matilha']->getNome(): "");
+                            echo (isset($dados['matilha']) ? $dados['matilha']->getNomeMatilha(): "");
                         ?>" />
                 </div>
                 <div class="form-group">

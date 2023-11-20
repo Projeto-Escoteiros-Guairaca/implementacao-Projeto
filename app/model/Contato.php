@@ -2,7 +2,7 @@
 
 class Contato implements JsonSerializable {
 
-    private $id_contato;
+    private $idContato;
     private $telefone;
     private $celular;
     private $email;
@@ -12,7 +12,7 @@ class Contato implements JsonSerializable {
     public function jsonSerialize() {
         return
         [
-            'idContato' => $this->id_contato,
+            'idContato' => $this->idContato,
             'telefone' => $this->telefone,
             'celular' => $this->celular,
             'email' => $this->email
@@ -81,21 +81,21 @@ class Contato implements JsonSerializable {
     }
 
     /**
-     * Get the value of id_contato
+     * Get the value of idContato
      */ 
-    public function getId_contato()
+    public function getIdContato()
     {
-        return $this->id_contato;
+        return $this->idContato;
     }
 
     /**
-     * Set the value of id_contato
+     * Set the value of idContato
      *
      * @return  self
      */ 
-    public function setId_contato($id_contato)
+    public function setIdContato($idContato)
     {
-        $this->id_contato = $id_contato;
+        $this->idContato = $idContato;
 
         return $this;
     }

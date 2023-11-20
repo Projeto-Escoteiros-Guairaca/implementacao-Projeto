@@ -42,7 +42,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                         <h5 class="titulos_atv"><?php echo $ativ->getNomeAtividade(); ?></h5>
                         <hr>
                         <p class="card-text">
-                            <?php echo $ativ->getDescricao(); ?></p>
+                            <?php echo $ativ->getDescricaoAtividade(); ?></p>
                         <a class="btn_cards" style="text-decoration: none" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade=<?php echo $ativ->getIdAtividade() ?>">Mostrar Tarefas
                         </a>
 

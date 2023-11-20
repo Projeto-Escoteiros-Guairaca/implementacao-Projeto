@@ -26,9 +26,8 @@ class TarefaDAO {
         foreach ($result as $reg) {
             $tarefa = new Tarefa();
             $tarefa->setIdtarefa($reg['id_tarefa']);
-            $tarefa->setNometarefa($reg['nome']);
-            $tarefa->setDescricaoTarefa($reg['descricao']);
-            $tarefa->setId_atividade($reg['id_atividade']);
+            $tarefa->setNometarefa($reg['nome_tarefa']);
+            $tarefa->setIdAtividade($reg['id_atividade']);
 
             array_push($tarefas, $tarefa);
 
@@ -51,7 +50,7 @@ class TarefaDAO {
     public function insert(Tarefa $tarefa){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_tarefas (id_atividade, nome, descricao)" .
+        $sql = "INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao)" .
                     " VALUES (:id_atividade, :nome, :descricao)";
         $stm = $conn->prepare($sql);
 
@@ -142,16 +141,16 @@ class TarefaDAO {
 
     public function mapTarefaUsuario($result){
         $tarefas = array();
-        
+        var_dump($result);
         foreach ($result as $reg) {
             $usuario = new Usuario();
             $tarefa = new Tarefa();
             $arquivo = new Arquivo();
 
             $tarefa->setIdtarefa($reg['id_tarefa']);
-            $tarefa->setNometarefa($reg['2']);
+            $tarefa->setNometarefa($reg['nome_tarefa']);
             $tarefa->setDescricaoTarefa($reg['3']);
-            $tarefa->setId_atividade($reg['id_atividade']);
+            $tarefa->setIdAtividade($reg['id_atividade']);
 
             $tarefa->setIdEntrega($reg['id_tarefa_usuario']);
             $tarefa->setStatusEntrega($reg['status']);
@@ -176,7 +175,7 @@ class TarefaDAO {
     public function addArquivo(Arquivo $arquivo) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_arquivos (texto, caminho, nome)" .
+        $sql = "INSERT INTO tb_arquivos (texto, caminho, nome_arquivo)" .
                     " VALUES (:texto, :caminho, :nome)";
         $stm = $conn->prepare($sql);
 
