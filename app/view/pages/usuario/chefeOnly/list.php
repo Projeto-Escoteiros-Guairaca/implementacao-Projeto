@@ -37,7 +37,7 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $usu->getNome();?></h5>
                                 <hr>
-                                <p class="card-text"><?php echo $usu->getcontato()->getEmail();?></p>
+                                <p class="card-text"><?php echo $usu->getContato()->getEmail();?></p>
                                 <p class="card-text">
                                     <?php
                                         $usuario = new Usuario();
@@ -65,7 +65,7 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                                     id="<?= $usu->getId();?>" onclick="findTheMatilhas(<?php if($usu->getIdMatilha()) {echo $usu->getIdMatilha();} else {echo '0';}?>
                                     , 'list', <?= $usu->getId();?>);"> 
                                     <?php if($usu->getMatilha()) {
-                                        echo $usu->getMatilha()->getNome();
+                                        echo $usu->getMatilha()->getNomeMatilha();
                                     }else {
                                         echo "sem matilha";
                                     }?>

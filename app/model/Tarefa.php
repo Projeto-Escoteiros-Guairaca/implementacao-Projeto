@@ -6,13 +6,11 @@ class Tarefa {
     private $nomeTarefa;
     private $descricaoTarefa;
 
-    private $statusEntrega;
-    private $dataEntrega;
-    private $descricaoEntrega;
-    private $Usuario;
+   
     //campos provisórios
 
-    private $id_atividade;
+    private $idArquivo;
+    private $idAtividade;
     private $idUsuario;
 
 
@@ -52,6 +50,46 @@ class Tarefa {
     public function setAtividade($atividade)
     {
         $this->atividade = $atividade;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idUsuario
+     */ 
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+
+    /**
+     * Set the value of idUsuario
+     *
+     * @return  self
+     */ 
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idArquivo
+     */ 
+    public function getIdArquivo()
+    {
+        return $this->idArquivo;
+    }
+
+    /**
+     * Set the value of idArquivo
+     *
+     * @return  self
+     */ 
+    public function setIdArquivo($idArquivo)
+    {
+        $this->idArquivo = $idArquivo;
 
         return $this;
     }
@@ -97,132 +135,21 @@ class Tarefa {
     }
 
     /**
-     * Get the value of id_atividade
+     * Get the value of idAtividade
      */ 
-    public function getId_atividade()
+    public function getIdAtividade()
     {
-        return $this->id_atividade;
+        return $this->idAtividade;
     }
 
     /**
-     * Set the value of id_atividade
+     * Set the value of idAtividade
      *
      * @return  self
      */ 
-    public function setId_atividade($id_atividade)
+    public function setIdAtividade($idAtividade)
     {
-        $this->id_atividade = $id_atividade;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of dataEntrega
-     */ 
-    public function getDataEntrega()
-    {
-        return $this->dataEntrega;
-    }
-
-    /**
-     * Set the value of dataEntrega
-     *
-     * @return  self
-     */ 
-    public function setDataEntrega($dataEntrega)
-    {
-        $this->dataEntrega = $dataEntrega;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of descricaoEntrega
-     */ 
-    public function getDescricaoEntrega()
-    {
-        return $this->descricaoEntrega;
-    }
-
-    /**
-     * Set the value of descricaoEntrega
-     *
-     * @return  self
-     */ 
-    public function setDescricaoEntrega($descricaoEntrega)
-    {
-        $this->descricaoEntrega = $descricaoEntrega;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Usuario
-     */ 
-    public function getUsuario()
-    {
-        return $this->Usuario;
-    }
-
-    /**
-     * Set the value of Usuario
-     *
-     * @return  self
-     */ 
-    public function setUsuario($Usuario)
-    {
-        $this->Usuario = $Usuario;
-
-        return $this;
-    }
-
-    public function getStatusEntregaPalavra()
-    {
-        $status = "";
-        if($this->statusEntrega == 1)
-            $status = "Pendente";
-        else if($this->statusEntrega == 2)
-            $status= "Entregado";
-
-        return $status;
-    }
-
-    /**
-     * Get the value of statusEntrega
-     */ 
-    public function getStatusEntrega()
-    {
-        return $this->statusEntrega;
-    }
-
-    /**
-     * Set the value of statusEntrega
-     *
-     * @return  self
-     */ 
-    public function setStatusEntrega($statusEntrega)
-    {
-        $this->statusEntrega = $statusEntrega;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idUsuario
-     */ 
-    public function getIdUsuario()
-    {
-        return $this->idUsuario;
-    }
-
-    /**
-     * Set the value of idUsuario
-     *
-     * @return  self
-     */ 
-    public function setIdUsuario($idUsuario)
-    {
-        $this->idUsuario = $idUsuario;
+        $this->idAtividade = $idAtividade;
 
         return $this;
     }

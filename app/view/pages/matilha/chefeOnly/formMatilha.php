@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 <div class="container">
     <div class="col-12">
-            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save">
+            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save&isForm=true">
                 
                 <h2 class="text-center">
                     <?php 
@@ -28,7 +28,7 @@
                     <input class="form-control" type="text" id="txtNomeMatilha" name="nomeMatilha" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php
-                            echo (isset($dados['matilha']) ? $dados['matilha']->getNome(): "");
+                            echo (isset($dados['matilha']) ? $dados['matilha']->getNomeMatilha(): "");
                         ?>" />
                 </div>
                 <div class="form-group">

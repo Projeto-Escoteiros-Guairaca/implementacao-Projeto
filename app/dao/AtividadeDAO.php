@@ -47,7 +47,7 @@ class AtividadeDAO {
             $atividade = new Atividade();
             $atividade->setIdAtividade($reg['id_atividade']);
             $atividade->setNomeAtividade($reg['nome_atividade']);
-            $atividade->setDescricao($reg['descricao']);
+            $atividade->setDescricaoAtividade($reg['descricao_atividade']);
             $atividade->setImagem($reg['imagem_atividade']);
 
             array_push($Atividades, $atividade);
@@ -82,12 +82,12 @@ class AtividadeDAO {
     public function insert(Atividade $atividade) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_atividades (nome_atividade, descricao, imagem_atividade)" .
+        $sql = "INSERT INTO tb_atividades (nome_atividade, descricao_atividade, imagem_atividade)" .
                " VALUES (:nome_atividade, :descricao, :imagem)";
         $stm = $conn->prepare($sql);
         
         $stm->bindValue("nome_atividade", $atividade->getNomeAtividade());
-        $stm->bindValue("descricao", $atividade->getDescricao());
+        $stm->bindValue("descricao", $atividade->getDescricaoAtividade());
         $stm->bindValue("imagem", $atividade->getImagem());
 
         $stm->execute();
@@ -98,13 +98,13 @@ class AtividadeDAO {
     public function update(Atividade $atividade) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_atividades SET nome_atividade = :nome_atividade, descricao = :descricao, imagem_atividade = :imagem" .
+        $sql = "UPDATE tb_atividades SET nome_atividade = :nome_atividade, descricao_atividade = :descricao, imagem_atividade = :imagem" .
                " WHERE id_atividade = :id";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("id", $atividade->getIdAtividade());
         $stm->bindValue("nome_atividade", $atividade->getNomeAtividade());
-        $stm->bindValue("descricao", $atividade->getDescricao());
+        $stm->bindValue("descricao", $atividade->getDescricaoAtividade());
         $stm->bindValue("imagem", $atividade->getImagem());
 
         $stm->execute();

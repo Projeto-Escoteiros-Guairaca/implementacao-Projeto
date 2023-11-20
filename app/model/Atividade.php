@@ -4,8 +4,10 @@ class Atividade {
 
     private $idAtividade;
     private $nomeAtividade;
-    private $descricao;
+    private $descricaoAtividade;
     private $imagem;
+    private $statusAtividade;
+
     
     /**
      * Get the value of idAtividade
@@ -48,21 +50,21 @@ class Atividade {
     }
 
     /**
-     * Get the value of descricao
+     * Get the value of descricaoAtividade
      */ 
-    public function getDescricao()
+    public function getDescricaoAtividade()
     {
-        return $this->descricao;
+        return $this->descricaoAtividade;
     }
 
     /**
-     * Set the value of descricao
+     * Set the value of descricaoAtividade
      *
      * @return  self
      */ 
-    public function setDescricao($descricao)
+    public function setDescricaoAtividade($descricaoAtividade)
     {
-        $this->descricao = $descricao;
+        $this->descricaoAtividade = $descricaoAtividade;
 
         return $this;
     }
@@ -83,6 +85,26 @@ class Atividade {
     public function setImagem($imagem)
     {
         $this->imagem = $imagem;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of statusAtividade
+     */ 
+    public function getStatusAtividade()
+    {
+        return $this->statusAtividade;
+    }
+
+    /**
+     * Set the value of statusAtividade
+     *
+     * @return  self
+     */ 
+    public function setStatusAtividade($statusAtividade)
+    {
+        $this->statusAtividade = $statusAtividade;
 
         return $this;
     }

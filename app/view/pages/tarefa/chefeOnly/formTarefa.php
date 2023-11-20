@@ -10,7 +10,7 @@
 
 <div class="container">
         <div class="col-12">
-            <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/TarefaController.php?action=save">
+            <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/TarefaController.php?action=save&isForm=true">
                 
                <h3 class="titulos">
                     <?php if(isset($dados["id_tarefa"])): ?>

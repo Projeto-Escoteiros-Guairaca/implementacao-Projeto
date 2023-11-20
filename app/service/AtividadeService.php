@@ -9,7 +9,7 @@ class AtividadeService {
 
         if(! $atividade->getNomeAtividade())
             array_push($erros, "O campo [Nome] é obrigatório.");
-        if(! $atividade->getDescricao())
+        if(! $atividade->getDescricaoAtividade())
             array_push($erros, "O campo [Descrição] é obrigatório.");
         if(! $atividade->getImagem())
             array_push($erros, "Uma imagem é obrigatória.");

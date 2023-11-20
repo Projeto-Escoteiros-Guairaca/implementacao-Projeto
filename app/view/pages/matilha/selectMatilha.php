@@ -6,13 +6,13 @@ class SelectMatilha{
         echo "<select style='max-width:150px;' class='form-control' name='". $name ."' id='".$id."'>";
             echo "<option value=''></option>";
         foreach($matilhas as $matilha):
-            echo "<option value='" .$matilha->getId_matilha(). "'";
+            echo "<option value='" .$matilha->getIdMatilha(). "'";
 
-            if($matilha->getId_matilha() == $idMatilhaSelec){
+            if($matilha->getIdMatilha() == $idMatilhaSelec){
                 echo " selected ";
             }
 
-            echo ">". $matilha->getNome()."</option>";
+            echo ">". $matilha->getNomeMatilha()."</option>";
         endforeach;
 
         echo "</select>";

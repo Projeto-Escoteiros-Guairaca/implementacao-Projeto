@@ -1,6 +1,9 @@
 <?php
     require_once(__DIR__ . "/../../../include/header.php");
     require_once(__DIR__ . "/../../../include/menu.php");
+    require_once(__DIR__ . "/lobinhoSendedTarefa.php");
+    require_once(__DIR__ . "/lobinhoDidNotSend.php");
+
 ?>
 
 </style>
@@ -12,6 +15,7 @@ textarea {
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/openTarefa.css" />
 <a class="btn_cards_atv" href = "<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=listTarefas"> voltar à lista de tarefas </a>
 
+
 <h2 class='text-center'>Tarefa <?= $dados["tarefa"]->getNomeTarefa(); ?> </h3>
     <section class="container">
         <div class="tarefa">
@@ -19,7 +23,7 @@ textarea {
                 <h3>Descrição</h3>
                 <div id="descricao">
                     <hr>
-                    <?php echo $dados["envioUsuario"]->getDescricaoTarefa();?> 
+                    <?php echo $dados["tarefa"]->getDescricaoTarefa();?> 
                     <hr>
                 </div>
                 <div id="status">
@@ -43,32 +47,18 @@ textarea {
     <section class="container">
         <div class="tarefa">
             <div id="tarefa-container">
-                <form enctype="multipart/form-data" action="<?=BASEURL?>/controller/TarefaController.php?action=addTarefa" method="POST">
+                <form enctype="multipart/form-data" action="<?=BASEURL?>/controller/TarefaController.php?action=addTarefa&isForm=true" method="POST">
                     <h3>Escreva aqui qualquer detalhe que precises:</h3>
                     <div id="descricao">
                         
-                            <hr><textarea name="texto"
-                            <?php
-                            if(isset($dados['envioUsuario'])) {
-                                echo "disabled";
-                            }
-                            ?>
-                            cols="30" rows="10"><?php echo $dados["envioUsuario"]->getDescricaoEntrega();?></textarea>
-                            <hr>
-                            <?php 
-                            if(isset($dados['envioUsuario'])) {
-                                echo "aqui seu arkivo:";
-                            
-                            }
-                            else {
-
-                                echo "<h3>passe por aqui os arquivos!</h3>
-                            
-                                <input  type='file' id='img' name='imagem' id='picture__input' accept='image/*, video/*'/> 
-                                <br>
-                                <button type='submit' class='btn btn-success'>Enviar tarefa</button>";
-                            }
-                            ?>
+                    <?php
+                    if(isset($dados['envioUsuario'])) {
+                        lobinhoSendedTarefa::MostraTarefa($dados['envioUsuario']);
+                    }
+                    else {
+                        lobinhoDidNotSend::MostraFormulario();
+                    }
+                    ?>    
                         
                     </div>
                 </form>

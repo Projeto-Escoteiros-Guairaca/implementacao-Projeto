@@ -7,7 +7,7 @@ class MatilhaService {
     public function validarDados(Matilha $matilha) {
         $erros = array();
 
-        if(! $matilha->getNome())
+        if(! $matilha->getNomeMatilha())
             array_push($erros, "O campo [Nome] é obrigatório.");
         if(! $matilha->getIdChefe())
             array_push($erros, "O campo [Chefe] é obrigatório.");

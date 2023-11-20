@@ -30,6 +30,7 @@ require_once(__DIR__ . "/../../../include/menu.php");
                 <?php foreach ($dados["lista"] as $alc) : ?>
                     <div class="card my-2 mx-2" style="width: 18rem;">
                         <div class="card-body">
+<<<<<<< HEAD
                             <h5 class="card-title"><?php echo $alc->getNome(); ?></h5>
                             <hr>
                             <a class="btn_cards my-1" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getId_matilha(); ?>&idAlcateia=<?= $dados['alcateia'][0]; ?>&nomeAlcateia=<?= $dados['alcateia'][1]; ?>">
@@ -37,6 +38,15 @@ require_once(__DIR__ . "/../../../include/menu.php");
                                 <br> <br>
                             <a class="btn_cards" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getId_matilha() ?>&idAlcateia=<?= $dados['alcateia'][0]; ?>&nomeAlcateia=<?= $dados['alcateia'][1]; ?>">
                                 Mostrar Dados da Matilha: </a>
+=======
+                            <h5 class="card-title"><?php echo $alc->getNomeMatilha();?></h5>
+                            <hr>
+                            <a class="btn btn-warning my-1" 
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getIdMatilha(); ?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
+                                Alterar</a> 
+                            <a class="btn btn-info" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getIdMatilha()?>&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">
+                                    Mostrar Dados da Matilha: </a>
+>>>>>>> 3f591e2e860c221720e55ea716ac3da25700ed08
                         </div>
                     </div>
                 <?php endforeach; ?>

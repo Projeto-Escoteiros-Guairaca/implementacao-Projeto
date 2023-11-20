@@ -20,15 +20,14 @@ class TarefaDAO {
         
         return $this->mapTarefas($result);
     }
-
+    
     public function mapTarefas($result){
         $tarefas = array();
         foreach ($result as $reg) {
             $tarefa = new Tarefa();
             $tarefa->setIdtarefa($reg['id_tarefa']);
-            $tarefa->setNometarefa($reg['nome']);
-            $tarefa->setDescricaoTarefa($reg['descricao']);
-            $tarefa->setId_atividade($reg['id_atividade']);
+            $tarefa->setNometarefa($reg['nome_tarefa']);
+            $tarefa->setIdAtividade($reg['id_atividade']);
 
             array_push($tarefas, $tarefa);
 
@@ -51,7 +50,7 @@ class TarefaDAO {
     public function insert(Tarefa $tarefa){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_tarefas (id_atividade, nome, descricao)" .
+        $sql = "INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao)" .
                     " VALUES (:id_atividade, :nome, :descricao)";
         $stm = $conn->prepare($sql);
 
@@ -70,7 +69,7 @@ class TarefaDAO {
 
         $sql = " SELECT * FROM tb_usuarios u INNER JOIN tb_tarefas_usuarios tu ON tu.id_tarefa = u.id_usuario ".
         "INNER JOIN tb_tarefas t ON t.id_tarefa = tu.id_tarefa ".
-        "INNER JOIN tb_arquivos a ON t.id_arquivo = tu.id_arquivo"
+        "INNER JOIN tb_arquivos a ON a.id_arquivo = tu.id_arquivo"
          ." WHERE tu.id_usuario = :idUsuario AND tu.id_tarefa = :idTarefa";
         $stm = $conn->prepare($sql);
         $stm->bindValue("idUsuario", $idUsuario);
@@ -130,24 +129,38 @@ class TarefaDAO {
             " - Erro: mais de um usuário encontrado.");
     }
 
+    public function validateTarefa($avaliacao, $idEntrega) {
+        $conn = Connection::getConn();
+        $sql = "UPDATE tb_tarefas_usuarios SET status = :avaliacao WHERE id_tarefa_usuario = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $idEntrega);
+        $stm->bindValue("avaliacao", $avaliacao);
+
+        $stm->execute();
+    }
+
     public function mapTarefaUsuario($result){
         $tarefas = array();
+        var_dump($result);
         foreach ($result as $reg) {
             $usuario = new Usuario();
             $tarefa = new Tarefa();
+            $arquivo = new Arquivo();
 
             $tarefa->setIdtarefa($reg['id_tarefa']);
-            $tarefa->setNometarefa($reg['2']);
+            $tarefa->setNometarefa($reg['nome_tarefa']);
             $tarefa->setDescricaoTarefa($reg['3']);
-            $tarefa->setId_atividade($reg['id_atividade']);
+            $tarefa->setIdAtividade($reg['id_atividade']);
 
-            $tarefa->setStatusEntrega($reg['status']);
-            $tarefa->setDescricaoEntrega($reg['16']);
-            $tarefa->setDataEntrega($reg['data']);
             $usuario->setNome($reg['4']);
             $usuario->setId($reg['id_usuario']);
             
-            $tarefa->setUsuario($usuario);
+            $arquivo->setNomeArquivo($reg['21']);
+            $arquivo->setIdArquivo($reg['id_arquivo']);
+            $arquivo->setCaminhoArquivo($reg['caminho']);
+            $arquivo->setTexto($reg['texto']);
+
+
             array_push($tarefas, $tarefa);
 
         }
@@ -157,7 +170,7 @@ class TarefaDAO {
     public function addArquivo(Arquivo $arquivo) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_arquivos (texto, caminho, nome)" .
+        $sql = "INSERT INTO tb_arquivos (texto, caminho, nome_arquivo)" .
                     " VALUES (:texto, :caminho, :nome)";
         $stm = $conn->prepare($sql);
 
@@ -165,18 +178,20 @@ class TarefaDAO {
         $stm->bindValue("caminho", $arquivo->getCaminhoArquivo());
         $stm->bindValue("nome", $arquivo->getNomeArquivo());
         $stm->execute();
+        $arquivo->setIdArquivo($conn->lastInsertId());
 
     }
     public function addTarefaUsuario(Tarefa $tarefaUsuario) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, data)" .
-                    " VALUES (:id_usuario, :id_tarefa, :data)";
+        $sql = "INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, data)" .
+                    " VALUES (:id_usuario, :id_tarefa, :id_arquivo, :data)";
         $stm = $conn->prepare($sql);
 
         $stm->bindValue("id_usuario", $tarefaUsuario->getIdUsuario());
         $stm->bindValue("id_tarefa", $tarefaUsuario->getIdTarefa());
-        $stm->bindValue("data", $tarefaUsuario->getDataEntrega());
+        $stm->bindValue("id_arquivo", $tarefaUsuario->getIdArquivo());
+
         $stm->execute();
     }
 }

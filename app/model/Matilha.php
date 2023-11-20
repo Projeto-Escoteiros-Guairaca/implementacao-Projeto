@@ -2,9 +2,9 @@
 
 class Matilha implements JsonSerializable {
 
-    private $id_matilha;
-    private $nome;
-    private $usuariochefe;
+    private $idMatilha;
+    private $nomeMatilha;
+    private $usuarioChefe;
     private $usuarioPrimo;
 
     private $idChefe;
@@ -12,50 +12,52 @@ class Matilha implements JsonSerializable {
     
     
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() {
+    public function jsonSerialize() {   
         return
         [
-            'id_matilha' => $this->id_matilha,
-            'nome' => $this->nome
+            'idMatilha' => $this->idMatilha,
+            'nomeMatilha' => $this->nomeMatilha,
+            'usuarioChefe' => $this->usuarioChefe,
+            'usuarioPrimo' => $this->usuarioPrimo
         ];
     }
 
     /**
-     * Get the value of id_matilha
+     * Get the value of idMatilha
      */
-    public function getId_matilha()
+    public function getIdMatilha()
     {
-        return $this->id_matilha;
+        return $this->idMatilha;
     }
 
     /**
-     * Set the value of id_matilha
+     * Set the value of idMatilha
      *
      * @return  self
      */
-    public function setId_matilha($id_matilha)
+    public function setIdMatilha($idMatilha)
     {
-        $this->id_matilha = $id_matilha;
+        $this->idMatilha = $idMatilha;
 
         return $this;
     }
 
     /**
-     * Get the value of nome_matilha
+     * Get the value of nomeMatilha_matilha
      */
-    public function getNome()
+    public function getNomeMatilha()
     {
-        return $this->nome;
+        return $this->nomeMatilha;
     }
 
     /**
-     * Set the value of nome_matilha
+     * Set the value of nomeMatilha_matilha
      *
      * @return  self
      */
-    public function setNome($nome)
+    public function setNomeMatilha($nomeMatilha)
     {
-        $this->nome = $nome;
+        $this->nomeMatilha = $nomeMatilha;
 
         return $this;
     }
@@ -102,21 +104,21 @@ class Matilha implements JsonSerializable {
     }
 
     /**
-     * Get the value of usuariochefe
+     * Get the value of usuarioChefe
      */ 
     public function getUsuarioChefe()
     {
-        return $this->usuariochefe;
+        return $this->usuarioChefe;
     }
 
     /**
-     * Set the value of usuariochefe
+     * Set the value of usuarioChefe
      *
      * @return  self
      */ 
-    public function setUsuarioChefe($usuariochefe)
+    public function setUsuarioChefe($usuarioChefe)
     {
-        $this->usuariochefe = $usuariochefe;
+        $this->usuarioChefe = $usuarioChefe;
 
         return $this;
     }

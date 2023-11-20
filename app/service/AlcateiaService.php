@@ -7,7 +7,7 @@ class AlcateiaService {
     public function validarDados(Alcateia $alcateia) {
         $erros = array();
 
-        if(! $alcateia->getNome())
+        if(! $alcateia->getNomeAlcateia())
             array_push($erros, "O campo [Nome] é obrigatório.");
             
         return $erros;

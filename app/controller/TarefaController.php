@@ -22,7 +22,7 @@ class TarefaController extends Controller {
     
     function __construct(){
         if(isset($_GET['action'])) {
-            if($_GET['action'] == "save" or $_GET['action'] == "edit" or $_GET['action'] == "addTarefa") {
+            if(isset($_GET['isForm'])) {
                 $_SESSION['callAccessToken'] = false;
             }
         }
@@ -56,7 +56,7 @@ class TarefaController extends Controller {
     }
 
     public function listTarefas(string $msgErro = "", string $msgSucesso = ""){
-
+        $tarefaComplete = array();
         if(isset($_GET["idAtividade"])) {
             $_SESSION["activeAtividade"] = $_GET["idAtividade"];
         }
@@ -65,13 +65,17 @@ class TarefaController extends Controller {
 
         if(isset($_SESSION["activeAtividade"])) {
             $tarefas = $this->tarefaDao->listByIdAtiv($_SESSION["activeAtividade"]);
+            foreach($tarefas as $tar):
+                $tarefaUsuario = $this->tarefaDao->getTarefaSendByUsuario($_SESSION[SESSAO_USUARIO_ID], $tar->getIdTarefa());
+                array_push($tarefaComplete, $tarefaUsuario);
+            endforeach;
         }
         else {
-            $tarefas = $this->tarefaDao->list();
+            $tarefaComplete = $this->tarefaDao->list();
         }
 
         $dados["atividade"] = $atividade;
-        $dados["lista"] = $tarefas;
+        $dados["lista"] = $tarefaComplete;
         $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgErro, $msgSucesso, true);
     }
 
@@ -128,30 +132,43 @@ class TarefaController extends Controller {
 
     }
 
+    public function validateTarefa() {
+        $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : "";
+        $idEntrega = $_GET['idEnvio'];
+   
+        $this->tarefaDao->validateTarefa($avaliacao, $idEntrega);
+        $this->openTarefaOfEspecificUsuario();
+    }
     public function addTarefa() {
-        $this->addArquivo();
+        $arquivo = $this->addArquivo();
 
         $tarefaUsuario = new Tarefa();
-        $tarefaUsuario->setDataEntrega(date('d/m/Y'));
+        $tarefaUsuario->setDataEntrega(date('Y-m-d'));
         $tarefaUsuario->setIdUsuario($_SESSION[SESSAO_USUARIO_ID]);
         $tarefaUsuario->setIdTarefa($_SESSION['activeTarefa']);
-
+        $tarefaUsuario->setIdArquivo($arquivo->getIdArquivo());
+        
         $this->tarefaDao->addTarefaUsuario($tarefaUsuario);
         $this->openTarefa();
     }
     public function addArquivo() {
         $texto = isset($_POST['texto']) ? $_POST['texto'] : "";
-        $imagem = $_FILES['imagem'];
+        if(isset($_FILES['imagem'])) {
+            $imagem = $_FILES['imagem'];
+        }
+        else {
+            $imagem['type'] = 'Texto';
+        }
         $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 
         if(strpos($imagem['type'], "image") !== false) {
-            $nome = "imagem";
+            $nome = "Imagem";
         }
         else if(strpos($imagem['type'], "video") !== false) {
-            $nome = "video";
+            $nome = "Video";
         }
         else {
-            $nome = "text";
+            $nome = "Texto";
         }
      
         $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
@@ -164,6 +181,7 @@ class TarefaController extends Controller {
         $arquivo->setCaminhoArquivo($caminho_imagem);
         $arquivo->setNomeArquivo($nome);
         $this->tarefaDao->addArquivo($arquivo);
+        return $arquivo;
     }
 
     public function create(){
@@ -234,37 +252,6 @@ class TarefaController extends Controller {
         return $tarefa;
     }
 
-    //! public function openTarefa(string $msgErro = "", string $msgSucesso = "") {
-    //!     if( isset($_GET['id'])) {
-    //!         $_SESSION['activeTarefa'] = $_GET['id'];
-    //!     }
-    //!     $usuariosMatilha = $this->usuarioDao->findUsuariosByIdMatilha($_SESSION[SESSAO_USUARIO_ID_MATILHA]);
-    //!     $tarefa = $this->findById();
-
-    //!     foreach ($usuariosMatilha as $us):
-    //!         $usuarioEnviou = $this->usuarioDao->usuarioSended($us->getId());
-    //!         $us->setTarefaEnviada($usuarioEnviou);
-    //!     endforeach;
-
-    //!     $dados["tarefa"] = $tarefa;
-    //!     $dados["lista"] = $usuariosMatilha;
-
-    //!     if($_SESSION[SESSAO_USUARIO_PAPEIS][0] == "LOBINHO") {
-    //!         $this->loadView("pages/tarefa/lobinhoOnly/openTarefaLobinho.php", $dados, $msgErro, $msgSucesso, true);
-    //!     }
-    //!     else {
-    //!         $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, true);
-    //!     }
-        
-    //! }
-
-    //! public function openTarefaUsuario(string $msgErro = "", string $msgSucesso = "") {
-    //!     $idTarefa = $_GET['id'];
-    //!     $tarefaUsuario = $this->tarefaDao->getTarefaUsuario($idTarefa);
-
-    //!     $dados["tarefa"] = $tarefaUsuario;
-    //!     $this->loadView("pages/tarefa/chefeOnly/openTarefaUsuario.php", $dados, $msgErro, $msgSucesso, true);
-    //! }
 
     protected function findById(){
         $id = 0;

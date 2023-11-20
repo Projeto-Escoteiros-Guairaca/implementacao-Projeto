@@ -20,26 +20,23 @@ class MatilhaController extends Controller{
     public function __construct(){
 
         if(isset($_GET['action'])) {
-            if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+            if(isset($_GET['isForm'])) {
                 $_SESSION['callAccessToken'] = false;
             }
         }
 
-        if(! isset($_GET['isAjax'])) {
-            if(isset($_SESSION['callAccessToken'])) {
-                if($_SESSION['callAccessToken'] == true) {
-                    $_SESSION['controller'] = "Matilha";
-        
-                    $this->loadController("Acesso");
-                    return;
-                }
-                $_SESSION['callAccessToken'] = true;
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Matilha";
+    
+                $this->loadController("Acesso");
+                return;
             }
-            else {
-                $this->loadController('Login', '?action=login');
-                die;
-            }
-           
+            $_SESSION['callAccessToken'] = true;
+        }
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
         }
         
         $this->usuarioDao = new UsuarioDAO();
@@ -152,7 +149,7 @@ class MatilhaController extends Controller{
         $primoMatilha = isset($_POST['primoMatilha']) ? trim($_POST['primoMatilha']) : NULL;
 
         $matilha = new Matilha();
-        $matilha->setNome($nomeMatilha);
+        $matilha->setNomeMatilha($nomeMatilha);
         $matilha->setIdChefe($chefeMatilha);
         $matilha->setIdPrimo($primoMatilha);
 
@@ -168,7 +165,7 @@ class MatilhaController extends Controller{
                 }
                 else {//Alterando
 
-                    $matilha->setId_matilha($dados["id_matilha"]);
+                    $matilha->setIdMatilha($dados["id_matilha"]);
                     $this->matilhaService->update($matilha);
                 }
 

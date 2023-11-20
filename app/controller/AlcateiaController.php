@@ -13,23 +13,25 @@ class AlcateiaController extends Controller{
 
     public function __construct(){
 
-        if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+        if(isset($_GET['isForm'])) {
             $_SESSION['callAccessToken'] = false;
         }
-        if(isset($_SESSION)) {
-            if($_SESSION['callAccessToken'] == true) {
-                $_SESSION['controller'] = "Alcateia";
-    
-                $this->loadController("Acesso");
-                return;
-            }
-            $_SESSION['callAccessToken'] = true;
-        }
-        else {
-            $this->loadController('Login', '?action=login');
-            die;
-        }
         
+        if(! isset($_GET['isAjax'])) {
+            if(isset($_SESSION['callAccessToken'])) {
+                if($_SESSION['callAccessToken'] == true) {
+                    $_SESSION['controller'] = "Alcateia";
+        
+                    $this->loadController("Acesso");
+                    return;
+                }
+                $_SESSION['callAccessToken'] = true;
+            }
+            else {
+                $this->loadController('Login', '?action=login');
+                die;
+            }
+        }
         
         $this->alcateiaDao = new AlcateiaDAO();
         $this->alcateiaService = new AlcateiaService();
@@ -42,6 +44,12 @@ class AlcateiaController extends Controller{
        
         $dados["alcateias"] = $alcateias;
         $this->loadView("pages/alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);    
+    }
+
+    public function getAlcateiasAndMatilhas(string $msgErro = "", string $msgSucesso = ""){
+        $alcateias = $this->alcateiaDao->list();
+       
+        $dados["alcateias"] = $alcateias;
     }
 
 } 

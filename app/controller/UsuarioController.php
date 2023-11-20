@@ -34,7 +34,7 @@ class UsuarioController extends Controller
 
     public function __construct() {
         if(isset($_GET['action'])) {
-            if($_GET['action'] == "save" or $_GET['action'] == "edit") {
+            if(isset($_GET['isForm'])) {
                 $_SESSION['callAccessToken'] = false;
             }
         }
@@ -215,9 +215,9 @@ class UsuarioController extends Controller
                 } else { //Alterando
                     $usuario->setId($dados["id"]);
                     $this->usuarioService->updateUsu($usuario);
-                    $endereco->setId_endereco($dados["id_endereco"]);
+                    $endereco->setIdEndereco($dados["id_endereco"]);
                     $this->usuarioService->updateEnd($endereco);
-                    $contato->setId_contato($dados["id_contato"]);
+                    $contato->setIdContato($dados["id_contato"]);
                     $this->usuarioService->updateCont($contato);
                 }
                 // - Enviar mensagem de sucesso
@@ -358,7 +358,7 @@ class UsuarioController extends Controller
         }
         else {
             
-$this->usuarioDao->changeMatilha($id, $idMatilha);
+            $this->usuarioDao->changeMatilha($id, $idMatilha);
             return;    
         }
         

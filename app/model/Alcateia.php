@@ -1,10 +1,18 @@
 <?php
 
-class Alcateia {
+class Alcateia implements JsonSerializable{
 
     private $idAlcateia;
-    private $nome;
+    private $nomeAlcateia;
 
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize() {   
+        return
+        [
+            'idAlcateia' => $this->idAlcateia,
+            'nomeAlcateiaAlcateia' => $this->nomeAlcateia
+        ];
+    }
 
     /**
      * Get the value of idAlcateia
@@ -27,21 +35,21 @@ class Alcateia {
     }
 
     /**
-     * Get the value of nome
+     * Get the value of nomeAlcateia
      */ 
-    public function getNome()
+    public function getNomeAlcateia()
     {
-        return $this->nome;
+        return $this->nomeAlcateia;
     }
 
     /**
-     * Set the value of nome
+     * Set the value of nomeAlcateia
      *
      * @return  self
      */ 
-    public function setNome($nome)
+    public function setNomeAlcateia($nomeAlcateia)
     {
-        $this->nome = $nome;
+        $this->nomeAlcateia = $nomeAlcateia;
 
         return $this;
     }

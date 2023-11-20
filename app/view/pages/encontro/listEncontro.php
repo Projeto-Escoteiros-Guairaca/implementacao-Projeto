@@ -24,7 +24,7 @@
 
             <div class="div_filtro">
 
-                <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true">
+                <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true&isForm=true">
 
                     <h6>Desde</h6>
                     <input class="filters form-control" type="date" placeholder="De" name="desde" 
@@ -68,17 +68,17 @@
                 <?php foreach($dados["lista"] as $enc): ?>
                     <div class="card my-2 mx-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $enc->getDataFormated();?></h5>
+                            <h5 class="card-title"><?php echo $enc->getDataEncontroFormated();?></h5>
                             <hr>
-                            <p class="card-text"><?php echo $enc->getMatilha()->getNome();?></p>
-                            <p class="card-text"><?php echo $enc->getDescricao();?></p>
+                            <p class="card-text"><?php echo $enc->getMatilha()->getNomeMatilha();?></p>
+                            <p class="card-text"><?php echo $enc->getDescricaoEncontro();?></p>
                             <a class="btn_cards" 
-                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=edit&id=<?= $enc->getId_encontro() ?>">
+                                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=edit&id=<?= $enc->getIdEncontro() ?>">
                                 Alterar</a> 
                                 <br><br>
                             <a class="btn_cards" 
                                 href="<?= BASEURL ?>/controller/AcessoController.php?controller=Frequencia&action=createFrequencias&idEncontro=<?= 
-                                    $enc->getId_encontro()?>&idMatilha=<?= $enc->getId_matilha()?>">Registrar Frequência</a>
+                                    $enc->getIdEncontro()?>&idMatilha=<?= $enc->getIdMatilha()?>">Registrar Frequência</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

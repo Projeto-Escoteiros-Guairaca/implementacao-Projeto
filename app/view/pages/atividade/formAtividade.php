@@ -14,7 +14,7 @@
 <div class="container">
     <div class="col-12">
         
-            <form id="formatividade" class= " for_universal"method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save">
+            <form id="formatividade" class= " for_universal"method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save&isForm=true">
                 
                 <h3 class="titulos">
                     <?php if(isset($dados["id_atividade"])): ?>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="descricaoAtividade">Descrição</label>
-                    <textarea class="form-control" id="descricaoAtividade" name="descricao" rows="3"><?php echo (isset($dados['atividade']) ? $dados['atividade']->getDescricao(): "");?></textarea>
+                    <textarea class="form-control" id="descricaoAtividade" name="descricao" rows="3"><?php echo (isset($dados['atividade']) ? $dados['atividade']->getDescricaoAtividade(): "");?></textarea>
                 </div>
                 <input type="file" id="img_form_atv" name="imagem" id="picture__input" data-image-input accept=".png, .jpg, .jpeg"/>
                 
