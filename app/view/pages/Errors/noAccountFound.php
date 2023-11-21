@@ -8,27 +8,13 @@ require_once(__DIR__ . "/../../../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../matilha/selectMatilha.php");
 
 ?>
- 
-<p>YOU ARE OUT OF UNIFORM, SOLDIER! WHERE IS YOUR POWER ARMOR?</p>
 
-<p>DON'T HAVE ANY?</p>
-
-<p>YOU EXPECT ME TO BELIEVE THAT, MAGGOT?</p>
-
-<p>THE TRUTH IS YOU LOST AN EXPENSIVE PIECE OF ARMY-ISSUE EQUIPMENT.</p>
-
-<p>THAT SUIT IS GOING TO COME OUT OF YOUR PAY</p>
-
-<p>AND YOU WILL REMAIN IN THIS MANS ARMY UNTIL YOU ARE FIVE HUNDRED AND TEN YEARS OLD</p>
-
-<p>WHICH IS THE NUMBER OF YEARS IT WILL TAKE FOR YOU TO PAY FOR A</p>
-
-<p>MARK II POWERED COMBAT ARMOR YOU HAVE LOST!</p>
-
-<p> REPORT TO THE ARMORY AND HAVE A NEW SUIT ISSUED TO YOU, THEN REPORT BACK TO ME, PRIVATE!
-DISMISSED!</p>
-            <a class="btn btn-success" 
-                href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
+<div>
+<p><h1> Você está tentando entrar no sistema sem ter uma sessão aberta. Faça log-in na página ou registre-se se for novo aqui! </h1> </p>
+<br>
+</div>
+<div>       <a class="" href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a></div>
+     
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");
 ?>

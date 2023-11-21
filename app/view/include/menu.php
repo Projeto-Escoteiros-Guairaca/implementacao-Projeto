@@ -10,7 +10,6 @@ if(session_status() !== PHP_SESSION_ACTIVE)
 {
     session_start();
 }
-
 $nome = "Entrar";
 if(isset($_SESSION[SESSAO_USUARIO_NOME]))
     $nome = $_SESSION[SESSAO_USUARIO_NOME];
@@ -68,16 +67,16 @@ else {
             }
             elseif($isChefe == 1) {
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario'>Lobinhos</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'>Lobinhos</a>";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha'> Matilhas</";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha&action=listMatilha'> Matilhas</a>";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro'> Encontros</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=listUsuarios'> Encontros</a>";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade'> Atividades</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade&action=listUsuarios'> Atividades</a>";
               echo '</li>';
           }
         ?>

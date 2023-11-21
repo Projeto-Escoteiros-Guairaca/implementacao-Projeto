@@ -6,7 +6,9 @@ class Matilha implements JsonSerializable {
     private $nomeMatilha;
     private $usuarioChefe;
     private $usuarioPrimo;
+    private $alcateia;
 
+    private $idAlcateia;
     private $idChefe;
     private $idPrimo;
     
@@ -139,6 +141,46 @@ class Matilha implements JsonSerializable {
     public function setUsuarioPrimo($usuarioPrimo)
     {
         $this->usuarioPrimo = $usuarioPrimo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of alcateia
+     */ 
+    public function getAlcateia()
+    {
+        return $this->alcateia;
+    }
+
+    /**
+     * Set the value of alcateia
+     *
+     * @return  self
+     */ 
+    public function setAlcateia($alcateia)
+    {
+        $this->alcateia = $alcateia;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idAlcateia
+     */ 
+    public function getIdAlcateia()
+    {
+        return $this->idAlcateia;
+    }
+
+    /**
+     * Set the value of idAlcateia
+     *
+     * @return  self
+     */ 
+    public function setIdAlcateia($idAlcateia)
+    {
+        $this->idAlcateia = $idAlcateia;
 
         return $this;
     }

@@ -1,6 +1,7 @@
 <?php
 
 class lobinhoSendedTarefa {
+    
     public static function MostraTarefa($envioUsuario) {
         echo '
         <hr>

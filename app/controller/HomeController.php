@@ -48,10 +48,10 @@ class HomeController extends Controller {
     protected function homeChefe() {
         if(! isset($_SESSION['usuarioChefe'])) {
             $_SESSION['usuarioChefe'] = "initialChefePage";
-            $this->loadController("Usuario", "?action=initialChefePage");
+            $this->loadController("Acesso", "?controller=Usuario&action=initialChefePage");
         }
         else {    
-            $this->loadController("Usuario", "?action=initialChefePage");
+            $this->loadController("Acesso", "?controller=Usuario&action=initialChefePage");
         }
     }
 }

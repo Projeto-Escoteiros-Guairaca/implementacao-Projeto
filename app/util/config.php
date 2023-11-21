@@ -33,6 +33,6 @@ define('SESSAO_USUARIO_ID_MATILHA', "usuarioLogadoIdMatilha");
 define('SESSAO_USUARIO_ID', "usuarioLogadoId");
 define('SESSAO_USUARIO_NOME', "usuarioLogadoNome");
 define('SESSAO_USUARIO_PAPEIS', "usuarioLogadoPapeis");
-
+define('SESSAO_USUARIO_ID_ALCATEIA', "usuarioLogadoIdAlcateia");
 //Habilitar o recurso de sessão no PHP nesta página
 session_start();

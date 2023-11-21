@@ -418,6 +418,10 @@ class UsuarioController extends Controller
         $this->loadView("pages/home/initialLobinhoPage.php", $dados, "", "", true);
     }
 
+    protected function initialChefePage() {
+        $this->loadView("pages/home/initialPage.php", [], "", "", true);
+    }
+
     protected function checkDoneAtividades() {
         $atividades = $this->atividadeDao->countAtividades();
         $atividadesFeitas = $this->atividadeDao->countUndoneOrDone(0);

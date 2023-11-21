@@ -62,9 +62,10 @@ class LoginController extends Controller {
 
         //Setar usuário na sessão do PHP
         $_SESSION[SESSAO_USUARIO_ID]   = $usuario->getId();
-        $_SESSION[SESSAO_USUARIO_ID_MATILHA  ] = $usuario->getIdMatilha();
+        $_SESSION[SESSAO_USUARIO_ID_MATILHA] = $usuario->getIdMatilha();
         $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
         $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
+        $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $usuario->getMatilha()->getIdAlcateia();
     }
 
     private function removerUsuarioSessao() {
