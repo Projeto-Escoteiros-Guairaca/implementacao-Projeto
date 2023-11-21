@@ -119,7 +119,6 @@ ALTER Table tb_matilhas ADD CONSTRAINT fk_usuario_primo FOREIGN KEY (id_usuario_
 INSERT INTO tb_atividades (nome_atividade, descricao_atividade) VALUES ('Caçador', 'Caçar, obviamente');
 
 /*Inserts arquivos*/
-INSERT INTO tb_arquivos (nome_arquivo, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "");
 INSERT INTO tb_arquivos (nome_arquivo, caminho, texto) VALUES ('Imagem', 'asd', "bruh");
 INSERT INTO tb_arquivos (nome_arquivo, caminho, texto) VALUES ('Video', 'https://pin.it/2aYGxms', "coelho comido");
 /*Inserts de tarefas*/
@@ -182,11 +181,9 @@ ALTER TABLE tb_usuarios ADD FOREIGN KEY (id_matilha) REFERENCES tb_matilhas (id_
 
 /*Inserts tarefa_usuarios*/
 INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status_tarefa_usuario, data_tarefa_usuario) VALUES 
-('1', '1', '1', '2', '2020-01-01');
+('2', '2', '1', '2', '2020-01-01');
 INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status_tarefa_usuario, data_tarefa_usuario) VALUES 
-('2', '2', '2', '2', '2020-01-01');
-INSERT INTO tb_tarefas_usuarios (id_usuario, id_tarefa, id_arquivo, status_tarefa_usuario, data_tarefa_usuario) VALUES 
-('2', '3', '3', '2', '2020-01-01');
+('2', '3', '2', '2', '2020-01-01');
 /*Inserts encontros*/
 INSERT INTO tb_encontros (id_matilha, data_encontro, descricao_encontro) VALUES (1, '2020-01-01', 'Encontro 1');
 INSERT INTO tb_encontros (id_matilha, data_encontro, descricao_encontro) VALUES (2, '2020-01-01', 'Encontro 2');

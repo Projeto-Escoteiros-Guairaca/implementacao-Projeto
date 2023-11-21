@@ -3,7 +3,8 @@
     require_once(__DIR__ . "/../../../include/menu.php");
     require_once(__DIR__ . "/lobinhoSendedTarefa.php");
     require_once(__DIR__ . "/lobinhoDidNotSend.php");
-// var_dump($dados);
+    require_once(__DIR__ . "/lobinhoHasToSendAgain.php");
+
 ?>
 
 </style>
@@ -64,13 +65,18 @@ textarea {
     <section class="container">
         <div class="tarefa">
             <div id="tarefa-container">
-                <form enctype="multipart/form-data" action="<?=BASEURL?>/controller/TarefaController.php?action=addTarefa&isForm=true" method="POST">
-                    <h3>Escreva aqui qualquer detalhe que precises:</h3>
+                
                     <div id="descricao">
                         
                     <?php
                     if(isset($dados['envioUsuario'])) {
-                        lobinhoSendedTarefa::MostraTarefa($dados['envioUsuario']);
+                        if($dados['envioUsuario']->getStatusEntrega() == 1) {
+                            lobinhoHasToSendAgain::MostraTarefa($dados['envioUsuario']);
+                        }
+                        else {
+                            lobinhoSendedTarefa::MostraTarefa($dados['envioUsuario']);
+                        }
+                        
                     }
                     else {
                         lobinhoDidNotSend::MostraFormulario();
@@ -78,7 +84,6 @@ textarea {
                     ?>    
                         
                     </div>
-                </form>
             </div>
         </div>
     </section>

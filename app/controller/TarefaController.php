@@ -193,6 +193,48 @@ class TarefaController extends Controller {
         return $arquivo;
     }
 
+    public function updateEntrega() {
+        $idEntrega = $_GET['idEntrega'];
+        $this->tarefaDao->validateTarefa(0, $idEntrega);
+    $this->tarefaDao->changeDataEntrega(date('Y-m-d'), $idEntrega);        
+        $idArquivo = $_POST['idArquivo'];
+        $this->tarefaDao->deleteImage($idArquivo);
+
+        $texto = isset($_POST['texto']) ? $_POST['texto'] : "";
+        if(isset($_FILES['imagem'])) {
+            $imagem = $_FILES['imagem'];
+        }
+        else {
+            $imagem['type'] = 'Texto';
+        }
+
+        
+        if(strpos($imagem['type'], "image") !== false) {
+            $nome = "Imagem";
+        }
+        else if(strpos($imagem['type'], "video") !== false) {
+            $nome = "Video";
+        }
+        else {
+            $nome = "Texto";
+        }
+
+        $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+        $nome_imagem = md5(uniqid($imagem['name'])).".".$extensao;
+        $caminho_imagem = "../view/img/imgTarefas/" . $nome_imagem;
+        move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+
+        $arquivo = new Arquivo();
+        $arquivo->setIdArquivo($idArquivo);
+        $arquivo->setTexto($texto);
+        $arquivo->setCaminhoArquivo($caminho_imagem);
+        $arquivo->setNomeArquivo($nome);
+
+        $this->tarefaDao->updateEntrega($arquivo);
+        $this->openTarefa();
+
+    }
+
     public function create(){
         $dados["id_atividade"] = $_GET['idAtividade'];
         $this->loadView("pages/tarefa/chefeOnly/formTarefa.php", $dados, "", "", true);

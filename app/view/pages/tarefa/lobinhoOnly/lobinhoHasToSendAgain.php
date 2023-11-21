@@ -1,26 +1,20 @@
 <?php
 
-class lobinhoSendedTarefa {
+class lobinhoHasToSendAgain {
     
-    public static function MostraTarefa($envioUsuario) {
+    public static function MostraTarefa($entregaUsuario) {
         echo '
+        <form enctype="multipart/form-data" action="'.BASEURL.'/controller/TarefaController.php?action=updateEntrega&isForm=true&idEntrega='.$entregaUsuario->getIdEntrega().'" method="POST">
+        <h3>Escreva aqui os novo detalhes que precisar:</h3>
         <hr>
-        <textarea name="texto" disabled cols="30" rows="10">'.$envioUsuario->getArquivo()->getTexto().'</textarea>
+        <hr><textarea name="texto" cols="30" rows="10"></textarea>
         <hr>
-        <p> Aqui seu arquivo: </p>
+        <h3>passe por aqui os novos arquivos!</h3>
+        <input  type="file" id="img" name="imagem" id="picture__input" accept="image/*, video/*"/> 
+        <br>
+        <input type="hidden" name="idArquivo" value="'.$entregaUsuario->getArquivo()->getIdArquivo().'">
+        <button type="submit" class="btn btn-success">Enviar a tarefa de novo</button>
+        </form>
         ';
-        if($envioUsuario->getArquivo()->getNomeArquivo() == "Imagem") {
-            echo '
-                <img width="320" height="240" src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'"> </img>
-            ';
-        }
-        else if($envioUsuario->getArquivo()->getNomeArquivo() == "Video") {
-            echo '
-                <video  width="320" height="240" controls> 
-                <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.mp4">
-                Este video não tem o formato aceitado pelo videoplayer. Por favor, baixe no seu computador e abra por um aplicativo.
-                </video>
-            ';
-        }
     }
 }

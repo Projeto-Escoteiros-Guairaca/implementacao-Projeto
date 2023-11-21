@@ -130,7 +130,7 @@ class TarefaDAO {
             " - Erro: mais de um usuário encontrado.");
     }
 
-    public function validateTarefa($avaliacao, $idEntrega) {
+    public function validateTarefa($avaliacao = 0, $idEntrega) {
         $conn = Connection::getConn();
         $sql = "UPDATE tb_tarefas_usuarios SET status_tarefa_usuario = :avaliacao WHERE id_tarefa_usuario = :id";
         $stm = $conn->prepare($sql);
@@ -138,6 +138,79 @@ class TarefaDAO {
         $stm->bindValue("avaliacao", $avaliacao);
 
         $stm->execute();
+    }
+    public function changeDataEntrega($data, $idEntrega) {
+        $conn = Connection::getConn();
+        $sql = "UPDATE tb_tarefas_usuarios SET data_tarefa_usuario = :data WHERE id_tarefa_usuario = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $idEntrega);
+        $stm->bindValue("data", $data);
+
+        $stm->execute();
+    }
+
+    public function updateEntrega(Arquivo $arquivo) {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE tb_arquivos a SET a.nome_arquivo = :nome, a.caminho = :caminho, a.texto = :texto" . 
+               " WHERE id_arquivo = :id";
+        
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("nome", $arquivo->getNomeArquivo());
+        $stm->bindValue("caminho", $arquivo->getCaminhoArquivo());
+        $stm->bindValue("id", $arquivo->getIdArquivo());
+        $stm->bindValue("texto", $arquivo->getTexto());
+        $stm->execute();
+    }
+    public function findArquivoById($idArquivo) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_arquivos u" .
+               " WHERE u.id_arquivo = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$idArquivo]);
+        $result = $stm->fetchAll();
+
+        $arquivos = $this->mapArquivos($result);
+
+        if(count($arquivos) == 1)
+            return $arquivos[0];
+        elseif(count($arquivos) == 0)
+            return null;
+
+        die("atividadeDAO.findById()" . 
+            " - Erro: mais de um arquivo encontrado.");
+    }
+
+    public function mapArquivos($result) {
+        $arquivos = array();
+        foreach ($result as $reg) {
+            $arquivo = new Arquivo();
+
+            $arquivo->setNomeArquivo($reg['nome_arquivo']);
+            $arquivo->setIdArquivo($reg['id_arquivo']);
+            $arquivo->setCaminhoArquivo($reg['caminho']);
+            $arquivo->setTexto($reg['texto']);
+
+
+            array_push($arquivos, $arquivo);
+        }
+        return $arquivos;
+    }
+    public function deleteImage($id = 0, Arquivo $arquivo = null) {
+        if($arquivo != null) {
+            $img_del = $arquivo->getCaminhoArquivo();
+            if (file_exists($img_del)) {
+                unlink($img_del);
+            }
+        }
+        else {
+        $arquivo = $this->findArquivoById($id);
+        $img_del = $arquivo->getCaminhoArquivo();
+        if (file_exists($img_del)) {
+            unlink($img_del);
+        }
+        }
     }
 
     public function mapTarefaUsuario($result){

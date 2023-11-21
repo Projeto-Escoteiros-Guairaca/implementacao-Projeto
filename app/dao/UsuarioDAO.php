@@ -77,13 +77,13 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_usuarios u " .
-               "INNER JOIN tb_matilha m ON u.id_matilha = m.id_matilha" .
+               "INNER JOIN tb_matilhas m ON u.id_matilha = m.id_matilha" .
                " WHERE u.login = ? AND u.senha = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$login, $senha]);
         $result = $stm->fetchAll();
 
-        $usuarios = $this->mapUsuarios($result);
+        $usuarios = $this->mapUsuarioAndMatilha($result);
 
         if(count($usuarios) == 1)
             return $usuarios[0];
@@ -279,12 +279,13 @@ class UsuarioDAO {
             $usuario->setIdEndereco($reg['id_endereco']);
             $usuario->setIdContato($reg['id_contato']);
             $usuario->setIdMatilha($reg['id_matilha']);
-
+            
             array_push($usuarios, $usuario);
         }
         return $usuarios;
     }
 
+   
     private function mapFullUsuarios($result) {
         $usuarios = array();
         foreach ($result as $reg) {

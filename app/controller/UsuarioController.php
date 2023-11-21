@@ -25,7 +25,6 @@ class UsuarioController extends Controller
 {
     private FrequenciaDao $frequenciaDao;
     private AtividadeDAO $atividadeDao;
-    private TarefaDAO $tarefaDao;
     private MatilhaDAO $matilhaDao;
     private UsuarioDAO $usuarioDao;
     private EnderecoDAO $enderecoDao;
@@ -63,7 +62,6 @@ class UsuarioController extends Controller
 
         $this->frequenciaDao = new frequenciaDAO();
         $this->atividadeDao = new AtividadeDAO();
-        $this->tarefaDao = new TarefaDAO();
         $this->matilhaDao = new MatilhaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
@@ -114,31 +112,6 @@ class UsuarioController extends Controller
         $dados["lista"] = $usuarios;
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
-
-    //!  public function listUsuariosByMatilha(string $msgErro = "", string $msgSucesso = "") {
-
-    //!      $usuarios = $this->findUsuarioByIdMatilha();
-    //!      foreach ($usuarios["usuarios"] as $usu):
-    //!          $usuarioEnviou = $this->usuarioDao->usuarioSended($usu->getId());
-    //!          $usu->setTarefaEnviada($usuarioEnviou);
-    //!      endforeach;
-        
-    //!      $dados["lista"] = $usuarios['usuarios'];
-    //!      $dados["matilha"] = $usuarios['nome_matilha'];
-
-    //!      if (isset($_GET['tarefa'])) {
-    //!          if (isset($_SESSION['activeTarefa'])) {
-    //!              $tarefa = $this->tarefaDao->findById($_SESSION['activeTarefa']);
-    //!              $dados['tarefa'] = $tarefa;
-    //!          } 
-    //!          else {
-    //!              $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
-    //!              die;
-    //!          }
-
-    //!          $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, true);
-    //!      }
-    //!  }
     
     protected function findUsuarioByIdMatilha(){
         $id = 0;

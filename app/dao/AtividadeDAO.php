@@ -134,7 +134,7 @@ class AtividadeDAO {
         if (file_exists($img_del)) {
             unlink($img_del);
         }
-    }
+        }
     }
 
 }
