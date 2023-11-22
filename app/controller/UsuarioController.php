@@ -82,11 +82,18 @@ class UsuarioController extends Controller
             $contato = $this->contatoDao->findById($usuario->getIdContato());
             $usuario->setContato($contato);
 
-            $dados["id_endereco"] = $endereco->getId_endereco();
-            $dados["id_contato"] = $contato->getId_contato();
+            $dados["id_endereco"] = $endereco->getIdEndereco();
+            $dados["id_contato"] = $contato->getIdContato();
             $dados["id"] = $usuario->getId();
             $dados["papeis"] = UsuarioPapel::getAllAsArray();
-            $usuario->setSenha("");
+
+            $stringCharacters = strlen($usuario->getSenha());
+            $secretSenha = "*";
+            for($i = 1; $i < $stringCharacters; $i++) {
+                $secretSenha .= "*";
+            }
+            $usuario->setSenha($secretSenha);
+
             $dados["usuario"] = $usuario;
             $this->loadView("pages/usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
         } else {
