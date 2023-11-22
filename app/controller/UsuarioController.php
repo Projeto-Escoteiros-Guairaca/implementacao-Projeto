@@ -25,7 +25,6 @@ class UsuarioController extends Controller
 {
     private FrequenciaDao $frequenciaDao;
     private AtividadeDAO $atividadeDao;
-    private TarefaDAO $tarefaDao;
     private MatilhaDAO $matilhaDao;
     private UsuarioDAO $usuarioDao;
     private EnderecoDAO $enderecoDao;
@@ -63,7 +62,6 @@ class UsuarioController extends Controller
 
         $this->frequenciaDao = new frequenciaDAO();
         $this->atividadeDao = new AtividadeDAO();
-        $this->tarefaDao = new TarefaDAO();
         $this->matilhaDao = new MatilhaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->enderecoDao = new EnderecoDAO();
@@ -84,11 +82,18 @@ class UsuarioController extends Controller
             $contato = $this->contatoDao->findById($usuario->getIdContato());
             $usuario->setContato($contato);
 
-            $dados["id_endereco"] = $endereco->getId_endereco();
-            $dados["id_contato"] = $contato->getId_contato();
+            $dados["id_endereco"] = $endereco->getIdEndereco();
+            $dados["id_contato"] = $contato->getIdContato();
             $dados["id"] = $usuario->getId();
             $dados["papeis"] = UsuarioPapel::getAllAsArray();
-            $usuario->setSenha("");
+
+            $stringCharacters = strlen($usuario->getSenha());
+            $secretSenha = "*";
+            for($i = 1; $i < $stringCharacters; $i++) {
+                $secretSenha .= "*";
+            }
+            $usuario->setSenha($secretSenha);
+
             $dados["usuario"] = $usuario;
             $this->loadView("pages/usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
         } else {
@@ -105,7 +110,7 @@ class UsuarioController extends Controller
         foreach ($usuarios as $usu) {
             if ($usu->getIdMatilha()) {
                 foreach ($matilhas as $alc) {
-                    if ($usu->getIdMatilha() == $alc->getId_matilha()) {
+                    if ($usu->getIdMatilha() == $alc->getIdMatilha()) {
                         $usu->setMatilha($alc);
                     }
                 }
@@ -114,31 +119,6 @@ class UsuarioController extends Controller
         $dados["lista"] = $usuarios;
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
-
-    //!  public function listUsuariosByMatilha(string $msgErro = "", string $msgSucesso = "") {
-
-    //!      $usuarios = $this->findUsuarioByIdMatilha();
-    //!      foreach ($usuarios["usuarios"] as $usu):
-    //!          $usuarioEnviou = $this->usuarioDao->usuarioSended($usu->getId());
-    //!          $usu->setTarefaEnviada($usuarioEnviou);
-    //!      endforeach;
-        
-    //!      $dados["lista"] = $usuarios['usuarios'];
-    //!      $dados["matilha"] = $usuarios['nome_matilha'];
-
-    //!      if (isset($_GET['tarefa'])) {
-    //!          if (isset($_SESSION['activeTarefa'])) {
-    //!              $tarefa = $this->tarefaDao->findById($_SESSION['activeTarefa']);
-    //!              $dados['tarefa'] = $tarefa;
-    //!          } 
-    //!          else {
-    //!              $this->loadView("pages/Errors/accessDenied.php", $dados, "", "", true);
-    //!              die;
-    //!          }
-
-    //!          $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, $msgErro, $msgSucesso, true);
-    //!      }
-    //!  }
     
     protected function findUsuarioByIdMatilha(){
         $id = 0;
@@ -316,7 +296,7 @@ class UsuarioController extends Controller
         foreach ($arrayUsuarios as $usu) {
             if ($usu->getIdMatilha()) {
                 foreach ($matilhas as $alc) {
-                    if ($usu->getIdMatilha() == $alc->getId_matilha()) {
+                    if ($usu->getIdMatilha() == $alc->getIdMatilha()) {
                         $usu->setMatilha($alc);
                     }
                 }
@@ -416,6 +396,10 @@ class UsuarioController extends Controller
         $faltasConsecutivas = $this->checkConsecutiveFaltas();
         $dados['faltasConsecutivas'] = $faltasConsecutivas;
         $this->loadView("pages/home/initialLobinhoPage.php", $dados, "", "", true);
+    }
+
+    protected function initialChefePage() {
+        $this->loadView("pages/home/initialPage.php", [], "", "", true);
     }
 
     protected function checkDoneAtividades() {

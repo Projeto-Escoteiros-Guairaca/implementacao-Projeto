@@ -58,6 +58,29 @@
     background:#679289;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     border: 1px black solid;
+}
+.tarefaCheckada0{
+    width: 4vh;
+    height: 4vh;
+    background:#eeff00;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    border: 1px black solid;
+
+}
+.tarefaCheckada1{
+    width: 4vh;
+    height: 4vh;
+    background:rgb(255, 0, 0);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    border: 1px black solid;
+
+}
+.tarefaCheckada2{
+    width: 4vh;
+    height: 4vh;
+    background:rgb(0, 255, 0);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    border: 1px black solid;
 
 }
 .btn_cards_atv{

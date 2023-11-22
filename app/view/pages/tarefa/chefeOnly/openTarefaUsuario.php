@@ -32,7 +32,7 @@ textarea {
                     <h5 style="color:brown;"><?php echo $dados['envioUsuario']->getStatusEntregaPalavra(); ?></h5 > 
                     <hr>
                     <h4>Data da entrega: </h4>
-                    <h5 style="color:darkorange;"><?php echo $dados['envioUsuario']->getDataEntrega(); ?></h5 > 
+                    <h5 style="color:darkorange;"><?php echo $dados['envioUsuario']->getDataEntregaFormated(); ?></h5 > 
                 </div>
             </div>
         </div>

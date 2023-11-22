@@ -76,13 +76,14 @@ class UsuarioDAO {
     public function findByLoginSenha(string $login, string $senha) {
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_usuarios u" .
+        $sql = "SELECT * FROM tb_usuarios u " .
+               "INNER JOIN tb_matilhas m ON u.id_matilha = m.id_matilha" .
                " WHERE u.login = ? AND u.senha = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$login, $senha]);
         $result = $stm->fetchAll();
 
-        $usuarios = $this->mapUsuarios($result);
+        $usuarios = $this->mapUsuarioAndMatilha($result);
 
         if(count($usuarios) == 1)
             return $usuarios[0];
@@ -91,6 +92,32 @@ class UsuarioDAO {
 
         die("UsuarioDAO.findByLoginSenha()" . 
             " - Erro: mais de um usuário encontrado.");
+    }
+
+    public function mapUsuarioAndMatilha($result) {
+        $usuarios = array();
+        foreach ($result as $reg) {
+            $usuario = new Usuario();
+            $usuario->setId($reg['id_usuario']);
+            $usuario->setNome($reg['nome']);
+            $usuario->setCpf($reg['cpf']);
+            $usuario->setLogin($reg['login']);
+            $usuario->setSenha($reg['senha']);
+            $usuario->setPapeis($reg['papeis']);
+            $usuario->setStatus($reg['status_usuario']);
+            //Seta os campos provisórios
+            $usuario->setIdEndereco($reg['id_endereco']);
+            $usuario->setIdContato($reg['id_contato']);
+            $usuario->setIdMatilha($reg['id_matilha']);
+
+            $matilha = new Matilha();
+            $matilha->setIdMatilha($reg['id_matilha']);
+            $matilha->setIdAlcateia($reg['id_alcateia']);
+
+            $usuario->setMatilha($matilha);
+            array_push($usuarios, $usuario);
+        }
+        return $usuarios;
     }
 
     //Método para inserir um Usuario
@@ -252,12 +279,13 @@ class UsuarioDAO {
             $usuario->setIdEndereco($reg['id_endereco']);
             $usuario->setIdContato($reg['id_contato']);
             $usuario->setIdMatilha($reg['id_matilha']);
-
+            
             array_push($usuarios, $usuario);
         }
         return $usuarios;
     }
 
+   
     private function mapFullUsuarios($result) {
         $usuarios = array();
         foreach ($result as $reg) {

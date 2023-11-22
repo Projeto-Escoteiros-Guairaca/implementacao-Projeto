@@ -118,7 +118,7 @@ class MatilhaController extends Controller{
 
         if($matilha){
 
-            $dados["id_matilha"] = $matilha->getId_matilha();
+            $dados["id_matilha"] = $matilha->getIdMatilha();
             $dados["matilha"] = $matilha;        
             $this->loadView("pages/matilha/chefeOnly/formMatilha.php", $dados, "", "", true);
         } else {
@@ -192,7 +192,7 @@ class MatilhaController extends Controller{
     protected function delete(){
         $matilha = $this->findMatilhaById();
              if($matilha){
-            $this->matilhaDao->deleteById($matilha->getId_matilha());
+            $this->matilhaDao->deleteById($matilha->getIdMatilha());
             
             $this->list("","Matilha excluída com sucesso.");
         } else {

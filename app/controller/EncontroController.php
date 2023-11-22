@@ -100,7 +100,7 @@ class EncontroController extends Controller {
 
         if($encontro){
 
-            $dados["id_encontro"] = $encontro->getId_encontro();
+            $dados["id_encontro"] = $encontro->getIdEncontro();
             $dados["encontro"] = $encontro;      
             $this->loadView("pages/encontro/formEncontro.php", $dados, "", "", true);
         } else {
