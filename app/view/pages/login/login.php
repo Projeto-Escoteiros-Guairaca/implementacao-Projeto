@@ -7,55 +7,51 @@ require_once(__DIR__ . "/../../include/menu.php");
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/login.css" />
-<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/form.css" />
+<link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
+
+<br>
+<h4 class="titulos">Informe os dados para logar:</h4>
 
 <div class="container">
-    <div class="row " style="margin-top: 20px;">
         <div class="col-12">
-            <div class=" d_form">
+           
                 
-                <h4 id="h4_log">Informe os dados para logar:</h4>
-                <br>
+              
+           
 
                 <!-- Formulário de login -->
                 <form id="frmLogin" action="./LoginController.php?action=logon&isForm=true" method="POST" >
                     <div class="form-group">
                         <label for="txtLogin">Login:</label>
-                        <input type="text" class=" estilo_dados_form" name="login" id="txtLogin" 
+                        <input type="text" class="form-control" name="login" id="txtLogin" 
                             maxlength="15" placeholder="Informe o login"
                             value="<?php echo isset($dados['login']) ? $dados['login'] : '' ?>" />        
                     </div>
 
                     <div class="form-group">
                         <label for="txtSenha">Senha:</label>
-                        <input type="password" class=" estilo_dados_form" name="senha" id="txtSenha"
+                        <input type="password" class="form-control" name="senha" id="txtSenha"
                             maxlength="15" placeholder="Informe a senha"
                             value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />        
                     </div>
-                    <button type="submit" class="btn btn-success ">
+                    <button type="submit" class="btn_gravar ">
                         <span>Logar</span>
                     </button>
-                    <a class="btn btn-secondary"href="<?= BASEURL ?>/controller/HomeController.php">
-                        <span>Voltar</span>
-                    </a>
-                    <a class="btn btn-primary" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
+             
+                    <a class="btn_limpar" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
                 </form>
-            </div>
+      
         </div>
 
-        <div class="col-6">
+        
+    
+</div>
+<div class="">
             <?php include_once(__DIR__ . "/../../include/msg.php") ?>
         </div>
-    </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+<a class=""href="<?= BASEURL ?>/controller/HomeController.php">
+                        <span>Voltar</span>
+                    </a>
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");
 ?>
