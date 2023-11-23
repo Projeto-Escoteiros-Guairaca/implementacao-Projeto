@@ -46,7 +46,7 @@ require_once(__DIR__ . "/../../matilha/selectMatilha.php");
                                     <?php if($usu->getTarefaEnviada() == true) {
                                         echo '<td class="td_universal">
                                         <a id= "btn_tarefa_enviada" class="btn_dados_gerais" 
-                                        href="'.BASEURL.'/Controller/AcessoController.php?controller=Tarefa&action=openTarefaOfEspecificUsuario&idUsuario='.$usu->getId().'"> tarefa enviada </a>
+                                        href="'.BASEURL.'/controller/AcessoController.php?controller=Tarefa&action=openTarefaOfEspecificUsuario&idUsuario='.$usu->getId().'"> tarefa enviada </a>
                                         </td> ';
                                     }
                                     else {

@@ -25,7 +25,7 @@
                 <?php foreach($dados["lista"] as $taref): ?>
 
                 <div class="containerTarefa dados_universais_atv">
-                <a class="leftPart dados_universais_atv" href="<?= BASEURL ?> /controller/AcessoController.php?controller=Tarefa&action=openTarefa&id=<?=$taref->getTarefa()->getIdTarefa(); ?>">
+                <a class="leftPart dados_universais_atv" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=openTarefa&id=<?=$taref->getTarefa()->getIdTarefa(); ?>">
                             <p class="p_atv"><?php echo $taref->getTarefa()->getNomeTarefa(); ?> </p>
                 </a>
                 <?php
