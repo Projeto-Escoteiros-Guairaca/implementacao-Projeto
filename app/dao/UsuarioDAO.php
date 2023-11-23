@@ -138,15 +138,17 @@ class UsuarioDAO {
 
     }
 
-    public function findUsuariosByIdAcateia(int $id){
+    public function listUsuariosByIdMatilha(int $id){
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_usuarios e" .
-               " WHERE e.id_matilha = ? ORDER BY e.id_usuario";
+        $sql = "SELECT * FROM tb_usuarios u " .
+        "INNER JOIN tb_enderecos e ON u.id_endereco = e.id_endereco " .
+        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato".
+               " WHERE u.id_matilha = ? ORDER BY u.id_usuario";
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
         $result = $stm->fetchAll();
-       return $this->mapUsuarios($result);
+       return $this->mapFullUsuarios($result);
     }
     //Método para atualizar um Usuario
     public function update(Usuario $usuario) {
@@ -342,6 +344,17 @@ class UsuarioDAO {
         return $this->mapFullUsuarios($result);
     }
 
+    public function findItByNameAndMatilha(string $word, int $idMatilha) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM `tb_usuarios` u ".
+        "INNER JOIN tb_enderecos e ON u.id_endereco = e.id_endereco " .
+        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato WHERE u.nome LIKE '%".$word."%' AND u.id_matilha = ".$idMatilha." ORDER BY u.id_usuario";
+        $stm = $conn->prepare($sql);
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $this->mapFullUsuarios($result);   
+    }
     public function usuarioSended($id) {
             $conn = Connection::getConn();
 

@@ -71,7 +71,7 @@ class MatilhaController extends Controller{
                 $_GET['id'] = $_GET['idMatilha'];
             }
 
-            $usuarios = $this->usuarioDao->findUsuariosByIdAcateia($_GET['id']);
+            $usuarios = $this->usuarioDao->findUsuariosByIdMatilha($_GET['id']);
             $matilha = $this->findMatilhaById();
             
             if($matilha->getIdChefe() != null) {

@@ -65,7 +65,16 @@ class LoginController extends Controller {
         $_SESSION[SESSAO_USUARIO_ID_MATILHA] = $usuario->getIdMatilha();
         $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
         $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
-        $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $usuario->getMatilha()->getIdAlcateia();
+        if($usuario->getMatilha()->getIdAlcateia() != null) {
+            $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $usuario->getMatilha()->getIdAlcateia();
+            $_SESSION['chefeMatilha'] = $_SESSION[SESSAO_USUARIO_ID_ALCATEIA];
+        }
+        else {
+            $this->loadView("pages/Errors/accessDenied.php", [], "", "");
+            $this->loadController("Acesso", "?controller=Login&action=salvarUsuarioSessao");
+            die;
+        }
+        
     }
 
     private function removerUsuarioSessao() {

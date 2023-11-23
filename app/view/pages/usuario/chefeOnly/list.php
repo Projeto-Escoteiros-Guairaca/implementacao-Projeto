@@ -8,6 +8,12 @@ require_once(__DIR__ . "/../../../../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../../matilha/selectMatilha.php");
 require_once(__DIR__ . "/../selectPapeis.php");
 require_once(__DIR__ . "/../../../../model/Usuario.php");
+if($_SESSION['chefeMatilha'] != null) {
+    $chefe = 1;
+}
+else {
+    $chefe = 0;
+}
 ?>
 
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/list.css" />
@@ -40,12 +46,14 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                                 <p class="card-text"><?php echo $usu->getContato()->getEmail();?></p>
                                 <p class="card-text">
                                     <?php
+                                    if($_SESSION['chefeMatilha'] == null) {
                                         $usuario = new Usuario();
                                         $papeis = new UsuarioPapel();
                                         $arrayPapeis = $papeis->getAllAsArray();
                                         $usuario->setPapeisAsArray($arrayPapeis);
                                     
                                         SelectPapeis::desenhaSelect($usu, $usuario->getPapeisAsArray(), "papel_usuario");
+                                    }
                                     ?>
                                 </p>
                                 <p>
@@ -57,19 +65,25 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
                                     }
                                     ?>
                                 </p>
-                                <button class="<?php if($usu->getMatilha()) {
-                                        echo "btn btn-secondary";
-                                    }else {
-                                        echo "btn btn-warning";
-                                    }?>"
-                                    id="<?= $usu->getId();?>" onclick="findTheMatilhas(<?php if($usu->getIdMatilha()) {echo $usu->getIdMatilha();} else {echo '0';}?>
-                                    , 'list', <?= $usu->getId();?>);"> 
-                                    <?php if($usu->getMatilha()) {
-                                        echo $usu->getMatilha()->getNomeMatilha();
-                                    }else {
-                                        echo "sem matilha";
-                                    }?>
-                                </button> 
+                                <?php
+                                    if($_SESSION['chefeMatilha'] == null) {
+                                    if($usu->getMatilha()) { 
+                                        $class = "btn btn-secondary";
+                                        $nomeMatilha = $usu->getMatilha()->getNomeMatilha();
+                                    } else { 
+                                        $class = "btn btn-warning";
+                                        $nomeMatilha = "sem matilha";
+                                    }
+                                    if($usu->getIdMatilha()) {$idMatilha = $usu->getIdMatilha();} else {$idMatilha = 0;}
+                                    echo `
+                                        <button class="`.$class.`"
+                                        id="`.$usu->getId().`" onclick="findTheMatilhas(`.$idMatilha.`
+                                        , 'list', `.$usu->getId().`);"> 
+                                        `.$nomeMatilha.`
+                                    </button> 
+                                        `;
+                                    }
+                                ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -77,8 +91,9 @@ require_once(__DIR__ . "/../../../../model/Usuario.php");
             </div>     
         </div>
     </div>
-    <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
-    <script src="<?= BASEURL ?>/view/js/findUsuario.js"> </script>
+    <script> CHEFE = '<?= $chefe ?>';</script>
+    <script src="<?= BASEURL ?>/view/js/usuario.js"></script> 
+    <script src="<?= BASEURL ?>/view/js/findUsuario.js"></script>
     
     <?php  
     require_once(__DIR__ . "/../../../include/footer.php");

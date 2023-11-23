@@ -67,7 +67,7 @@ else {
             }
             elseif($isChefe == 1) {
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'>Lobinhos</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuariosByMatilha'>Lobinhos</a>";
               echo '</li>';
               echo '<li class="nav-item">';
               echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha&action=listMatilha'> Matilhas</a>";
