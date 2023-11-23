@@ -87,7 +87,8 @@ textarea {
             </div>
         </div>
     </section>
-<script src="<?= BASEURL ?>/view/js/matilha.js"> </script> 
+<script src="<?= BASEURL ?>/view/js/tarefa.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script> 
 <?php
     require_once(__DIR__ . "/../../../include/footer.php");
 ?>
