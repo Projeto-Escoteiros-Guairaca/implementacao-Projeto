@@ -24,8 +24,8 @@ class MatilhaDao{
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_matilhas a ".
-         "WHERE a.id_alcateia = ? ORDER BY a.id_matilha";
+        $sql = "SELECT * FROM tb_matilhas m ".
+         "WHERE m.id_alcateia = ? ORDER BY m.id_alcateia";
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
         $result = $stm->fetchAll();
@@ -72,6 +72,7 @@ class MatilhaDao{
             $matilha->setNomeMatilha($reg['nome_matilha']);
             $matilha->setIdChefe($reg['id_usuario_chefe']);
             $matilha->setIdPrimo($reg['id_usuario_primo']);
+            $matilha->setIdAlcateia($reg['id_alcateia']);
 
             array_push($matilhas, $matilha);
 

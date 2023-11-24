@@ -84,4 +84,6 @@ class AlcateiaDao{
         $stm->bindValue("id", $id);
         $stm->execute();
     }
+
+    
 }

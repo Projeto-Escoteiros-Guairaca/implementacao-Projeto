@@ -20,7 +20,11 @@ class Matilha implements JsonSerializable {
             'idMatilha' => $this->idMatilha,
             'nomeMatilha' => $this->nomeMatilha,
             'usuarioChefe' => $this->usuarioChefe,
-            'usuarioPrimo' => $this->usuarioPrimo
+            'usuarioPrimo' => $this->usuarioPrimo,
+            'idChefe' => $this->idChefe,
+            'idPrimo' => $this->idPrimo, 
+            'alcateia' => $this->alcateia
+
         ];
     }
 

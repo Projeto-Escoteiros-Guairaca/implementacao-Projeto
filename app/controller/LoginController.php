@@ -31,13 +31,16 @@ class LoginController extends Controller {
         if(empty($erros)) {
             //Valida o login a partir do banco de dados
             $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
+            
             if($usuario) {
-                //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
-                $this->salvarUsuarioSessao($usuario);
-
+                if($usuario->getSenha() === $senha) {
+                    $this->salvarUsuarioSessao($usuario);
+                    
                 header("location: " . HOME_PAGE);
                 exit;
-            } else {
+                }
+            }
+             else {
                 $erros = ["Login ou senha informados são inválidos!"];
             }
         }

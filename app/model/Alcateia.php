@@ -10,7 +10,7 @@ class Alcateia implements JsonSerializable{
         return
         [
             'idAlcateia' => $this->idAlcateia,
-            'nomeAlcateiaAlcateia' => $this->nomeAlcateia
+            'nomeAlcateia' => $this->nomeAlcateia
         ];
     }
 
