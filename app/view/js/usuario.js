@@ -3,6 +3,9 @@ let idMatilhaUsuario = 0;
 let UsuarioId= 0;
 var chefeChangeMatilha = false;
 
+form = document.createElement("form");
+form.id = "form_matilhas";
+
 function findTheMatilhas(id = 0, action, idUsu) {
     idMatilhaUsuario = id;
     UsuarioId= idUsu;
@@ -36,77 +39,103 @@ function createModal(Matilhas) {
     modal.className = "modal";
     modal.name = "modal";
     modal.setAttribute("id", id +"modal");
-
+    modal.innerHTML = "";
+    form.innerHTML = "";
     body.appendChild(modalBackground);
     body.appendChild(modal);
 
-    const form = document.createElement("form");
-    const h2 = document.createElement("h2");
+    h2 = document.createElement("h2");
+    h2.className = "form_part";
     h2.innerHTML = "Escolha a nova matilha";
     form.appendChild(h2);
         
     i = 0;
-    console.log(Matilhas);
-    console.log(Matilhas[0][0]["alcateia"]["nomeAlcateia"]);
+    
      br = document.createElement("br");
  
+     for(var i=1; i<3; i++) {
         br = document.createElement("br");
         radio = document.createElement("input");
         radio.type = "radio";
         radio.className = "alcateias";
-        radio.name = Matilhas[1][1]['alcateia']['nomeAlcateia'];
+        radio.name = "alcateias";
 
-        radio.setAttribute("id", Matilhas[0]);
-        radio.setAttribute("value",Matilhas[0]); 
+        radio.setAttribute("onclick", "createRadios("+Matilhas[i][i]['alcateia']['idAlcateia']+")");
+        radio.setAttribute("id", Matilhas[i][i]['alcateia']['idAlcateia']);
+        radio.setAttribute("value",Matilhas[i][i]['alcateia']['idAlcateia']); 
 
-        const label = document.createElement("label");
-        label.setAttribute("for", Matilhas[0][0]["alcateia"]["nomeAlcateia"]);
-        label.innerHTML = Matilhas[0][0]["alcateia"]["nomeAlcateia"];
+        label = document.createElement("label");
+        label.setAttribute("for", Matilhas[i][i]["alcateia"]["nomeAlcateia"]);
+        label.innerHTML = Matilhas[i][i]["alcateia"]["nomeAlcateia"];
+        
+        form.appendChild(br);
+        form.appendChild(radio);      
+        form.appendChild(label);
+     }
+   
+    br2 = document.createElement("br");
+    br2.className = "form_part";
+    form.appendChild(br2);
+    
+    modal.appendChild(form);
+
+    modalBackground.addEventListener("click", () => {
+        removeEverything();
+    });
+}
+
+function createRadios(id) {
+    var i = 1;
+    removeChildren({parentId:'form_matilhas',childName:'matilhas'});
+
+    MatilhasAlreadyUsed[id].forEach(Matilhas => {
+        const id_matilha = Matilhas["idMatilha"];
+        const nome = Matilhas["nomeMatilha"];
+        br = document.createElement("br");
+        br.className = "matilhas form_part";
+        radio = document.createElement("input");
+        radio.type = "radio";
+        radio.className = "matilhas form_part";
+        radio.name = "matilhas";
+
+       
+        radio.setAttribute("id", nome);
+        radio.setAttribute("value", id_matilha); 
+
+        if(radio.value == idMatilhaUsuario) {
+            radio.checked = true;
+        }
+        label = document.createElement("label");
+        label.className = "matilhas form_part";
+        label.setAttribute("for", nome);
+        label.innerHTML = nome;
         
         form.appendChild(br);
         form.appendChild(radio);      
         form.appendChild(label);
 
-//     Matilhas.forEach(element => {
-//         const br = document.createElement("br");
-//         const radio = document.createElement("input");
-//         radio.type = "radio";
-//         radio.className = "matilhas";
-//         radio.name = "matilhas";
-
-//         const{ id_matilha } = Matilhas[i];
-//         const{ nome } = Matilhas[i];
-
-//         radio.setAttribute("id", nome);
-//         radio.setAttribute("value",id_matilha); 
-
-//         if(radio.value == idMatilhaUsuario) {
-//             radio.checked = true;
-//         }
-//         const label = document.createElement("label");
-//         label.setAttribute("for", nome);
-//         label.innerHTML = nome;
-        
-//         form.appendChild(br);
-//         form.appendChild(radio);      
-//         form.appendChild(label);
-
-//         i++;
-// });
-    const br2 = document.createElement("br");
-    const submitData = document.createElement("button");
-    submitData.setAttribute("onclick", "sendMatilhaChange()");
-    submitData.innerHTML = "Mudar matilha";
-    submitData.className = "btn_mudar_matilha";
-    form.appendChild(br2);
-    form.appendChild(submitData);
-    modal.appendChild(form);
-
-    modalBackground.addEventListener("click", () => {
-        body.removeChild(modalBackground);
-        body.removeChild(modal);
-
+        i++;
+            
     });
+    br = document.createElement("br");
+        submitData = document.createElement("button");
+        submitData.setAttribute("onclick", "sendMatilhaChange()");
+        submitData.innerHTML = "Mudar matilha";
+        submitData.className = "btn_mudar_matilha matilhas form_part";
+        form.appendChild(br);
+        form.appendChild(submitData);
+}
+
+function removeChildren(params) {
+    var parentId = params.parentId;
+    var childName = params.childName;
+    var pai = document.getElementById(parentId);
+
+    var childNodesToRemove = pai.getElementsByClassName(childName);
+    for(var i=childNodesToRemove.length-1;i >= 0;i--){
+        var childNode = childNodesToRemove[i];
+        childNode.parentNode.removeChild(childNode);
+    }
 }
 
 function sendMatilhaChange() {
@@ -159,32 +188,32 @@ function askChangeChefe() {
 }
 
 function sendMatilhaChangeChefe() {
-    
-action = "changeMatilha";
-idMatilhaUsuario = id;    
-var checked = document.querySelector('[name="matilhas"]:checked');
-var matilhaId = checked.value;
-var matilhaName = checked.id;
+        
+    action = "changeMatilha";
+    idMatilhaUsuario = id;    
+    var checked = document.querySelector('[name="matilhas"]:checked');
+    var matilhaId = checked.value;
+    var matilhaName = checked.id;
 
-if(matilhaId == idMatilhaUsuario) {
-    alert("Esse lobinho já está nessa matilha!");
-    return;
-}
-
-var xhttp = new XMLHttpRequest();
-xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idMatilha=" + matilhaId + '&chefeChangeMatilha=' + chefeChangeMatilha + '&isAjax=true', true);
-
-xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
-        response = xhttp.responseText;
-
-        if(response == null) {
-            changeMatilhaCorrectly(matilhaName, matilhaId)
-        }
-        changeMatilhasChefes(response, matilhaName, matilhaId);
+    if(matilhaId == idMatilhaUsuario) {
+        alert("Esse lobinho já está nessa matilha!");
+        return;
     }
-};
-xhttp.send();
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idMatilha=" + matilhaId + '&chefeChangeMatilha=' + chefeChangeMatilha + '&isAjax=true', true);
+
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
+            response = xhttp.responseText;
+
+            if(response == null) {
+                changeMatilhaCorrectly(matilhaName, matilhaId)
+            }
+            changeMatilhasChefes(response, matilhaName, matilhaId);
+        }
+    };
+    xhttp.send();
 }
 
 function changeMatilhasChefes(idUsuarioToChange, matilhaName, matilhaId) {
@@ -207,15 +236,13 @@ function changeMatilhasChefes(idUsuarioToChange, matilhaName, matilhaId) {
 }
 
 function changeMatilhaCorrectly(matilhaName, matilhaId) {
-    modalBackground = document.getElementById('modalBackground');
-    modal = document.getElementById(idMatilhaUsuario +"modal");
-    body.removeChild(modalBackground);
-    body.removeChild(modal);
+    
+    removeEverything();
 
     var changeMatilhaName = document.getElementById(UsuarioId);
     changeMatilhaName.innerHTML = matilhaName;
     changeMatilhaName.setAttribute("onclick", "findTheMatilhas("+ matilhaId +", 'list', "+UsuarioId+");");
-    changeMatilhaName.className = "btn btn-secondary";
+    changeMatilhaName.className = "btn_gravar";
 }
 
 function sendChange(toChange, idUsu) {
@@ -262,3 +289,13 @@ function changeStatus(retorno, idUsu) {
     }
 }
 
+function removeEverything() {
+    modalBackground = document.getElementById('modalBackground');
+    modal = document.getElementById(idMatilhaUsuario +"modal");
+    
+    modal.removeChild(form);
+    body.removeChild(modalBackground);
+    body.removeChild(modal);
+    
+
+}
