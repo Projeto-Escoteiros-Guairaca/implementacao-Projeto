@@ -67,21 +67,20 @@ else {
                                 </p>
                                 <?php
                                     if($_SESSION['chefeMatilha'] == null) {
-                                    if($usu->getMatilha()) { 
-                                        $class = "btn btn-secondary";
-                                        $nomeMatilha = $usu->getMatilha()->getNomeMatilha();
-                                    } else { 
-                                        $class = "btn btn-warning";
-                                        $nomeMatilha = "sem matilha";
-                                    }
-                                    if($usu->getIdMatilha()) {$idMatilha = $usu->getIdMatilha();} else {$idMatilha = 0;}
-                                    echo `
-                                        <button class="`.$class.`"
-                                        id="`.$usu->getId().`" onclick="findTheMatilhas(`.$idMatilha.`
-                                        , 'list', `.$usu->getId().`);"> 
-                                        `.$nomeMatilha.`
-                                    </button> 
-                                        `;
+                                    $idUsu = $usu->getId();
+                                        if($usu->getMatilha()) { 
+                                            $class = "btn_gravar";
+                                            $nomeMatilha = $usu->getMatilha()->getNomeMatilha();
+                                        } else { 
+                                            $class = "btn_limpar";
+                                            $nomeMatilha = "sem matilha";
+                                        }
+                                        if($usu->getIdMatilha()) {$idMatilha = $usu->getIdMatilha();} else {$idMatilha = 0;}
+                                        echo <<<END
+                                            <button class="$class" id="$idUsu" onclick="findTheMatilhas($idMatilha, 'getAlcateiasAndMatilhas', $idUsu);"> 
+                                            $nomeMatilha
+                                            </button> 
+                                        END;
                                     }
                                 ?>
                             </div>

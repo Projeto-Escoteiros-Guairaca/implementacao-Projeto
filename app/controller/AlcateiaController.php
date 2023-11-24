@@ -3,13 +3,15 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../model/Alcateia.php");
 require_once(__DIR__ . "/../dao/AlcateiaDAO.php");
+require_once(__DIR__ . "/../model/Matilha.php");
+require_once(__DIR__ . "/../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../service/AlcateiaService.php");
 
     
 class AlcateiaController extends Controller{
 
     private AlcateiaDAO $alcateiaDao;
-    private AlcateiaService $alcateiaService;
+    private MatilhaDAO $matilhaDao;
 
     public function __construct(){
 
@@ -34,7 +36,7 @@ class AlcateiaController extends Controller{
         }
         
         $this->alcateiaDao = new AlcateiaDAO();
-        $this->alcateiaService = new AlcateiaService();
+        $this->matilhaDao = new MatilhaDao();
         $this->setActionDefault("listAlcateias", true);
         $this->handleAction();
     }
@@ -46,10 +48,34 @@ class AlcateiaController extends Controller{
         $this->loadView("pages/alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);    
     }
 
-    public function getAlcateiasAndMatilhas(string $msgErro = "", string $msgSucesso = ""){
-        $alcateias = $this->alcateiaDao->list();
-       
-        $dados["alcateias"] = $alcateias;
+    public function getAlcateiasAndMatilhas(){
+        try {
+            $alcateiasAndMatilhas = array();
+            $dataTotal = array();
+            $alcateias = $this->alcateiaDao->list();
+            
+            foreach($alcateias as $alca):
+                $matilhas = $this->matilhaDao->listByIdAlcateia($alca->getIdAlcateia());
+                
+                foreach($matilhas as $mat) {
+                    $mat->setAlcateia($alca);
+                    $alcateiasAndMatilhas[$alca->getIdAlcateia()][] = $mat;
+                }
+            endforeach;
+    
+            foreach ($alcateiasAndMatilhas as $matilhas) {
+                $dataTotal = array_merge($dataTotal, $matilhas);
+            }
+    
+             echo trim(json_encode($alcateiasAndMatilhas));
+             return;
+            } catch (Exception $e) {
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode(array('error' => $e->getMessage()));
+        }
+
+        header('Content-Type: application/json');
+        
     }
 
 } 

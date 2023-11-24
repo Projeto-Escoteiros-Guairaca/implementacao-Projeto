@@ -2,14 +2,14 @@ let MatilhasAlreadyUsed = [];
 let idMatilhaUsuario = 0;
 let UsuarioId= 0;
 var chefeChangeMatilha = false;
-// const body = document.body;
 
 function findTheMatilhas(id = 0, action, idUsu) {
     idMatilhaUsuario = id;
     UsuarioId= idUsu;
     if(MatilhasAlreadyUsed.length == 0) {   
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "MatilhaController.php?action=" + action + "&sendMatilhas=true" + "&isAjax=true", true);  
+
+        xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateia=true" + "&isAjax=true", true);  
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var retorno = xhttp.responseText;
@@ -46,32 +46,53 @@ function createModal(Matilhas) {
     form.appendChild(h2);
         
     i = 0;
-    Matilhas.forEach(element => {
-        const br = document.createElement("br");
-        const radio = document.createElement("input");
+    console.log(Matilhas);
+    console.log(Matilhas[0][0]["alcateia"]["nomeAlcateia"]);
+     br = document.createElement("br");
+ 
+        br = document.createElement("br");
+        radio = document.createElement("input");
         radio.type = "radio";
-        radio.className = "matilhas";
-        radio.name = "matilhas";
+        radio.className = "alcateias";
+        radio.name = Matilhas[1][1]['alcateia']['nomeAlcateia'];
 
-        const{ id_matilha } = Matilhas[i];
-        const{ nome } = Matilhas[i];
+        radio.setAttribute("id", Matilhas[0]);
+        radio.setAttribute("value",Matilhas[0]); 
 
-        radio.setAttribute("id", nome);
-        radio.setAttribute("value",id_matilha); 
-
-        if(radio.value == idMatilhaUsuario) {
-            radio.checked = true;
-        }
         const label = document.createElement("label");
-        label.setAttribute("for", nome);
-        label.innerHTML = nome;
+        label.setAttribute("for", Matilhas[0][0]["alcateia"]["nomeAlcateia"]);
+        label.innerHTML = Matilhas[0][0]["alcateia"]["nomeAlcateia"];
         
         form.appendChild(br);
         form.appendChild(radio);      
         form.appendChild(label);
 
-        i++;
-});
+//     Matilhas.forEach(element => {
+//         const br = document.createElement("br");
+//         const radio = document.createElement("input");
+//         radio.type = "radio";
+//         radio.className = "matilhas";
+//         radio.name = "matilhas";
+
+//         const{ id_matilha } = Matilhas[i];
+//         const{ nome } = Matilhas[i];
+
+//         radio.setAttribute("id", nome);
+//         radio.setAttribute("value",id_matilha); 
+
+//         if(radio.value == idMatilhaUsuario) {
+//             radio.checked = true;
+//         }
+//         const label = document.createElement("label");
+//         label.setAttribute("for", nome);
+//         label.innerHTML = nome;
+        
+//         form.appendChild(br);
+//         form.appendChild(radio);      
+//         form.appendChild(label);
+
+//         i++;
+// });
     const br2 = document.createElement("br");
     const submitData = document.createElement("button");
     submitData.setAttribute("onclick", "sendMatilhaChange()");

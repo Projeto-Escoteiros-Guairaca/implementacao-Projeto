@@ -103,8 +103,8 @@ class UsuarioController extends Controller
 
     /* Método para chamar a view com a listagem dos Usuarios */
     protected function listUsuarios(string $msgErro = "", string $msgSucesso = "") {
-
-        if(isset($_SESSION[SESSAO_USUARIO_ID_ALCATEIA]))  {
+        
+        if($_SESSION["chefeMatilha"] != null)  {
             $this->listUsuariosByMatilha();
             return;
         }

@@ -48,6 +48,9 @@ else {
     <ul class="navbar-nav">
         <?php if($isAdministrador == 1){
                 echo '<li class="nav-item">';
+                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade&action=listAtividades'> Atividades</a>";
+                echo '</li>';
+                echo '<li class="nav-item">';
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'>Lobinhos</a>";
                 echo '</li>';
                 echo '<li class="nav-item">';
@@ -55,9 +58,6 @@ else {
                 echo '</li>';
                 echo '<li class="nav-item">';
                 echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=listEncontros'> Encontros</a>";
-                echo '</li>';
-                echo '<li class="nav-item">';
-                echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Atividade&action=listAtividades'> Atividades</a>";
                 echo '</li>';
             }
             elseif($isLobinho == 1) {
