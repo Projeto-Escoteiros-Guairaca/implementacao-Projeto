@@ -1,5 +1,5 @@
 // Adicione a lógica para capturar a div e salvar como imagem
-document.querySelector('.save-img-button').addEventListener('click', () => {
+document.querySelector('.save-button').addEventListener('click', () => {
     html2canvas(document.getElementById('img-holder')).then(function(canvas) {
         // Converte o canvas para um URL de dados
         var image = canvas.toDataURL('image/png');
