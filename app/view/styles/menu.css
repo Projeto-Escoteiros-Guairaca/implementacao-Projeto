@@ -85,14 +85,12 @@ View Compiled
 
 .navbar{
     height: 110px;
+
 }
-.navbar-icon{
-    border: solid 1px;
-    border-radius: 50%;
-    padding: 10px;
-}
+
 #navbar-principal{
     width: 100vh;
+    
 }
 
 #navbar-principal.rolagem{
@@ -115,8 +113,43 @@ View Compiled
     }
 }
 .rolagem img{
-    height: 60px;
-    width: 45px;
-    background-color: transparent;
+    scale: 0.6;
+    
+}
+/*div da logo*/
+.logo{
+    
+}
+/*img da logo*/
+.img_logo{
+   scale: 0.7;
+}
+.img_logo:hover{
+    transition: all 0.7s ease;
+    filter:drop-shadow(4px -2px 0px #000000);
+}
+/*div quadrada invisivel atras dos itens*/
+.nav-item{
+  
+}
+/*div total dos links*/
+.nav-link{
+}
+.navbar-icon{
+    border: solid 1px;
+    border-radius: 50%;
+    padding: 6px;
+}
+.navbar-icon:hover{
+   color: #1d7874;
+   background-color: white;
+   transition: all 0.7s ease;
+   box-shadow: var(--sombras_bordas);
+}
+#btn_voltar{
+
+
+}
+#id_logo{
     
 }

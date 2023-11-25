@@ -1,28 +1,29 @@
 :root {
-    --cor-dark-mod: #121212; 
+    --cor-dark-mod: #121212;
     --verde-escuro: #1d7874;
     --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
-    --sombras_bordas_modo_escuro: 0 1px 2px  #1d7874, inset 0 1px 2px  #1d7874;
-    --bordas_douradas:solid #ffbc42 1px;
+    --sombras_bordas_modo_escuro: 0 1px 2px #1d7874, inset 0 1px 2px #1d7874;
+    --bordas_douradas: solid #ffbc42 1px;
     --borda_verde_esc: #1d7874 1px solid;
-    --bordas:solid #679289 1px;
-    --color-p:#667;
+    --bordas: solid #679289 1px;
+    --color-p: #667;
 }
+
 /*Abaixo serao declaradas classes que so podem ser editadas no arquivo main (classes universais)*/
-body{
-    
+body {
     overflow-y: visible;
     width: 100%;
-    min-height:100%;
+    min-height: 100%;
+    max-height: fit-content;
     position: absolute;
 }
 
-form{
+form {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.col-12{
- 
+
+.col-12 {
     overflow-y: visible;
     overflow-x: visible;
     display: flex;
@@ -36,7 +37,19 @@ form{
     height: fit-content;
     width: 100%;
 }
-.container{
+
+.container {
+    overflow-y: visible;
+    display: flex;
+    height: fit-content;
+    text-align: center;
+    align-items: center;
+    left: auto;
+    right: auto;
+    padding: 5%;
+}
+
+.r_listATV {
     overflow-y: visible;
     display: flex;
     height: fit-content;
@@ -46,18 +59,18 @@ form{
     right: auto;
     padding: 8vh;
 }
-.r_listATV{
-    overflow-y: visible;
-    display: flex;
-    height: fit-content;
-    text-align: center;
-    align-items: center;
-    left: auto;
-    right: auto;
-    padding: 8vh;
+
+/*ccorrigindo busgs das tags <a> no btn_vermelho*/
+.a_bugs {
+    text-decoration: none;
+    color: black;
+}
+.a_bugs:hover {
+    text-decoration: none;
+    color: white;
 }
 /*linha para por ferramentas, filtros botoes inserir e etc*/
-.row_ferramentas{
+.row_ferramentas {
     position: relative;
     width: 100%;
     justify-content: center;
@@ -65,12 +78,15 @@ form{
     padding: 1rem 1rem;
     gap: 4rem;
 }
-.row_cards_pequenos{
+
+.row_cards_pequenos {
     width: 100%;
     justify-content: center;
 }
-.div_filtro{
-    width: 30%;
+
+.div_filtro {
+    min-width: 30%;
+    max-width: fit-content;
 }
 
 /*card total*/
@@ -81,12 +97,14 @@ form{
     background-color: transparent;
     opacity: 0.9;
 }
-.card-sweg:hover{
+
+.card-sweg:hover {
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     border: #1d7874 5px solid;
 }
+
 /*div que fica encima dos titulos dos cards*/
 .card-sweg-details {
     box-sizing: border-box;
@@ -96,21 +114,24 @@ form{
     left: 0;
     padding-bottom: 50px;
 }
+
 /*Titulos dos cards*/
-.card-title{
-   font-size: 38px;
-   color: #1d7874;
+.card-title {
+    font-size: 38px;
+    color: #1d7874;
 }
+
 /*icons dos cards*/
-.incons_redirecionais{
-    font-size: 18vh;    
+.incons_redirecionais {
+    font-size: 18vh;
     color: black;
     opacity: 1.0;
     max-width: 21vw;
     max-height: 18vh;
 }
+
 /*Links sobre os cards*/
-.botoes_redirecionais{
+.botoes_redirecionais {
     width: 45vh;
     height: 60vh;
     box-sizing: border-box;
@@ -120,25 +141,29 @@ form{
     display: inline;
     margin: 5vh auto 5vh;
 }
-.card-index{
+
+.card-index {
     box-shadow: 0px;
     z-index: 10;
 }
+
 .text-box {
     margin-left: 44vw;
     margin-top: 42vh;
 }
 
-.card{
-    border: var(--bordas);  
-  }
-.card:hover{
+.card {
+    border: var(--bordas);
+}
+
+.card:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--sombras_bordas);
 }
+
 /*botao inserir das paginas*/
-.btn_inserir{
+.btn_inserir {
     box-sizing: border-box;
     border: var(--bordas);
     text-align: center;
@@ -146,155 +171,192 @@ form{
     border-radius: 5px;
     padding: 0;
     display: block;
-    height: 100%;
-  }
-  .btn_inserir:hover{
+}
+
+.btn_inserir:hover {
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow:0 10px 15px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     border: #1d7874 5px solid;
     text-decoration: none;
     scale: 1.025;
-  }
-  .icon_inserir{
+}
+
+.icon_inserir {
     font-size: 150px;
     color: var(--verde-escuro);
-  }
-  .div_icon_inseriri{
+}
+
+.div_icon_inseriri {
     height: 50%;
     width: 100%;
     text-align: center;
     align-items: center;
     position: relative;
-  }
-  .div_titulo_inserir{
+}
+
+.div_titulo_inserir {
     width: 100%;
     height: 50%;
     text-align: center;
     align-items: center;
     margin-bottom: 0;
     position: relative;
-    text-decoration:none;
-  }
-  .titulo_btn_inserir{
-     margin: auto auto;
-     font-size: 38px;
-     text-decoration:none;
-     color: #1d7874;
-  }
+    text-decoration: none;
+}
 
-  .btn_cards{
+.titulo_btn_inserir {
+    margin: auto auto;
+    font-size: 38px;
+    text-decoration: none;
+    color: #1d7874;
+}
+
+.btn_cards {
     border: var(--bordas);
     box-sizing: border-box;
     color: var(--verde-escuro);
     display: inline;
     padding: 4px 4px;
-  }
-  .btn_cards:hover{
+}
+
+.btn_cards:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--sombras_bordas);
     color: white;
     background-color: #1d7874;
     text-decoration: none;
-  }
+}
+
 /*Titulos das paginas*/
-.titulos{
+.titulos {
     text-align: center !important;
     color: var(--verde-escuro);
-    margin: 5px 5px ;
+    margin: 5px 5px;
 }
 
 /*abaixo serao os comandos que sao universais nos formuarios*/
-.form_universal{
-    width: 25em;
-    height: 25em;
+.formularios {
+    min-width: 35%;
+    max-width: 70%;
+    height: 52%;
 }
-.form-group{
+
+/*input e label*/
+.form-group {
     text-align: center;
     justify-content: center;
     align-items: center;
 }
+
 /*input*/
-.form-control{
+.form-control {
     border: var(--bordas);
     margin: 0 auto 0;
-    width: 18em;
+    min-width: 100%;
     background-color: transparent;
+    text-align: center;
 }
-.form-control:hover{
+
+.form-control:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid #414141;
     box-shadow: var(--sombras_bordas);
 }
-.btn_gravar{
+
+.btn_verde {
     border: var(--bordas);
-    width: 5vw;
-    height: 5vh;
+    min-width: 5vw;
+    min-height: 5vh;
+    max-width: fit-content;
+    max-height: fit-content;
     border-radius: 5px;
     background-color: transparent;
-  }
-  .btn_gravar:hover{
+    color: black;
+    -webkit-text-stroke-width: 0.2px;
+    /* largura da borda */
+    -webkit-text-stroke-color: var(--verde-escuro);
+    /* cor da borda */
+}
+
+.btn_verde:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     color: white;
     background-color: #1d7874;
     box-shadow: var(--sombras_bordas);
-  }
-  
-  .btn_limpar{
-      border: 1px red solid;
-      width: 5vw;
-      height: 5vh;
-      border-radius: 5px;
-      background-color: transparent;
-  }
-  .btn_limpar:hover{
-      cursor: pointer;
-      transition: all 0.3s ease;
-      color: white;
-      background-color: red;
-      box-shadow: var(--sombras_bordas);
-  }
-  
+}
+
+.btn_vermelho {
+    border: 1px rgb(255, 48, 48) solid;
+    min-width: 5vw;
+    min-height: 5vh;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 5px;
+    background-color: transparent;
+    color: black;
+    -webkit-text-stroke-width: 0.2px;
+    /* largura da borda */
+    -webkit-text-stroke-color: red;
+    /* cor da borda */
+}
+
+.btn_vermelho:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    background-color: red;
+    box-shadow: var(--sombras_bordas);
+    -webkit-text-stroke-width: 0;
+    /* largura da borda */
+    -webkit-text-stroke-color: 0;
+    /* cor da borda */
+}
+
 /*Aqui finaliza as classes universais*/
-.modo-escuro{
-    background-color:  var(--cor-dark-mod);
+.modo-escuro {
+    background-color: var(--cor-dark-mod);
     color: var(--cor-dark-mod);
 }
+
 .modo-escuro .bg-sweg {
     background-color: transparent;
     width: 98%;
     margin: 1vh auto 0;
 }
 
-.modo-escuro .incons_redirecionais{
+.modo-escuro .incons_redirecionais {
     color: #ffbc42;
 }
 
-.modo-escuro .card-title{
-    color:#ffbc42
+.modo-escuro .card-title {
+    color: #ffbc42
 }
 
-.modo-escuro #principal{
+.modo-escuro #principal {
     color: #293556;
 }
-.modo-escuro #h4_log{
+
+.modo-escuro #h4_log {
     color: #3e60c1;
 }
-.modo-escuro .d_form{
+
+.modo-escuro .d_form {
     background-color: transparent;
     border: 3px solid var(--cor-dark-mod);
     border-radius: 11px;
 
 }
-.modo-escuro .form-group{
+
+.modo-escuro .form-group {
     background-color: transparent;
     border: 2px solid #293556;
 }
 
-.modo-escuro .estilo_dados_form{
+.modo-escuro .estilo_dados_form {
     border: 2px solid #3e60c1;
     border-radius: 15px;
     display: block;
@@ -305,11 +367,12 @@ form{
     line-height: 1.5;
     transition: border-color .15s ease-in-out;
 }
-.modo-escuro #txtlogin{
+
+.modo-escuro #txtlogin {
     background-color: black;
 }
 
-.modo-escuro .card-body{
+.modo-escuro .card-body {
     background-color: transparent;
     display: inline;
     border: 3px solid #ffbc42;
@@ -317,29 +380,27 @@ form{
     box-shadow: var(--sombras_bordas_modo_escuro);
 }
 
-.modo-escuro .card-img-top{
+.modo-escuro .card-img-top {
     text-align: center;
     border-bottom: var(--borda_verde_esc);
     border: 3px solid #ffbc42;
 }
-.modo-escuro .btn_cards_atv{
+
+.modo-escuro .btn_cards_atv {
     border: var(--bordas_douradas);
     color: #ffbc42;
-    
 }
-.modo-escuro .btn_cards_atv:hover{
+
+.modo-escuro .btn_cards_atv:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     color: #1d7874;
 }
 
-
-.modo-escuro .footer{
-    background-color:transparent;
+.modo-escuro .footer {
+    background-color: transparent;
     border: var(--bordas);
     box-shadow: var(--sombras_bordas_modo_escuro);
     width: 98%;
-    margin:5vh auto 1vh;
+    margin: 5vh auto 1vh;
 }
-
-

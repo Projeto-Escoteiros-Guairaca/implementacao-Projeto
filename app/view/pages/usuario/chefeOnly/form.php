@@ -24,7 +24,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
     <div class="col-12" style="margin-top: 10px;">
         
         <div class="form_editar_dados">
-            <form id="frmUsuario" method="POST" 
+            <form id="frmUsuario" class="formularios" method="POST" 
                 action="<?= BASEURL ?>/controller/UsuarioController.php?action=save&isForm=true" >
 
                 <h2 class="text-center">

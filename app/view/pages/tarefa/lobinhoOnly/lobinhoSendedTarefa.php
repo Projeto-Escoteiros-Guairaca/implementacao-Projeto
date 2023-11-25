@@ -3,10 +3,12 @@
 class lobinhoSendedTarefa {
     public static function MostraTarefa($envioUsuario) {
         echo '
+        <h3>Atividade Reenviada</h3>
         <hr>
+        <p> Texto enviado </p>
         <textarea name="texto" disabled cols="30" rows="10">'.$envioUsuario->getArquivo()->getTexto().'</textarea>
         <hr>
-        <p> Aqui seu arquivo: </p>
+        <p> Arquivo enviado </p>
         ';
         if($envioUsuario->getArquivo()->getNomeArquivo() == "Imagem") {
             echo '

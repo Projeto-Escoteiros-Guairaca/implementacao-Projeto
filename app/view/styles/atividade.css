@@ -10,6 +10,7 @@
 /*card total das atv*/
 .card{
   border: var(--bordas);  
+  
 }
 .card:hover{
   cursor: pointer;

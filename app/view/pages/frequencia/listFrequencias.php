@@ -63,7 +63,7 @@
          <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
      </div>
  </div>
-        <a class="btn btn-success" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros">Voltar</a>
+        
 <br><br><br><br><br><br>
 
 <?php

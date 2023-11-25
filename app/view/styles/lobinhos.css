@@ -1,0 +1,19 @@
+/*Intial lobinho comeca aqui*/
+.dados_academicos_lobinhos{
+    height: fit-content;
+    width:fit-content;
+    padding: 7px 7px;
+    left: 15px;
+    top: 18vh;
+    position: absolute;
+    border: #1d7874 1px solid;
+    box-shadow: var(--sombras_bordas);
+}
+.card-sweg {
+    min-height: 400px;
+    min-width: 18.0em !important;
+    border: #1d7874 1px solid;
+    margin-top: 7vh;
+    background-color: transparent;
+    opacity: 0.9;
+}
