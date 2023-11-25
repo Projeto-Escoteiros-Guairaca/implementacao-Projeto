@@ -35,8 +35,9 @@ require_once(__DIR__ . "/../../include/menu.php");
                     <button type="submit" class="btn_verde ">
                         <span>Logar</span>
                     </button>
-             
-                    <a class="btn_vermelho" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
+                    <button class="btn_vermelho">
+                    <a class="a_bugs" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
+                    </button>
                 </form>
       
         </div>

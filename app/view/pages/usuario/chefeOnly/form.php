@@ -23,7 +23,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
     
     <div class="col-12" style="margin-top: 10px;">
         
-        <div class="form_editar_dados">
+        
             <form id="frmUsuario" class="formularios" method="POST" 
                 action="<?= BASEURL ?>/controller/UsuarioController.php?action=save&isForm=true" >
 
@@ -31,7 +31,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                     Dados de identificação do Usuário
                 </h2>
 
-                <div class="row">
+                
                     <div class="form-group">
                         <label for="txtNome">Nome:</label>
                         <input class="form-control" type="text" id="txtNome" name="nome" 
@@ -48,7 +48,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset($dados['usuario']) ? $dados['usuario']->getCpf(): "");
                             ?>" />
                     </div>
-                </div>
+                
                 
                 <div class="form-group">
                     <label for="txtLogin">Login:</label>
@@ -59,7 +59,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                         ?>"/>
                 </div>
 
-                <div class="row">
+               
                     <div class="form-group ">
                         <label for="txtSenha">Senha:</label>
                         <input class="form-control" type="password" id="txtPassword" name="senha" 
@@ -77,7 +77,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['confSenha'])? $dados['confSenha'] : "");
                             ?>"/>
                     </div>
-                </div>
+              
 
                 <input type="hidden" id="hddId" name="id" 
                     value="<?= $dados['id']; ?>" />
@@ -86,7 +86,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                     Dados de endereço do Usuário
                 </h2>
 
-                <div class="row">
+                
                     <div class="form-group ">
                         <label for="txtCep">CEP:</label>
                         <input class="form-control" type="text" id="txtCep" name="cep" 
@@ -103,8 +103,8 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getEndereco()->getLogradouro(): "");
                         ?>" />
                     </div>
-                </div>
-                <div class="row">
+               
+               
                     <div class="form-group ">
                         <label for="numeroEndereco">Nº:</label>
                         <input class="form-control" type="number" id="numeroEndereco" name="numeroEndereco" 
@@ -121,8 +121,8 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getEndereco()->getBairro(): "");
                         ?>" />
                     </div>
-                </div>
-                <div class="row">
+              
+                
                     <div class="form-group ">
                         <label for="txtCidade">Cidade:</label>
                         <input class="form-control" type="text" id="txtCidade" name="cidade" 
@@ -139,7 +139,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getEndereco()->getPais(): "");
                         ?>" />
                     </div>
-                </div>
+               
 
                 <input type="hidden" id="hddIdEndereco" name="id_endereco"
                     value="<?= $dados['id_endereco']; 
@@ -149,7 +149,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                     Dados de contato do Usuário
                 </h2>
 
-                <div class="row">
+               
                     <div class="form-group ">
                         <label for="txtTelefone">Telefone:</label>
                         <input class="form-control" type="text" id="txtTelefone" name="telefone" 
@@ -166,8 +166,8 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                echo (isset ($dados['usuario'])? $dados['usuario']->getContato()->getCelular(): "");
                         ?>" />
                     </div>
-                </div>
-                <div class="row">
+              
+                
                     <div class="form-group">
                         <label for="txtEmail">E-mail:</label>
                         <input class="form-control" type="email" id="txtEmail" name="email" 
@@ -176,33 +176,24 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
                                 echo (isset ($dados['usuario'])? $dados['usuario']->getContato()->getEmail(): "");
                         ?>" />
                     </div>
-                </div>
+                
 
                 <input type="hidden" id="hddIdContato" name="id_contato"
                     value="<?= $dados['id_contato']; ?>" />
 
-                <button type="submit" class="btn_gravar">Gravar</button>
-                <button type="reset" class="btn_limpar">Limpar</button>
+                <button type="submit" class="btn_verde">Gravar</button>
+                <button type="reset" class="btn_vermelho">Limpar</button>
             </form>
             
             
-        </div>
+        
 
         <div class="">
             <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
         </div>
     </div>
 
-    <div class="row" style="margin-top: 30px;">
-        <div class="col-12">
-        <?php
-        if($dados['id'] > 0)
-            echo "<a href='". BASEURL ."/controller/AcessoController.php?controller=Usuario&action=profile&id=". $_SESSION[SESSAO_USUARIO_ID] ."'>Voltar</a>";
-        else
-            echo "<a href='". BASEURL ."/controller/HomeController.php'>Voltar</a>";
-        ?>
-        </div>
-    </div>
+  
 </div>
 
 <?php  
