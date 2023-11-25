@@ -40,10 +40,7 @@ if ($isChefe == 1) {
   
 
     <div id="navbar-principal" class="collapse navbar-collapse justify-content-md-center">
-<<<<<<< HEAD
 
-=======
->>>>>>> e6337e889a738abfbfaf37fa7a8f5f9fe91b3f72
     <li class="nav-link">
       <a id="btn_voltar"class="nav-item" href="javascript:history.back()"><i class="bi bi-arrow-left navbar-icon "></i></a>
     </li>
@@ -81,10 +78,6 @@ if ($isChefe == 1) {
           echo '</li>';
         }
         
-<<<<<<< HEAD
-
-=======
->>>>>>> e6337e889a738abfbfaf37fa7a8f5f9fe91b3f72
         ?>
          
 
