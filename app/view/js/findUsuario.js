@@ -1,11 +1,17 @@
 papelArray = ["LOBINHO", "ADMINISTRADOR", "CHEFE"];
  var idUsuario;
 function findUsuario(BASEURL, idUsu) {
+
+    action = "findIt";
+
+    if(CHEFE == 1) {
+        action = "findItAndMatliha";
+    }
 idUsuario = idUsu;
     buscar = document.getElementById("buscar");
     input = buscar.value;
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=findIt&word=" + input + "&isAjax=true", true);
+    xhttp.open("GET", "UsuarioController.php?action="+action+"&word=" + input + "&isAjax=true", true);
 
     //* verifica se está preparado ou não. Quando está preparado, recebe o retorno em JSON e o transforma em um array.
     xhttp.onreadystatechange = function() {
@@ -44,9 +50,10 @@ function createChildren(usuarioArray) {
         return;
     }
     usuarioArray.forEach(element => {
-        if(idUsuario == element["idUsuario"]) {
+        if(idUsuario == element["idUsuario"] ) {
             return;
         }
+
         div = document.createElement("div");
         div.className = "card my-2 mx-2";
         div.style = "width: 18rem;";
@@ -72,7 +79,7 @@ function createChildren(usuarioArray) {
         papel = document.createElement("p");
         papel.className = "card-text";
         insideDiv.appendChild(papel);
-
+    if(CHEFE != 1) {
         select = document.createElement("select");
         select.className = "form-control selecPapel";
         select.id = "papel" + element["idUsuario"];
@@ -87,7 +94,7 @@ function createChildren(usuarioArray) {
             select.appendChild(option);
         }
         papel.appendChild(select);
-
+    }
         statusUsu = document.createElement("p");
         statusUsu.className = "card-text";
         insideDiv.appendChild(statusUsu);
@@ -112,21 +119,23 @@ function createChildren(usuarioArray) {
         matilha = document.createElement("p");
         matilha.className = "card-text";
         insideDiv.appendChild(matilha);
-
-        button = document.createElement("button");
-        button.id = element["idUsuario"];
-
-        if(element["idMatilha"] != null) { 
-            button.className = "btn btn-secondary"; 
-            button.setAttribute("onclick", "findTheMatilhas("+element["idMatilha"] +
-            ", 'list', "+element["idUsuario"]+")");
-            button.innerHTML = element["matilha"]["nome"];
+        if(CHEFE != 1) {
+            button = document.createElement("button");
+            button.id = element["idUsuario"];
+    
+            if(element["idMatilha"] != null) { 
+                button.className = "btn btn-secondary"; 
+                button.setAttribute("onclick", "findTheMatilhas("+element["idMatilha"] +
+                ", 'list', "+element["idUsuario"]+")");
+                button.innerHTML = element["matilha"]["nome"];
+            }
+            else { 
+                button.className = "btn btn-warning";
+                button.setAttribute("onclick", "findTheMatilhas(0, 'list', "+element["idUsuario"]+")"); 
+                button.innerHTML = "Sem matilha";
+            }
+            matilha.appendChild(button);
         }
-        else { 
-            button.className = "btn btn-warning";
-            button.setAttribute("onclick", "findTheMatilhas(0, 'list', "+element["idUsuario"]+")"); 
-            button.innerHTML = "Sem matilha";
-        }
-        matilha.appendChild(button);
+        
     });
 }

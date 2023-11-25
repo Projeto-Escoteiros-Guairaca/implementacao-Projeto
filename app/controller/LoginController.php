@@ -31,13 +31,16 @@ class LoginController extends Controller {
         if(empty($erros)) {
             //Valida o login a partir do banco de dados
             $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
+            
             if($usuario) {
-                //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
-                $this->salvarUsuarioSessao($usuario);
-
+                if($usuario->getSenha() === $senha) {
+                    $this->salvarUsuarioSessao($usuario);
+                    
                 header("location: " . HOME_PAGE);
                 exit;
-            } else {
+                }
+            }
+             else {
                 $erros = ["Login ou senha informados são inválidos!"];
             }
         }
@@ -65,7 +68,16 @@ class LoginController extends Controller {
         $_SESSION[SESSAO_USUARIO_ID_MATILHA] = $usuario->getIdMatilha();
         $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
         $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
-        $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $usuario->getMatilha()->getIdAlcateia();
+        if($usuario->getMatilha()->getIdAlcateia() != null) {
+            $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $usuario->getMatilha()->getIdAlcateia();
+            $_SESSION['chefeMatilha'] = $_SESSION[SESSAO_USUARIO_ID_ALCATEIA];
+        }
+        else {
+            $this->loadView("pages/Errors/accessDenied.php", [], "", "");
+            $this->loadController("Acesso", "?controller=Login&action=salvarUsuarioSessao");
+            die;
+        }
+        
     }
 
     private function removerUsuarioSessao() {

@@ -26,7 +26,7 @@
                 <?php foreach($dados["lista"] as $taref): ?>
 
                 <div class="containerTarefa dados_universais_atv">
-                <a class="leftPart dados_universais_atv" href="<?= BASEURL ?> /controller/AcessoController.php?controller=Tarefa&action=openTarefa&id=<?=$taref->getTarefa()->getIdTarefa(); ?>">
+                <a class="leftPart dados_universais_atv" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=openTarefa&id=<?=$taref->getTarefa()->getIdTarefa(); ?>">
                             <p class="p_atv"><?php echo $taref->getTarefa()->getNomeTarefa(); ?> </p>
                 </a>
                 <?php
@@ -47,6 +47,9 @@
 </div>
                
 <script src="<?= BASEURL ?>/view/js/matilha.js"> </script>
+<script src="<?= BASEURL ?>/view/js/tarefa.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
 <?php
     require_once(__DIR__ . "/../../include/footer.php");
 ?> 

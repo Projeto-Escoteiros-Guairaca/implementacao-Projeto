@@ -103,10 +103,14 @@ class UsuarioController extends Controller
 
     /* Método para chamar a view com a listagem dos Usuarios */
     protected function listUsuarios(string $msgErro = "", string $msgSucesso = "") {
-
+        
+        if($_SESSION["chefeMatilha"] != null)  {
+            $this->listUsuariosByMatilha();
+            return;
+        }
         $usuarios = $this->usuarioDao->list();
         $matilhas = $this->matilhaDao->list();
-
+    
         foreach ($usuarios as $usu) {
             if ($usu->getIdMatilha()) {
                 foreach ($matilhas as $alc) {
@@ -119,7 +123,12 @@ class UsuarioController extends Controller
         $dados["lista"] = $usuarios;
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
-    
+    public function listUsuariosByMatilha(string $msgErro = "", string $msgSucesso = "") {
+        $usuarios = $this->usuarioDao->listUsuariosByIdMatilha($_SESSION[SESSAO_USUARIO_ID_MATILHA]);
+       
+        $dados["lista"] = $usuarios;
+        $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
+    }
     protected function findUsuarioByIdMatilha(){
         $id = 0;
         if (isset($_GET['idMatilha']))
@@ -307,6 +316,23 @@ class UsuarioController extends Controller
         return;
     }
 
+    protected function findItAndMatliha() {
+        $arrayUsuarios = $this->usuarioDao->findItByNameAndMatilha($_GET["word"], $_SESSION[SESSAO_USUARIO_ID_MATILHA]);
+        $matilhas = $this->matilhaDao->list();
+
+        foreach ($arrayUsuarios as $usu) {
+            if ($usu->getIdMatilha()) {
+                foreach ($matilhas as $alc) {
+                    if ($usu->getIdMatilha() == $alc->getIdMatilha()) {
+                        $usu->setMatilha($alc);
+                    }
+                }
+            }
+        }
+        echo json_encode($arrayUsuarios);
+
+        return;
+    }
     protected function changeMatilha() {
         $id = $_GET["id"];
         $idMatilha = $_GET["idMatilha"];
