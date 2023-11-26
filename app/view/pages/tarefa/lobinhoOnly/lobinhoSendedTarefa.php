@@ -21,7 +21,9 @@ class lobinhoSendedTarefa {
                     src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" 
                     width="320" height="240" controls autoplay>
                 </video>
+                <p>Se não conseguir reproduzir o vídeo, <a href="'.BASEURL.'/view/pages/tarefa/download.php?file='.$envioUsuario->getArquivo()->getCaminhoArquivo().'" download>baixe aqui</a>.</p>
             ';
+            echo $envioUsuario->getArquivo()->getCaminhoArquivo();
         }
         else{
             echo '<p> Nenhum arquivo enviado </p>';
