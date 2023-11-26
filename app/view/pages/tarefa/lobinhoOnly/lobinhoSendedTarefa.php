@@ -17,13 +17,14 @@ class lobinhoSendedTarefa {
         }
         else if($envioUsuario->getArquivo()->getNomeArquivo() == "Video") {
             echo '
-                <video width="320" height="240" controls autoplay>
-                    <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.mp4">
-                    <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.webm">
-                    <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.ogg">
-                    Este vídeo não tem o formato aceitado pelo videoplayer.
+                <video 
+                    src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" 
+                    width="320" height="240" controls autoplay>
                 </video>
             ';
+        }
+        else{
+            echo '<p> Nenhum arquivo enviado </p>';
         }
     }
 }
