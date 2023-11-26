@@ -41,12 +41,16 @@ class AcessoController extends Controller {
 
     public function __construct() {  
   
-    
-        if($_SESSION[SESSAO_USUARIO_ID_MATILHA] != null) {
-            $this->setSessionVariables();
-            return;
+        if(isset($_SESSION[SESSAO_USUARIO_ID_MATILHA])) {
+            if($_SESSION[SESSAO_USUARIO_ID_MATILHA] != null) {
+                $this->setSessionVariables();
+                return;
+            }
+            $this->noMatilha();
         }
-        $this->noMatilha();
+        else {
+            $this->setSessionVariables();
+        }
     }
 
     public function noMatilha() {

@@ -158,7 +158,7 @@ class TarefaController extends Controller {
         $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : "";
         $idEntrega = $_GET['idEnvio'];
    
-        $this->tarefaDao->validateTarefa($avaliacao, $idEntrega);
+        $this->tarefaDao->validateTarefa($idEntrega, $avaliacao);
         $this->openTarefaOfEspecificUsuario();
     }
 
@@ -208,11 +208,12 @@ class TarefaController extends Controller {
     }
 
     public function updateEntrega() {
-        $idEntrega = $_GET['idEntrega'];
-        $this->tarefaDao->validateTarefa(0, $idEntrega);
+        $idArquivo = isset($_GET['idArquivo']) ? $_GET['idArquivo'] : 0;
+        $idEntrega = isset($_GET['idEntrega']) ? $_GET['idEntrega'] : 0;
+        $this->tarefaDao->validateTarefa($idEntrega);
         $this->tarefaDao->changeDataEntrega(date('Y-m-d'), $idEntrega);     
-
-        $idArquivo = $_POST['idArquivo'];
+        
+        
         $this->tarefaDao->deleteImage($idArquivo);
 
         $texto = isset($_POST['texto']) ? $_POST['texto'] : "";
@@ -222,6 +223,7 @@ class TarefaController extends Controller {
         else {
             $imagem['type'] = 'Texto';
         }
+        
 
         
         if(strpos($imagem['type'], "image") !== false) {

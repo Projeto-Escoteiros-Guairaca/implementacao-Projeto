@@ -30,14 +30,6 @@ class FrequenciaController extends Controller {
             die;
         }
 
-        $papelNecessario = array();
-        $papelNecessario[0] = "ADMINISTRADOR";
-        $accessVerified = $this->verifyAccess($papelNecessario);
-        
-        if(! $accessVerified) {
-            return;
-        }
-
         $this->frequenciaDao = new FrequenciaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->encontroDao = new EncontroDAO();
@@ -68,6 +60,7 @@ class FrequenciaController extends Controller {
     }
 
     public function listFrequencias(string $msgErro = "", string $msgSucesso = "") {
+        
         $encontro = $this->findEncontroByIdEncontro();
         $frequencias = $this->findFrequenciasByIdEncontro();
         $usuarios = $this->findUsuariosById($frequencias);

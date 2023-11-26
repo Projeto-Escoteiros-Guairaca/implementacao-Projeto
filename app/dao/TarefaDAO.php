@@ -205,7 +205,11 @@ class TarefaDAO {
             }
         }
         else {
+
         $arquivo = $this->findArquivoById($id);
+        if($arquivo->getCaminhoArquivo() == null) {
+            return;
+        }
         $img_del = $arquivo->getCaminhoArquivo();
         if (file_exists($img_del)) {
             unlink($img_del);
