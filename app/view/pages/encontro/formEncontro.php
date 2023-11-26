@@ -12,7 +12,7 @@
 <div class="container">
     <div class="col-12">
  
-        <form id="formEncontro" class="form_universal"method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save&isForm=true">
+        <form id="formEncontro" class="formularios" method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save&isForm=true">
 
             <h3 class="titulos">
                 <?php if(isset($dados["id_encontro"])): ?>
@@ -50,8 +50,8 @@
 
                 <input type="hidden" id="hddId" name="id_encontro" value="<?= $dados['id_encontro']; ?>" />
                 
-                <button type="submit" class="btn_gravar">Gravar</button>
-                <button type="reset" class="btn_limpar">Limpar</button>
+                <button type="submit" class="btn_verde">Gravar</button>
+                <button type="reset" class="btn_vermelho">Limpar</button>
                 
         </form>
     
@@ -61,7 +61,6 @@
 
     
   </div>
-  <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros">Voltar</a>
 </div>
 
 <?php

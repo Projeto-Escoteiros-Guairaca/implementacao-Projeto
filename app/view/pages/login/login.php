@@ -17,10 +17,8 @@ require_once(__DIR__ . "/../../include/menu.php");
            
                 
               
-           
-
                 <!-- Formulário de login -->
-                <form id="frmLogin" action="./LoginController.php?action=logon&isForm=true" method="POST" >
+                <form id="frmLogin" class="formularios" action="./LoginController.php?action=logon&isForm=true" method="POST" >
                     <div class="form-group">
                         <label for="txtLogin">Login:</label>
                         <input type="text" class="form-control" name="login" id="txtLogin" 
@@ -34,11 +32,12 @@ require_once(__DIR__ . "/../../include/menu.php");
                             maxlength="15" placeholder="Informe a senha"
                             value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />        
                     </div>
-                    <button type="submit" class="btn_gravar ">
+                    <button type="submit" class="btn_verde ">
                         <span>Logar</span>
                     </button>
-             
-                    <a class="btn_limpar" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
+                    <button class="btn_vermelho">
+                    <a class="a_bugs" href = " <?= REGISTER_PAGE?> ">Registre-se</a>
+                    </button>
                 </form>
       
         </div>
@@ -49,9 +48,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 <div class="">
             <?php include_once(__DIR__ . "/../../include/msg.php") ?>
         </div>
-<a class=""href="<?= BASEURL ?>/controller/HomeController.php">
-                        <span>Voltar</span>
-                    </a>
+
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");
 ?>

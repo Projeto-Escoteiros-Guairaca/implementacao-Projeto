@@ -11,11 +11,12 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
 
     <div class="row r_listATV"> <!-- Adicionando a div com classe "row" -->
         <div class="col-12">
-            <div class="card my-2 mx-2 Card">
+         
                 <?php
                 if ($isLobinho == 2) {
                     echo '
-                    <a class="btn_inserir" style="width: 18rem;" 
+                   
+                    <a class="btn_inserir card my-2 mx-2 Card" style="width: 18rem;" 
                     href="' . BASEURL . '/controller/AcessoController.php?controller=Atividade&action=create">
                         <div class= "div_icon_inseriri">
                             <i class="icon_inserir bi bi-plus"></i>
@@ -24,10 +25,11 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                         <div class="div_titulo_inserir">
                             <h5 class="titulo_btn_inserir">Inserir Atividades</h5>
                         </div>  
-                    </a>';
+                    </a>
+                   
+                    ';
                 }
                 ?>
-            </div>
 
             <?php foreach ($dados["lista"] as $ativ) : ?>
                 <div class="card my-2 mx-2 Card" style="width: 18rem;">

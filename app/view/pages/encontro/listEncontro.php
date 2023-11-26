@@ -27,12 +27,12 @@
                 <form method="POST" action="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&filtered=true&isForm=true">
 
                     <h6>Desde</h6>
-                    <input class="filters form-control" type="date" placeholder="De" name="desde" 
+                    <input class=" form-control" type="date" placeholder="De" name="desde" 
                     value="<?php
                             echo (isset($dados['desde']) ? $dados['desde'] : "");
                         ?>">
                     <h6>Até</h6>
-                    <input class="filters form-control" type="date" placeholder="Até" name="ate"
+                    <input class=" form-control" type="date" placeholder="Até" name="ate"
                     value="<?php
                             echo (isset($dados['ate']) ? $dados['ate'] :  "");
                         ?>">
@@ -46,9 +46,11 @@
                         ?>
                     </div>
 
-                        <button class="btn_gravar" type="submit"> Filtrar </button>
+                        <button class="btn_verde" type="submit"> Filtrar </button>
                         
-                        <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros"  type="reset" class="btn_limpar"> Limpar </a>
+                        <button class="btn_vermelho">
+                        <a class= "a_bugs"href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=listEncontros"  type="reset" > Limpar </a>
+                        </button>
 
                 </form>
 
@@ -87,9 +89,6 @@
         </div>
     </div>           
 </div>
-<a class="btn btn-success" 
-                    href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a>
-
 
 <?php
     require_once(__DIR__ . "/../../include/footer.php");

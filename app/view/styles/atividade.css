@@ -10,6 +10,7 @@
 /*card total das atv*/
 .card{
   border: var(--bordas);  
+  
 }
 .card:hover{
   cursor: pointer;
@@ -170,6 +171,8 @@
 .form-group{
   width: 20em;
   margin: 0 auto 0;
+  min-width: fit-content;
+  width: 65%;
   padding: 2vh 2vh;
 }
 .form-control{
@@ -179,4 +182,11 @@
 #img_form_atv{
   border: var(--bordas);
   margin-bottom: 1em;
+  min-width: fit-content;
+  width: 50%;
+}
+#img_form_atv:hover{
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--sombras_bordas);
 }

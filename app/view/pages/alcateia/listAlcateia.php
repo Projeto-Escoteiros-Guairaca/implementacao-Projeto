@@ -15,7 +15,7 @@ require_once(__DIR__."/../../include/menu.php");
 <div class="container-fluid pt-4">
 
   <div class="row">
-    
+  <div class="col-12">
     <?php foreach($dados['alcateias'] as $alc):?>
     <div class="col-sm-6 col-md-3 pb-4">
       <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilhas&idAlcateia=<?= $alc->getIdAlcateia(); ?>&nomeAlcateia=<?= $alc->getNomeAlcateia (); ?>">          
@@ -30,7 +30,7 @@ require_once(__DIR__."/../../include/menu.php");
       </a>
     </div>
         <?php endforeach;?>
-
+    </div>
 
 
 <?php

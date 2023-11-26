@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 <div class="container">
     <div class="col-12">
-            <form id="formMatilha" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save&isForm=true">
+            <form id="formMatilha" class="formularios" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save&isForm=true">
                 
                 <h2 class="text-center">
                     <?php 
@@ -55,12 +55,11 @@
                 
                 <input type="hidden" id="hddId" name="id_matilha" value="<?= $dados['id_matilha']; ?>" />
                 
-                <button type="submit" class=" btn_gravar ">Gravar</button>
-                <button type="reset" class="btn_limpar">Limpar</button>
+                <button type="submit" class=" btn_verde">Gravar</button>
+                <button type="reset" class="btn_vermelho">Limpar</button>
                 
             </form>
-            <a class="btn_voltar" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilhas&idAlcateia=<?=$_SESSION['activeAlcateiaId'];?>&nomeAlcateia=<?= $_SESSION['activeAlcateiaNome'];?>">Voltar</a>
+          
        
        
 

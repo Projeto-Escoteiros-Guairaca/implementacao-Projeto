@@ -69,10 +69,10 @@ else {
                                     if($_SESSION['chefeMatilha'] == null) {
                                     $idUsu = $usu->getId();
                                         if($usu->getMatilha()) { 
-                                            $class = "btn_gravar";
+                                            $class = "btn_verde";
                                             $nomeMatilha = $usu->getMatilha()->getNomeMatilha();
                                         } else { 
-                                            $class = "btn_limpar";
+                                            $class = "btn_vermelho";
                                             $nomeMatilha = "sem matilha";
                                         }
                                         if($usu->getIdMatilha()) {$idMatilha = $usu->getIdMatilha();} else {$idMatilha = 0;}

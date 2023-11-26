@@ -10,7 +10,7 @@
 
 <div class="container">
         <div class="col-12">
-            <form id="formTarefa" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/TarefaController.php?action=save&isForm=true">
+            <form id="formTarefa" class="formularios" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/TarefaController.php?action=save&isForm=true">
                 
                <h3 class="titulos">
                     <?php if(isset($dados["id_tarefa"])): ?>
@@ -36,15 +36,14 @@
                 <br>
                 <input type="hidden" id="hddId" name="id_atividade" value="<?= $dados['id_atividade']; ?>" />
                 
-                <button type="submit" class="btn_gravar">Gravar</button>
-                <button type="reset" class="btn_limpar">Limpar</button>
+                <button type="submit" class="btn_verde">Gravar</button>
+                <button type="reset" class="btn_vermelho">Limpar</button>
                 
             </form>
       
         </div>
 </div>
-<a class="" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
+
 <?php
     require_once(__DIR__ . "/../../../include/footer.php");
 ?>

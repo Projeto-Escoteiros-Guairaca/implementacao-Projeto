@@ -14,7 +14,7 @@
 <div class="container">
     <div class="col-12">
         
-            <form id="formatividade" class= " for_universal"method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save&isForm=true">
+            <form id="formatividade" class="formularios" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save&isForm=true">
                 
                 <h3 class="titulos">
                     <?php if(isset($dados["id_atividade"])): ?>
@@ -43,14 +43,11 @@
 <br>
                 <input type="hidden" id="hddId" name="id_atividade" value="<?= $dados['id_atividade']; ?>" />
                 
-                <button type="submit" class="btn_gravar">Gravar</button>
-                <button type="reset" class="btn_limpar">Limpar</button>
+                <button type="submit" class="btn_verde">Gravar</button>
+                <button type="reset" class="btn_vermelho">Limpar</button>
                 
             </form>
-        
-       
-                   <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades">Voltar</a>
-
+            
         <div class="row">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
