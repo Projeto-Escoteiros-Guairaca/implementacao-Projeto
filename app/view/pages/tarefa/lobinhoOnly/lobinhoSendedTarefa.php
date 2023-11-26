@@ -21,7 +21,7 @@ class lobinhoSendedTarefa {
                     <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.mp4">
                     <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.webm">
                     <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.ogg">
-                    Este vídeo não tem o formato aceitado pelo videoplayer. Por favor, baixe no seu computador e abra por um aplicativo.
+                    Este vídeo não tem o formato aceitado pelo videoplayer.
                 </video>
             ';
         }
