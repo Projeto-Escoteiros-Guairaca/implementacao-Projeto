@@ -13,7 +13,7 @@
 
         <div class="row" style="margin-top: 10px;">
     
-            <h2>
+            <h2 class='titulos'>
             <?php echo"encontro do dia " . $dados['encontro']->getDataEncontroFormated(); ?>
             </h2>
             

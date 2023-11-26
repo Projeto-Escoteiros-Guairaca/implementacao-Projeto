@@ -7,7 +7,7 @@ require_once(__DIR__ . "/../../../include/menu.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listMatilhas.css" />
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
-<h3 class='text-center'>Matilhas da Alcateia <?php echo $dados['alcateia'][1]; ?></h3>
+<h3 class='text-center titulos'>Matilhas da Alcateia <?php echo $dados['alcateia'][1]; ?></h3>
 
 
 <div class="container">
