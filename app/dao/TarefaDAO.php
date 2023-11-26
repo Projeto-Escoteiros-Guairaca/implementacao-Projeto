@@ -130,7 +130,7 @@ class TarefaDAO {
             " - Erro: mais de um usuário encontrado.");
     }
 
-    public function validateTarefa($avaliacao = 0, $idEntrega) {
+    public function validateTarefa( $idEntrega, $avaliacao = 0) {
         $conn = Connection::getConn();
         $sql = "UPDATE tb_tarefas_usuarios SET status_tarefa_usuario = :avaliacao WHERE id_tarefa_usuario = :id";
         $stm = $conn->prepare($sql);

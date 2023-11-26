@@ -12,22 +12,19 @@ class lobinhoSendedTarefa {
         ';
         if($envioUsuario->getArquivo()->getNomeArquivo() == "Imagem") {
             echo '
-                <div id="img-holder">
-                    <img width="320" height="240" src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'"> </img>
-                </div>
-                <button class="btn btn-success save-button">Baixar imagem</button>
+                <img width="320" height="240" src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'"> </img>
             ';
         }
         else if($envioUsuario->getArquivo()->getNomeArquivo() == "Video") {
             echo '
-                <div id="video-holder"> 
-                    <video  width="320" height="240" controls>
-                        <source src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" type="video/.mp4">
-                        Este video não tem o formato aceitado pelo videoplayer. Por favor, baixe no seu computador e abra por um aplicativo.
-                    </video>
-                </div>
-                <button class="btn btn-success save-video-button">Baixar video</button>
+                <video 
+                    src="'.$envioUsuario->getArquivo()->getCaminhoArquivo().'" 
+                    width="320" height="240" controls autoplay>
+                </video>
             ';
+        }
+        else{
+            echo '<p> Nenhum arquivo enviado </p>';
         }
     }
 }
