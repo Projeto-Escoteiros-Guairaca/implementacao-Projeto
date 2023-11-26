@@ -45,9 +45,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         <p class="p_dados"> <?= $dados['usuario']->getSenha(); ?>
         </p>
 
-        <h6 class="h6_dados">Faltas consecutivas: </h6>
-        <p class="p_dados"> <?= $dados['faltasConsecutivas']?>/3
-        </p>
+        
 
     </div>
 
@@ -91,6 +89,22 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 
     </div>
 
+    <div class="card_dados">
+      <h2> Matilha </h2>
+
+      <h6 class="h6_dados"> Frequencia: </h6>
+
+      <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Frequencia&action=listByUsuario&id=<?=$dados['usuario']->getId()?>" class="btn_verde"> Mostrar Frequencias </a>
+
+      <h6 class="h6_dados"> Atividades: </h6>
+
+      <a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades&idUsuario=<?=$dados['usuario']->getId()?>" class="btn_verde"> Mostrar Atividades </a>
+
+      <h6 class="h6_dados">Faltas consecutivas: </h6>
+        <p class="p_dados"> <?= $dados['faltasConsecutivas']?>/3
+        </p>
+
+    </div>
   </div>
 </div>
 

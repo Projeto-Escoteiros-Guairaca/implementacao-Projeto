@@ -45,7 +45,15 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                         <hr>
                         <p class="card-text">
                             <?php echo $ativ->getDescricaoAtividade(); ?></p>
-                        <a class="btn_cards" style="text-decoration: none" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade=<?php echo $ativ->getIdAtividade(); ?>">Mostrar Tarefas
+                            <?php
+                                if(! isset($dados['usuario'])) {
+                                    $linkTarefas = BASEURL .'/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade='.$ativ->getIdAtividade();
+                                }
+                                else {
+                                    $linkTarefas = BASEURL .'/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade='.$ativ->getIdAtividade().'&idUsuario='.$dados['usuario'];
+                                }
+                            ?>
+                        <a class="btn_cards" style="text-decoration: none" href="<?=$linkTarefas?>">Mostrar Tarefas
                         </a>
 
                         <?php

@@ -16,7 +16,7 @@
                     <h4>Primo: </h4>
                     <h5 style="color:brown;"><?php 
                     if($dados['matilha']->getIdPrimo() != null) {
-                        echo $dados['matilha']->getIdPrimo();
+                        echo $dados['matilha']->getUsuarioPrimo()->getNome();
                     }  
                     else {
                        echo "O primo ainda não foi selecionado.";
@@ -47,10 +47,11 @@
                 <div id="descricao">
                 <hr>
                     <?php foreach ($dados["usuarios"] as $usu):?>
-                    
+
+                        <a href="<?=BASEURL?>/controller/MatilhaController.php?action=definePrimo&isForm&idMatilha=<?=$dados['matilha']->getIdMatilha()?>&id=<?=$usu->getId()?>" class="btn btn-warning"> Definir Como primo </a>
                         <?= $usu->getNome();?>
 
-                        <a class="btn btn-warning">dados do Lobinho</a>
+                        <a href="<?=BASEURL?>/controller/AcessoController.php?controller=Usuario&action=profile&id=<?=$usu->getId() ?>" class="btn btn-warning">dados do Lobinho</a>
                     <hr>
                     <?php endforeach;?>
                 </div>

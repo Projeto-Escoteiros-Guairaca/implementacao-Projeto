@@ -106,13 +106,13 @@ class FrequenciaController extends Controller {
         $id = 0;
         $id = $_GET['idMatilha'];
 
-        $usuarios = $this->usuarioDao->findUsuariosByIdAcateia($id);
+        $usuarios = $this->usuarioDao->findUsuariosByIdMatilha($id);
         return $usuarios;
     }
     public function findUsuariosById(Array $frequencias){
         $usuarios = array();
         foreach($frequencias as $freq):
-            $usuario = $this->usuarioDao->findUsuariosById($freq->getId_usuario());
+            $usuario = $this->usuarioDao->findUsuariosById($freq->getIdUsuario());
             array_push($usuarios, $usuario);
         endforeach;
         return $usuarios;

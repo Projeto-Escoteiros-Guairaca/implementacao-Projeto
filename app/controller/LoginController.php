@@ -2,18 +2,23 @@
 #Classe controller para a Logar do sistema
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
+require_once(__DIR__ . "/../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../service/LoginService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/Matilha.php");
 
 class LoginController extends Controller {
 
     private LoginService $loginService;
     private UsuarioDAO $usuarioDao;
+    private MatilhaDAO $matilhaDao;
 
     public function __construct() {
 
         $this->loginService = new LoginService();
         $this->usuarioDao = new UsuarioDAO();
+        $this->matilhaDao = new MatilhaDAO();
+
         $this->setActionDefault('login',true);
         $this->handleAction();
     }
@@ -68,9 +73,13 @@ class LoginController extends Controller {
         $_SESSION[SESSAO_USUARIO_ID_MATILHA] = $usuario->getIdMatilha();
         $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
         $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
-        if($usuario->getIdMatilha() == null) {
+        if($usuario->getIdMatilha() == null && $usuario->getPapeisAsArray() == "ADMINISTRADOR") {
             $this->loadController("Acesso");
             die;
+        }
+        else {
+            $matilha = $this->matilhaDao->findById($usuario->getIdMatilha());
+            $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $matilha->getIdAlcateia();
         }
         
     }
