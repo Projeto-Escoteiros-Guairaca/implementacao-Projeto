@@ -12,6 +12,7 @@ require_once(__DIR__ . "/../service/MatilhaService.php");
     
 class MatilhaController extends Controller{
 
+    private AlcateiaDAO $alcateiaDao;
     private UsuarioDAO $usuarioDao;
     private MatilhaDAO $matilhaDao;
     private MatilhaService $matilhaService;
@@ -38,7 +39,8 @@ class MatilhaController extends Controller{
             $this->loadController('Login', '?action=login');
             die;
         }
-        
+
+        $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->matilhaDao = new MatilhaDAO();
         $this->matilhaService = new MatilhaService();
@@ -66,6 +68,11 @@ class MatilhaController extends Controller{
             $_SESSION['activeAlcateiaNome'] = $_GET['nomeAlcateia'];
         }
         
+        if(isset($_SESSION[SESSAO_USUARIO_ID_ALCATEIA])) {
+            $alcateia = $this->alcateiaDao->findById($_SESSION[SESSAO_USUARIO_ID_ALCATEIA]);
+            $_SESSION['activeAlcateiaId'] = $alcateia->getIdAlcateia();
+            $_SESSION['activeAlcateiaNome'] = $alcateia->getNomeAlcateia();
+        }
         
         if($_SESSION['chefeMatilha'] != "" or isset($_GET['idMatilha'])) {
             $_GET['id'] = $_SESSION['chefeMatilha'];
@@ -82,7 +89,7 @@ class MatilhaController extends Controller{
             }
             
             if($matilha->getIdPrimo() != null) {
-                $matilha->setUsuarioChefe($this->usuarioDao->findById($matilha->getIdPrimo()));
+                $matilha->setUsuarioPrimo($this->usuarioDao->findById($matilha->getIdPrimo()));
             }
 
             $dados['alcateia'][0] = $_SESSION['activeAlcateiaId'];
@@ -217,7 +224,11 @@ class MatilhaController extends Controller{
         }
     }
 
-    
+    protected function definePrimo() {
+        $this->matilhaDao->definePrimo($_GET['idMatilha'], $_GET["id"]);
+        $this->listMatilhas();
+
+    }
 } 
 
 $alcCont = new MatilhaController();

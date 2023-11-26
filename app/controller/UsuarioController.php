@@ -176,6 +176,8 @@ class UsuarioController extends Controller
         }
     }
 
+    
+
     protected function save() {
         
         if(empty($_POST)) {

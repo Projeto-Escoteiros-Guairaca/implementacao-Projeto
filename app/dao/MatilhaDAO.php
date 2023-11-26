@@ -169,6 +169,16 @@ class MatilhaDao{
         
     }
 
+    public function definePrimo($id, $idUsuario) {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE tb_matilhas SET id_usuario_primo = :idUsuario WHERE id_matilha = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $id);
+        $stm->bindValue("idUsuario", $idUsuario);
+        $stm->execute();   
+    }
+
     public function mapMatilhaAndAlcateia($result) {
         $matilhas = array();
         foreach ($result as $reg) {

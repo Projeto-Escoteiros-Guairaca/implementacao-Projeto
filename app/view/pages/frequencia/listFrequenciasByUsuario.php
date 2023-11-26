@@ -36,7 +36,7 @@
                         <?php else: ?>
                             <?php foreach($dados["lista"] as $freq): ?>
                                 <tr>
-                                    <td><?php echo $dados['encontros'][$i]->getDataFormated(); ?>
+                                    <td><?php echo $dados['encontros'][$i]->getDataEncontroFormated(); ?>
                                 </td>
                                     <td>
                                         <?php if($freq->getFrequencia() == 1) {

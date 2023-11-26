@@ -41,8 +41,13 @@ class AtividadeController extends Controller {
     }
 
     public function listAtividades(string $msgErro = "", string $msgSucesso = ""){
+        
+
         $atividades = $this->atividadeDao->list();
         $dados["lista"] = $atividades;
+        if(isset($_GET['idUsuario'])) {
+         $dados['usuario'] = $_GET['idUsuario'];   
+        }
         $this->loadView("pages/atividade/listAllAtividades.php", $dados, $msgErro, $msgSucesso, true);
     }
     

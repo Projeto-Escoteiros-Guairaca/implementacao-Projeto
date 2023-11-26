@@ -20,10 +20,11 @@ class EncontroDao {
     }
 
     public function filterByMatilha(int $idMatilha) {
-  $conn = Connection::getConn();
+  
+        $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.id_matilha = ? ORDER BY e.data";
+        " WHERE e.id_matilha = ? ORDER BY e.data_encontro";
         $stm = $conn->prepare($sql);    
         $stm->execute([$idMatilha]);
         $result = $stm->fetchAll();
@@ -41,7 +42,7 @@ class EncontroDao {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.data BETWEEN ? AND ? ORDER BY e.data";
+        " WHERE e.data BETWEEN ? AND ? ORDER BY e.data_encontro";
         $stm = $conn->prepare($sql);
         $stm->execute([$desde, $ate]);
         $result = $stm->fetchAll();
@@ -59,7 +60,7 @@ class EncontroDao {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.id_matilha = ? AND e.data BETWEEN ? AND ? ORDER BY e.data";
+        " WHERE e.id_matilha = ? AND e.data BETWEEN ? AND ? ORDER BY e.data_encontro";
         $stm = $conn->prepare($sql);
         $stm->execute([$idMatilha, $desde, $ate]);
         $result = $stm->fetchAll();

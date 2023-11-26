@@ -43,9 +43,16 @@ class EncontroController extends Controller {
     }
 
     public function listEncontros(string $msgErro = "", string $msgSucesso = ""){
-        
         $encontros = [];
-        $encontros = $this->encontroDao->list();
+        if($_SESSION['chefeMatilha'] != "") { 
+            
+            $encontros = $this->encontroDao->filterByMatilha($_SESSION[SESSAO_USUARIO_ID_MATILHA]);
+        }
+        else {
+            $encontros = [];
+            $encontros = $this->encontroDao->list();
+        }
+        
         foreach($encontros as $enc):
             $matilha = $this->matilhaDao->listWithAlcateias($enc->getIdMatilha());
             $enc->setMatilha($matilha);

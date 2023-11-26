@@ -58,16 +58,21 @@ class TarefaController extends Controller {
 
     public function listTarefas(string $msgErro = "", string $msgSucesso = ""){
         $tarefaComplete = array();
-        // if(isset($_GET["idAtividade"])) {
-        //     $_SESSION["activeAtividade"] = $_GET["idAtividade"];
-        // }
+        if(isset($_GET["idUsuario"])) {
+            $idUsuario = $_GET["idUsuario"];
+            $dados['idUsuario'] = $idUsuario;
+
+        }
+        else {
+            $idUsuario = $_SESSION[SESSAO_USUARIO_ID];
+        }
         
         $atividade = $this->atividadeDao->findById($_SESSION["activeAtividade"]);
 
         if(isset($_SESSION["activeAtividade"])) {
             $tarefas = $this->tarefaDao->listByIdAtiv($_SESSION["activeAtividade"]);
             foreach($tarefas as $tar):
-                $tarefaUsuario = $this->tarefaDao->getTarefaSendByUsuario($_SESSION[SESSAO_USUARIO_ID], $tar->getIdTarefa());
+                $tarefaUsuario = $this->tarefaDao->getTarefaSendByUsuario($idUsuario, $tar->getIdTarefa());
 
 
                 if($tarefaUsuario == null) {
@@ -100,14 +105,23 @@ class TarefaController extends Controller {
             $dados["tarefa"] = $tarefa;
 
             $this->loadView("pages/tarefa/lobinhoOnly/openTarefaLobinho.php", $dados, "", "", true);
+            return;
         }
-        else {
+
+        if(isset($_GET['idUsuario'])) {
             $tarefa = $this->findById();
+            $usuarioEnviou = $this->tarefaDao->getTarefaSendByUsuario($_GET['idUsuario'], $_SESSION['activeTarefa']);
+            $dados['envioUsuario'] = $usuarioEnviou;
             $dados["tarefa"] = $tarefa;
 
-            $this->loadView("pages/tarefa/chefeOnly/openTarefaChefe.php", $dados, "", "", true);
-
+            $this->loadView("pages/tarefa/lobinhoOnly/openTarefaLobinho.php", $dados, "", "", true);
+            return;
         }
+        $tarefa = $this->findById();
+        $dados["tarefa"] = $tarefa;
+
+        $this->loadView("pages/tarefa/chefeOnly/openTarefaChefe.php", $dados, "", "", true);
+
     }
 
     public function listUsuarios() {
@@ -196,7 +210,8 @@ class TarefaController extends Controller {
     public function updateEntrega() {
         $idEntrega = $_GET['idEntrega'];
         $this->tarefaDao->validateTarefa(0, $idEntrega);
-    $this->tarefaDao->changeDataEntrega(date('Y-m-d'), $idEntrega);        
+        $this->tarefaDao->changeDataEntrega(date('Y-m-d'), $idEntrega);     
+
         $idArquivo = $_POST['idArquivo'];
         $this->tarefaDao->deleteImage($idArquivo);
 

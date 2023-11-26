@@ -27,7 +27,9 @@ class AcessoController extends Controller {
     const chefeActions = [
         "listFrequencias", "listUsuarios", "listMatilhas", "listAtividades", "listTarefas", "listEncontros", "listUsuariosByMatilha",
         "create", "createTarefaAtiv",  "home", "initialChefePage", "edit", "delete", "save", "update", "findIt",
-        "findUsuariosByIdAcateia", "findMatilhaById", "findIt",
+        "findUsuariosByIdAcateia", "findMatilhaById", "findIt", "openTarefa", "listUsuarios", 
+        "openTarefaOfEspecificUsuario", "validateTarefa", "addTarefa", "addArquivo", "updateEntrega",
+        "saveTarefa", "findById", "profile"
     ];
     
     const noSessionActions = [
