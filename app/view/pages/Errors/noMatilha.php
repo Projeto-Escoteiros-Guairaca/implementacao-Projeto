@@ -13,7 +13,6 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
 <p><h1>Você está atualmente sem nenhuma Matilha ativa. Avise seu chefe para que este o insira na matilha correta. </h1> </p>
 <br>
 </div>
-<div>       <a class="" href="<?= BASEURL ?>/controller/HomeController.php">Voltar</a></div>
      
 <?php  
 require_once(__DIR__ . "/../../include/footer.php");

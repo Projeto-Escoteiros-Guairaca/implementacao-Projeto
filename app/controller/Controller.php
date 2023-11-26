@@ -14,9 +14,9 @@ class Controller {
         if(isset($_GET['action'])){
             $action = $_GET['action'];
         }
-        else if(isset($_SESSION['ACTION'])) {
-            $action = $_SESSION['ACTION'][$_SESSION['controller']];
-        }
+        // else if(isset($_SESSION['ACTION'])) {
+        //     $action = $_SESSION['ACTION'][$_SESSION['controller']];
+        // }
             
         
         //Chama a ação

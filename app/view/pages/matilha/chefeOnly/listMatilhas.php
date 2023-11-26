@@ -35,7 +35,7 @@ require_once(__DIR__ . "/../../../include/menu.php");
                             <a class="btn_cards my-1" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=edit&id=<?php echo $alc->getIdMatilha(); ?>&idAlcateia=<?= $dados['alcateia'][0]; ?>&nomeAlcateia=<?= $dados['alcateia'][1]; ?>">
                                 Alterar</a>
                                 <br> <br>
-                            <a class="btn_cards" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idMatilha=<?= $alc->getIdMatilha() ?>&idAlcateia=<?= $dados['alcateia'][0]; ?>&nomeAlcateia=<?= $dados['alcateia'][1]; ?>">
+                            <a class="btn_cards" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilhas&idMatilha=<?= $alc->getIdMatilha() ?>&idAlcateia=<?= $dados['alcateia'][0]; ?>&nomeAlcateia=<?= $dados['alcateia'][1]; ?>">
                                 Mostrar Dados da Matilha: </a>
                                 
                            

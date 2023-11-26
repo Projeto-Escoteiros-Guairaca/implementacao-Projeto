@@ -45,6 +45,10 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         <p class="p_dados"> <?= $dados['usuario']->getSenha(); ?>
         </p>
 
+        <h6 class="h6_dados">Faltas consecutivas: </h6>
+        <p class="p_dados"> <?= $dados['faltasConsecutivas']?>/3
+        </p>
+
     </div>
 
     <div class="card_dados">

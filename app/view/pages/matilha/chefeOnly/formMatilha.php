@@ -60,7 +60,7 @@
                 
             </form>
             <a class="btn_voltar" 
-                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idAlcateia=<?=$_SESSION['activeAlcateiaId'];?>&nomeAlcateia=<?= $_SESSION['activeAlcateiaNome'];?>">Voltar</a>
+                href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilhas&idAlcateia=<?=$_SESSION['activeAlcateiaId'];?>&nomeAlcateia=<?= $_SESSION['activeAlcateiaNome'];?>">Voltar</a>
        
        
 

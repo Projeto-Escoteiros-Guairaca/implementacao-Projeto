@@ -70,7 +70,7 @@ else {
               echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Usuario&action=listUsuariosByMatilha'>Lobinhos</a>";
               echo '</li>';
               echo '<li class="nav-item">';
-              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha&action=listMatilha'> Matilhas</a>";
+              echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Matilha&action=listMatilhas'> Matilhas</a>";
               echo '</li>';
               echo '<li class="nav-item">';
               echo "<a class='nav-link' href = '" .BASEURL. "/controller/AcessoController.php?controller=Encontro&action=listUsuarios'> Encontros</a>";

@@ -50,7 +50,7 @@ class TarefaDAO {
     public function insert(Tarefa $tarefa){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao)" .
+        $sql = "INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao_tarefa)" .
                     " VALUES (:id_atividade, :nome, :descricao)";
         $stm = $conn->prepare($sql);
 

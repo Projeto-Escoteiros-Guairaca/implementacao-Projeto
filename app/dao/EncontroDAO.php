@@ -15,12 +15,6 @@ class EncontroDao {
         $result = $stm->fetchAll();
 
         $encontros = $this->mapEncontro($result);
-
-        foreach($encontros as $enc):
-            $matilha = new Matilha();
-            $matilha = $this->listMatilhas($enc->getIdMatilha());
-            $enc->setMatilha($matilha[0]);
-        endforeach;
         
         return $encontros;
     }
@@ -165,7 +159,7 @@ class EncontroDao {
     public function insert(encontro $encontro){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_encontros (id_matilha, data, descricao_encontro)" .
+        $sql = "INSERT INTO tb_encontros (id_matilha, data_encontro, descricao_encontro)" .
                " VALUES (:id_matilha, :data, :descricao)";
         
         $stm = $conn->prepare($sql);

@@ -77,13 +77,12 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_usuarios u " .
-               "INNER JOIN tb_matilhas m ON u.id_matilha = m.id_matilha" .
                " WHERE u.login = ? AND u.senha = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$login, $senha]);
         $result = $stm->fetchAll();
 
-        $usuarios = $this->mapUsuarioAndMatilha($result);
+        $usuarios = $this->mapUsuarios($result);
 
         if(count($usuarios) == 1)
             return $usuarios[0];

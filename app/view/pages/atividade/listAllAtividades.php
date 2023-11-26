@@ -33,7 +33,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                 <div class="card my-2 mx-2 Card" style="width: 18rem;">
                     <?php if ($isLobinho == 2) {
                         echo '<a id= "editar_atv" class= "principais_btn_cards_atv" href="' . BASEURL . '/controller/AcessoController.php?controller=Atividade&action=edit&id=' . $ativ->getIdAtividade() . '"><i class="bi bi-pencil"><span id= p_editar_atv >Editar</span></i></a>
-                              <a id= "deletar_atv" class= "principais_btn_cards_atv" href="' . BASEURL . '/controller/AtividadeController.php?action=delete&id=' . $ativ->getIdAtividade() . '"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>';
+                              <a id= "deletar_atv" class= "principais_btn_cards_atv" href="' . BASEURL . '/controller/AcessoController.php?controller=Atividade&action=delete&id=' . $ativ->getIdAtividade() . '"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>';
                     }
                     ?>
 

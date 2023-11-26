@@ -4,6 +4,7 @@ require_once(__DIR__ . "/../util/Connection.php");
 require_once(__DIR__ . "/../model/Matilha.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/Contato.php");
+require_once(__DIR__ . "/../model/Alcateia.php");
 
 
 class MatilhaDao{
@@ -103,12 +104,13 @@ class MatilhaDao{
     public function insert(Matilha $matilha){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_matilhas (nome_matilha, id_usuario_chefe)" .
-               " VALUES (:nome, :id_chefe)" ;
+        $sql = "INSERT INTO tb_matilhas (nome_matilha, id_usuario_chefe, id_alcateia)" .
+               " VALUES (:nome, :id_chefe, :id_alcateia)" ;
 
         $stm = $conn->prepare($sql);
         $stm->bindValue(':nome', $matilha->getNomeMatilha());
         $stm->bindValue(':id_chefe', $matilha->getIdChefe());
+        $stm->bindValue(':id_alcateia', $matilha->getIdAlcateia());
         $stm->execute();
     }
 
@@ -143,5 +145,47 @@ class MatilhaDao{
         $stm->bindValue("id", $id);
         $stm->bindValue("idUsuario", $idUsuario);
         $stm->execute();
+    }
+
+    public function listWithAlcateias($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM tb_matilhas a " .
+         "INNER JOIN tb_alcateias al ON a.id_alcateia = al.id_alcateia WHERE a.id_matilha = ? ORDER BY a.id_matilha";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+        $matilhas = $this->mapMatilhaAndAlcateia($result);
+
+        if(count($matilhas) == 1)
+            return $matilhas[0];
+        elseif(count($matilhas) == 0)
+            return null;
+
+        die("MatilhaDAO.findById()" . 
+            " - Erro: mais de uma matilha encontrada.");
+
+        
+    }
+
+    public function mapMatilhaAndAlcateia($result) {
+        $matilhas = array();
+        foreach ($result as $reg) {
+            $matilha = new Matilha();
+            $matilha->setIdMatilha($reg['id_matilha']);
+            $matilha->setNomeMatilha($reg['nome_matilha']);
+            $matilha->setIdChefe($reg['id_usuario_chefe']);
+
+            $alcateia = new Alcateia();
+
+            $alcateia->setIdAlcateia($reg['id_alcateia']);
+            $alcateia->setNomeAlcateia($reg['nome_alcateia']);
+            $matilha->setAlcateia($alcateia);
+
+            array_push($matilhas, $matilha);
+
+        }
+        return $matilhas;
     }
 }

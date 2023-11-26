@@ -70,7 +70,8 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $enc->getDataEncontroFormated();?></h5>
                             <hr>
-                            <p class="card-text"><?php echo $enc->getMatilha()->getNomeMatilha();?></p>
+                            <h4 class="card-text"><?php echo $enc->getMatilha()->getAlcateia()->getNomeAlcateia() ?> </h4>
+                            <h5 class="card-text"><?php echo $enc->getMatilha()->getNomeMatilha();?></h5>
                             <p class="card-text"><?php echo $enc->getDescricaoEncontro();?></p>
                             <a class="btn_cards" 
                                 href="<?= BASEURL ?>/controller/AcessoController.php?controller=Encontro&action=edit&id=<?= $enc->getIdEncontro() ?>">
