@@ -21,6 +21,9 @@
     text-align: center;
     position: absolute;
 }
+.tarefa{
+    
+}
 /*Blocos que contem o check box e o nome da atv*/
 .containerTarefa {
     margin: 2vh 0;

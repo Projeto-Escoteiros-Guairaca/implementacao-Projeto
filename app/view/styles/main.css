@@ -315,6 +315,32 @@ form {
     -webkit-text-stroke-color: 0;
     /* cor da borda */
 }
+.btn_azul{
+    border: 1px solid #293556;
+    min-width: 5vw;
+    min-height: 5vh;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 5px;
+    background-color: transparent;
+    color: black;
+    -webkit-text-stroke-width: 0.2px;
+    /* largura da borda */
+    -webkit-text-stroke-color: var(--verde-escuro);
+    /* cor da borda */
+}
+.btn_azul:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    background-color: #2f3a57;
+    box-shadow: var(--sombras_bordas);
+    -webkit-text-stroke-width: 0;
+    /* largura da borda */
+    -webkit-text-stroke-color: 0;
+    /* cor da borda */
+    text-decoration: none;
+}
 
 /*Aqui finaliza as classes universais*/
 .modo-escuro {
@@ -404,6 +430,12 @@ form {
     width: 98%;
     margin: 5vh auto 1vh;
 }
-.msg{
-    z-index: 30;
+
+.btn-outline-success{
+    border: var(--borda_verde_esc);
+    color: #1d7874;
+}
+.btn-outline-success:hover{
+    background-color: #1d7874;
+    border: var(--bordas_douradas);
 }
