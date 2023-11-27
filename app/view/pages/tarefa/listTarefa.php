@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listaTarefa.css" />
 
 
-<h3 class='text-center'>Tarefas da atividade<?= $dados["atividade"]->getNomeAtividade(); ?> </h3>
+<h3 class='text-center titulos'>Tarefas da atividade <?= $dados["atividade"]->getNomeAtividade(); ?> </h3>
 <a class="btn_cards_atv" href = "<?= BASEURL ?>/controller/AcessoController.php?controller=Atividade&action=listAtividades"> voltar à lista de Atividades </a>
 
 <div class="col-12 ">

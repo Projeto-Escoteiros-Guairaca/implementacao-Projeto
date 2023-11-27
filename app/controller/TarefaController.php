@@ -184,13 +184,17 @@ class TarefaController extends Controller {
         }
         $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 
-        if(strpos($imagem['type'], "image") !== false) {
+        $tipoMIME = mime_content_type($imagem['tmp_name']);
+
+        if (strpos($tipoMIME, "image") !== false) {
             $nome = "Imagem";
-        }
-        else if(strpos($imagem['type'], "video") !== false) {
+        } else if (strpos($tipoMIME, "video") !== false) {
             $nome = "Video";
-        }
-        else {
+        } else if (strpos($tipoMIME, "audio") !== false) {
+            $nome = "Audio";
+        } else if ($tipoMIME === "application/pdf") {
+            $nome = "PDF";
+        } else {
             $nome = "Texto";
         }
      
