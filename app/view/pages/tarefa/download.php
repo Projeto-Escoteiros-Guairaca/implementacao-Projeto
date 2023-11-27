@@ -11,7 +11,6 @@ if (isset($_GET['file'])) {
     $filePath = str_replace(array('/'), $string,$filePath);
     $filePath = str_replace(array($string2), "",$filePath);
     
-    var_dump($filePath); 
     if (file_exists($filePath)) {
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="' . basename($filePath) . '"');

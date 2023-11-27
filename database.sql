@@ -64,7 +64,7 @@ CREATE TABLE tb_frequencias(
   id_frequencia int AUTO_INCREMENT,
   id_usuario int NOT NULL,
   id_encontro int NOT NULL,
-  frequencia BOOLEAN NOT NULL NOT NULL DEFAULT true,
+  frequencia BOOLEAN NOT NULL DEFAULT true,
   PRIMARY KEY (id_frequencia),
   FOREIGN KEY (id_usuario) REFERENCES tb_usuarios (id_usuario), 
   FOREIGN KEY (id_encontro) REFERENCES tb_encontros (id_encontro)

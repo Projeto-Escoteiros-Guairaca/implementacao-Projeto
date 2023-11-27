@@ -163,8 +163,8 @@ class UsuarioController extends Controller
             $contato = $this->contatoDao->findById($usuario->getIdContato());
             $usuario->setContato($contato);
 
-            $dados["id_endereco"] = $endereco->getId_endereco();
-            $dados["id_contato"] = $contato->getId_contato();
+            $dados["id_endereco"] = $endereco->getIdEndereco();
+            $dados["id_contato"] = $contato->getIdContato();
             $dados["id"] = $usuario->getId();
             $dados["papeis"] = UsuarioPapel::getAllAsArray();
             $usuario->setSenha("");

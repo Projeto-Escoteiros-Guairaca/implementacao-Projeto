@@ -37,7 +37,6 @@ class LoginController extends Controller {
         if(empty($erros)) {
             //Valida o login a partir do banco de dados
             $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
-            var_dump($usuario);
             if($usuario) {
                     $this->salvarUsuarioSessao($usuario);
                     
@@ -73,7 +72,7 @@ class LoginController extends Controller {
         $_SESSION[SESSAO_USUARIO_ID_MATILHA] = $usuario->getIdMatilha();
         $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
         $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
-        if($usuario->getIdMatilha() == null && $usuario->getPapeisAsArray() == "ADMINISTRADOR") {
+        if($usuario->getIdMatilha() == null or $usuario->getPapeisAsArray() == "ADMINISTRADOR") {
             $this->loadController("Acesso");
             die;
         }

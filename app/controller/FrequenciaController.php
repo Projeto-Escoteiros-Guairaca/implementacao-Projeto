@@ -15,7 +15,12 @@ class FrequenciaController extends Controller {
     private $encontroDao;
 
     public function __construct() {
-        
+        if(isset($_GET['action'])) {
+            if(isset($_GET['isForm'])) {
+                $_SESSION['callAccessToken'] = false;
+            }
+        }
+
         if(isset($_SESSION['callAccessToken'])) {
             if($_SESSION['callAccessToken'] == true) {
                 $_SESSION['controller'] = "Frequencia";
@@ -125,25 +130,21 @@ class FrequenciaController extends Controller {
         return $frequencias;
     }
 
-    protected function updateToFalse(){
-        $frequencia = $this->findFrequenciaById();
-        if($frequencia){
-            $this->frequenciaDao->updateToFalse($frequencia->getId_frequencia());
-            $this->listFrequencias("","Frequencia alterada com sucesso.");
-        } else {
-            $this->listFrequencias("","Frequencia não encontrada.");
+    public function updateFrequencia() {
+    
+        $status = $_GET['status'];
+        if($status == 1) {
+            $this->frequenciaDao->updateToTrue($_GET['idFrequencia']);
+            echo $status;
+            return;
+        } 
+        else { 
+            $this->frequenciaDao->updateToFalse($_GET['idFrequencia']);
+            echo $status;
+            return;
         }
+        
     }
-    protected function updateToTrue(){
-        $frequencia = $this->findFrequenciaById();
-        if($frequencia){
-            $this->frequenciaDao->updateToTrue($frequencia->getId_frequencia());
-            $this->listFrequencias("","Frequencia alterada com sucesso.");
-        } else {
-            $this->listFrequencias("Frequencia não encontrada.");
-        }
-    }
-
     protected function findFrequenciaById(){
         $id = 0;
         if(isset($_GET['id']))

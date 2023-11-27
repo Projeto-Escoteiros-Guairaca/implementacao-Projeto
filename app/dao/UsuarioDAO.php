@@ -127,8 +127,8 @@ class UsuarioDAO {
                " VALUES (:id_endereco, :id_contato, :nome, :cpf, :login, :senha)";
         $stm = $conn->prepare($sql);
         
-        $stm->bindValue("id_endereco", $usuario->getEndereco()->getId_endereco());
-        $stm->bindValue("id_contato", $usuario->getContato()->getId_contato());
+        $stm->bindValue("id_endereco", $usuario->getEndereco()->getIdEndereco());
+        $stm->bindValue("id_contato", $usuario->getContato()->getIdContato());
         $stm->bindValue("nome", $usuario->getNome());
         $stm->bindValue("cpf", $usuario->getCpf());
         $stm->bindValue("login", $usuario->getLogin());

@@ -8,14 +8,15 @@
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/tabelas.css" />
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
+<h2 class='titulos'>
+            <?php echo"encontro do dia " . $dados['encontro']->getDataEncontroFormated(); ?>
+            </h2>
 <div class="container">
     <div class="col-12">
 
         <div class="row" style="margin-top: 10px;">
     
-            <h2 class='titulos'>
-            <?php echo"encontro do dia " . $dados['encontro']->getDataEncontroFormated(); ?>
-            </h2>
+            
             
                 <table id="tabfrequencias">
                     <thead>
@@ -36,14 +37,16 @@
                                     <td><?php echo $freq->getUsuario()->getNome(); ?></td>
                                     <td>
                                         <?php 
+                                        $idFrequencia = $freq->getIdFrequencia();
                                         if ($freq->getFrequencia() == 1) {
-                                            echo "<a class='btn btn-outline-success' href='". BASEURL .
-                                            "/controller/AcessoController.php?controller=Frequencia&action=updateToFalse&id=". $freq->getIdFrequencia() .
-                                            "&idMatilha=". $freq->getUsuario()->getIdMatilha() ."&idEncontro=". $freq->getIdEncontro() ."'>C</a>";
-                                        } else {
-                                            echo "<a class='btn btn-outline-danger' href='". BASEURL .
-                                            "/controller/AcessoController.php?controller=Frequencia&action=updateToTrue&id=". $freq->getIdFrequencia() .
-                                            "&idMatilha=". $freq->getUsuario()->getIdMatilha() ."&idEncontro=". $freq->getIdEncontro() ."'>F</a>";
+                                            echo    <<<END
+                                                <button class="btn btn-outline-success" id="frequencia$idFrequencia" onclick="changeFrequencia('$idFrequencia', '0')"> C </button>
+                                            END;
+                                        }
+                                        else {
+                                            echo    <<<END
+                                                <button class="btn btn-outline-danger" id="frequencia$idFrequencia" onclick="changeFrequencia('$idFrequencia', '1')"> F </button>
+                                            END;
                                         }
                                         ?>
                                     </td>
@@ -65,6 +68,7 @@
  </div>
         
 <br><br><br><br><br><br>
+<script src="<?= BASEURL ?>/view/js/encontro.js"></script> 
 
 <?php
     require_once(__DIR__ . "/../../include/footer.php");
