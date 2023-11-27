@@ -2,17 +2,23 @@
 #Classe controller para a Logar do sistema
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
+require_once(__DIR__ . "/../dao/MatilhaDAO.php");
 require_once(__DIR__ . "/../service/LoginService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/Matilha.php");
 
 class LoginController extends Controller {
 
     private LoginService $loginService;
     private UsuarioDAO $usuarioDao;
+    private MatilhaDAO $matilhaDao;
 
     public function __construct() {
+
         $this->loginService = new LoginService();
         $this->usuarioDao = new UsuarioDAO();
+        $this->matilhaDao = new MatilhaDAO();
+
         $this->setActionDefault('login',true);
         $this->handleAction();
     }
@@ -31,14 +37,13 @@ class LoginController extends Controller {
         if(empty($erros)) {
             //Valida o login a partir do banco de dados
             $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
-            
+            var_dump($usuario);
             if($usuario) {
-                if($usuario->getSenha() === $senha) {
                     $this->salvarUsuarioSessao($usuario);
                     
                 header("location: " . HOME_PAGE);
                 exit;
-                }
+            
             }
              else {
                 $erros = ["Login ou senha informados são inválidos!"];
@@ -68,14 +73,13 @@ class LoginController extends Controller {
         $_SESSION[SESSAO_USUARIO_ID_MATILHA] = $usuario->getIdMatilha();
         $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
         $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
-        if($usuario->getMatilha()->getIdAlcateia() != null) {
-            $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $usuario->getMatilha()->getIdAlcateia();
-            $_SESSION['chefeMatilha'] = $_SESSION[SESSAO_USUARIO_ID_ALCATEIA];
+        if($usuario->getIdMatilha() == null && $usuario->getPapeisAsArray() == "ADMINISTRADOR") {
+            $this->loadController("Acesso");
+            die;
         }
         else {
-            $this->loadView("pages/Errors/accessDenied.php", [], "", "");
-            $this->loadController("Acesso", "?controller=Login&action=salvarUsuarioSessao");
-            die;
+            $matilha = $this->matilhaDao->findById($usuario->getIdMatilha());
+            $_SESSION[SESSAO_USUARIO_ID_ALCATEIA] = $matilha->getIdAlcateia();
         }
         
     }

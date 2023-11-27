@@ -14,7 +14,7 @@
     <div class="col-12">
             <form id="formMatilha" class="formularios" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save&isForm=true">
                 
-                <h2 class="text-center">
+                <h2 class="text-center titulos">
                     <?php 
                     if(isset($dados["id_matilha"])): ?>
                         Alterar Matilha

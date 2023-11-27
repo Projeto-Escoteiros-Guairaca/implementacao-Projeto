@@ -8,10 +8,10 @@ class AcessoController extends Controller {
 
     const administradorActions = [
         "listFrequencias", "listUsuarios", "listAtividades", "listTarefas", "listEncontros","listAlcateias",
-        "listMatilha", "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
+        "listMatilhas", "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
         "create", "createTarefaAtiv", "saveEndereco", "saveContato", "saveUsuario",
         "edit", "delete", "save", "update", "findIt", "changeMatilha", "updateToInativo", "updateToAtivo",
-        "findUsuarioById", "changePapel", "findChefeAndPrimo", "listMatilha", "findMatilhaById", "filter",
+        "findUsuarioById", "changePapel", "findChefeAndPrimo", "listMatilhas", "findMatilhaById", "filter",
         "findEncontroById", "findUsuariosByIdMatilha", "listByUsuario","createFrequencias", 
         "findUsuariosById",
         "findFrequenciasByIdEncontro", "findEncontroByIdEncontro",
@@ -25,9 +25,14 @@ class AcessoController extends Controller {
     ];  
 
     const chefeActions = [
-        "listFrequencias", "listUsuarios", "listMatilha", "listAtividades", "listTarefas", "listEncontros", "listUsuariosByMatilha",
+        "createFrequencias", "listFrequencias", "listUsuarios", "listMatilhas", "listAtividades", "listTarefas", "listEncontros", "listUsuariosByMatilha",
         "create", "createTarefaAtiv",  "home", "initialChefePage", "edit", "delete", "save", "update", "findIt",
-        "findUsuariosByIdAcateia", "findMatilhaById", "findIt",
+        "findUsuariosByIdAcateia", "findMatilhaById", "findIt", "openTarefa", "listUsuarios", 
+        "openTarefaOfEspecificUsuario", "validateTarefa", "addTarefa", "addArquivo", "updateEntrega",
+        "saveTarefa", "findById", "profile", "listByUsuario", 
+        "findUsuariosByIdMatilha", "findUsuariosById",
+        "findFrequenciasByIdEncontro", "findEncontroByIdEncontro", "updateToFalse", 
+        "updateToTrue", "findFrequenciaById"
     ];
     
     const noSessionActions = [
@@ -35,9 +40,24 @@ class AcessoController extends Controller {
     ];
 
     public function __construct() {  
-        $this->setSessionVariables();
+  
+        if(isset($_SESSION[SESSAO_USUARIO_ID_MATILHA])) {
+            if($_SESSION[SESSAO_USUARIO_ID_MATILHA] != null) {
+                $this->setSessionVariables();
+                return;
+            }
+            $this->noMatilha();
+        }
+        else {
+            $this->setSessionVariables();
+        }
     }
 
+    public function noMatilha() {
+        $this->loadView("pages/Errors/noMatilha.php", [], "", "");
+        $_SESSION['controller'] = "Acesso";
+        $_SESSION['ACTION'][$_SESSION['controller']] = 'noMatilha';
+    }
     public function setSessionVariables() {
         $url = strstr("$_SERVER[REQUEST_URI]", "action");
     

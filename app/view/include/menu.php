@@ -68,13 +68,13 @@ if ($isChefe == 1) {
           echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'>Lobinhos</a>";
           echo '</li>';
           echo '<li class="nav-item">';
-          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Matilha&action=listMatilha'> Matilhas</a>";
+          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Matilha&action=listMatilhas'> Matilhas</a>";
           echo '</li>';
           echo '<li class="nav-item">';
-          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Encontro&action=listUsuarios'> Encontros</a>";
+          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Encontro&action=listEncontros'> Encontros</a>";
           echo '</li>';
           echo '<li class="nav-item">';
-          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Atividade&action=listUsuarios'> Atividades</a>";
+          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Atividade&action=listAtividades'> Atividades</a>";
           echo '</li>';
         }
         

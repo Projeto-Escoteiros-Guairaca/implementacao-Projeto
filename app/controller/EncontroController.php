@@ -10,6 +10,8 @@ require_once(__DIR__ . "/../service/EncontroService.php");
 class EncontroController extends Controller {
 
     private EncontroDAO $encontroDao;
+    private MatilhaDAO $matilhaDao;
+
     private EncontroService $encontroService;
 
     public function __construct() {
@@ -33,6 +35,7 @@ class EncontroController extends Controller {
             die;
         }
            
+        $this->matilhaDao = new MatilhaDao();
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
         $this->setActionDefault("listEncontros", true);
@@ -40,11 +43,20 @@ class EncontroController extends Controller {
     }
 
     public function listEncontros(string $msgErro = "", string $msgSucesso = ""){
-        
         $encontros = [];
-        $encontros = $this->encontroDao->list();
-
-
+        if($_SESSION['chefeMatilha'] != "") { 
+            
+            $encontros = $this->encontroDao->filterByMatilha($_SESSION[SESSAO_USUARIO_ID_MATILHA]);
+        }
+        else {
+            $encontros = [];
+            $encontros = $this->encontroDao->list();
+        }
+        
+        foreach($encontros as $enc):
+            $matilha = $this->matilhaDao->listWithAlcateias($enc->getIdMatilha());
+            $enc->setMatilha($matilha);
+        endforeach;
         //se existe algum filtro 
         if(isset($_GET['filtered'])){
             $dados = $this->filter();

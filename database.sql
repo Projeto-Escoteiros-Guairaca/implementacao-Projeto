@@ -94,7 +94,7 @@ CREATE TABLE tb_tarefas(
   nome_tarefa VARCHAR(45) NOT NULL,
   descricao_tarefa VARCHAR(255) NOT NULL,
   PRIMARY KEY (id_tarefa),
-  FOREIGN KEY (id_atividade) REFERENCES tb_atividades (id_atividade)
+  FOREIGN KEY (id_atividade) REFERENCES tb_atividades (id_atividade) ON DELETE CASCADE
 
 );
 CREATE TABLE tb_tarefas_usuarios(

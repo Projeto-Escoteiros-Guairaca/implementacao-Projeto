@@ -93,7 +93,9 @@ class UsuarioController extends Controller
                 $secretSenha .= "*";
             }
             $usuario->setSenha($secretSenha);
-
+            
+            $faltasConsecutivas = $this->checkConsecutiveFaltas($_GET['id']);
+            $dados['faltasConsecutivas'] = $faltasConsecutivas; 
             $dados["usuario"] = $usuario;
             $this->loadView("pages/usuario/profile.php", $dados, $msgErro, $msgSucesso, true);
         } else {
@@ -120,6 +122,7 @@ class UsuarioController extends Controller
                 }
             }
         }
+        
         $dados["lista"] = $usuarios;
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
@@ -172,6 +175,8 @@ class UsuarioController extends Controller
             $this->listUsuarios("Usuário não enconpages/ado.");
         }
     }
+
+    
 
     protected function save() {
         

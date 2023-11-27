@@ -30,14 +30,6 @@ class FrequenciaController extends Controller {
             die;
         }
 
-        $papelNecessario = array();
-        $papelNecessario[0] = "ADMINISTRADOR";
-        $accessVerified = $this->verifyAccess($papelNecessario);
-        
-        if(! $accessVerified) {
-            return;
-        }
-
         $this->frequenciaDao = new FrequenciaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->encontroDao = new EncontroDAO();
@@ -68,6 +60,7 @@ class FrequenciaController extends Controller {
     }
 
     public function listFrequencias(string $msgErro = "", string $msgSucesso = "") {
+        
         $encontro = $this->findEncontroByIdEncontro();
         $frequencias = $this->findFrequenciasByIdEncontro();
         $usuarios = $this->findUsuariosById($frequencias);
@@ -106,13 +99,13 @@ class FrequenciaController extends Controller {
         $id = 0;
         $id = $_GET['idMatilha'];
 
-        $usuarios = $this->usuarioDao->findUsuariosByIdAcateia($id);
+        $usuarios = $this->usuarioDao->findUsuariosByIdMatilha($id);
         return $usuarios;
     }
     public function findUsuariosById(Array $frequencias){
         $usuarios = array();
         foreach($frequencias as $freq):
-            $usuario = $this->usuarioDao->findUsuariosById($freq->getId_usuario());
+            $usuario = $this->usuarioDao->findUsuariosById($freq->getIdUsuario());
             array_push($usuarios, $usuario);
         endforeach;
         return $usuarios;

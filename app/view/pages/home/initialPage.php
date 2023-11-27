@@ -41,12 +41,23 @@ require_once(__DIR__."/../../include/menu.php");
     
 
     <div class="col-sm-6 col-md-3 pb-4">
-      <a class="card text-center card-sweg" href="<?=BASEURL ?>/controller/AcessoController.php?controller=Alcateia&action=listAlcateias">          
+    <?php 
+    if($_SESSION[SESSAO_USUARIO_PAPEIS][0] == "CHEFE") {
+      $matilhasName = "Matilha";
+      $matilhasLink = BASEURL ."/controller/AcessoController.php?controller=Matilha&action=listMatilhas";
+    }
+    else {
+      $matilhasName = "Alcateias";
+      $matilhasLink = BASEURL ."/controller/AcessoController.php?controller=Alcateia&action=listAlcateias";
+    }
+ 
+?>
+          <a class="card text-center card-sweg" href="<?=$matilhasLink?>">
           <p class="card-text text-center">
             <img class="incons_redirecionais" src="<?= BASEURL ?>/view/pages/home/images/matilha.png" alt="">
           </p>
           <div class="card-sweg-details">
-            <h5 class="card-title">Alcateias</h5>
+            <h5 class="card-title"><?=$matilhasName?></h5>
           </div>  
       </a>
     </div>

@@ -35,7 +35,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                 <div class="card my-2 mx-2 Card" style="width: 18rem;">
                     <?php if ($isLobinho == 2) {
                         echo '<a id= "editar_atv" class= "principais_btn_cards_atv" href="' . BASEURL . '/controller/AcessoController.php?controller=Atividade&action=edit&id=' . $ativ->getIdAtividade() . '"><i class="bi bi-pencil"><span id= p_editar_atv >Editar</span></i></a>
-                              <a id= "deletar_atv" class= "principais_btn_cards_atv" href="' . BASEURL . '/controller/AtividadeController.php?action=delete&id=' . $ativ->getIdAtividade() . '"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>';
+                              <a id= "deletar_atv" class= "principais_btn_cards_atv" href="' . BASEURL . '/controller/AcessoController.php?controller=Atividade&action=delete&id=' . $ativ->getIdAtividade() . '"> <i class="bi bi-trash3"><span id= p_deletar_atv >Deletar</span></i> </a>';
                     }
                     ?>
 
@@ -45,7 +45,15 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                         <hr>
                         <p class="card-text">
                             <?php echo $ativ->getDescricaoAtividade(); ?></p>
-                        <a class="btn_cards" style="text-decoration: none" href="<?= BASEURL ?>/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade=<?php echo $ativ->getIdAtividade(); ?>">Mostrar Tarefas
+                            <?php
+                                if(! isset($dados['usuario'])) {
+                                    $linkTarefas = BASEURL .'/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade='.$ativ->getIdAtividade();
+                                }
+                                else {
+                                    $linkTarefas = BASEURL .'/controller/AcessoController.php?controller=Tarefa&action=listTarefas&idAtividade='.$ativ->getIdAtividade().'&idUsuario='.$dados['usuario'];
+                                }
+                            ?>
+                        <a class="btn_cards" style="text-decoration: none" href="<?=$linkTarefas?>">Mostrar Tarefas
                         </a>
 
                         <?php

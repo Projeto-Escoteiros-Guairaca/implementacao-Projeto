@@ -12,6 +12,7 @@ require_once(__DIR__ . "/../service/MatilhaService.php");
     
 class MatilhaController extends Controller{
 
+    private AlcateiaDAO $alcateiaDao;
     private UsuarioDAO $usuarioDao;
     private MatilhaDAO $matilhaDao;
     private MatilhaService $matilhaService;
@@ -38,11 +39,12 @@ class MatilhaController extends Controller{
             $this->loadController('Login', '?action=login');
             die;
         }
-        
+
+        $this->alcateiaDao = new AlcateiaDAO();
         $this->usuarioDao = new UsuarioDAO();
         $this->matilhaDao = new MatilhaDAO();
         $this->matilhaService = new MatilhaService();
-        $this->setActionDefault("listMatilha", true);
+        $this->setActionDefault("listMatilhas", true);
         $this->handleAction();
     }
 
@@ -60,9 +62,17 @@ class MatilhaController extends Controller{
         die;
     }
     
-    public function listMatilha(string $msgErro = "", string $msgSucesso = "") {
-        $_SESSION['activeAlcateiaId'] = $_GET['idAlcateia'];
-        $_SESSION['activeAlcateiaNome'] = $_GET['nomeAlcateia'];
+    public function listMatilhas(string $msgErro = "", string $msgSucesso = "") {  
+        if(isset($_GET['idAlcateia']) && isset($_GET['nomeAlcateia'])) {
+            $_SESSION['activeAlcateiaId'] = $_GET['idAlcateia'];
+            $_SESSION['activeAlcateiaNome'] = $_GET['nomeAlcateia'];
+        }
+        
+        if(isset($_SESSION[SESSAO_USUARIO_ID_ALCATEIA])) {
+            $alcateia = $this->alcateiaDao->findById($_SESSION[SESSAO_USUARIO_ID_ALCATEIA]);
+            $_SESSION['activeAlcateiaId'] = $alcateia->getIdAlcateia();
+            $_SESSION['activeAlcateiaNome'] = $alcateia->getNomeAlcateia();
+        }
         
         if($_SESSION['chefeMatilha'] != "" or isset($_GET['idMatilha'])) {
             $_GET['id'] = $_SESSION['chefeMatilha'];
@@ -79,11 +89,11 @@ class MatilhaController extends Controller{
             }
             
             if($matilha->getIdPrimo() != null) {
-                $matilha->setUsuarioChefe($this->usuarioDao->findById($matilha->getIdPrimo()));
+                $matilha->setUsuarioPrimo($this->usuarioDao->findById($matilha->getIdPrimo()));
             }
 
-            $dados['alcateia'][0] = $_GET['idAlcateia'];
-            $dados['alcateia'][1] = $_GET['nomeAlcateia'];
+            $dados['alcateia'][0] = $_SESSION['activeAlcateiaId'];
+            $dados['alcateia'][1] = $_SESSION['activeAlcateiaNome'];
             $dados["usuarios"] = $usuarios;
             $dados["matilha"] = $matilha;
             $this->loadView("pages/matilha/chefeOnly/matilha.php", $dados, $msgErro, $msgSucesso, true);
@@ -96,16 +106,24 @@ class MatilhaController extends Controller{
         }
     }
     public function list(string $msgErro = "", string $msgSucesso = ""){
-        $matilhas = $this->matilhaDao->listByIdAlcateia($_GET['idAlcateia']);
+        if(isset($_GET['idAlcateia'])) {
+            $matilhas = $this->matilhaDao->listByIdAlcateia($_GET['idAlcateia']);
+            $dados['alcateia'][0] = $_GET['idAlcateia'];
+            $dados['alcateia'][1] = $_GET['nomeAlcateia'];
+        }
+        else if(isset($_SESSION['activeAlcateiaId'])) {
+            $matilhas = $this->matilhaDao->listByIdAlcateia($_SESSION['activeAlcateiaId']);
+            $dados['alcateia'][0] = $_SESSION['activeAlcateiaId'];
+            $dados['alcateia'][1] = $_SESSION['activeAlcateiaNome'];
+        }
 
         if(isset($_GET['sendMatilhas'])) {
             echo json_encode($matilhas);
             return;
         }
-        $dados['alcateia'][0] = $_GET['idAlcateia'];
-        $dados['alcateia'][1] = $_GET['nomeAlcateia'];
+
         $dados["lista"] = $matilhas;
-        $this->loadView("pages/matilha/chefeOnly/listMatilha.php", $dados, $msgErro, $msgSucesso, true);    
+        $this->loadView("pages/matilha/chefeOnly/listMatilhas.php", $dados, $msgErro, $msgSucesso, true);    
     }
 
     public function create(){
@@ -143,15 +161,18 @@ class MatilhaController extends Controller{
             $this->create();
             return;
         }
+
         $dados["id_matilha"] = isset($_POST['id_matilha']) ? $_POST['id_matilha'] : 0;
         $nomeMatilha = isset($_POST['nomeMatilha']) ? trim($_POST['nomeMatilha']) : NULL;
         $chefeMatilha = isset($_POST['chefeMatilha']) ? trim($_POST['chefeMatilha']) : NULL;
         $primoMatilha = isset($_POST['primoMatilha']) ? trim($_POST['primoMatilha']) : NULL;
+        $alcateia = $_SESSION['activeAlcateiaId'];
 
         $matilha = new Matilha();
         $matilha->setNomeMatilha($nomeMatilha);
         $matilha->setIdChefe($chefeMatilha);
         $matilha->setIdPrimo($primoMatilha);
+        $matilha->setIdAlcateia($alcateia);
 
         $erros = $this->matilhaService->validarDados($matilha);
 
@@ -171,7 +192,10 @@ class MatilhaController extends Controller{
 
                 // - Enviar mensagem de sucesso
                 $msg = "Matilha salva com sucesso.";
-                $this->list("", $msg);
+
+                $dados['alcateia'][0] = $_SESSION['activeAlcateiaId'];
+                $dados['alcateia'][1] = $_SESSION['activeAlcateiaNome'];
+                $this->listMatilhas("", $msg);
                 $_SESSION['URL'][$_SESSION['controller']] = "?controller=Matilha&action=listMatilhas";
 
                 exit;
@@ -198,6 +222,12 @@ class MatilhaController extends Controller{
         } else {
             $this->list("Matilha não encontrada.");
         }
+    }
+
+    protected function definePrimo() {
+        $this->matilhaDao->definePrimo($_GET['idMatilha'], $_GET["id"]);
+        $this->listMatilhas();
+
     }
 } 
 

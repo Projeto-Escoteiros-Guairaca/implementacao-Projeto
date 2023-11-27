@@ -6,7 +6,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
 <link rel="stylesheet" type="text/css" href="../view/styles/profile.css?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
-<h1 class="text-center">Dados do Usuario</h1>
+<h1 class="text-center titulos">Dados do Usuario</h1>
 
 <a class="btn_inserir" href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $dados['usuario']->getId() ?>">
   <div class="div_icon_inseriri">

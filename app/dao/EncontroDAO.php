@@ -15,21 +15,16 @@ class EncontroDao {
         $result = $stm->fetchAll();
 
         $encontros = $this->mapEncontro($result);
-
-        foreach($encontros as $enc):
-            $matilha = new Matilha();
-            $matilha = $this->listMatilhas($enc->getIdMatilha());
-            $enc->setMatilha($matilha[0]);
-        endforeach;
         
         return $encontros;
     }
 
     public function filterByMatilha(int $idMatilha) {
-  $conn = Connection::getConn();
+  
+        $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.id_matilha = ? ORDER BY e.data";
+        " WHERE e.id_matilha = ? ORDER BY e.data_encontro";
         $stm = $conn->prepare($sql);    
         $stm->execute([$idMatilha]);
         $result = $stm->fetchAll();
@@ -47,7 +42,7 @@ class EncontroDao {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.data BETWEEN ? AND ? ORDER BY e.data";
+        " WHERE e.data BETWEEN ? AND ? ORDER BY e.data_encontro";
         $stm = $conn->prepare($sql);
         $stm->execute([$desde, $ate]);
         $result = $stm->fetchAll();
@@ -65,7 +60,7 @@ class EncontroDao {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_encontros e" . 
-        " WHERE e.id_matilha = ? AND e.data BETWEEN ? AND ? ORDER BY e.data";
+        " WHERE e.id_matilha = ? AND e.data BETWEEN ? AND ? ORDER BY e.data_encontro";
         $stm = $conn->prepare($sql);
         $stm->execute([$idMatilha, $desde, $ate]);
         $result = $stm->fetchAll();
@@ -165,7 +160,7 @@ class EncontroDao {
     public function insert(encontro $encontro){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_encontros (id_matilha, data, descricao_encontro)" .
+        $sql = "INSERT INTO tb_encontros (id_matilha, data_encontro, descricao_encontro)" .
                " VALUES (:id_matilha, :data, :descricao)";
         
         $stm = $conn->prepare($sql);

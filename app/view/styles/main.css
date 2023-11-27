@@ -404,3 +404,6 @@ form {
     width: 98%;
     margin: 5vh auto 1vh;
 }
+.msg{
+    z-index: 30;
+}

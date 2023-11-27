@@ -6,8 +6,8 @@
 </style>
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/openTarefa.css" />
-<a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilha&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">voltar</a>
-<h2 class='text-center'>Matilha <?= $dados["matilha"]->getNomeMatilha(); ?> </h3>
+<a href="<?= BASEURL ?>/controller/AcessoController.php?controller=Matilha&action=listMatilhas&idAlcateia=<?=$dados['alcateia'][0];?>&nomeAlcateia=<?= $dados['alcateia'][1];?>">voltar</a>
+<h2 class='text-center titulos'>Matilha <?= $dados["matilha"]->getNomeMatilha(); ?> </h3>
     <section class="container">
         <div class="tarefa">
             <div id="tarefa-container">
@@ -16,7 +16,7 @@
                     <h4>Primo: </h4>
                     <h5 style="color:brown;"><?php 
                     if($dados['matilha']->getIdPrimo() != null) {
-                        echo $dados['matilha']->getIdPrimo();
+                        echo $dados['matilha']->getUsuarioPrimo()->getNome();
                     }  
                     else {
                        echo "O primo ainda não foi selecionado.";
@@ -47,10 +47,13 @@
                 <div id="descricao">
                 <hr>
                     <?php foreach ($dados["usuarios"] as $usu):?>
-                    
-                        <?= $usu->getNome();?>
 
-                        <a class="btn btn-warning">dados do Lobinho</a>
+                        <a href="<?=BASEURL?>/controller/MatilhaController.php?action=definePrimo&isForm&idMatilha=<?=$dados['matilha']->getIdMatilha()?>&id=<?=$usu->getId()?>" class="btn btn-warning"> Definir Como primo </a>
+                        
+                        <?= $usu->getNome();?>
+                        <br>
+                        <br>
+                        <a href="<?=BASEURL?>/controller/AcessoController.php?controller=Usuario&action=profile&id=<?=$usu->getId() ?>" class="btn btn-warning">dados do Lobinho</a>
                     <hr>
                     <?php endforeach;?>
                 </div>

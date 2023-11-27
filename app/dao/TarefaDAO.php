@@ -50,7 +50,7 @@ class TarefaDAO {
     public function insert(Tarefa $tarefa){
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao)" .
+        $sql = "INSERT INTO tb_tarefas (id_atividade, nome_tarefa, descricao_tarefa)" .
                     " VALUES (:id_atividade, :nome, :descricao)";
         $stm = $conn->prepare($sql);
 
@@ -130,7 +130,7 @@ class TarefaDAO {
             " - Erro: mais de um usuário encontrado.");
     }
 
-    public function validateTarefa($avaliacao = 0, $idEntrega) {
+    public function validateTarefa( $idEntrega, $avaliacao = 0) {
         $conn = Connection::getConn();
         $sql = "UPDATE tb_tarefas_usuarios SET status_tarefa_usuario = :avaliacao WHERE id_tarefa_usuario = :id";
         $stm = $conn->prepare($sql);
@@ -205,7 +205,11 @@ class TarefaDAO {
             }
         }
         else {
+
         $arquivo = $this->findArquivoById($id);
+        if($arquivo->getCaminhoArquivo() == null) {
+            return;
+        }
         $img_del = $arquivo->getCaminhoArquivo();
         if (file_exists($img_del)) {
             unlink($img_del);
