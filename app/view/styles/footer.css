@@ -20,3 +20,11 @@ footer{
     bottom: 0;
     width: 100%;
 }
+/*Modo escuro do footer*/
+.modo-escuro .footer {
+    border: var(--bordas) ;
+    opacity: 0.8;
+    box-shadow: var(--sombras_bordas_modo_escuro);
+    width: 98%;
+    margin: 5vh auto 1vh;
+}

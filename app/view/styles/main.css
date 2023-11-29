@@ -59,6 +59,41 @@ form {
     right: auto;
     padding: 8vh;
 }
+/*legenda cursor*/
+
+[data-tooltip] {
+    position: relative;
+    font-weight: bold;
+    
+  }
+  
+  [data-tooltip]:after {
+    display: none;
+    position: absolute;
+    top: 40px;
+    padding: 5px;
+    border-radius: 3px;
+    /*localizacao (nao sei  + esquerda-direita)*/
+    left:0;
+    content: attr(data-tooltip);
+    white-space: nowrap;
+    background-color: var(--verde-escuro);
+    color: goldenrod;
+    border: var(--bordas_douradas);
+    -webkit-text-stroke-width: 0.2px;
+    /* largura da borda */
+    -webkit-text-stroke-color: var(--verde-escuro);
+    /* cor da borda */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  [data-tooltip]:hover:after {
+    display: block;
+    transition: all 0.8s ease;
+  }
+
+
+
 
 /*ccorrigindo busgs das tags <a> no btn_vermelho*/
 .a_bugs {
@@ -343,6 +378,8 @@ form {
 }
 
 /*Aqui finaliza as classes universais*/
+
+/*Aqui comeca o modo escuro*/
 .modo-escuro {
     background-color: var(--cor-dark-mod);
     color: var(--cor-dark-mod);
@@ -423,13 +460,7 @@ form {
     color: #1d7874;
 }
 
-.modo-escuro .footer {
-    background-color: transparent;
-    border: var(--bordas);
-    box-shadow: var(--sombras_bordas_modo_escuro);
-    width: 98%;
-    margin: 5vh auto 1vh;
-}
+
 
 .btn-outline-success{
     border: var(--borda_verde_esc);
