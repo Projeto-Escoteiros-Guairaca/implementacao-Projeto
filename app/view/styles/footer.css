@@ -7,7 +7,7 @@
     height: 13vh;
     background-color: #1d7874;
     color: #ffffff;
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
@@ -15,16 +15,8 @@
 .footer p{
     color: #ffffff;
 }
-footer{
-    margin-top: 6.6vh;
-    bottom: 0;
-    width: 100%;
-}
+
 /*Modo escuro do footer*/
 .modo-escuro .footer {
-    border: var(--bordas) ;
-    opacity: 0.8;
-    box-shadow: var(--sombras_bordas_modo_escuro);
-    width: 98%;
-    margin: 5vh auto 1vh;
+
 }

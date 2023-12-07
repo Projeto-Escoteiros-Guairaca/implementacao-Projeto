@@ -17,7 +17,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
   </div>
 </a>
 
-<div class="container">
+
   <div class="col-12">
 
 
@@ -88,7 +88,7 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
     </div>
 
   </div>
-</div>
+
 
 <a href='<?= HOME_PAGE ?>'>Voltar</a>
 <script src="<?= BASEURL ?>/view/js/usuario.js"> </script>

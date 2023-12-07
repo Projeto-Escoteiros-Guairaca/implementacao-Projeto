@@ -19,8 +19,7 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
 
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
-<div class="container">
-    
+
     <div class="col-12" style="margin-top: 10px;">
         
         
@@ -192,9 +191,6 @@ if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
             <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
         </div>
     </div>
-
-  
-</div>
 
 <?php  
 require_once(__DIR__ . "/../../../include/footer.php");

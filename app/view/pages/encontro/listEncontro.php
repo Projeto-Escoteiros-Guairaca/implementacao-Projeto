@@ -9,7 +9,7 @@
 
 <h3 class='titulos'>Encontros</h3>
 
-<div class="container">
+
     <div class="col-12">
         <div class="row row_ferramentas">
 
@@ -88,7 +88,7 @@
             <?php endif; ?>
         </div>
     </div>           
-</div>
+
 
 <?php
     require_once(__DIR__ . "/../../include/footer.php");

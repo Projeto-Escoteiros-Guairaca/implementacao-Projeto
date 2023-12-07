@@ -10,7 +10,7 @@
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/listMatilhas.css" />
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
-<div class="container">
+
     <div class="col-12">
             <form id="formMatilha" class="formularios" method="POST" action="<?= BASEURL ?>/controller/MatilhaController.php?action=save&isForm=true">
                 
@@ -69,7 +69,6 @@
 
     </div>
 
-</div>
 
 <?php
     require_once(__DIR__ . "/../../../include/footer.php");

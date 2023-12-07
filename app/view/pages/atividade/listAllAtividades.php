@@ -9,7 +9,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
 
-    <div class="row r_listATV"> <!-- Adicionando a div com classe "row" -->
+    
         <div class="col-12">
          
                 <?php
@@ -66,7 +66,7 @@ require_once(__DIR__ . "/../matilha/selectMatilha.php");
                 </div>
             <?php endforeach; ?>
         </div>
-    </div> <!-- Fim da div com class="row" -->
+
     <div class="col-9">
         <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
     </div>

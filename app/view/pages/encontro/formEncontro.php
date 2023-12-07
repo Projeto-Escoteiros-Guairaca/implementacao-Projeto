@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/encontro.css" />
 
-<div class="container">
+
     <div class="col-12">
  
         <form id="formEncontro" class="formularios" method="POST" action="<?= BASEURL ?>/controller/EncontroController.php?action=save&isForm=true">
@@ -61,7 +61,7 @@
 
     
   </div>
-</div>
+
 
 <?php
     require_once(__DIR__ . "/../../include/footer.php");

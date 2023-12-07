@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/atividade.css" />
     <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/main.css" />
 
-<div class="container">
+
     <div class="col-12">
         
             <form id="formatividade" class="formularios" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save&isForm=true">
@@ -52,9 +52,9 @@
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
 
-    </div>
+   </div>
 
-</div>
+
 
 <?php
     require_once(__DIR__ . "/../../include/footer.php");
