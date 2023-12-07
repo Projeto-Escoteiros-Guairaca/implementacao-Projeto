@@ -134,12 +134,12 @@ class FrequenciaController extends Controller {
     
         $status = $_GET['status'];
         if($status == 1) {
-            $this->frequenciaDao->updateToTrue($_GET['idFrequencia']);
+            $this->frequenciaDao->updateFrequencia($status, $_GET['idFrequencia']);
             echo $status;
             return;
         } 
         else { 
-            $this->frequenciaDao->updateToFalse($_GET['idFrequencia']);
+            $this->frequenciaDao->updateFrequencia($status, $_GET['idFrequencia']);
             echo $status;
             return;
         }

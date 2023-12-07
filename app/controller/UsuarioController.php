@@ -31,6 +31,7 @@ class UsuarioController extends Controller
     private ContatoDAO $contatoDao;
     private UsuarioService $usuarioService;
 
+    //* o Construct te envia ao AcessoController se não houver nenhuma excepção. 
     public function __construct() {
         if(isset($_GET['action'])) {
             if(isset($_GET['isForm'])) {
@@ -38,27 +39,19 @@ class UsuarioController extends Controller
             }
         }
 
-        if(! isset($_GET['isAjax'])) {
-            if(isset($_SESSION['callAccessToken'])) {
-                if($_SESSION['callAccessToken'] == true) {
-                    $_SESSION['controller'] = "Usuario";
-        
-                    $this->loadController("Acesso");
-                    return;
-                }
-                $_SESSION['callAccessToken'] = true;
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Usuario";
+    
+                $this->loadController("Acesso");
+                return;
             }
-            else {
-                $this->loadController('Login', '?action=login');
-                die;
-            }
+            $_SESSION['callAccessToken'] = true;
         }
-        
-
-        // $ChefeActions = [
-        //     "listUsuariosByMatilha", "findUsuarioByIdMatilha", "profile", 
-        //     "createTarefaAtiv", "findIt", "changeMatilha", "findUsuarioById"
-        // ];
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
+        }
 
         $this->frequenciaDao = new frequenciaDAO();
         $this->atividadeDao = new AtividadeDAO();
@@ -72,6 +65,7 @@ class UsuarioController extends Controller
         $this->handleAction();
     }
 
+    //*função chamada para abrir o perfil do usuario; Se não, ela abre a listagem de usuarios
     protected function profile(string $msgErro = "", string $msgSucesso = "") {
 
         $usuario = $this->findUsuarioById();
@@ -103,7 +97,7 @@ class UsuarioController extends Controller
         }
     }
 
-    /* Método para chamar a view com a listagem dos Usuarios */
+    //*listagem dos usuarios
     protected function listUsuarios(string $msgErro = "", string $msgSucesso = "") {
         
         if($_SESSION["chefeMatilha"] != null)  {
@@ -132,19 +126,8 @@ class UsuarioController extends Controller
         $dados["lista"] = $usuarios;
         $this->loadView("pages/usuario/chefeOnly/list.php", $dados, $msgErro, $msgSucesso, true);
     }
-    protected function findUsuarioByIdMatilha(){
-        $id = 0;
-        if (isset($_GET['idMatilha']))
-            $id = $_GET['idMatilha'];
 
-        $matilha = $this->matilhaDao->findById($id);
-        $usuario = $this->usuarioDao->findUsuariosByIdMatilha($id);
-
-        $dados['nome_matilha'] = $matilha;
-        $dados['usuarios'] = $usuario;
-        return $dados;
-    }
-
+    //*função chamada para abrir o formulario para salvar o usuario
     protected function create() {
         $dados["id"] = 0;
         $dados['id_contato'] = 0;
@@ -154,6 +137,7 @@ class UsuarioController extends Controller
         $this->loadView("pages/usuario/chefeOnly/form.php", $dados, "", "", true);
     }
 
+    //*função chamada para abrir o formulario para editar o usuario
     protected function edit() {
         $usuario = $this->findUsuarioById();
 
@@ -174,10 +158,9 @@ class UsuarioController extends Controller
         } else {
             $this->listUsuarios("Usuário não enconpages/ado.");
         }
-    }
+    }   
 
-    
-
+    //*Funções chamadas na hora do envio do formulário para salvar o Usuario
     protected function save() {
         
         if(empty($_POST)) {
@@ -193,20 +176,20 @@ class UsuarioController extends Controller
         $endereco = $this->saveEndereco();
         $contato = $this->saveContato();
         $usuario = $this->saveUsuario($endereco, $contato);
-        // Validar os dados
+        //* Validar os dados
         $errorUsuario = $this->usuarioService->validarUsuario($usuario, $confSenha);
         $errorContato = $this->usuarioService->validarContato($contato);
         $errorEndereco = $this->usuarioService->validarEndereco($endereco);
         $erros = array_merge($errorUsuario, $errorContato, $errorEndereco);
 
         if (empty($erros)) {
-            //Persiste o objeto
+            //*Persiste o objeto
             try {
-                if ($dados["id"] == 0) { //Inserindo
+                if ($dados["id"] == 0) { //*Inserindo
                     $this->usuarioService->insertEnd($endereco);
                     $this->usuarioService->insertCont($contato);
                     $this->usuarioService->insertUsu($usuario);
-                } else { //Alterando
+                } else { //*Alterando
                     $usuario->setId($dados["id"]);
                     $this->usuarioService->updateUsu($usuario);
                     $endereco->setIdEndereco($dados["id_endereco"]);
@@ -214,7 +197,7 @@ class UsuarioController extends Controller
                     $contato->setIdContato($dados["id_contato"]);
                     $this->usuarioService->updateCont($contato);
                 }
-                // - Enviar mensagem de sucesso
+                //* - Enviar mensagem de sucesso
                 if ($dados["id"] > 0) {
                     $_GET['id'] = $dados["id"];
                     $this->profile();
@@ -227,9 +210,9 @@ class UsuarioController extends Controller
             }
         }
 
-        //Se há erros, volta para o formulário
+        //*Se há erros, volta para o formulário
 
-        //TODO - Transformar o array de erros em string
+        //*TODO - Transformar o array de erros em string
         $dados["usuario"] = $usuario;
         $dados["nome"] = $usuario->getNome();
         $dados["cpf"] = $usuario->getCpf();
@@ -253,14 +236,14 @@ class UsuarioController extends Controller
         $this->loadView("pages/usuario/chefeOnly/form.php", $dados, $msgsErro, "", "", true);
     }
     protected function saveEndereco() {
-        // Captura dados endereço
+        //* Captura dados endereço
         $cep = isset($_POST['cep']) ? trim($_POST['cep']) : NULL;
         $logradouro = isset($_POST['logradouro']) ? trim($_POST['logradouro']) : "";
         $numero = isset($_POST['numeroEndereco']) ? trim($_POST['numeroEndereco']) : "";
         $bairro = isset($_POST['bairro']) ? trim($_POST['bairro']) : "";
         $cidade = isset($_POST['cidade']) ? trim($_POST['cidade']) : "";
         $pais = isset($_POST['pais']) ? trim($_POST['pais']) : "";
-        // Cria objeto endereço
+        //* Cria objeto endereço
         $endereco = new Endereco();
         $endereco->setCep($cep);
         $endereco->setLogradouro($logradouro);
@@ -271,11 +254,11 @@ class UsuarioController extends Controller
         return $endereco;
     }
     protected function saveContato() {
-        // Captura dados contato
+        //* Captura dados contato
         $telefone = isset($_POST['telefone']) ? trim($_POST['telefone']) : "";
         $celular = isset($_POST['celular']) ? trim($_POST['celular']) : "";
         $email = isset($_POST['email']) ? trim($_POST['email']) : "";
-        // Cria objeto contato
+        //* Cria objeto contato
         $contato = new Contato();
         $contato->setTelefone($telefone);
         $contato->setCelular($celular);
@@ -283,7 +266,7 @@ class UsuarioController extends Controller
         return $contato;
     }
     protected function saveUsuario(Endereco $endereco, Contato $contato) {
-        //Captura os dados do usuário
+        //*Captura os dados do usuário
         $id_endereco["id_endereco"] = isset($_POST['id_endereco']) ? $_POST['id_endereco'] : 0;
         $id_contato["id_contato"] = isset($_POST['id_contato']) ? $_POST['id_contato'] : 0;
         $nome = isset($_POST['nome']) ? trim($_POST['nome']) : "";
@@ -303,6 +286,7 @@ class UsuarioController extends Controller
         return $usuario;
     }
 
+    // funções para filtrar o usuário por uma palavra em especifico
     protected function findIt() {
         $arrayUsuarios = $this->usuarioDao->findItByName($_GET["word"]);
         $matilhas = $this->matilhaDao->list();
@@ -320,7 +304,6 @@ class UsuarioController extends Controller
 
         return;
     }
-
     protected function findItAndMatliha() {
         $arrayUsuarios = $this->usuarioDao->findItByNameAndMatilha($_GET["word"], $_SESSION[SESSAO_USUARIO_ID_MATILHA]);
         $matilhas = $this->matilhaDao->list();
@@ -338,6 +321,8 @@ class UsuarioController extends Controller
 
         return;
     }
+
+    // funções para mudar uma caracteristica do Usuario
     protected function changeMatilha() {
         $id = $_GET["id"];
         $idMatilha = $_GET["idMatilha"];
@@ -374,7 +359,6 @@ class UsuarioController extends Controller
         }
         
     }
-
     protected function updateToInativo() {
         $usuario = $this->findUsuarioById();
         if ($usuario) {
@@ -391,18 +375,6 @@ class UsuarioController extends Controller
             return;
         }
     }
-
-    protected function findUsuarioById() {
-        $id = 0;
-        if (isset($_GET['id']))
-            $id = $_GET['id'];
-
-        $dados["id"] = $id;
-
-        $usuario = $this->usuarioDao->findById($id);
-        return $usuario;
-    }
-
     protected function changePapel() {
         $papelUsu = $_GET['newPapel'];
 
@@ -414,6 +386,31 @@ class UsuarioController extends Controller
         }
     }
 
+    // funções para encontrar o usuario em especifico por um dado
+    protected function findUsuarioByIdMatilha(){
+        $id = 0;
+        if (isset($_GET['idMatilha']))
+            $id = $_GET['idMatilha'];
+
+        $matilha = $this->matilhaDao->findById($id);
+        $usuario = $this->usuarioDao->findUsuariosByIdMatilha($id);
+
+        $dados['nome_matilha'] = $matilha;
+        $dados['usuarios'] = $usuario;
+        return $dados;
+    }
+    protected function findUsuarioById() {
+        $id = 0;
+        if (isset($_GET['id']))
+            $id = $_GET['id'];
+
+        $dados["id"] = $id;
+
+        $usuario = $this->usuarioDao->findById($id);
+        return $usuario;
+    }
+
+    // funções para abrir a página inicial correta
     protected function initialLobinhoPage() {
     
         $atividades = $this->checkDoneAtividades();
@@ -428,11 +425,11 @@ class UsuarioController extends Controller
         $dados['faltasConsecutivas'] = $faltasConsecutivas;
         $this->loadView("pages/home/initialLobinhoPage.php", $dados, "", "", true);
     }
-
     protected function initialChefePage() {
         $this->loadView("pages/home/initialPage.php", [], "", "", true);
     }
 
+    // funções para pegar especificos dados
     protected function checkDoneAtividades() {
         $atividades = $this->atividadeDao->countAtividades();
         $atividadesFeitas = $this->atividadeDao->countUndoneOrDone(0);
@@ -440,7 +437,6 @@ class UsuarioController extends Controller
         $dados[1] = $atividades[0] - $atividadesFeitas[0];
         return $dados;
     }
-
     protected function checkFaltas($idUsuario = 0) {
         if($idUsuario == 0) {
             $idUsuario = $_SESSION[SESSAO_USUARIO_ID];

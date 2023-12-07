@@ -13,34 +13,34 @@ class AlcateiaController extends Controller{
     private AlcateiaDAO $alcateiaDao;
     private MatilhaDAO $matilhaDao;
 
+    //* o Construct te envia ao AcessoController se não houver nenhuma excepção. 
     public function __construct(){
 
         if(isset($_GET['isForm'])) {
             $_SESSION['callAccessToken'] = false;
         }
-        
-        if(! isset($_GET['isAjax'])) {
-            if(isset($_SESSION['callAccessToken'])) {
-                if($_SESSION['callAccessToken'] == true) {
-                    $_SESSION['controller'] = "Alcateia";
-        
-                    $this->loadController("Acesso");
-                    return;
-                }
-                $_SESSION['callAccessToken'] = true;
+    
+        if(isset($_SESSION['callAccessToken'])) {
+            if($_SESSION['callAccessToken'] == true) {
+                $_SESSION['controller'] = "Alcateia";
+    
+                $this->loadController("Acesso");
+                return;
             }
-            else {
-                $this->loadController('Login', '?action=login');
-                die;
-            }
+            $_SESSION['callAccessToken'] = true;
         }
-        
+        else {
+            $this->loadController('Login', '?action=login');
+            die;
+        }
+            
         $this->alcateiaDao = new AlcateiaDAO();
         $this->matilhaDao = new MatilhaDao();
         $this->setActionDefault("listAlcateias", true);
         $this->handleAction();
     }
 
+    //* listagem das alcateias    
     public function listAlcateias(string $msgErro = "", string $msgSucesso = ""){
         $alcateias = $this->alcateiaDao->list();
        
@@ -48,6 +48,7 @@ class AlcateiaController extends Controller{
         $this->loadView("pages/alcateia/listAlcateia.php", $dados, $msgErro, $msgSucesso, true);    
     }
 
+    //* função para pegar as alcateias e as matilhas e mostrá-las 
     public function getAlcateiasAndMatilhas(){
         try {
             $alcateiasAndMatilhas = array();
