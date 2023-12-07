@@ -8,7 +8,6 @@ function changeFrequencia(idFrequencia, changeStatus) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var retorno = xhttp.responseText;
-            console.log(retorno);
             changeButton(retorno);
         }
     }
