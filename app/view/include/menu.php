@@ -36,14 +36,14 @@ if ($isChefe == 1) {
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-principal" aria-controls="navbar-principal" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
-  
+
+
 
     <div id="navbar-principal" class="collapse navbar-collapse justify-content-md-center">
 
-    <li class="nav-link">
-      <a id="btn_voltar"class="nav-item" href="javascript:history.back()"> <span data-tooltip='Voltar'><i class="bi bi-arrow-left navbar-icon "></i></span></a>
-    </li>
+      <li class="nav-link">
+        <a id="btn_voltar" class="nav-item" href= "<?php echo $_SERVER['HTTP_REFERER']; ?>"> <span data-tooltip='Voltar'><i class="bi bi-arrow-left navbar-icon "></i></span></a>
+      </li>
 
       <ul class="navbar-nav">
         <?php if ($isAdministrador == 1) {
@@ -67,21 +67,21 @@ if ($isChefe == 1) {
           echo '</li>';
         } elseif ($isChefe == 1) {
           echo '<li class="nav-item">';
-          echo "<span data-tooltip='Ativar Modo Escuro'><a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'><strong><span data-tooltip='Ativar Modo Escuro'>Lobinhos</span></strong></a></span>";
+          echo "<span data-tooltip='Ativar Modo Escuro'><a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Usuario&action=listUsuarios'><strong><span data-tooltip='Abrir Lobinhos'>Lobinhos</span></strong></a></span>";
           echo '</li>';
           echo '<li class="nav-item">';
-          echo "<span data-tooltip='Ativar Modo Escuro'><a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Matilha&action=listMatilhas'><span data-tooltip='Ativar Modo Escuro'><strong> Matilhas</strong></span></a></span>";
+          echo "<span data-tooltip='Ativar Modo Escuro'><a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Matilha&action=listMatilhas'><span data-tooltip='Abrir Matilhas'><strong> Matilhas</strong></span></a></span>";
           echo '</li>';
           echo '<li class="nav-item">';
-          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Encontro&action=listEncontros'> <span data-tooltip='Ativar Modo Escuro'><strong>Encontros</strong>/span></a>";
+          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Encontro&action=listEncontros'> <span data-tooltip='Abrir Encontros'><strong>Encontros</strong>/span></a>";
           echo '</li>';
           echo '<li class="nav-item">';
-          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Atividade&action=listAtividades'><span data-tooltip='Ativar Modo Escuro'><strong>Atividades</strong></span></a>";
+          echo "<a class='nav-link' href = '" . BASEURL . "/controller/AcessoController.php?controller=Atividade&action=listAtividades'><span data-tooltip='Abrir Atividades'><strong>Atividades</strong></span></a>";
           echo '</li>';
         }
-        
+
         ?>
-         
+
 
         <?php
         if (isset($_SESSION[SESSAO_USUARIO_ID])) {
@@ -89,7 +89,7 @@ if ($isChefe == 1) {
             $_SESSION[SESSAO_USUARIO_ID] . "'><span data-tooltip='Abrir perfil'><i class='bi bi-person navbar-icon'></i></span></a>";
         }
         ?>
-        
+
         <li class="nav-item">
           <a id="dark-button" class="nav-link" href="#"><span data-tooltip='Ativar Modo Escuro'><i id="dark-icon" class="bi bi-moon-stars navbar-icon"></i></span></a>
         </li>
@@ -99,8 +99,8 @@ if ($isChefe == 1) {
         <?php
         if (isset($_SESSION[SESSAO_USUARIO_ID])) {
           if ($_SESSION[SESSAO_USUARIO_ID] == 0) {
-            echo "<a class='nav-link' href = " . LOGIN_PAGE . "> <strong>Login</strong></a>";
-            echo "<a class='nav-link' href = " . REGISTER_PAGE . "> <strong>Registre-se</strong></a>";
+            echo "<a class='nav-link' href = " . LOGIN_PAGE . ">  <span data-tooltip='Se já possuir uma conta aperte aqui'><strong>Login</strong></a></span>";
+            echo "<a class='nav-link' href = " . REGISTER_PAGE . "> <span data-tooltip='Se registre aqui'> <strong>Registre-se</strong></a></span>";
           } else {
             echo "<a class='nav-link' href = " . LOGOUT_PAGE . "> <span data-tooltip='Sair'><i class='bi bi-box-arrow-right navbar-icon'></i><span></a>";
           }
@@ -108,26 +108,30 @@ if ($isChefe == 1) {
             echo "<a class='nav-link'><strong>" . $nome . "</strong></a>";
           }
         } else {
-          echo "<a class='nav-link' href = " . LOGIN_PAGE . "> <strong>Login</strong></a>";
-          echo "<a class='nav-link' href = " . REGISTER_PAGE . "> <strong>Registre-se</strong></a>";
+          echo "<a class='nav-link' href = " . LOGIN_PAGE . "> <span data-tooltip='Se já possuir uma conta aperte aqui'><strong>Login</strong></span></a>";
+          echo "<a class='nav-link' href = " . REGISTER_PAGE . "> <span data-tooltip='Se registre aqui'><strong>Registre-se</strong></a></span>";
         }
         ?>
 
       </ul>
+
       
-      <div class="logo">
-      
-      
-        <a id ="id_logo"href="<?= BASEURL ?>/controller/HomeController.php">
         
-        <img class="img_logo" src="<?= BASEURL ?>/view/pages/home/images/lobo-amarelo.png" alt="" height="100">
-        
-        </a>
-       
-      </div>
-    
+        <div class="logo">
+
+
+          <a id="id_logo" href="<?= BASEURL ?>/controller/HomeController.php">
+
+          <span data-tooltip='Página Principal'> 
+            <img class="img_logo" src="<?= BASEURL ?>/view/pages/home/images/lobo-amarelo.png" alt="" height="100">
+          </span>  
+
+          </a>
+
+        </div>
+      
     </div>
-    
+
   </nav>
   <script src="main.js"> </script>
 

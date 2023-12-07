@@ -49,6 +49,7 @@
 }
 
 /* Aqui comeca o css do arquivo listTarefasUsuario.php*/
+
 .nome_usuario{
     border: #1d7874 1px solid;
     padding: 2vh;
@@ -133,7 +134,9 @@ a{
 }
 /*aqui comeca o list*/
 .filtro_usu{
-    margin: 15px 0 15px 0;
+    margin: auto auto;
+    width: fit-content;
+    
 }
 .card-body{
     align-items: center;

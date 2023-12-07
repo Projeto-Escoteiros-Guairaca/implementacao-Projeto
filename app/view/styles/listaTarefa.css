@@ -1,95 +1,85 @@
-:root{
+:root {
     --verde-escuro: #1d7874;
     --sombras_bordas: 0 10px 20px rgba(0, 0, 0, 0.2);
-    --bordas:solid #679289 1px;
+    --bordas: solid #679289 1px;
     --borda_dourada: solid 1px #ffbc42;
-    --color-p:#667;
+    --color-p: #667;
 }
 
-.dados_universais_atv{
-    height: 10vh;
-    width: 50vh;
-   
-    position: relative;
-}
-/*Container inteiro de atividades*/
-.tarefas{
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    background: transparent;
-    text-align: center;
-    position: absolute;
-}
-.tarefa{
-    
-}
+
+
 /*Blocos que contem o check box e o nome da atv*/
-.containerTarefa {
-    margin: 2vh 0;
-    background-color: transparent;
-    border: 1px solid #679289;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
-    display: flex;
-    position: relative;
-    
-}
-.p_atv{
-    color:black;
-   
- }
-.leftPart {
-   
-    text-align: center;
-    color: rgb(18, 107, 0);
-    width: 60%;
-    
+.card_tarefa {
+    margin: 2% 2%;
+    width: 20%;
+    box-sizing: border-box;
+    padding: 30px;
+    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 0 0 0;
+    text-align: center;
+    border: var(--bordas);
+    position: relative;
+    box-shadow: var(--sombras_bordas);
 }
 
-.rightPart {
-    width: 30%;
-   
-    align-items: center;
+.titulo_atv {
+    margin: auto auto;
+    border: var(--bordas);
+    text-decoration: #1d7874;
+    min-width: 100%;
+    height: 30%;
+    font-size: 20px;
 }
-.tarefaCheckada{
-    width: 4vh;
-    height: 4vh;
-    background:#679289;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
-    border: 1px black solid;
-}
-.tarefaCheckada0{
-    width: 4vh;
-    height: 4vh;
-    background:#eeff00;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
-    border: 1px black solid;
 
+.titulo_atv:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombras_bordas);
 }
-.tarefaCheckada1{
-    width: 4vh;
-    height: 4vh;
-    background:rgb(255, 0, 0);
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
-    border: 1px black solid;
+.status_atv {
+    height: 70%;
+}
 
-}
-.tarefaCheckada2{
+.tarefaCheckada {
     width: 4vh;
     height: 4vh;
-    background:rgb(0, 255, 0);
+    background: #679289;
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
     border: 1px black solid;
 
 }
-.btn_cards_atv{
+
+.tarefaCheckada0 {
+    width: 4vh;
+    height: 4vh;
+    background: #eeff00;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    border: 1px black solid;
+
+}
+
+.tarefaCheckada1 {
+    width: 4vh;
+    height: 4vh;
+    background: rgb(255, 0, 0);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    border: 1px black solid;
+
+}
+
+.tarefaCheckada2 {
+    width: 4vh;
+    height: 4vh;
+    background: rgb(0, 255, 0);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    border: 1px black solid;
+
+}
+
+.btn_cards_atv {
     box-sizing: border-box;
     border: var(--bordas);
     padding: 1vh 1vh;
     min-width: 50vh;
     color: var(--verde-escuro);
-  }
+}

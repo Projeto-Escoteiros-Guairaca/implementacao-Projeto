@@ -11,7 +11,7 @@
 <h2 class='titulos'>
             <?php echo"encontro do dia " . $dados['encontro']->getDataEncontroFormated(); ?>
             </h2>
-<div class="container">
+
     <div class="col-12">
 
         <div class="row" style="margin-top: 10px;">
@@ -60,7 +60,7 @@
             
         </div>
     </div>
-</div>
+
 <div class="row">
      <div class="">
          <?php require_once(__DIR__ . "/../../include/msg.php"); ?>

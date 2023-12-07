@@ -14,7 +14,7 @@ require_once(__DIR__ . "/../../matilha/selectMatilha.php");
     <br>
     <h3 class='text-center'>Estado da tarefa "<?php echo $dados['tarefa']->getNomeTarefa(); ?>"</h3>
 
-    <div class='container'>
+    
         <div class="row">
             <div class="col-9">
                 <?php require_once(__DIR__ . "/../../../include/msg.php"); ?>
@@ -64,7 +64,7 @@ require_once(__DIR__ . "/../../matilha/selectMatilha.php");
                 </table>
             </div>
       
-    </div>
+ 
     <script src="<?= BASEURL ?>/view/js/usuario.js"> </script> 
 
 <?php  

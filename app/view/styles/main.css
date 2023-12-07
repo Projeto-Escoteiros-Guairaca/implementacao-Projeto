@@ -13,14 +13,18 @@
 body {
     overflow-y: visible;
     width: 100%;
-    min-height: 100%;
     max-height: fit-content;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 form {
-    margin-top: 20px;
-    margin-bottom: 20px;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+
 }
 
 .col-12 {
@@ -29,52 +33,41 @@ form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    position: absolute;
-    box-sizing: border-box;
-    padding: auto auto;
-    margin: 5px auto 5px;
     position: relative;
+    box-sizing: border-box;
+    padding: 1% 1%;
+    margin: auto auto;
     height: fit-content;
     width: 100%;
+    flex: 1;
 }
-
-.container {
-    overflow-y: visible;
-    display: flex;
-    height: fit-content;
-    text-align: center;
-    align-items: center;
-    left: auto;
-    right: auto;
-    padding: 5%;
-}
-
 .r_listATV {
     overflow-y: visible;
     display: flex;
-    height: fit-content;
+    height: 100%;
     text-align: center;
     align-items: center;
     left: auto;
     right: auto;
-    padding: 8vh;
+    padding: 0;
 }
+
 /*legenda cursor*/
 
 [data-tooltip] {
     position: relative;
     font-weight: bold;
-    
-  }
-  
-  [data-tooltip]:after {
+
+}
+
+[data-tooltip]:after {
     display: none;
     position: absolute;
     top: 40px;
     padding: 5px;
     border-radius: 3px;
     /*localizacao (nao sei  + esquerda-direita)*/
-    left:0;
+    left: 0;
     content: attr(data-tooltip);
     white-space: nowrap;
     background-color: var(--verde-escuro);
@@ -85,12 +78,12 @@ form {
     -webkit-text-stroke-color: var(--verde-escuro);
     /* cor da borda */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  [data-tooltip]:hover:after {
+}
+
+[data-tooltip]:hover:after {
     display: block;
     transition: all 0.8s ease;
-  }
+}
 
 
 
@@ -98,12 +91,15 @@ form {
 /*ccorrigindo busgs das tags <a> no btn_vermelho*/
 .a_bugs {
     text-decoration: none;
-    color: black;
+    color: #1d7874;
 }
+
 .a_bugs:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
     text-decoration: none;
-    color: white;
 }
+
 /*linha para por ferramentas, filtros botoes inserir e etc*/
 .row_ferramentas {
     position: relative;
@@ -350,7 +346,8 @@ form {
     -webkit-text-stroke-color: 0;
     /* cor da borda */
 }
-.btn_azul{
+
+.btn_azul {
     border: 1px solid #293556;
     min-width: 5vw;
     min-height: 5vh;
@@ -358,12 +355,13 @@ form {
     max-height: fit-content;
     border-radius: 5px;
     background-color: transparent;
-    color: black;
+    color: #293556;
     -webkit-text-stroke-width: 0.2px;
     /* largura da borda */
     -webkit-text-stroke-color: var(--verde-escuro);
     /* cor da borda */
 }
+
 .btn_azul:hover {
     cursor: pointer;
     transition: all 0.3s ease;
@@ -462,11 +460,12 @@ form {
 
 
 
-.btn-outline-success{
+.btn-outline-success {
     border: var(--borda_verde_esc);
     color: #1d7874;
 }
-.btn-outline-success:hover{
+
+.btn-outline-success:hover {
     background-color: #1d7874;
     border: var(--bordas_douradas);
 }

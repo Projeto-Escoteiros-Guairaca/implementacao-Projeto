@@ -20,7 +20,7 @@ if (isset($_SESSION[SESSAO_USUARIO_NOME]))
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/styles/index.css" />
 
-<div class="container">
+<div class="col-12">
 
     <center class="title"><h1>Sobre os Escoteiros</h1></center>
     

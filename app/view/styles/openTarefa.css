@@ -1,18 +1,31 @@
 
+.col-12{
+    display: flex !important;
+   
+    gap: 3vw;
+}
 .tarefa {
-    padding: 8vh;
+    
+
+}
+#tarefa-container {
+    display: block;
+    padding: 5% 5%;
     height: fit-content;
-    width: 60%;
+    width: fit-content;
     border: var(--bordas);
-    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: var(--sombras_bordas);
+    position: relative;
+    text-align: center;
+    
 }
-#tarefa-container {
-    width: fit-content;
-    display: block;
-  
+.titulo_tarefa{
+    -webkit-text-stroke-width: 0.2px;
+    /* largura da borda */
+    -webkit-text-stroke-color: var(--verde-escuro);
+    /* cor da borda */
 }
 .caixas_texto{
     box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
@@ -27,8 +40,9 @@
 }
 #descricao {
     
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: left;
+
 }
 #status {
     
