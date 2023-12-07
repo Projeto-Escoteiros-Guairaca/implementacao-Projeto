@@ -14,6 +14,7 @@ class FrequenciaController extends Controller {
     private $usuarioDao;
     private $encontroDao;
 
+    //* o Construct te envia ao AcessoController se não houver nenhuma excepção. 
     public function __construct() {
         if(isset($_GET['action'])) {
             if(isset($_GET['isForm'])) {
@@ -43,6 +44,7 @@ class FrequenciaController extends Controller {
         $this->handleAction();
     }
 
+    //* veriica se existem as frequencias, se não, as cria e envia à listagem
     public function createFrequencias() {
         $frequencias = array();
         $frequenciasTest = $this->findFrequenciasByIdEncontro();
@@ -64,6 +66,7 @@ class FrequenciaController extends Controller {
         }
     }
 
+    //* lista as frequencias
     public function listFrequencias(string $msgErro = "", string $msgSucesso = "") {
         
         $encontro = $this->findEncontroByIdEncontro();
@@ -79,7 +82,6 @@ class FrequenciaController extends Controller {
         $dados["encontro"] = $encontro;
         $this->loadView("pages/frequencia/listFrequencias.php", $dados,$msgErro, $msgSucesso, true);
     }
-    
     public function listByUsuario(string $msgErro = "", string $msgSucesso = "") {
         
         $encontros = array();
@@ -100,6 +102,7 @@ class FrequenciaController extends Controller {
 
     }
 
+    //* encontra os dados especificos pela informação especificada
     public function findUsuariosByIdMatilha() {
         $id = 0;
         $id = $_GET['idMatilha'];
@@ -115,21 +118,29 @@ class FrequenciaController extends Controller {
         endforeach;
         return $usuarios;
     }
-
     public function findFrequenciasByIdEncontro(){
         $id = 0;
         $id = $_GET['idEncontro'];
         $frequencias = $this->frequenciaDao->findFrequenciaByIdEncontro($id);
         return $frequencias;
     }
-
     public function findEncontroByIdEncontro(){
         $id = 0;
         $id = $_GET['idEncontro'];
         $frequencias = $this->encontroDao->findById($id);
         return $frequencias;
     }
+    protected function findFrequenciaById(){
+        $id = 0;
+        if(isset($_GET['id']))
+            $id = $_GET['id'];
+        $dados["id"] = $id;
 
+        $frequencia = $this->frequenciaDao->findById($id);
+        return $frequencia;
+    }
+
+    //* mudar caracteristicas da frequencia
     public function updateFrequencia() {
     
         $status = $_GET['status'];
@@ -145,15 +156,7 @@ class FrequenciaController extends Controller {
         }
         
     }
-    protected function findFrequenciaById(){
-        $id = 0;
-        if(isset($_GET['id']))
-            $id = $_GET['id'];
-        $dados["id"] = $id;
-
-        $frequencia = $this->frequenciaDao->findById($id);
-        return $frequencia;
-    }
+    
 }
 
 $freqCont = new FrequenciaController();

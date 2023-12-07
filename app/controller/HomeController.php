@@ -20,6 +20,7 @@ class HomeController extends Controller {
         $this->handleAction();
     }
 
+    //* abre a página home se for administrador; se não, envia ao home indicado.
     protected function home() {
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
             if(in_array("LOBINHO", $_SESSION[SESSAO_USUARIO_PAPEIS])) {
