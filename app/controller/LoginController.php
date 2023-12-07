@@ -23,6 +23,7 @@ class LoginController extends Controller {
         $this->handleAction();
     }
 
+    //* envia à pagina login
     protected function login() {
         $this->loadView("pages/login/login.php", [], "", "", true);
     }
@@ -56,14 +57,6 @@ class LoginController extends Controller {
 
         $this->loadView("pages/login/login.php", $dados, $msg, "", true);
     }
-
-     /* Método para logar um usuário a partir dos dados informados no formulário */
-    protected function logout() {
-        $this->removerUsuarioSessao();
-
-        $this->loadView("pages/home/index.php", [], "", "", true);
-    }
-
     private function salvarUsuarioSessao(Usuario $usuario) {
         //Habilitar o recurso de sessão no PHP nesta página
 
@@ -83,6 +76,12 @@ class LoginController extends Controller {
         
     }
 
+    //* função feita para desconectar a sessão ativa
+    protected function logout() {
+        $this->removerUsuarioSessao();
+
+        $this->loadView("pages/home/index.php", [], "", "", true);
+    }
     private function removerUsuarioSessao() {
         //Habilitar o recurso de sessão no PHP nesta página
         //Destroi a sessão 

@@ -11,7 +11,7 @@ class AtividadeController extends Controller {
     private AtividadeDAO $atividadeDao;
     private AtividadeService $atividadeService;
 
-
+    //* o Construct te envia ao AcessoController se não houver nenhuma excepção. 
     function __construct() {
         if(isset($_GET['action'])) {
             if(isset($_GET['isForm'])) {
@@ -40,6 +40,7 @@ class AtividadeController extends Controller {
         $this->handleAction();
     }
 
+    //*listagem das Atividades
     public function listAtividades(string $msgErro = "", string $msgSucesso = ""){
         
 
@@ -51,12 +52,27 @@ class AtividadeController extends Controller {
         $this->loadView("pages/atividade/listAllAtividades.php", $dados, $msgErro, $msgSucesso, true);
     }
     
+    //* função chamada para abrir o formulario para salvar a atividade
     public function create(array $dados = [], $msgErro = ""){
         $dados["id_atividade"] = 0;
         $this->loadView("pages/atividade/formAtividade.php", $dados, $msgErro,"", true);
     }
+    
+    //* função chamada para abrir o formulario para editar a atividade
+    protected function edit() {
+        $atividade = $this->findAtividadeById();
 
+        if($atividade){
 
+            $dados["id_atividade"] = $atividade->getIdAtividade();
+            $dados["atividade"] = $atividade;        
+            $this->loadView("pages/atividade/formAtividade.php", $dados, "", "", true);
+        } else {
+            $this->listAtividades("Atividade não encontrada.");
+        }
+    }
+
+    //*Funções chamadas na hora do envio do formulário para salvar a atividade
     protected function save() {
         if(empty($_POST)) {
             $this->create();
@@ -136,19 +152,7 @@ class AtividadeController extends Controller {
         return $caminho_imagem;
     }
 
-    protected function edit() {
-        $atividade = $this->findAtividadeById();
-
-        if($atividade){
-
-            $dados["id_atividade"] = $atividade->getIdAtividade();
-            $dados["atividade"] = $atividade;        
-            $this->loadView("pages/atividade/formAtividade.php", $dados, "", "", true);
-        } else {
-            $this->listAtividades("Atividade não encontrada.");
-        }
-    }
-
+    //* funções chamadas na hora de buscar por especifica atividade
     protected function findAtividadeById(){
         $id = 0;
         if(isset($_GET['id']))
@@ -160,6 +164,7 @@ class AtividadeController extends Controller {
         return $atividade;
     }
 
+    //* função para deletar a atividade e suas tarefas selecionada
     protected function delete(){
         $atividade = $this->findAtividadeById();
 

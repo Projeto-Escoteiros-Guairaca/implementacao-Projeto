@@ -17,7 +17,7 @@ class MatilhaController extends Controller{
     private MatilhaDAO $matilhaDao;
     private MatilhaService $matilhaService;
 
-
+    //* o Construct te envia ao AcessoController se não houver nenhuma excepção. 
     public function __construct(){
 
         if(isset($_GET['action'])) {
@@ -48,20 +48,7 @@ class MatilhaController extends Controller{
         $this->handleAction();
     }
 
-    public function findChefeAndPrimo() {
-        $chefeAndPrimo = [];
-        $matilha = $this->matilhaDao->findById($_GET['idMatilha']);
-        $chefe = $this->usuarioDao->findById($matilha->getIdChefe());   
-        array_push($chefeAndPrimo, $chefe);
-
-        if($matilha->getIdPrimo() > 0) {
-            $primo = $this->usuarioDao->findById($matilha->getIdPrimo());
-            array_push($chefeAndPrimo, $primo);
-        }
-        echo json_encode($chefeAndPrimo);
-        die;
-    }
-    
+    //* listagem das matilhas; abre uma em especifico em caso de excepção.
     public function listMatilhas(string $msgErro = "", string $msgSucesso = "") {  
         if(isset($_GET['idAlcateia']) && isset($_GET['nomeAlcateia'])) {
             $_SESSION['activeAlcateiaId'] = $_GET['idAlcateia'];
@@ -126,11 +113,13 @@ class MatilhaController extends Controller{
         $this->loadView("pages/matilha/chefeOnly/listMatilhas.php", $dados, $msgErro, $msgSucesso, true);    
     }
 
+    //*função chamada para abrir o formulario para salvar o usuario
     public function create(){
         $dados["id_matilha"] = 0;
         $this->loadView("pages/matilha/chefeOnly/formMatilha.php", $dados,"","", true);
     }
     
+    //*função chamada para abrir o formulario para editar o usuario
     protected function edit() {
         $matilha = $this->findMatilhaById();
 
@@ -145,17 +134,7 @@ class MatilhaController extends Controller{
 
     }
 
-    protected function findMatilhaById(){
-        $id = 0;
-        if(isset($_GET['id']))
-            $id = $_GET['id'];
-
-        $dados["id_matilha"] = $id;
-
-        $matilha = $this->matilhaDao->findById($id);
-        return $matilha;
-    }
-
+    //*Funções chamadas na hora do envio do formulário para salvar o Usuario
     public function save(){
         if(empty($_POST)) {
             $this->create();
@@ -163,16 +142,7 @@ class MatilhaController extends Controller{
         }
 
         $dados["id_matilha"] = isset($_POST['id_matilha']) ? $_POST['id_matilha'] : 0;
-        $nomeMatilha = isset($_POST['nomeMatilha']) ? trim($_POST['nomeMatilha']) : NULL;
-        $chefeMatilha = isset($_POST['chefeMatilha']) ? trim($_POST['chefeMatilha']) : NULL;
-        $primoMatilha = isset($_POST['primoMatilha']) ? trim($_POST['primoMatilha']) : NULL;
-        $alcateia = $_SESSION['activeAlcateiaId'];
-
-        $matilha = new Matilha();
-        $matilha->setNomeMatilha($nomeMatilha);
-        $matilha->setIdChefe($chefeMatilha);
-        $matilha->setIdPrimo($primoMatilha);
-        $matilha->setIdAlcateia($alcateia);
+        $matilha = $this->saveMatilha();
 
         $erros = $this->matilhaService->validarDados($matilha);
 
@@ -212,7 +182,22 @@ class MatilhaController extends Controller{
         $this->loadView("pages/matilha/chefeOnly/formMatilha.php", $dados, $msgsErro, "", true);
  
     }
-    
+    public function saveMatilha() {
+        $nomeMatilha = isset($_POST['nomeMatilha']) ? trim($_POST['nomeMatilha']) : NULL;
+        $chefeMatilha = isset($_POST['chefeMatilha']) ? trim($_POST['chefeMatilha']) : NULL;
+        $primoMatilha = isset($_POST['primoMatilha']) ? trim($_POST['primoMatilha']) : NULL;
+        $alcateia = $_SESSION['activeAlcateiaId'];
+
+        $matilha = new Matilha();
+        $matilha->setNomeMatilha($nomeMatilha);
+        $matilha->setIdChefe($chefeMatilha);
+        $matilha->setIdPrimo($primoMatilha);
+        $matilha->setIdAlcateia($alcateia);
+
+        return $matilha;
+    }
+
+    //* função para deletar a matilha selecionada
     protected function delete(){
         $matilha = $this->findMatilhaById();
              if($matilha){
@@ -224,11 +209,38 @@ class MatilhaController extends Controller{
         }
     }
 
+    //* função para mudar um dado dentro da matilha
     protected function definePrimo() {
         $this->matilhaDao->definePrimo($_GET['idMatilha'], $_GET["id"]);
         $this->listMatilhas();
-
     }
+    
+    //* funções para encontrar a matilha em especifico por um dado
+    protected function findMatilhaById(){
+        $id = 0;
+        if(isset($_GET['id']))
+            $id = $_GET['id'];
+
+        $dados["id_matilha"] = $id;
+
+        $matilha = $this->matilhaDao->findById($id);
+        return $matilha;
+    }
+    public function findChefeAndPrimo() {
+        
+        $chefeAndPrimo = [];
+        $matilha = $this->matilhaDao->findById($_GET['idMatilha']);
+        $chefe = $this->usuarioDao->findById($matilha->getIdChefe());   
+        array_push($chefeAndPrimo, $chefe);
+
+        if($matilha->getIdPrimo() > 0) {
+            $primo = $this->usuarioDao->findById($matilha->getIdPrimo());
+            array_push($chefeAndPrimo, $primo);
+        }
+        echo json_encode($chefeAndPrimo);
+        die;
+    }
+    
 } 
 
-$alcCont = new MatilhaController();
+$matCont = new MatilhaController();

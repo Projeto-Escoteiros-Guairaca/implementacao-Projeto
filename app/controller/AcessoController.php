@@ -39,6 +39,7 @@ class AcessoController extends Controller {
         "create", "home"
     ];
 
+    //* te envia à pagina de erro se o usuario não tem matilha; se não, continua o processo normal.
     public function __construct() {  
   
         if(isset($_SESSION[SESSAO_USUARIO_ID_MATILHA])) {
@@ -53,11 +54,14 @@ class AcessoController extends Controller {
         }
     }
 
+    //* te leva para a página de erro por falta de matilhas
     public function noMatilha() {
         $this->loadView("pages/Errors/noMatilha.php", [], "", "");
         $_SESSION['controller'] = "Acesso";
         $_SESSION['ACTION'][$_SESSION['controller']] = 'noMatilha';
     }
+
+    //* seta a URL e a ação escolhida numa variavel sessao com o nome do controller chamado
     public function setSessionVariables() {
         $url = strstr("$_SERVER[REQUEST_URI]", "action");
     
@@ -76,6 +80,7 @@ class AcessoController extends Controller {
         $this->callRespectiveFunction();
     }  
 
+    //* Chama a função correspente ao papel do usuário
     public function callRespectiveFunction() {
         if(isset($_SESSION[SESSAO_USUARIO_PAPEIS][0])) { $papelMethod = $_SESSION[SESSAO_USUARIO_PAPEIS][0]; }
         else { $papelMethod = "noSessionActive"; }
@@ -97,6 +102,7 @@ class AcessoController extends Controller {
         }
     }
 
+    //* dependendo do papel do usuário, enviará as ações disponiveis para a sessão atual
     public function LOBINHO() {
         $this->checkAndCallController(AcessoController::lobinhoActions);
     }
@@ -110,6 +116,9 @@ class AcessoController extends Controller {
         $this->checkAndCallController(AcessoController::noSessionActions);
     }
 
+    //* trabalhará com o array recebido para verificar se a ação recebida faz parte desse array;
+    //* se for, envia ao controller correspondente com a ação correspondente.
+    //* Se não, envia à página de Acesso Negado.
     public function checkAndCallController($actions) {
 
         if(isset($_GET['action'])) {

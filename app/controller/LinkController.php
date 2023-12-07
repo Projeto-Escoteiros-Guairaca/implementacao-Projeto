@@ -1,7 +1,7 @@
 <?php
 #Nome do arquivo: LinkController.php
 #Objetivo: classe controller para controlar acesso às 
-        //funcionalidades de sistema de acordo com os papeis do usuário
+        //funcionalidades de sistema de acordo com os papeis do usuário ao ser chamado no menu.php
 
 require_once(__DIR__ . "/Controller.php");
 

@@ -12,7 +12,7 @@ function findTheMatilhas(id = 0, action, idUsu) {
     if(MatilhasAlreadyUsed.length == 0) {   
         var xhttp = new XMLHttpRequest();
 
-        xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateia=true" + "&isAjax=true", true);  
+        xhttp.open("GET", "AlcateiaController.php?action=" + action + "&sendAlcateia=true" + "&isForm=true", true);  
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var retorno = xhttp.responseText;
@@ -154,7 +154,7 @@ function sendMatilhaChange() {
     }
 
     var xhttp = new XMLHttpRequest();   
-    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idMatilha=" + matilhaId + '&chefeChangeMatilha' + chefeChangeMatilha +'&isAjax=true', true);
+    xhttp.open("GET", "UsuarioController.php?action=" + action + "&id=" + UsuarioId+ "&idMatilha=" + matilhaId + '&chefeChangeMatilha' + chefeChangeMatilha +'&isForm=true', true);
     
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {
@@ -261,7 +261,7 @@ function sendChange(toChange, idUsu) {
         papel = select.value;
     }
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "UsuarioController.php?action=" + action  + "&id=" + idUsu + "&newPapel=" + papel + '&isAjax=true', true)
+    xhttp.open("GET", "UsuarioController.php?action=" + action  + "&id=" + idUsu + "&newPapel=" + papel + '&isForm=true', true)
     
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200) {

@@ -18,9 +18,9 @@ class TarefaController extends Controller {
     private $tarefaDao;
     private $atividadeDao;
     private $usuarioDao;
-
     private $tarefaService;
-    
+
+    //* o Construct te envia ao AcessoController se não houver nenhuma excepção. 
     function __construct(){
         if(isset($_GET['action'])) {
             if(isset($_GET['isForm'])) {
@@ -56,6 +56,7 @@ class TarefaController extends Controller {
         $this->handleAction();
     }
 
+    //* faz a listagem das tarefas
     public function listTarefas(string $msgErro = "", string $msgSucesso = ""){
         $tarefaComplete = array();
         if(isset($_GET["idUsuario"])) {
@@ -91,7 +92,26 @@ class TarefaController extends Controller {
         $dados["lista"] = $tarefaComplete;
         $this->loadView("pages/tarefa/listTarefa.php", $dados, $msgErro, $msgSucesso, true);
     }
+    public function listUsuarios() {
+        $usuarios = $this->usuarioDao->findUsuariosByIdMatilha($_GET['idMatilha']);
+        $tarefa = $this->findById();
 
+        foreach ($usuarios as $usu):
+            $newUsuario = $this->tarefaDao->getTarefaSendByUsuario($usu->getId(), $_SESSION['activeTarefa']);
+            if($newUsuario != NULL) {
+                $usu->setTarefaEnviada(true);
+            }
+            else {
+                $usu->setTarefaEnviada(false);
+            }
+        endforeach;
+        $dados['tarefa'] = $tarefa;
+        $dados['usuarios'] = $usuarios;
+        $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, "", "", true);
+
+    }
+
+    //* abre a tarefa para mostrar dados especificos desta
     public function openTarefa() {
         if( isset($_GET['id'])) {
             $_SESSION['activeTarefa'] = $_GET['id'];
@@ -122,27 +142,7 @@ class TarefaController extends Controller {
 
         $this->loadView("pages/tarefa/chefeOnly/openTarefaChefe.php", $dados, "", "", true);
 
-    }
-
-    public function listUsuarios() {
-        $usuarios = $this->usuarioDao->findUsuariosByIdMatilha($_GET['idMatilha']);
-        $tarefa = $this->findById();
-
-        foreach ($usuarios as $usu):
-            $newUsuario = $this->tarefaDao->getTarefaSendByUsuario($usu->getId(), $_SESSION['activeTarefa']);
-            if($newUsuario != NULL) {
-                $usu->setTarefaEnviada(true);
-            }
-            else {
-                $usu->setTarefaEnviada(false);
-            }
-        endforeach;
-        $dados['tarefa'] = $tarefa;
-        $dados['usuarios'] = $usuarios;
-        $this->loadView("pages/tarefa/chefeOnly/listTarefasUsuario.php", $dados, "", "", true);
-
-    }
-
+    } 
     public function openTarefaOfEspecificUsuario() {
 
         $tarefa = $this->findById();
@@ -154,6 +154,7 @@ class TarefaController extends Controller {
 
     }
 
+    //* muda o estado da tarefa
     public function validateTarefa() {
         $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : "";
         $idEntrega = $_GET['idEnvio'];
@@ -162,6 +163,7 @@ class TarefaController extends Controller {
         $this->openTarefaOfEspecificUsuario();
     }
 
+    //* adiciona a entrega à tarefa
     public function addTarefa() {
         $arquivo = $this->addArquivo();
 
@@ -211,6 +213,7 @@ class TarefaController extends Controller {
         return $arquivo;
     }
 
+    //* permite o reenvio da tarefa, atualizando a entrega antiga
     public function updateEntrega() {
         $idArquivo = isset($_GET['idArquivo']) ? $_GET['idArquivo'] : 0;
         $idEntrega = isset($_GET['idEntrega']) ? $_GET['idEntrega'] : 0;
@@ -256,11 +259,13 @@ class TarefaController extends Controller {
 
     }
 
+    //*função chamada para abrir o formulario para salvar a tarefa
     public function create(){
         $dados["id_atividade"] = $_GET['idAtividade'];
         $this->loadView("pages/tarefa/chefeOnly/formTarefa.php", $dados, "", "", true);
     }
 
+    //*Funções chamadas na hora do envio do formulário para salvar a tarefa
     public function save(){
         
         if(empty($_POST)) {
@@ -308,7 +313,6 @@ class TarefaController extends Controller {
         $msgsErro = implode("<br>", $erros);
         $this->listTarefas("", "Tarefa salva com sucesso", true);
     }
-
     public function saveTarefa() {
         $nomeTarefa = isset($_POST['nomeTarefa']) ? trim($_POST['nomeTarefa']) : "";
         $descricaoTarefa = isset($_POST['descricaoTarefa']) ? trim($_POST['descricaoTarefa']) : "";
@@ -324,7 +328,7 @@ class TarefaController extends Controller {
         return $tarefa;
     }
 
-
+    // funções para encontrar a tarefa em especifico por um dado
     protected function findById(){
         $id = 0;
         if(isset($_GET['id'])) {

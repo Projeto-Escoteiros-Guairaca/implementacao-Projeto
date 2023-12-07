@@ -97,21 +97,13 @@ class FrequenciaDAO {
         }
         return $frequencias;
     }
-   public function updateToFalse($id){
-        $conn = Connection::getConn();
-        $sql = "UPDATE tb_frequencias SET frequencia = 0 WHERE id_frequencia = ".$id;
-        $stm = $conn->prepare($sql);
-        $stm->bindValue("id", $id);
-        $stm->execute();
 
-}
-    public function updateToTrue($id){
+    public function updateFrequencia($status, $id){
         $conn = Connection::getConn();
-        $sql = "UPDATE tb_frequencias SET frequencia = 1 WHERE id_frequencia = ".$id;
+        $sql = "UPDATE tb_frequencias SET frequencia = ".$status ." WHERE id_frequencia = ".$id;
         $stm = $conn->prepare($sql);
-        $stm->bindValue("id", $id);
         $stm->execute();
-}
+    }
   //Método para buscar um usuário por seu ID
     public function findById(int $id) {
     $conn = Connection::getConn();
