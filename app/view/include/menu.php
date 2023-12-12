@@ -42,7 +42,7 @@ if ($isChefe == 1) {
     <div id="navbar-principal" class="collapse navbar-collapse justify-content-md-center">
 
       <li class="nav-link">
-        <a id="btn_voltar" class="nav-item" href= "<?php echo $_SERVER['HTTP_REFERER']; ?>"> <span data-tooltip='Voltar'><i class="bi bi-arrow-left navbar-icon "></i></span></a>
+        <a id="btn_voltar" class="nav-item" href= " "> <span data-tooltip='Voltar'><i class="bi bi-arrow-left navbar-icon "></i></span></a>
       </li>
 
       <ul class="navbar-nav">
