@@ -202,7 +202,7 @@ class UsuarioController extends Controller
                     $_GET['id'] = $dados["id"];
                     $this->profile();
                 } else {
-                    $this->LoadController('Login', '?action=login', true);
+                    $this->LoadController('Login', '?action=login');
                 }
                 exit;
             } catch (PDOException $e) {
@@ -216,7 +216,6 @@ class UsuarioController extends Controller
         $dados["usuario"] = $usuario;
         $dados["nome"] = $usuario->getNome();
         $dados["cpf"] = $usuario->getCpf();
-        $dados["login"] = $usuario->getLogin();
         $dados["senha"] = $usuario->getSenha();
         $dados["confSenha"] = $confSenha;
         $dados["papeis"] = UsuarioPapel::getAllAsArray();
@@ -233,7 +232,7 @@ class UsuarioController extends Controller
         $dados["email"] = $contato->getEmail();
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("pages/usuario/chefeOnly/form.php", $dados, $msgsErro, "", "", true);
+        $this->loadView("pages/usuario/chefeOnly/form.php", $dados, $msgsErro, true);
     }
     protected function saveEndereco() {
         //* Captura dados endereço

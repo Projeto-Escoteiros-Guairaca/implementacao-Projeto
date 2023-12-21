@@ -40,7 +40,6 @@ CREATE TABLE tb_usuarios (
   id_matilha int ,
   nome varchar(70) NOT NULL, 
   cpf char(11) NOT NULL,
-  login varchar(15) NOT NULL,
   senha varchar(15) NOT NULL,
   papeis varchar(255) NOT NULL DEFAULT 'LOBINHO',
   status_usuario varchar(70) NOT NULL DEFAULT 'ATIVO',
@@ -145,20 +144,20 @@ INSERT INTO tb_contatos (telefone, celular, email) VALUES ('55555555', '44444444
 INSERT INTO tb_contatos (telefone, celular, email) VALUES ('66666666', '44444444444', 'chefinho3@gmail.com');
 
 /*Inserts usuarios*/
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES
-                        (1, 1, 1, 'Sr. Administrador', '11122233344', 'admin', 'admin', 'ADMINISTRADOR', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
-                        (2, 2, 1, 'Sr. Root', '44433322211', 'root', 'root', 'LOBINHO', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
-                        (3, 3, 2, 'Marco', '69669669669', 'marco', 'marco', 'ADMINISTRADOR', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
-                        (4, 4, 1, 'chefe1', '50947509203', 'chefe1', 'chefe1', 'CHEFE', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
-                        (5, 5, 2, 'chefe2', '50947509203', 'chefe2', 'chefe2', 'CHEFE', 'ATIVO');
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
-                        (6, 6, 3, 'chefe3', '50947509203', 'chefe3', 'chefe3', 'CHEFE', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, senha, papeis, status_usuario) VALUES
+                        (1, 1, 1, 'Sr. Administrador', '11122233344', 'admin', 'ADMINISTRADOR', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, senha, papeis, status_usuario) VALUES 
+                        (2, 2, 1, 'Sr. Root', '44433322211', 'root', 'LOBINHO', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, senha, papeis, status_usuario) VALUES 
+                        (3, 3, 2, 'Marco', '69669669669', 'marco', 'ADMINISTRADOR', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, senha, papeis, status_usuario) VALUES 
+                        (4, 4, 1, 'chefe1', '50947509203',  'chefe1', 'CHEFE', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, senha, papeis, status_usuario) VALUES 
+                        (5, 5, 2, 'chefe2', '50947509203', 'chefe2', 'CHEFE', 'ATIVO');
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, senha, papeis, status_usuario) VALUES 
+                        (6, 6, 3, 'chefe3', '50947509203', 'chefe3', 'CHEFE', 'ATIVO');
 
-INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, login, senha, papeis, status_usuario) VALUES 
+INSERT INTO tb_usuarios (id_endereco, id_contato, id_matilha, nome, cpf, senha, papeis, status_usuario) VALUES 
                         (6, 6, 3, 'chefe4', '50947509203', 'chefe4', 'chefe4', 'CHEFE', 'ATIVO');
 
 

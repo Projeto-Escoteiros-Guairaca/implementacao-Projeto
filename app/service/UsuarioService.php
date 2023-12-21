@@ -41,10 +41,7 @@ class UsuarioService {
 
         if(! $usuario->getNome())
             array_push($errorUsuario, "O campo [Nome] é obrigatório.");
-
-        if(! $usuario->getLogin())
-            array_push($errorUsuario, "O campo [Login] é obrigatório.");
-
+        
         if(! $usuario->getSenha())
             array_push($errorUsuario, "O campo [Senha] é obrigatório.");
 

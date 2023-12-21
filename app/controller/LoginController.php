@@ -30,14 +30,14 @@ class LoginController extends Controller {
 
     /* Método para logar um usuário a partir dos dados informados no formulário */
     protected function logon() {
-        $login = isset($_POST['login']) ? trim($_POST['login']) : null;
+        $email = isset($_POST['email']) ? trim($_POST['email']) : null;
         $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
 
         //Validar os campos
-        $erros = $this->loginService->validarCampos($login, $senha);
+        $erros = $this->loginService->validarCampos($email, $senha);
         if(empty($erros)) {
             //Valida o login a partir do banco de dados
-            $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
+            $usuario = $this->usuarioDao->findByEmailSenha($email, $senha);
             if($usuario) {
                     $this->salvarUsuarioSessao($usuario);
                     

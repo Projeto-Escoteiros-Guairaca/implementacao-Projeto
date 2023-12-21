@@ -11,7 +11,6 @@ class Usuario implements JsonSerializable {
     private $contato;
     private $matilha;
     private $nome;
-    private $login;
     private $senha;
     private $cpf;
     private $papeis;
@@ -30,8 +29,6 @@ class Usuario implements JsonSerializable {
         [
             'idUsuario' => $this->id,
             'nome' => $this->nome,
-            'login' => $this->login,
-            'papel' => $this->papeis,
             'papel' => $this->papeis,
             'status' => $this->status,
             'idMatilha' => $this->idMatilha,
@@ -94,26 +91,6 @@ class Usuario implements JsonSerializable {
     public function setMatilha($matilha)
     {
         $this->matilha = $matilha;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of login
-     */ 
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Set the value of login
-     *
-     * @return  self
-     */ 
-    public function setLogin($login)
-    {
-        $this->login = $login;
 
         return $this;
     }

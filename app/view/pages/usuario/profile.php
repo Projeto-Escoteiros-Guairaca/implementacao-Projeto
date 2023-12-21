@@ -30,11 +30,6 @@ require_once(__DIR__ . "/../../../model/enum/UsuarioPapel.php");
         <p class="p_dados"> <?= $dados['usuario']->getNome(); ?>
         </p>
 
-        <h6 class="h6_dados">Nome do Usuário:</h6>
-
-        <p class="p_dados"> <?= $dados['usuario']->getLogin(); ?>
-        </p>
-
         <h6 class="h6_dados">Classificacão:</h6>
 
         <p class="p_dados"> <?= $dados['usuario']->getPapeisStr(); ?>

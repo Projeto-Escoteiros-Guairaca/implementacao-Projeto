@@ -48,6 +48,8 @@ class AcessoController extends Controller {
                 return;
             }
             $this->noMatilha();
+        }else if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+            $this->noMatilha();
         }
         else {
             $this->setSessionVariables();

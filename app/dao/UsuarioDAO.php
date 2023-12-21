@@ -73,15 +73,15 @@ class UsuarioDAO {
 
 
     //Método para buscar um usuário por seu login e senha
-    public function findByLoginSenha(string $login, string $senha) {
+    public function findByEmailSenha(string $gmail, string $senha) {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM tb_usuarios u " .
-               " WHERE u.login = ? AND u.senha = ?";
+        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato" .
+               " WHERE c.email = ? AND u.senha = ?";
         $stm = $conn->prepare($sql);    
-        $stm->execute([$login, $senha]);
+        $stm->execute([$gmail, $senha]);
         $result = $stm->fetchAll();
-
         $usuarios = $this->mapUsuarios($result);
 
         if(count($usuarios) == 1)
@@ -89,7 +89,7 @@ class UsuarioDAO {
         elseif(count($usuarios) == 0)
             return null;
 
-        die("UsuarioDAO.findByLoginSenha()" . 
+        die("UsuarioDAO.findByEmailSenha()" . 
             " - Erro: mais de um usuário encontrado.");
     }
 
@@ -100,7 +100,6 @@ class UsuarioDAO {
             $usuario->setId($reg['id_usuario']);
             $usuario->setNome($reg['nome']);
             $usuario->setCpf($reg['cpf']);
-            $usuario->setLogin($reg['login']);
             $usuario->setSenha($reg['senha']);
             $usuario->setPapeis($reg['papeis']);
             $usuario->setStatus($reg['status_usuario']);
@@ -123,15 +122,14 @@ class UsuarioDAO {
     public function insert(Usuario $usuario) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO tb_usuarios (id_endereco, id_contato, nome, cpf, login, senha)" .
-               " VALUES (:id_endereco, :id_contato, :nome, :cpf, :login, :senha)";
+        $sql = "INSERT INTO tb_usuarios (id_endereco, id_contato, nome, cpf, senha)" .
+               " VALUES (:id_endereco, :id_contato, :nome, :cpf, :senha)";
         $stm = $conn->prepare($sql);
         
         $stm->bindValue("id_endereco", $usuario->getEndereco()->getIdEndereco());
         $stm->bindValue("id_contato", $usuario->getContato()->getIdContato());
         $stm->bindValue("nome", $usuario->getNome());
         $stm->bindValue("cpf", $usuario->getCpf());
-        $stm->bindValue("login", $usuario->getLogin());
         $stm->bindValue("senha", $usuario->getSenha());
         $stm->execute();
 
@@ -153,14 +151,13 @@ class UsuarioDAO {
     public function update(Usuario $usuario) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE tb_usuarios SET nome = :nome, cpf = :cpf, login = :login," . 
+        $sql = "UPDATE tb_usuarios SET nome = :nome, cpf = :cpf," . 
                " senha = :senha, papeis = :papeis" .   
                " WHERE id_usuario = :id";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome", $usuario->getNome());
         $stm->bindValue("cpf", $usuario->getCpf());
-        $stm->bindValue("login", $usuario->getLogin());
         $stm->bindValue("senha", $usuario->getSenha());
         $stm->bindValue("papeis", $usuario->getPapeis());
         $stm->bindValue("id", $usuario->getId());
@@ -271,7 +268,6 @@ class UsuarioDAO {
             $usuario->setId($reg['id_usuario']);
             $usuario->setNome($reg['nome']);
             $usuario->setCpf($reg['cpf']);
-            $usuario->setLogin($reg['login']);
             $usuario->setSenha($reg['senha']);
             $usuario->setPapeis($reg['papeis']);
             $usuario->setStatus($reg['status_usuario']);
@@ -294,7 +290,6 @@ class UsuarioDAO {
             $usuario->setId($reg['id_usuario']);
             $usuario->setNome($reg['nome']);
             $usuario->setCpf($reg['cpf']);
-            $usuario->setLogin($reg['login']);
             $usuario->setSenha($reg['senha']);
             $usuario->setPapeis($reg['papeis']);
             $usuario->setStatus($reg['status_usuario']);

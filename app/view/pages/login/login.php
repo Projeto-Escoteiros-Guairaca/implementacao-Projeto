@@ -17,8 +17,8 @@ require_once(__DIR__ . "/../../include/menu.php");
     <!-- Formulário de login -->
     <form id="frmLogin" class="formularios" action="./LoginController.php?action=logon&isForm=true" method="POST">
         <div class="form-group">
-            <label for="txtLogin">Login:</label>
-            <input type="text" class="form-control" name="login" id="txtLogin" maxlength="15" placeholder="Informe o login" value="<?php echo isset($dados['login']) ? $dados['login'] : '' ?>" />
+            <label for="txtLogin">Email:</label>
+            <input type="text" class="form-control" name="email" id="txtLogin" maxlength="50" placeholder="Informe o login" value="<?php echo isset($dados['login']) ? $dados['login'] : '' ?>" />
         </div>
 
         <div class="form-group">
