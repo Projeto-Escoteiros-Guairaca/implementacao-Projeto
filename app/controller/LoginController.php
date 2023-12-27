@@ -52,7 +52,7 @@ class LoginController extends Controller {
 
         //Se há erros, volta para o formulário            
         $msg = implode("<br>", $erros);
-        $dados["login"] = $login;
+        $dados["email"] = $email;
         $dados["senha"] = $senha;
 
         $this->loadView("pages/login/login.php", $dados, $msg, "", true);
