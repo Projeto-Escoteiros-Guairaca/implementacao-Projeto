@@ -17,3 +17,45 @@
     background-color: transparent;
     opacity: 0.9;
 }
+.img_escoteiro_intial{
+    
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 7%;
+    z-index: 2;
+    padding: 7% 7%;
+}
+.balao_de_fala_intial{
+    height: 28%;
+    width: 15%;
+    padding: 1% 1%;
+    border: var(--borda_verde_esc);
+    box-shadow: var(--sombras_bordas);
+    position: absolute;
+    right: 20%;
+    top:13%;
+    z-index: -1;
+    border-radius: 10%;
+    border-bottom-right-radius: 0;
+}
+.balao_de_fala_intial::after{
+ /* content necessário para a criação de um elemento vazio */
+ content: "";
+ width: 0;
+ height: 0;
+ /* position: absolute para manipularmos a posição da seta */
+ position: absolute;
+ /* Right com valor negativo para ele ficar para fora do balão de dialogo */
+ right: -9%;
+ top:72%;
+ /* E aqui o truque com as bordas */
+ /* 50px é a metade da altura do elemento, assim temos uma seta da mesma altura que nosso elemento */
+ border-top: 20px solid transparent;
+ border-bottom: 20px solid transparent;
+ border-left: 20px solid #1d7874;
+
+ transform: rotate(0deg);
+  }

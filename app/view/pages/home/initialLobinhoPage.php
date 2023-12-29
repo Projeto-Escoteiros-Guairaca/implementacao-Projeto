@@ -33,6 +33,9 @@ require_once(__DIR__ . "/../../include/menu.php");
       </div>
     </a>
   </div>
+  <div class= "balao_de_fala_intial">Agora aperte o botão "Atividades" para ver como está o status de suas atividades!</div>
+  <div class="img_escoteiro_intial"><img class="img_escoteiro_intial" src="<?= BASEURL ?>/view/pages/home/images/escoteiro_apresentacao.png" alt="" height="100">
+  </div>
 </div>
 
 <?php

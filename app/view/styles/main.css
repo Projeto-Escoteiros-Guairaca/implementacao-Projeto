@@ -7,6 +7,7 @@
     --borda_verde_esc: #1d7874 1px solid;
     --bordas: solid #679289 1px;
     --color-p: #667;
+    --bordas_balao_de_fala:solid black 1px;
 }
 
 /*Abaixo serao declaradas classes que so podem ser editadas no arquivo main (classes universais)*/
@@ -246,9 +247,13 @@ form {
 .btn_cards {
     border: var(--bordas);
     box-sizing: border-box;
+    width: 60%;
     color: var(--verde-escuro);
-    display: inline;
+    display: flex;
     padding: 4px 4px;
+    justify-content: center;
+    margin: auto auto  5px ;    
+    
 }
 
 .btn_cards:hover {
@@ -272,6 +277,9 @@ form {
     min-width: 35%;
     max-width: 70%;
     height: 52%;
+    margin: auto auto;
+    padding: auto auto;
+    border: var(--borda_verde_esc);
 }
 
 /*input e label*/

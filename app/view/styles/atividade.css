@@ -166,6 +166,10 @@
 #formatividade{
   width: 25em;
   height: 25em;
+  border-radius: 25px;
+  box-shadow: var(--sombras_bordas);
+  padding: 2%;
+ 
 }
 /*div que contem os input e label*/
 .form-group{
@@ -173,10 +177,11 @@
   margin: 0 auto 0;
   min-width: fit-content;
   width: 65%;
-  padding: 2vh 2vh;
+  padding: 2% 2%;
 }
 .form-control{
   border: var(--bordas);
+  
 }
 /*div total do input e texto da img*/
 #img_form_atv{

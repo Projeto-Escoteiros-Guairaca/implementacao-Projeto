@@ -15,7 +15,7 @@
     <div class="col-12">
         
             <form id="formatividade" class="formularios" method="POST" enctype="multipart/form-data" action="<?= BASEURL ?>/controller/AtividadeController.php?action=save&isForm=true">
-                
+            <div class= "desenho_borda"></div>
                 <h3 class="titulos">
                     <?php if(isset($dados["id_atividade"])): ?>
                         Alterar atividade
