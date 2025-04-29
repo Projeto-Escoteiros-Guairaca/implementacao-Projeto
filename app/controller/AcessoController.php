@@ -1,4 +1,27 @@
 <?php
+
+private function defineControllerPath() {
+        $controllerDir = [];
+        if(!empty(glob("*/Controller/*/".$this->controller."Controller.php")))
+            $controllerDir = glob("*/Controller/*/".$this->controller."Controller.php");
+
+        else if(!empty(glob("*/Controller/".$this->controller."Controller.php")))
+            $controllerDir = glob("*/Controller/".$this->controller."Controller.php");
+
+        else $controllerDir = null;
+
+
+        if($controllerDir != null) {
+            require_once($controllerDir[0]);
+            $this->callFunction();
+        }
+        else {
+            echo "ERROR, CONTROLLER DOES NOT EXIST.";
+            return;
+        }
+    }
+
+
 #Nome do arquivo: AcessoController.php
 #Objetivo: classe controller para controlar acesso às 
         //funcionalidades de sistema de acordo com os papeis do usuário
