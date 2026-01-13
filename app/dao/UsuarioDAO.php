@@ -72,25 +72,61 @@ class UsuarioDAO {
     }
 
 
-    //Método para buscar um usuário por seu login e senha
-    public function findByEmailSenha(string $gmail, string $senha) {
+    // Método corrigido para buscar login
+    public function findByEmailSenha(string $email, string $senha) {
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM tb_usuarios u " .
-        "INNER JOIN tb_contatos c ON u.id_contato = c.id_contato" .
-               " WHERE c.email = ? AND u.senha = ?";
+        // 1. SELEÇÃO EXPLÍCITA:
+        // Selecionamos u.* (todos do usuario) e especificamente o email da tabela contatos.
+        // Isso evita erros de colunas duplicadas.
+        $sql = "SELECT u.*, c.email 
+                FROM tb_usuarios u 
+                INNER JOIN tb_contatos c ON u.id_contato = c.id_contato
+                WHERE u.email = ? AND u.senha = ?";
+        
         $stm = $conn->prepare($sql);    
-        $stm->execute([$gmail, $senha]);
+        $stm->execute([$email, $senha]);
         $result = $stm->fetchAll();
+
+        // --- BLOCO DE DEBUG (Apague depois de funcionar) ---
+        if (count($result) == 0) {
+            echo "<pre>";
+            echo "<h3>DEBUG DAO:</h3>";
+            echo "Email buscado: [" . $email . "]<br>";
+            echo "Senha buscada: [" . $senha . "]<br>";
+            echo "SQL: " . $sql . "<br>";
+            echo "Resultado: 0 linhas encontradas.<br>";
+            echo "DICA: Verifique espaços em branco no banco ou letras maiúsculas/minúsculas.";
+            echo "</pre>";
+            // Não damos die() aqui para permitir que o controller trate, 
+            // mas o echo acima vai aparecer na tela de login.
+            return null;
+        }
+        // ---------------------------------------------------
+
+        // Usamos o mapUsuarios existente
         $usuarios = $this->mapUsuarios($result);
 
-        if(count($usuarios) == 1)
+        if(count($usuarios) == 1) {
+            // AJUSTE MANUAL: Como o mapUsuarios não mapeia o email, 
+            // vamos garantir que pelo menos o objeto saiba que existe um contato vinculado
+            // caso você precise disso na sessão.
+            
+            // Opcional: Se sua classe Usuario tiver o método getContato():
+            /*
+            $contato = new Contato();
+            $contato->setEmail($result[0]['email']); // Pegamos do resultado direto
+            $contato->setIdContato($result[0]['id_contato']);
+            $usuarios[0]->setContato($contato);
+            */
+            
             return $usuarios[0];
-        elseif(count($usuarios) == 0)
+        }
+        elseif(count($usuarios) == 0) {
             return null;
+        }
 
-        die("UsuarioDAO.findByEmailSenha()" . 
-            " - Erro: mais de um usuário encontrado.");
+        die("UsuarioDAO.findByEmailSenha() - Erro: duplicidade de usuários.");
     }
 
     public function mapUsuarioAndMatilha($result) {
